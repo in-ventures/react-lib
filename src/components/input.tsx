@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 11:34:57 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Thursday, 9th July 2020 12:45:42 am
+ * Last Modified: Thursday, 9th July 2020 7:57:23 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -12,7 +12,7 @@
  * -----
  * Inventures - www.inventures.cl
  */
-import React from "react";
+import React, { useEffect } from "react";
 import TextField, { TextFieldProps } from "@material-ui/core/TextField";
 import { rutFormat, rutValidate, rutClean } from "rut-helpers";
 import { useInput } from "../hooks/useInput.hooks";
@@ -22,10 +22,12 @@ export const Input = (props: TextFieldProps) => <TextField {...props} />;
 type RutInputProps = {
   required?: boolean;
   debounceTime?: number;
+  defaultValue?: string;
 } & TextFieldProps;
 export const RutInput = ({
   required,
   debounceTime,
+  defaultValue,
   ...props
 }: RutInputProps) => {
   const [value, setValue, valid, errors] = useInput("", {
@@ -38,6 +40,10 @@ export const RutInput = ({
     ],
     debounceTime,
   });
+  useEffect(() => {
+    if (defaultValue) setValue(defaultValue);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setValue]);
 
   return (
     <Input
