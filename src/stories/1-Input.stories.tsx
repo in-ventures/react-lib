@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Thursday, 9th July 2020 1:06:14 am
+ * Last Modified: Thursday, 9th July 2020 8:24:15 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -15,14 +15,19 @@
 import React from "react";
 import { text, boolean, number } from "@storybook/addon-knobs";
 import { Input, RutInput } from "../components/input";
+import { muiThemeDecorator } from "../config/storybook/decorators";
 
 export default {
   title: "Input",
+  decorators: [muiThemeDecorator],
+  parameters: {
+    muiTheme: { theme: "dercocenterxTheme" },
+  },
 };
 export const Base = () => <Input />;
 export const InputForRut = () => {
   const required = boolean("Required", false);
-  const debounceTime = number("Debounce time (ms)", 10);
+  const debounceTime = number("Debounce time (ms)", 200);
   const defaultValue = text("Default RUT", "11.111.111");
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
