@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 11:51:01 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Friday, 10th July 2020 10:05:15 am
+ * Last Modified: Friday, 10th July 2020 11:13:12 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -15,7 +15,7 @@
 
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { Subject, timer } from "rxjs";
-import { debounce, distinctUntilChanged } from "rxjs/operators";
+import { debounce } from "rxjs/operators";
 
 type useInputOptions = {
   formatter?: (input: string) => string;
@@ -35,29 +35,26 @@ export const useInput = (
   const handleSetValue = useCallback(
     (data: string) => {
       setValue(data);
-      if (options?.formatter)
+      if (options && options.formatter) {
         formatSubjectRef.current.next(options.formatter(data));
-      if ((options?.validators?.length ?? 0) > 0) {
+      }
+      if (options && options.validators && options.validators.length) {
         validSubjectRef.current.next(
-          options?.validators
-            ?.map((validator) => validator(data))
-            .filter(Boolean)
+          options.validators.map((validator) => validator(data)).filter(Boolean)
         );
       }
     },
     [options]
   );
   useEffect(() => {
-    if (options?.formatter) {
-      formatSubjectRef.current
-        // .pipe(debounce(() => timer(options.debounceTime || 1000)))
-        .subscribe((newValue) => {
-          setValue(newValue);
-        });
+    if (options && options.formatter) {
+      formatSubjectRef.current.subscribe((newValue) => {
+        setValue(newValue);
+      });
     }
-    if ((options?.validators?.length ?? 0) > 0) {
+    if (options && options.validators && options.validators.length) {
       validSubjectRef.current
-        .pipe(debounce(() => timer(options?.debounceTime || 1000)))
+        .pipe(debounce(() => timer(options.debounceTime || 1000)))
         .subscribe((newErrors) => setErrors(newErrors));
     }
   }, [options]);

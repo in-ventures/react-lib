@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Thursday, 9th July 2020 8:32:15 am
+ * Last Modified: Friday, 10th July 2020 10:29:08 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -14,7 +14,7 @@
  */
 import React from "react";
 import { text, boolean, number } from "@storybook/addon-knobs";
-import { Input, RutInput } from "../components/input";
+import { Input, RutInput } from "../lib/components/input";
 import { muiThemeDecorator } from "../config/storybook/muiTheme";
 
 export default {
