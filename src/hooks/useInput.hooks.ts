@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 11:51:01 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Thursday, 9th July 2020 7:55:59 am
+ * Last Modified: Friday, 10th July 2020 10:05:15 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -50,20 +50,14 @@ export const useInput = (
   useEffect(() => {
     if (options?.formatter) {
       formatSubjectRef.current
-        .pipe(
-          debounce(() => timer(options.debounceTime || 1000)),
-          distinctUntilChanged()
-        )
+        // .pipe(debounce(() => timer(options.debounceTime || 1000)))
         .subscribe((newValue) => {
           setValue(newValue);
         });
     }
     if ((options?.validators?.length ?? 0) > 0) {
       validSubjectRef.current
-        .pipe(
-          debounce(() => timer(options?.debounceTime || 1000)),
-          distinctUntilChanged()
-        )
+        .pipe(debounce(() => timer(options?.debounceTime || 1000)))
         .subscribe((newErrors) => setErrors(newErrors));
     }
   }, [options]);

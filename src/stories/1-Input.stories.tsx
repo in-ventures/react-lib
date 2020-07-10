@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Thursday, 9th July 2020 8:24:15 am
+ * Last Modified: Thursday, 9th July 2020 8:32:15 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -15,13 +15,16 @@
 import React from "react";
 import { text, boolean, number } from "@storybook/addon-knobs";
 import { Input, RutInput } from "../components/input";
-import { muiThemeDecorator } from "../config/storybook/decorators";
+import { muiThemeDecorator } from "../config/storybook/muiTheme";
 
 export default {
   title: "Input",
   decorators: [muiThemeDecorator],
   parameters: {
     muiTheme: { theme: "dercocenterxTheme" },
+    myAddon: {
+      data: "this data is passed to the addon",
+    },
   },
 };
 export const Base = () => <Input />;
