@@ -1,0 +1,39 @@
+/*
+ * File: launch.json
+ * Project: components-lib
+ * File Created: Monday, 13th July 2020 6:10:30 pm
+ * Author: Mario Merino (mario@inventures.cl)
+ * -----
+ * Last Modified: Monday, 13th July 2020 6:17:18 pm
+ * Modified By: Mario Merino (mario@inventures.cl)
+ * -----
+ * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
+ * Terms and conditions defined in license.txt
+ * -----
+ * Inventures - www.inventures.cl
+ */
+
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			// Requires the extension Debugger for Chrome: https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome
+			"type": "chrome",
+			"request": "launch",
+			"name": "Storybook Debug",
+			"breakOnLoad": true,
+			"url": "http://localhost:9009",
+			"sourceMaps": true,
+			"webRoot": "${workspaceFolder}",
+			"sourceMapPathOverrides": {
+				"webpack:///*": "${webRoot}/*",
+				"webpack:///./*": "${webRoot}/*",
+				"webpack:///src/*": "${webRoot}/*",
+				"webpack:///./~/*": "${webRoot}/node_modules/*"
+			}
+		}
+	]
+}
