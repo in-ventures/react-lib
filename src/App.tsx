@@ -11,9 +11,11 @@ const useStyles = makeStyles((theme: Theme) =>
 		root: {
 			flexGrow: 1,
 			margin: '16px',
+			backgroundColor: 'rgb(0 0 0 / 0.10)',
+			padding: '1px',
+			gridGap: '1px',
 		},
 		ProductCardA: {
-			padding: theme.spacing(0.5),
 			textAlign: 'center',
 			color: theme.palette.text.secondary,
 		},
@@ -24,59 +26,59 @@ function App() {
 
 	return (
 		<div className={classes.root}>
-			<Grid container spacing={1}>
-				<Grid item xs={6} sm={6} md={4} lg={3} xl={2}>
+			<Grid container>
+				<Grid item xs={6} sm={4} md={3} lg={3} xl={2}>
 					<ProductCardA />
 				</Grid>
-				<Grid item xs={6} sm={6} md={4} lg={3} xl={2}>
+				<Grid item xs={6} sm={4} md={3} lg={3} xl={2}>
 					<ProductCardA />
 				</Grid>
-				<Grid item xs={6} sm={6} md={4} lg={3} xl={2}>
+				<Grid item xs={6} sm={4} md={3} lg={3} xl={2}>
 					<ProductCardA />
 				</Grid>
-				<Grid item xs={6} sm={6} md={4} lg={3} xl={2}>
+				<Grid item xs={6} sm={4} md={3} lg={3} xl={2}>
 					<ProductCardA />
 				</Grid>
-				<Grid item xs={6} sm={6} md={4} lg={3} xl={2}>
+				<Grid item xs={6} sm={4} md={3} lg={3} xl={2}>
 					<ProductCardA />
 				</Grid>
-				<Grid item xs={6} sm={6} md={4} lg={3} xl={2}>
+				<Grid item xs={6} sm={4} md={3} lg={3} xl={2}>
 					<ProductCardA />
 				</Grid>
-				<Grid item xs={6} sm={6} md={4} lg={3} xl={2}>
+				<Grid item xs={6} sm={4} md={3} lg={3} xl={2}>
 					<ProductCardA />
 				</Grid>
-				<Grid item xs={6} sm={6} md={4} lg={3} xl={2}>
+				<Grid item xs={6} sm={4} md={3} lg={3} xl={2}>
 					<ProductCardA />
 				</Grid>
-				<Grid item xs={6} sm={6} md={4} lg={3} xl={2}>
+				<Grid item xs={6} sm={4} md={3} lg={3} xl={2}>
 					<ProductCardA />
 				</Grid>
-				<Grid item xs={6} sm={6} md={4} lg={3} xl={2}>
+				<Grid item xs={6} sm={4} md={3} lg={3} xl={2}>
 					<ProductCardA />
 				</Grid>
-				<Grid item xs={6} sm={6} md={4} lg={3} xl={2}>
+				<Grid item xs={6} sm={4} md={3} lg={3} xl={2}>
 					<ProductCardA />
 				</Grid>
-				<Grid item xs={6} sm={6} md={4} lg={3} xl={2}>
+				<Grid item xs={6} sm={4} md={3} lg={3} xl={2}>
 					<ProductCardA />
 				</Grid>
-				<Grid item xs={6} sm={6} md={4} lg={3} xl={2}>
+				<Grid item xs={6} sm={4} md={3} lg={3} xl={2}>
 					<ProductCardA />
 				</Grid>
-				<Grid item xs={6} sm={6} md={4} lg={3} xl={2}>
+				<Grid item xs={6} sm={4} md={3} lg={3} xl={2}>
 					<ProductCardA />
 				</Grid>
-				<Grid item xs={6} sm={6} md={4} lg={3} xl={2}>
+				<Grid item xs={6} sm={4} md={3} lg={3} xl={2}>
 					<ProductCardA />
 				</Grid>
-				<Grid item xs={6} sm={6} md={4} lg={3} xl={2}>
+				<Grid item xs={6} sm={4} md={3} lg={3} xl={2}>
 					<ProductCardA />
 				</Grid>
-				<Grid item xs={6} sm={6} md={4} lg={3} xl={2}>
+				<Grid item xs={6} sm={4} md={3} lg={3} xl={2}>
 					<ProductCardA />
 				</Grid>
-				<Grid item xs={6} sm={6} md={4} lg={3} xl={2}>
+				<Grid item xs={6} sm={4} md={3} lg={3} xl={2}>
 					<ProductCardA />
 				</Grid>
 			</Grid>

@@ -4,7 +4,7 @@
  * File Created: Thursday, 16th July 2020 9:27:33 am
  * Author: Mario Merino (mario@inventures.cl)
  * -----
- * Last Modified: Thursday, 16th July 2020 4:47:09 pm
+ * Last Modified: Monday, 20th July 2020 3:39:55 pm
  * Modified By: Mario Merino (mario@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -63,11 +63,18 @@ const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
 		root: {
 			//	minWidth: 248,
-			//	height: 400,
-			// padding: theme.spacing(0.5),
+			height: 376,
+			padding: '0px',
+			boxShadow: 'none',
+			borderRadius: '0px',
+			margin: '1px',
+			display: 'flex',
+			flexDirection: 'column',
+			justifyContent: 'space-between',
 		},
 		media: {
 			maxHeight: 120,
+			minHeight: 56,
 			width: 'calc(100% - 2rem)',
 			objectFit: 'contain',
 			padding: '1rem 1rem 0rem 1rem',
@@ -84,12 +91,22 @@ const useStyles = makeStyles((theme: Theme) =>
 		},
 		content: {
 			padding: theme.spacing(1),
+			display: 'flex',
+			flexDirection: 'column',
+			justifyContent: 'space-between',
+			flexGrow: 2,
 		},
 		actions: {
 			justifyContent: 'center',
 		},
 		button: {
 			borderRadius: theme.spacing(4),
+		},
+		actionArea: {
+			display: 'flex',
+			flexDirection: 'column',
+			justifyContent: 'space-between',
+			flexGrow: 2,
 		},
 	})
 );
@@ -100,7 +117,7 @@ export default function ProductCardA() {
 	return (
 		<ThemeProvider theme={theme}>
 			<Card className={classes.root}>
-				<CardActionArea>
+				<CardActionArea className={classes.actionArea}>
 					<CardMedia
 						className={classes.media}
 						component='img'
@@ -116,7 +133,7 @@ export default function ProductCardA() {
 							variant='h6'
 							component='h2'
 						>
-							Clonazepam · 0,5 mg
+							Clonazepam · 2 mg
 						</Typography>
 						<Box className={classes.box}>
 							<Chip
@@ -148,8 +165,9 @@ export default function ProductCardA() {
 							component='p'
 							gutterBottom
 						>
-							30 comprimidos de Clonazepan de 0,5 mg del laboratorio Chile
+							Clonazepam · 2 mg 30 comprimidos
 						</Typography>
+
 						<Typography
 							align='center'
 							color='primary'
