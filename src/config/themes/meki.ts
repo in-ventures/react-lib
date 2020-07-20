@@ -13,27 +13,27 @@
  * Inventures - www.inventures.cl
  */
 
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createMuiTheme } from '@material-ui/core/styles';
 
 export const mekiTheme = createMuiTheme({
   palette: {
     primary: {
-      main: "#1C3E71",
-      light: "#4F68A0",
-      dark: "#001945",
+      main: '#1C3E71',
+      light: '#4F68A0',
+      dark: '#001945',
     },
     secondary: {
-      main: "#F2D200",
-      light: "#FFFF51",
-      dark: "#BBA100",
+      main: '#F2D200',
+      light: '#FFFF51',
+      dark: '#BBA100',
     },
   },
   typography: {
-    fontFamily: "Poppins",
+    fontFamily: 'Poppins',
   },
   props: {
     MuiTextField: {
-      variant: "outlined",
+      variant: 'outlined',
     },
   },
 });

@@ -4,7 +4,7 @@
  * File Created: Thursday, 9th July 2020 8:39:57 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Thursday, 9th July 2020 1:51:40 pm
+ * Last Modified: Monday, 20th July 2020 3:02:32 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -13,13 +13,12 @@
  * Inventures - www.inventures.cl
  */
 
-import React from "react";
-import { addons, types, useChannel } from "@storybook/addons";
-import { useParameter } from "@storybook/api";
-import { AddonPanel } from "@storybook/components";
+import React from 'react';
+import { addons, types } from '@storybook/addons';
+import { AddonPanel } from '@storybook/components';
 
-const ADDON_ID = "muitheme";
-const PARAM_KEY = "muiTheme";
+const ADDON_ID = 'muitheme';
+const PARAM_KEY = 'muiTheme';
 const PANEL_ID = `${ADDON_ID}/panel`;
 
 const MyPanel = ({ api }) => {
@@ -33,7 +32,7 @@ const MyPanel = ({ api }) => {
   return (
     <div>
       <select
-        onChange={(e) => console.log("muiTheme/changeTheme", e.target.value)}
+        onChange={(e) => console.log('muiTheme/changeTheme', e.target.value)}
       >
         <option value="mekiTheme">Meki</option>
         <option value="dercocenterxTheme">Derco Center X</option>
@@ -48,7 +47,7 @@ addons.register(ADDON_ID, (api) => {
       <MyPanel api={api} />
     </AddonPanel>
   );
-  const title = "Theme";
+  const title = 'Theme';
 
   addons.add(PANEL_ID, {
     type: types.PANEL,

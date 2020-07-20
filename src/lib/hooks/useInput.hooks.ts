@@ -13,9 +13,9 @@
  * Inventures - www.inventures.cl
  */
 
-import { useState, useRef, useEffect, useCallback, useMemo } from "react";
-import { Subject, timer } from "rxjs";
-import { debounce } from "rxjs/operators";
+import { useState, useRef, useEffect, useCallback, useMemo } from 'react';
+import { Subject, timer } from 'rxjs';
+import { debounce } from 'rxjs/operators';
 
 type useInputOptions = {
   formatter?: (input: string) => string;
@@ -24,7 +24,7 @@ type useInputOptions = {
 };
 export const useInput = (
   defaultValue: string,
-  initialOptions?: useInputOptions
+  initialOptions?: useInputOptions,
 ): [string, (data: string) => void, boolean, string[]] => {
   const [value, setValue] = useState<string>(defaultValue);
   const [errors, setErrors] = useState<string[]>([]);
@@ -40,11 +40,13 @@ export const useInput = (
       }
       if (options && options.validators && options.validators.length) {
         validSubjectRef.current.next(
-          options.validators.map((validator) => validator(data)).filter(Boolean)
+          options.validators
+            .map((validator) => validator(data))
+            .filter(Boolean),
         );
       }
     },
-    [options]
+    [options],
   );
   useEffect(() => {
     if (options && options.formatter) {
