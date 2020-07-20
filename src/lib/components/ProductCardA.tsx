@@ -4,7 +4,7 @@
  * File Created: Thursday, 16th July 2020 9:27:33 am
  * Author: Mario Merino (mario@inventures.cl)
  * -----
- * Last Modified: Monday, 20th July 2020 3:39:55 pm
+ * Last Modified: Monday, 20th July 2020 4:23:35 pm
  * Modified By: Mario Merino (mario@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
 		root: {
 			//	minWidth: 248,
-			height: 376,
+			height: 368,
 			padding: '0px',
 			boxShadow: 'none',
 			borderRadius: '0px',
@@ -165,7 +165,7 @@ export default function ProductCardA() {
 							component='p'
 							gutterBottom
 						>
-							Clonazepam · 2 mg 30 comprimidos
+							Clonazepam · 2 mg · 30 comprimidos
 						</Typography>
 
 						<Typography
