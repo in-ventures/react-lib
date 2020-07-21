@@ -4,7 +4,7 @@
  * File Created: Monday, 20th July 2020 2:46:10 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Monday, 20th July 2020 3:01:39 pm
+ * Last Modified: Monday, 20th July 2020 6:49:39 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -31,6 +31,7 @@ module.exports = {
   },
   rules: {
     'react/prop-types': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
   },
   settings: {
     react: {

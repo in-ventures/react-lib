@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 11:51:01 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Friday, 10th July 2020 11:13:12 am
+ * Last Modified: Tuesday, 21st July 2020 12:22:54 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -13,52 +13,122 @@
  * Inventures - www.inventures.cl
  */
 
-import { useState, useRef, useEffect, useCallback, useMemo } from 'react';
-import { Subject, timer } from 'rxjs';
-import { debounce } from 'rxjs/operators';
+import { useState, useCallback, useMemo } from 'react';
+import debounce from 'lodash/debounce';
+
+type Formatter<T = string> = (input: T) => T;
+interface Validator<T = string> {
+  validate: (input: T) => boolean;
+  errorMsg: string;
+}
+interface AsyncValidator<T = string> {
+  validate: (input: T) => Promise<boolean>;
+  errorMsg: string;
+}
+export enum InputStatus {
+  SUCCESS = 'sucess',
+  ERROR = 'error',
+  PENDING = 'pending',
+}
+type InputErrors = {
+  asyncErrors: string[];
+  syncErrors: string[];
+};
 
 type useInputOptions = {
-  formatter?: (input: string) => string;
+  formatter?: Formatter;
   debounceTime?: number;
-  validators?: ((input: string) => string)[];
+  validators?: Validator[];
+  asyncValidators?: AsyncValidator[];
 };
 export const useInput = (
   defaultValue: string,
-  initialOptions?: useInputOptions,
-): [string, (data: string) => void, boolean, string[]] => {
+  options: useInputOptions = {},
+): [string, (data: string) => void, InputStatus, string[], () => void] => {
   const [value, setValue] = useState<string>(defaultValue);
-  const [errors, setErrors] = useState<string[]>([]);
-  const formatSubjectRef = useRef<Subject<string>>(new Subject());
-  const validSubjectRef = useRef<Subject<string[]>>(new Subject());
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const options = useMemo(() => initialOptions, []);
-  const handleSetValue = useCallback(
-    (data: string) => {
-      setValue(data);
-      if (options && options.formatter) {
-        formatSubjectRef.current.next(options.formatter(data));
-      }
-      if (options && options.validators && options.validators.length) {
-        validSubjectRef.current.next(
-          options.validators
-            .map((validator) => validator(data))
-            .filter(Boolean),
+  const [errors, setErrors] = useState<InputErrors>({
+    asyncErrors: [],
+    syncErrors: [],
+  });
+  const [typing, setTyping] = useState<boolean>(false);
+  const validate = useCallback(
+    async (newValue) => {
+      if (options.validators) {
+        const syncErrors = options.validators.map((validator) =>
+          validator.validate(newValue) ? '' : validator.errorMsg,
         );
+        setErrors((e) => ({
+          ...e,
+          syncErrors: syncErrors.filter(Boolean),
+        }));
+      }
+      if (options.asyncValidators) {
+        setAsyncValidatorLoading(true);
+        const asyncErrors = await Promise.all(
+          options.asyncValidators.map(async (validator) =>
+            (await validator.validate(newValue)) ? '' : validator.errorMsg,
+          ),
+        );
+        setAsyncValidatorLoading(false);
+        setErrors((e) => ({ ...e, asyncErrors: asyncErrors.filter(Boolean) }));
       }
     },
-    [options],
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      options.validators && options.validators.length,
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      options.asyncValidators && options.asyncValidators.length,
+    ],
   );
-  useEffect(() => {
-    if (options && options.formatter) {
-      formatSubjectRef.current.subscribe((newValue) => {
-        setValue(newValue);
-      });
+  // eslint-disable-next-line
+  const stopTyping = useCallback(
+    debounce(
+      (newValue: string) => {
+        setTyping(false);
+        validate(newValue);
+      },
+      options.debounceTime ? options.debounceTime : 1000,
+    ),
+    [options.debounceTime, setTyping, validate],
+  );
+  const [asyncValidatorLoading, setAsyncValidatorLoading] = useState<boolean>(
+    false,
+  );
+  const handleSetValue = useCallback(
+    async (data: string) => {
+      const newValue =
+        options && options.formatter ? options.formatter(data) : data;
+      setValue(newValue);
+      setTyping(true);
+      stopTyping(newValue);
+    },
+    [options, stopTyping],
+  );
+
+  const status = useMemo(() => {
+    let newStatus;
+    if (typing || (asyncValidatorLoading && errors.syncErrors.length === 0)) {
+      newStatus = InputStatus.PENDING;
+    } else if (errors.asyncErrors.length || errors.syncErrors.length) {
+      newStatus = InputStatus.ERROR;
+    } else {
+      newStatus = InputStatus.SUCCESS;
     }
-    if (options && options.validators && options.validators.length) {
-      validSubjectRef.current
-        .pipe(debounce(() => timer(options.debounceTime || 1000)))
-        .subscribe((newErrors) => setErrors(newErrors));
-    }
-  }, [options]);
-  return [value, handleSetValue, errors.length === 0, errors];
+    return newStatus;
+  }, [errors.asyncErrors, errors.syncErrors, asyncValidatorLoading, typing]);
+  const flushValidate = useCallback(() => {
+    stopTyping(value);
+    stopTyping.flush();
+  }, [stopTyping, value]);
+  return [
+    value,
+    handleSetValue,
+    status,
+    status !== InputStatus.PENDING
+      ? [...errors.syncErrors, ...errors.asyncErrors]
+      : [],
+    flushValidate,
+  ];
 };

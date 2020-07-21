@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 11:34:57 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Friday, 10th July 2020 11:13:57 am
+ * Last Modified: Tuesday, 21st July 2020 12:00:03 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -12,10 +12,10 @@
  * -----
  * Inventures - www.inventures.cl
  */
-import React, { useEffect } from "react";
-import TextField, { TextFieldProps } from "@material-ui/core/TextField";
-import { rutFormat, rutValidate, rutClean } from "rut-helpers";
-import { useInput } from "../hooks/useInput.hooks";
+import React from 'react';
+import TextField, { TextFieldProps } from '@material-ui/core/TextField';
+import { rutFormat, rutValidate } from 'rut-helpers';
+import { useInput, InputStatus } from '../hooks/useInput.hooks';
 
 export const Input = (props: TextFieldProps) => <TextField {...props} />;
 
@@ -24,33 +24,40 @@ type RutInputProps = {
   debounceTime?: number;
   defaultValue?: string;
 } & TextFieldProps;
-export const RutInput = ({
-  required,
-  debounceTime,
-  defaultValue,
-  ...props
-}: RutInputProps) => {
-  const [value, setValue, valid, errors] = useInput("", {
+export const RutInput = ({ debounceTime, ...props }: RutInputProps) => {
+  const [value, setValue, status, errors, handleBlur] = useInput('', {
     formatter: rutFormat,
     validators: [
-      (data: string) =>
-        required ? (!!rutClean(data) ? "" : "RUT requerido") : "",
-      (data: string) =>
-        !!rutClean(data) ? (rutValidate(data) ? "" : "RUT invalido") : "",
+      { validate: (data: string) => Boolean(data), errorMsg: 'RUT Requerido' },
+      {
+        validate: (data: string) =>
+          Boolean(data.match(/^\d{1,2}\.\d{3}\.\d{3}[-][0-9K]{1}$/)),
+        errorMsg: 'RUT invalid (regex)',
+      },
+      {
+        validate: (data: string) => rutValidate(data),
+        errorMsg: 'RUT invalido',
+      },
+    ],
+    asyncValidators: [
+      {
+        validate: async () => {
+          await new Promise((res) => setTimeout(res, 500));
+          return Math.random() < 0.5;
+        },
+        errorMsg: 'random falló',
+      },
     ],
     debounceTime,
   });
-  useEffect(() => {
-    if (defaultValue) setValue(defaultValue);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setValue]);
-
+  console.log({ status });
   return (
     <Input
       value={value}
       onChange={(e) => setValue(String(e.target.value))}
-      error={!valid}
-      helperText={errors.join(", ")}
+      onBlur={handleBlur}
+      error={status === InputStatus.ERROR}
+      helperText={errors[0]}
       {...props}
     />
   );
