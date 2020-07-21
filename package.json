@@ -29,8 +29,8 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "publish:gh": "yarn build-storybook && gh-pages -d storybook-static",
-    "lint": "tsc --noEmit && eslint ./src/ --ext .js,.ts",
-    "lint:fix": "tsc --noEmit && eslint ./src/ --ext .js,.ts --fix"
+    "lint": "tsc --noEmit && eslint ./src/ --ext .js,.ts,.tsx",
+    "lint:fix": "tsc --noEmit && eslint ./src/ --ext .js,.ts,.tsx --fix"
   },
   "eslintConfig": {
     "extends": "react-app"

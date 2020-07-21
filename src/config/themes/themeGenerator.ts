@@ -4,7 +4,7 @@
  * File Created: Friday, 10th July 2020 12:05:20 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Friday, 10th July 2020 12:09:07 pm
+ * Last Modified: Tuesday, 21st July 2020 1:15:12 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -13,13 +13,13 @@
  * Inventures - www.inventures.cl
  */
 
-import { ThemeOptions } from "@material-ui/core";
+import { ThemeOptions, Theme, createMuiTheme } from '@material-ui/core';
 
 type themeGeneratorInput = {
-  textFieldVariant: string;
+  textFieldVariant?: 'outlined' | 'filled';
 } & ThemeOptions;
-export const themeGenerator = (data: themeGeneratorInput) => {
-  return {
+export const themeGenerator = (data: themeGeneratorInput): Theme => {
+  const muiTheme = createMuiTheme(({
     ...data,
     props: {
       ...data.props,
@@ -28,5 +28,6 @@ export const themeGenerator = (data: themeGeneratorInput) => {
         ...data.props?.MuiTextField,
       },
     },
-  };
+  } as unknown) as Theme);
+  return muiTheme;
 };

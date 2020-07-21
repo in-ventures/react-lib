@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 11:34:57 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 21st July 2020 12:00:03 pm
+ * Last Modified: Tuesday, 21st July 2020 1:06:43 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -50,7 +50,6 @@ export const RutInput = ({ debounceTime, ...props }: RutInputProps) => {
     ],
     debounceTime,
   });
-  console.log({ status });
   return (
     <Input
       value={value}
