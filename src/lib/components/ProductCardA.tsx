@@ -4,7 +4,7 @@
  * File Created: Thursday, 16th July 2020 9:27:33 am
  * Author: Mario Merino (mario@inventures.cl)
  * -----
- * Last Modified: Tuesday, 21st July 2020 8:56:17 am
+ * Last Modified: Tuesday, 21st July 2020 11:34:27 am
  * Modified By: Mario Merino (mario@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -32,6 +32,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
 import Box from '@material-ui/core/Box';
 
+// todo move theme to story
 let theme = createMuiTheme({
 	palette: {
 		primary: {
@@ -43,6 +44,7 @@ let theme = createMuiTheme({
 	},
 	typography: {
 		fontFamily: [
+			// todo impor poppin in index
 			'Poppins',
 			'BlinkMacSystemFont',
 			'"Segoe UI"',
@@ -62,7 +64,7 @@ const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
 		root: {
 			//	minWidth: 248,
-			height: 368,
+			height: 360,
 			padding: '0px',
 			backgroundColor: 'white',
 			margin: '1px',
@@ -98,6 +100,7 @@ const useStyles = makeStyles((theme: Theme) =>
 			justifyContent: 'center',
 		},
 		button: {
+			// todo make a boolean prop to override standard radius
 			borderRadius: theme.spacing(4),
 		},
 		actionArea: {
@@ -120,7 +123,7 @@ export default function ProductCardA() {
 						className={classes.media}
 						component='img'
 						alt='Clonazepam 05 mg'
-						image='https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dwfeff7773/images/large/199479-clonazepam-bioequivalente-mintlab-comprimido-30-unidades-clonazepam-2-mg.jpg?sw=1000&sh=1000'
+						image='https://www.laboratoriochile.cl/wp-content//uploads/2015/11/Clonazepam_05MG_30C_BE_HD.jpg'
 						title='Clonazepam 05 mg'
 					/>
 					<CardContent className={classes.content}>
@@ -142,7 +145,7 @@ export default function ProductCardA() {
 										src='/static/images/avatar/1.jpg'
 									/>
 								}
-								label='Bioequivalente'
+								label='BioE'
 							/>
 							<Chip
 								size='small'
@@ -165,15 +168,25 @@ export default function ProductCardA() {
 						>
 							Clonazepam · 2 mg · 30 comprimidos
 						</Typography>
-
-						<Typography
-							align='center'
-							color='primary'
-							variant='h6'
-							component='h2'
-						>
-							$ 5.025
-						</Typography>
+						<Box>
+							<Typography
+								align='center'
+								color='primary'
+								variant='h6'
+								component='h2'
+							>
+								$ 5.025
+							</Typography>
+							{/*todo calculate this based on prop price, number of unit and unit format*/}
+							<Typography
+								align='center'
+								color='primary'
+								variant='subtitle2'
+								component='h3'
+							>
+								$ 168 / comprimido
+							</Typography>
+						</Box>
 					</CardContent>
 				</CardActionArea>
 				<CardActions className={classes.actions}>
