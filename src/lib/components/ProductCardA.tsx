@@ -4,7 +4,7 @@
  * File Created: Thursday, 16th July 2020 9:27:33 am
  * Author: Mario Merino (mario@inventures.cl)
  * -----
- * Last Modified: Monday, 20th July 2020 4:23:35 pm
+ * Last Modified: Tuesday, 21st July 2020 8:56:17 am
  * Modified By: Mario Merino (mario@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -22,7 +22,6 @@ import {
 	responsiveFontSizes,
 	ThemeProvider,
 } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -65,8 +64,7 @@ const useStyles = makeStyles((theme: Theme) =>
 			//	minWidth: 248,
 			height: 368,
 			padding: '0px',
-			boxShadow: 'none',
-			borderRadius: '0px',
+			backgroundColor: 'white',
 			margin: '1px',
 			display: 'flex',
 			flexDirection: 'column',
@@ -116,13 +114,13 @@ export default function ProductCardA() {
 
 	return (
 		<ThemeProvider theme={theme}>
-			<Card className={classes.root}>
+			<Box className={classes.root}>
 				<CardActionArea className={classes.actionArea}>
 					<CardMedia
 						className={classes.media}
 						component='img'
 						alt='Clonazepam 05 mg'
-						image='https://www.laboratoriochile.cl/wp-content//uploads/2015/11/Clonazepam_05MG_30C_BE_HD.jpg'
+						image='https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dwfeff7773/images/large/199479-clonazepam-bioequivalente-mintlab-comprimido-30-unidades-clonazepam-2-mg.jpg?sw=1000&sh=1000'
 						title='Clonazepam 05 mg'
 					/>
 					<CardContent className={classes.content}>
@@ -187,7 +185,7 @@ export default function ProductCardA() {
 						Agregar
 					</Button>
 				</CardActions>
-			</Card>
+			</Box>
 		</ThemeProvider>
 	);
 }
