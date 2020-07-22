@@ -4,8 +4,8 @@
  * File Created: Wednesday, 8th July 2020 11:51:01 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 21st July 2020 12:22:54 pm
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Tuesday, 21st July 2020 10:40:13 pm
+ * Modified By: Mario Merino (mario@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -89,7 +89,7 @@ export const useInput = (
         setTyping(false);
         validate(newValue);
       },
-      options.debounceTime ? options.debounceTime : 1000,
+      options.debounceTime ? options.debounceTime : 1600,
     ),
     [options.debounceTime, setTyping, validate],
   );
