@@ -4,8 +4,8 @@
  * File Created: Wednesday, 8th July 2020 11:51:01 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 21st July 2020 10:40:13 pm
- * Modified By: Mario Merino (mario@inventures.cl)
+ * Last Modified: Wednesday, 22nd July 2020 10:15:02 am
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -17,7 +17,7 @@ import { useState, useCallback, useMemo } from 'react';
 import debounce from 'lodash/debounce';
 
 type Formatter<T = string> = (input: T) => T;
-interface Validator<T = string> {
+export interface Validator<T = string> {
   validate: (input: T) => boolean;
   errorMsg: string;
 }
