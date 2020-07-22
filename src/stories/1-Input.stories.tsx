@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Friday, 10th July 2020 10:29:08 am
+ * Last Modified: Tuesday, 21st July 2020 1:17:05 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -12,28 +12,20 @@
  * -----
  * Inventures - www.inventures.cl
  */
-import React from "react";
-import { text, boolean, number } from "@storybook/addon-knobs";
-import { Input, RutInput } from "../lib/components/input";
-import { muiThemeDecorator } from "../config/storybook/muiTheme";
+import React from 'react';
+import { text, boolean, number } from '@storybook/addon-knobs';
+import { Input, RutInput } from '../lib/components/input';
 
 export default {
-  title: "Input",
-  decorators: [muiThemeDecorator],
-  parameters: {
-    muiTheme: { theme: "dercocenterxTheme" },
-    myAddon: {
-      data: "this data is passed to the addon",
-    },
-  },
+  title: 'Input',
 };
 export const Base = () => <Input />;
 export const InputForRut = () => {
-  const required = boolean("Required", false);
-  const debounceTime = number("Debounce time (ms)", 200);
-  const defaultValue = text("Default RUT", "11.111.111");
+  const required = boolean('Required', false);
+  const debounceTime = number('Debounce time (ms)', 200);
+  const defaultValue = text('Default RUT', '11.111.111');
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
       <RutInput label="Ingresa tu RUT" />
       <RutInput required={required} label="Rut requerido" />
       <RutInput
@@ -50,5 +42,5 @@ export const InputForRut = () => {
 };
 
 Base.story = {
-  name: "Base element",
+  name: 'Base element',
 };
