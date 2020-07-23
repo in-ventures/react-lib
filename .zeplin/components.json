@@ -1,0 +1,26 @@
+{
+  "plugins": [
+    {
+      "name": "@zeplin/cli-connect-react-plugin"
+    },
+    {
+      "name": "@zeplin/cli-connect-storybook-plugin",
+      "config": {
+        "url": "http://localhost:9009",
+        "startScript": "storybook"
+      }
+    }
+  ],
+  "projects": ["5e317433051b71944ffec6dc"],
+  "styleguides": [],
+  "components": [
+    {
+      "path": "src/lib/components/ProductCardA.tsx",
+      "zeplinNames": ["Meki/Card/2"],
+      "storybook": {
+        "kind": "card",
+        "stories": ["base"]
+      }
+    }
+  ]
+}
