@@ -20,7 +20,7 @@ export const Base = () => (
 );
 export const EditableCard = () => {
   const urlImage = text(
-    'Image url',
+    'Image url.',
     'https://www.laboratoriochile.cl/wp-content//uploads/2015/11/Clonazepam_05MG_30C_BE_HD.jpg',
   );
   const title = text('Title', 'Clonazepam · 2 mg');
