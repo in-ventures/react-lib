@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 11:51:01 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Wednesday, 22nd July 2020 10:15:02 am
+ * Last Modified: Friday, 24th July 2020 3:45:55 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -15,12 +15,10 @@
 
 import { useState, useCallback, useMemo } from 'react';
 import debounce from 'lodash/debounce';
+import { Validator } from './validators';
 
 type Formatter<T = string> = (input: T) => T;
-export interface Validator<T = string> {
-  validate: (input: T) => boolean;
-  errorMsg: string;
-}
+
 interface AsyncValidator<T = string> {
   validate: (input: T) => Promise<boolean>;
   errorMsg: string;
