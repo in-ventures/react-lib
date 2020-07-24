@@ -15,8 +15,10 @@ jobs:
         with:
           node-version: 12.x
       - uses: actions/checkout@v2
-      - name: Yarn & Node install cache
-        uses: EgorDm/gha-yarn-node-cache@v1
+      - name: Install dependencies
+        uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install
       - name: build
         run: yarn build-storybook
       - name: Deploy
