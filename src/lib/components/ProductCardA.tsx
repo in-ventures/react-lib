@@ -4,8 +4,8 @@
  * File Created: Thursday, 16th July 2020 9:27:33 am
  * Author: Mario Merino (mario@inventures.cl)
  * -----
- * Last Modified: Tuesday, 21st July 2020 11:34:27 am
- * Modified By: Mario Merino (mario@inventures.cl)
+ * Last Modified: Friday, 24th July 2020 12:45:34 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -141,96 +141,90 @@ export default function ProductCardA({
   const classes = useStyles();
 
   return (
-    <ThemeProvider theme={theme}>
-      <Box className={classes.root}>
-        <CardActionArea className={classes.actionArea}>
-          <CardMedia
-            className={classes.media}
-            component="img"
-            alt="Clonazepam 05 mg"
-            image={urlImage}
-            title="Clonazepam 05 mg"
-          />
-          <CardContent className={classes.content} onClick={() => clickCard()}>
+    <Box className={classes.root}>
+      <CardActionArea className={classes.actionArea}>
+        <CardMedia
+          className={classes.media}
+          component="img"
+          alt="Clonazepam 05 mg"
+          image={urlImage}
+          title="Clonazepam 05 mg"
+        />
+        <CardContent className={classes.content} onClick={() => clickCard()}>
+          <Typography
+            align="center"
+            color="textPrimary"
+            gutterBottom
+            variant="h6"
+            component="h2"
+          >
+            {title}
+          </Typography>
+          <Box className={classes.box}>
+            {isBio && (
+              <Chip
+                size="small"
+                avatar={
+                  <Avatar
+                    alt="Bioequivalente"
+                    src="/static/images/avatar/1.jpg"
+                  />
+                }
+                label="BioE"
+              />
+            )}
+
+            {recipe && (
+              <Chip
+                size="small"
+                avatar={
+                  <Avatar
+                    alt="Receta retenida"
+                    src="/static/images/avatar/1.jpg"
+                  />
+                }
+                label="Receta retenida"
+              />
+            )}
+          </Box>
+
+          <Typography
+            align="center"
+            variant="body2"
+            color="textSecondary"
+            component="p"
+            gutterBottom
+          >
+            {description}
+          </Typography>
+          <Box>
             <Typography
               align="center"
-              color="textPrimary"
-              gutterBottom
+              color="primary"
               variant="h6"
               component="h2"
             >
-              {title}
+              $ {price}
             </Typography>
-            <Box className={classes.box}>
-              {isBio && (
-                <Chip
-                  size="small"
-                  avatar={
-                    <Avatar
-                      alt="Bioequivalente"
-                      src="/static/images/avatar/1.jpg"
-                    />
-                  }
-                  label="BioE"
-                />
-              )}
-
-              {recipe && (
-                <Chip
-                  size="small"
-                  avatar={
-                    <Avatar
-                      alt="Receta retenida"
-                      src="/static/images/avatar/1.jpg"
-                    />
-                  }
-                  label="Receta retenida"
-                />
-              )}
-            </Box>
-
-            <Typography
-              align="center"
-              variant="body2"
-              color="textSecondary"
-              component="p"
-              gutterBottom
-            >
-              {description}
-            </Typography>
-            <Box>
+            {/*todo calculate this based on prop price, number of unit and unit format*/}
+            {singlePrice && (
               <Typography
                 align="center"
                 color="primary"
-                variant="h6"
-                component="h2"
+                variant="subtitle2"
+                component="h3"
               >
-                $ {price}
+                $ 168 / comprimido
               </Typography>
-              {/*todo calculate this based on prop price, number of unit and unit format*/}
-              {singlePrice && (
-                <Typography
-                  align="center"
-                  color="primary"
-                  variant="subtitle2"
-                  component="h3"
-                >
-                  $ 168 / comprimido
-                </Typography>
-              )}
-            </Box>
-          </CardContent>
-        </CardActionArea>
-        <CardActions className={classes.actions} onClick={() => clickButton()}>
-          <Button
-            className={classes.button}
-            variant="contained"
-            color="primary"
-          >
-            {buttonText}
-          </Button>
-        </CardActions>
-      </Box>
-    </ThemeProvider>
+            )}
+          </Box>
+        </CardContent>
+      </CardActionArea>
+      <CardActions className={classes.actions} onClick={() => clickButton()}>
+        <Button className={classes.button} variant="contained" color="primary">
+          {buttonText}
+        </Button>
+      </CardActions>
+    </Box>
   );
 }
