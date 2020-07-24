@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 21st July 2020 1:17:05 pm
+ * Last Modified: Wednesday, 22nd July 2020 10:12:48 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -13,31 +13,119 @@
  * Inventures - www.inventures.cl
  */
 import React from 'react';
-import { text, boolean, number } from '@storybook/addon-knobs';
-import { Input, RutInput } from '../lib/components/input';
+import { number, text } from '@storybook/addon-knobs';
+import { Input } from '../lib/components/input';
+import { InputStatus, useInput, Validator } from '../lib/hooks/useInput.hooks';
+import { rutFormat, rutValidate } from 'rut-helpers';
 
 export default {
   title: 'Input',
 };
 export const Base = () => <Input />;
 export const InputForRut = () => {
-  const required = boolean('Required', false);
-  const debounceTime = number('Debounce time (ms)', 200);
-  const defaultValue = text('Default RUT', '11.111.111');
+  const required = text('RUT requerido error', 'RUT Requerido');
+  const incomplete = text(
+    'RUT incompleto error',
+    '¡Ojo! Este rut está incompleto 🤷‍♀️',
+  );
+  const valid = text(
+    'RUT invalido error',
+    'Este rut parece no estar bien escrito 🧐',
+  );
+
+  const random = text(
+    'RUT registrado error',
+    'Ups, parece que ya estás registrado',
+  );
+  const debounceTime = number('Debounce time (ms)', 800);
+  const [value, setValue, status, errors, handleBlur] = useInput('', {
+    formatter: rutFormat,
+    validators: [
+      required && {
+        validate: (data: string) => Boolean(data),
+        errorMsg: required,
+      },
+      incomplete && {
+        validate: (data: string) =>
+          Boolean(data.match(/^\d{1,2}\.\d{3}\.\d{3}[-][0-9K]{1}$/)),
+        errorMsg: incomplete,
+      },
+      valid && {
+        validate: (data: string) => rutValidate(data),
+        errorMsg: valid,
+      },
+    ].filter(Boolean) as Validator<string>[],
+    asyncValidators: [
+      {
+        validate: async () => {
+          await new Promise((res) => setTimeout(res, 500));
+          return Math.random() < 0.5;
+        },
+        errorMsg: random,
+      },
+    ],
+    debounceTime,
+  });
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <RutInput label="Ingresa tu RUT" />
-      <RutInput required={required} label="Rut requerido" />
-      <RutInput
-        label="Rut con debounce diferente"
-        debounceTime={debounceTime}
-      />
-      <RutInput
-        defaultValue={defaultValue}
-        label="Rut por defecto"
-        debounceTime={debounceTime}
-      />
-    </div>
+    <Input
+      value={value}
+      onChange={(e) => setValue(String(e.target.value))}
+      onBlur={handleBlur}
+      error={status === InputStatus.ERROR}
+      helperText={errors[0]}
+      label={`RUT* (${debounceTime}ms)`}
+    />
+  );
+};
+
+export const InputForEmail = () => {
+  const required = text('Mail requerido error', 'Mail Requerido');
+  const incomplete = text(
+    'Mail incompleto error',
+    '¡Ojo! Este mail está incompleto o no está bien escrito 🤷‍♀️',
+  );
+
+  const random = text(
+    'Mail registrado error',
+    'Ups, parece que ya estás registrado',
+  );
+  const debounceTime = number('Debounce time (ms)', 800);
+  const [value, setValue, status, errors, handleBlur] = useInput('', {
+    validators: [
+      required && {
+        validate: (data: string) => Boolean(data),
+        errorMsg: required,
+      },
+      incomplete && {
+        validate: (data: string) =>
+          Boolean(
+            data.match(
+              /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/,
+            ),
+          ),
+        errorMsg: incomplete,
+      },
+    ].filter(Boolean) as Validator<string>[],
+    asyncValidators: [
+      {
+        validate: async () => {
+          await new Promise((res) => setTimeout(res, 500));
+          return Math.random() < 0.5;
+        },
+        errorMsg: random,
+      },
+    ],
+    debounceTime,
+  });
+  return (
+    <Input
+      value={value}
+      onChange={(e) => setValue(String(e.target.value))}
+      onBlur={handleBlur}
+      error={status === InputStatus.ERROR}
+      helperText={errors[0]}
+      label={`Mail* (${debounceTime}ms)`}
+    />
   );
 };
 
