@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Friday, 24th July 2020 4:08:15 pm
+ * Last Modified: Friday, 24th July 2020 4:11:14 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -12,7 +12,7 @@
  * -----
  * Inventures - www.inventures.cl
  */
-import React from 'react';
+import React, { useCallback } from 'react';
 import { number, text } from '@storybook/addon-knobs';
 import { Input } from '../lib/components/input';
 import { InputStatus, useInput } from '../lib/hooks/useInput.hooks';
@@ -63,10 +63,16 @@ export const InputForRut = () => {
     ],
     debounceTime,
   });
+  const handleWrite = useCallback(
+    (e) => {
+      setValue(String(e.target.value));
+    },
+    [setValue],
+  );
   return (
     <Input
       value={value}
-      onChange={(e) => setValue(String(e.target.value))}
+      onChange={handleWrite}
       onBlur={handleBlur}
       error={status === InputStatus.ERROR}
       helperText={errors[0]}
