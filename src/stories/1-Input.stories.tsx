@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Friday, 24th July 2020 4:11:14 pm
+ * Last Modified: Tuesday, 4th August 2020 5:44:50 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -14,16 +14,16 @@
  */
 import React, { useCallback } from 'react';
 import { number, text } from '@storybook/addon-knobs';
-import { Input } from '../lib/components/input';
-import { InputStatus, useInput } from '../lib/hooks/useInput.hooks';
-import { rutFormat, rutValidate } from 'rut-helpers';
+import { Input } from '../components/input';
+import { InputStatus, useInput } from '../hooks/useInput.hooks';
+import { rutFormat } from 'rut-helpers';
 import {
   Validator,
   RequiredValidator,
   RutFormatValidator,
   EmailValidator,
   RutValidator,
-} from '../lib/hooks/validators';
+} from '../hooks/validators';
 
 export default {
   title: 'Input',

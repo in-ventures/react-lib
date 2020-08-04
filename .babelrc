@@ -4,7 +4,7 @@
  * File Created: Thursday, 9th July 2020 8:35:11 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Thursday, 9th July 2020 8:35:18 am
+ * Last Modified: Friday, 31st July 2020 3:21:00 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -14,5 +14,13 @@
  */
 
 {
-  "presets": ["@babel/preset-env", "@babel/preset-react"]
+  "presets": ["@babel/preset-env", "@babel/preset-react"],
+  "ignore": ["**/__snapshots__", "**/*.d.ts", "**/*.test.*"],
+  "plugins": [
+    "@babel/plugin-transform-typescript",
+    "babel-plugin-typescript-to-proptypes",
+    "@babel/plugin-proposal-export-default-from",
+    "@babel/proposal-class-properties",
+    "@babel/proposal-object-rest-spread"
+  ]
 }
