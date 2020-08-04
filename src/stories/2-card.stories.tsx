@@ -1,7 +1,6 @@
 import React from 'react';
-import ProductCardA from '../lib/components/ProductCardA';
+import ProductCardA from '../components/ProductCardA';
 import { text, boolean, number } from '@storybook/addon-knobs';
-import { title } from 'process';
 
 export default {
   title: 'Card',
