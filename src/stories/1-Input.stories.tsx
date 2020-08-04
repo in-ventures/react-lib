@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 4th August 2020 5:32:56 pm
+ * Last Modified: Tuesday, 4th August 2020 5:44:50 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -12,11 +12,18 @@
  * -----
  * Inventures - www.inventures.cl
  */
-import React from 'react';
+import React, { useCallback } from 'react';
 import { number, text } from '@storybook/addon-knobs';
 import { Input } from '../components/input';
-import { InputStatus, useInput, Validator } from '../hooks/useInput.hooks';
-import { rutFormat, rutValidate } from 'rut-helpers';
+import { InputStatus, useInput } from '../hooks/useInput.hooks';
+import { rutFormat } from 'rut-helpers';
+import {
+  Validator,
+  RequiredValidator,
+  RutFormatValidator,
+  EmailValidator,
+  RutValidator,
+} from '../hooks/validators';
 
 export default {
   title: 'Input',
@@ -41,19 +48,9 @@ export const InputForRut = () => {
   const [value, setValue, status, errors, handleBlur] = useInput('', {
     formatter: rutFormat,
     validators: [
-      required && {
-        validate: (data: string) => Boolean(data),
-        errorMsg: required,
-      },
-      incomplete && {
-        validate: (data: string) =>
-          Boolean(data.match(/^\d{1,2}\.\d{3}\.\d{3}[-][0-9K]{1}$/)),
-        errorMsg: incomplete,
-      },
-      valid && {
-        validate: (data: string) => rutValidate(data),
-        errorMsg: valid,
-      },
+      required && new RequiredValidator(required),
+      incomplete && new RutFormatValidator(incomplete),
+      valid && new RutValidator(valid),
     ].filter(Boolean) as Validator<string>[],
     asyncValidators: [
       {
@@ -66,10 +63,16 @@ export const InputForRut = () => {
     ],
     debounceTime,
   });
+  const handleWrite = useCallback(
+    (e) => {
+      setValue(String(e.target.value));
+    },
+    [setValue],
+  );
   return (
     <Input
       value={value}
-      onChange={(e) => setValue(String(e.target.value))}
+      onChange={handleWrite}
       onBlur={handleBlur}
       error={status === InputStatus.ERROR}
       helperText={errors[0]}
@@ -92,19 +95,8 @@ export const InputForEmail = () => {
   const debounceTime = number('Debounce time (ms)', 800);
   const [value, setValue, status, errors, handleBlur] = useInput('', {
     validators: [
-      required && {
-        validate: (data: string) => Boolean(data),
-        errorMsg: required,
-      },
-      incomplete && {
-        validate: (data: string) =>
-          Boolean(
-            data.match(
-              /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/,
-            ),
-          ),
-        errorMsg: incomplete,
-      },
+      required && new RequiredValidator(required),
+      incomplete && new EmailValidator(incomplete),
     ].filter(Boolean) as Validator<string>[],
     asyncValidators: [
       {
