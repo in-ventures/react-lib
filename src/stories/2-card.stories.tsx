@@ -76,8 +76,9 @@ export const EditableCardGrid = () => {
         gap: '40px 10px',
       }}
     >
-      {total.map(() => (
+      {total.map((_, i) => (
         <ProductCardA
+          key={i}
           title={title}
           urlImage={urlImage}
           description={description}

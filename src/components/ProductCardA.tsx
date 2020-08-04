@@ -4,7 +4,7 @@
  * File Created: Thursday, 16th July 2020 9:27:33 am
  * Author: Mario Merino (mario@inventures.cl)
  * -----
- * Last Modified: Friday, 24th July 2020 12:45:34 pm
+ * Last Modified: Tuesday, 4th August 2020 5:40:40 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -14,14 +14,7 @@
  */
 import React from 'react';
 
-import {
-  createStyles,
-  Theme,
-  makeStyles,
-  createMuiTheme,
-  responsiveFontSizes,
-  ThemeProvider,
-} from '@material-ui/core/styles';
+import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -32,34 +25,6 @@ import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
 import Box from '@material-ui/core/Box';
 import { TextFieldProps } from '@material-ui/core';
-
-// todo move theme to story
-let theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#5185DA',
-    },
-    secondary: {
-      main: '#F2D200',
-    },
-  },
-  typography: {
-    fontFamily: [
-      // todo impor poppin in index
-      'Poppins',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
-  },
-});
-theme = responsiveFontSizes(theme);
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
