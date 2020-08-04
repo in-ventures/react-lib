@@ -1,7 +1,17 @@
 {
-  "name": "components-lib",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@gulloainv/components-lib",
+  "version": "0.1.2-rc13",
+  "main": "dist/js/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/js/index.d.ts",
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "tag": "prerelease"
+  },
+  "files": [
+    "./dist/**/*"
+  ],
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@testing-library/jest-dom": "^4.2.4",
@@ -29,8 +39,15 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "publish:gh": "yarn build-storybook && gh-pages -d storybook-static",
+    "publish:npm": "cp ./package.json ./dist && touch ./dist/.npmignore && yarn publish dist --force",
     "lint": "tsc --noEmit && eslint ./src/ --ext .js,.ts,.tsx",
-    "lint:fix": "tsc --noEmit && eslint ./src/ --ext .js,.ts,.tsx --fix"
+    "lint:fix": "tsc --noEmit && eslint ./src/ --ext .js,.ts,.tsx --fix",
+    "build:lib": "yarn clean && yarn build:babel && yarn build:types && node ./scripts/copyTS.js",
+    "build:babel": "yarn build:babel:cjs",
+    "build:babel:cjs": "BABEL_ENV=cjs babel --source-maps --extensions \".js,.ts,.tsx\" src --out-dir dist --presets=@babel/env",
+    "build:types": "tsc -p tsconfig.gen-dts.json",
+    "clean": "rimraf dist",
+    "develop": "yarn build:types && yarn build:babel:esm --skip-initial-build --watch --verbose"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -48,6 +65,8 @@
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/plugin-proposal-export-default-from": "^7.10.4",
     "@material-ui/system": "^4.9.14",
     "@storybook/addon-a11y": "^5.3.19",
     "@storybook/addon-actions": "^5.3.19",
@@ -64,6 +83,9 @@
     "@zeplin/cli": "^1.0.4",
     "@zeplin/cli-connect-react-plugin": "^0.2.5",
     "@zeplin/cli-connect-storybook-plugin": "^0.3.2",
+    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
+    "babel-plugin-typescript-to-proptypes": "^1.4.0",
+    "concurrently": "^5.2.0",
     "eslint": "^7.5.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
