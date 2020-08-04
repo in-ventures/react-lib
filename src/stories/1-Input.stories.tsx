@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Wednesday, 22nd July 2020 10:12:48 am
+ * Last Modified: Tuesday, 4th August 2020 5:32:56 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -14,8 +14,8 @@
  */
 import React from 'react';
 import { number, text } from '@storybook/addon-knobs';
-import { Input } from '../lib/components/input';
-import { InputStatus, useInput, Validator } from '../lib/hooks/useInput.hooks';
+import { Input } from '../components/input';
+import { InputStatus, useInput, Validator } from '../hooks/useInput.hooks';
 import { rutFormat, rutValidate } from 'rut-helpers';
 
 export default {

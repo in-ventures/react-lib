@@ -1,7 +1,6 @@
 import React from 'react';
-import ProductCardA from '../lib/components/ProductCardA';
+import ProductCardA from '../components/ProductCardA';
 import { text, boolean, number } from '@storybook/addon-knobs';
-import { title } from 'process';
 
 export default {
   title: 'Card',
@@ -77,8 +76,9 @@ export const EditableCardGrid = () => {
         gap: '40px 10px',
       }}
     >
-      {total.map(() => (
+      {total.map((_, i) => (
         <ProductCardA
+          key={i}
           title={title}
           urlImage={urlImage}
           description={description}

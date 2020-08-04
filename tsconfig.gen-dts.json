@@ -1,0 +1,40 @@
+/*
+ * File: tsconfig.gen-dts.json
+ * Project: components-lib
+ * File Created: Friday, 31st July 2020 3:21:30 pm
+ * Author: Gabriel Ulloa (gabriel@inventures.cl)
+ * -----
+ * Last Modified: Tuesday, 4th August 2020 4:06:16 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * -----
+ * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
+ * Terms and conditions defined in license.txt
+ * -----
+ * Inventures - www.inventures.cl
+ */
+
+{
+  "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "dist",
+    "jsx": "react",
+    "lib": ["es2017", "dom"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "strict": true,
+    "strictNullChecks": false,
+    "target": "es5",
+    "esModuleInterop": true
+  },
+  "include": ["./src/*", "./src/**/*"],
+  "exclude": [
+    "./src/**/**.test.tsx",
+    "./src/**/**.test.ts",
+    "./src/**/**.stories.ts",
+    "./src/**/**.stories.tsx",
+    "./src/**/examples/**",
+    "./src/config/**"
+  ]
+}
