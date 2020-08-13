@@ -27,6 +27,22 @@ The source code is structured as follows:
 - `/src/hooks`: Reusable hooks
 - `/src/stories`: Stories for storybook
 
+## Development
+
+For development, you should create components in `/src/components` or hooks in `/src/hooks`. To visualize changes, create an history for that component/hook in `/src/stories` and run storybook.
+
+```bash
+yarn storybook
+```
+
+If you are creating a new hook, make sure to write some tests in `/src/hooks/<hook-name>.test.ts`. Then, to tun all the tests and watch the changes, run
+
+```bash
+yarn test
+```
+
+For components only create the story for storybook.
+
 ## Publish to Github pages
 
 Run the following command
@@ -37,10 +53,22 @@ yarn publish:gh
 
 ## Publish to NPM
 
--
-Build the following commands to build and publish
+Run the following commands to build and publish
 
 ```bash
 yarn build:lib
 yarn publish:npm
 ```
+
+## Publish component to Bit
+
+To add components to Bit, you must have installed [bit](https://github.com/teambit/bit) globally. Then , run the following commands
+
+```bash
+bit add src/components/<component-file> -i <componentId>
+bit build
+bit tag --all <version>
+bit export inventures.react-lib
+```
+
+Changing all tags with respective names.
