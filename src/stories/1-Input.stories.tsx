@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 4th August 2020 5:44:50 pm
+ * Last Modified: Thursday, 13th August 2020 11:19:25 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -121,6 +121,4 @@ export const InputForEmail = () => {
   );
 };
 
-Base.story = {
-  name: 'Base element',
-};
+Base.storyName = 'Base element';

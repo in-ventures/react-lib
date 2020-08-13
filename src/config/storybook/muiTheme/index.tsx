@@ -4,7 +4,7 @@
  * File Created: Thursday, 9th July 2020 8:52:10 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 21st July 2020 1:42:22 pm
+ * Last Modified: Thursday, 13th August 2020 11:24:55 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -24,19 +24,21 @@ export const muiThemeDecorator = makeDecorator({
   name: 'muiThemeDecorator',
   parameterName: 'muiTheme',
   wrapper: function StoryWrapper(getStory, context) {
-    const [theme, setTheme] = useState<null | Theme>(addons.getConfig().theme);
+    const [theme, setTheme] = useState<null | Theme>(
+      addons.getConfig().muiTheme,
+    );
     const channel = useRef(addons.getChannel());
     useEffect(() => {
       const listener = (e: { theme: string }) => {
         setTheme(themes[e.theme]);
-        addons.setConfig({ theme: themes[e.theme] });
+        addons.setConfig({ muiTheme: themes[e.theme] });
       };
       const currentChannel = channel.current;
       currentChannel.addListener(CHANGE_THEME_EVENT, listener);
       return () => currentChannel.removeListener(CHANGE_THEME_EVENT, listener);
     }, [channel]);
     useEffect(() => {
-      if (!addons.getConfig().theme) {
+      if (!addons.getConfig().muiTheme) {
         channel.current.emit(SET_THEME_EVENT, 'mekiTheme');
       }
     }, [theme, channel]);
