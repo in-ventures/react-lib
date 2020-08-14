@@ -72,3 +72,58 @@ bit export inventures.react-lib
 ```
 
 Changing all tags with respective names.
+
+
+
+## PROJECT ARCHITECTURE
+Our inventures project is developed in Typescript and React. Components use validation hooks to check user inputs and give according feedback. 
+
+* __COMPONENTS__ This directory contains all reusable React components which will be accesible by Storybook stories, and thus shown in your storybook. Current existing components are:
+    * Index
+    * Input
+    * Product Card A
+
+* __HOOKS__: Hooks are the most important part in our input components. Our current main hook is useInput, which you can find in `hooks / useInput.hooks.ts` Hook parameters are:
+    * `defaultValue: string`: for the original user input
+    * `options: useInputOptions = {}`: the configuration object for the hook. The options object type is:
+        ```
+        type useInputOptions = {
+            formatter?: Formatter;
+            debounceTime?: number;
+            validators?: Validator[];
+            asyncValidators?: AsyncValidator[];
+        };
+         ```
+    The possible configurations are the following:
+    * `formatter`: recieves user input and processes it according to a specified format. 
+    * `debounceTime`: the amount of time (in millisecons) a validator waits after the user has finished typing a character.
+    * `validators`:  Recieves a validator array. Validators implement the Validator interface and can be  found in `hooks / validators`.
+    * `asyncValidator`: Recieves an asyncValidator array. Async Validators implement the same Validator interface. They differ from regular validators by returning a bolean within a promise. Async validators run last, and their result shows as soon as the promise has been completed. Slow validations should be handled with Async Validators. 
+
+* __VALIDATORS__ Validators can be found in `hooks/validators` directory. 
+Current implemented validators are:
+    * `Validator`: main Validator interface. They run as soon as the user has finished typing and alter the hook state. They receive user input string and return an error message.
+    * EmailValidator
+    * RegexValidator
+    * RequiredValidator
+    * RutFormatValidator
+    * RutValidator
+
+* __STORIES__ Stories are Storybook's equivalent to Views. Import here your reusable React components and place them within their required context. 
+
+___
+## IMPLEMENTED HOOKS:
+### - useInput.hook
+* *Return type*: this hook returns an array with it's value, setter type, state, error array, and a flushValidate function.
+* *State*: This hooks manages 3 states: value, erros, and typing (errors will not be shown while the user is typing).
+* *Methods*:
+    * `flushValidate`: callback function, stops the debounce wait time and runs actions according to specific conditions.
+    *   `validate`: callback function. Runs all validators given in useInput parameters to find user input errors. Synchronous validators run first, followed by all asynchronous, if present. In case of erros, they change the hook's state and display them accordingly.
+    *   `handleSetValue`: callback function, runs the input value through the formatter. This new value is then set as SetValue. 
+    *   `stopTyping`: callback function, called each time user inputs a new character. It runs the set debounce time, followed by `validate` function to run all validators. 
+    *   `status`: useMemo function. Is in charge of setting the hook state, according to:
+        * if user is typing, state will be *PENDING*.
+        * if there pending asynchronous validations, state will be *PENDING*.
+        * if all synchronous and asynchronous validations have finished running, hook state will be *ERROR* in case of validation errors, or *SUCCESS* otherwise.
+ 
+
