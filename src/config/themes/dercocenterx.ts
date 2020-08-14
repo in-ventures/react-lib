@@ -1,6 +1,6 @@
 /*
  * File: dercocenterx.ts
- * Project: components-lib
+ * Project:  @inventures/react-lib
  * File Created: Thursday, 9th July 2020 8:05:14 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----

@@ -1,6 +1,6 @@
 /*
  * File: preview.js
- * Project: components-lib
+ * Project:  @inventures/react-lib
  * File Created: Thursday, 9th July 2020 12:56:32 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
