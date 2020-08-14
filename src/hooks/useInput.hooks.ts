@@ -1,6 +1,6 @@
 /*
  * File: useInputnput.hooks.ts
- * Project: components-lib
+ * Project:  @inventures/react-lib
  * File Created: Wednesday, 8th July 2020 11:51:01 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----

@@ -1,3 +1,18 @@
+/*
+ * File: 2-card.stories.tsx
+ * Project: @inventures/react-lib
+ * File Created: Tuesday, 4th August 2020 5:47:50 pm
+ * Author: Gabriel Ulloa (gabriel@inventures.cl)
+ * -----
+ * Last Modified: Friday, 14th August 2020 2:11:47 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * -----
+ * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
+ * Terms and conditions defined in license.txt
+ * -----
+ * Inventures - www.inventures.cl
+ */
+
 import React from 'react';
 import ProductCardA from '../components/ProductCardA';
 import { text, boolean, number } from '@storybook/addon-knobs';

@@ -1,10 +1,10 @@
 /*
  * File: .eslintrc.js
- * Project: components-lib
+ * Project:  @inventures/react-lib
  * File Created: Monday, 20th July 2020 2:46:10 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 4th August 2020 5:39:16 pm
+ * Last Modified: Friday, 14th August 2020 2:12:51 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED

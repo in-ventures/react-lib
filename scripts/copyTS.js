@@ -1,6 +1,6 @@
 /*
  * File: copyTS.js
- * Project: components-lib
+ * Project:  @inventures/react-lib
  * File Created: Friday, 31st July 2020 3:18:41 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----

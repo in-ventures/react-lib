@@ -1,6 +1,6 @@
 /*
  * File: ProductCard.tsx
- * Project: components-lib
+ * Project:  @inventures/react-lib
  * File Created: Thursday, 16th July 2020 9:27:33 am
  * Author: Mario Merino (mario@inventures.cl)
  * -----

@@ -1,10 +1,10 @@
 /*
  * File: 2-TextField.stories.tsx
- * Project: components-lib
+ * Project:  @inventures/react-lib
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Thursday, 13th August 2020 11:19:25 am
+ * Last Modified: Friday, 14th August 2020 2:12:51 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
