@@ -4,8 +4,8 @@
  * File Created: Wednesday, 8th July 2020 11:51:01 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Friday, 24th July 2020 3:45:55 pm
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Monday, 17th August 2020 7:48:48 pm
+ * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -43,6 +43,24 @@ export const useInput = (
   defaultValue: string,
   options: useInputOptions = {},
 ): [string, (data: string) => void, InputStatus, string[], () => void] => {
+  /**
+   * useInput function class. Validates and formats user input via a
+   * given @type Formatter and @type Validator list.
+   *
+   *
+   * @param defaultValue - The user input generic
+   * @param options - @type userInputOptions. Can include the formatter
+   * function, debounce time, list of synchronous validators and list of
+   * asynchronous validators.
+   * @returns [value: formatted input value,
+   *          handleSetValue: set value callback function,
+   *          status: useMemo function. Is in charge of setting the hook state
+   *                  and indicates if errors are present,
+   *          flushValidate: callback function, stops the debounce wait time]
+   *
+   * @beta
+   */
+
   const [value, setValue] = useState<string>(defaultValue);
   const [errors, setErrors] = useState<InputErrors>({
     asyncErrors: [],
