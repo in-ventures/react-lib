@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Monday, 17th August 2020 6:00:10 pm
+ * Last Modified: Tuesday, 18th August 2020 6:58:22 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -34,14 +34,15 @@ import {
 } from '../hooks/validators';
 import { LatinEmailFormatter } from '../hooks/formatters';
 
+export type CountryType = {
+  id: number;
+  countryName: string;
+  countryDigitLength: Number;
+  countryPrefix: Number;
+}
+
 type InputforPhoneProps = {
-  possibleCountries: [
-    {
-      countryName: string;
-      countryDigitLength: Number;
-      countryPrefix: Number;
-    }
-  ];
+  possibleCountries: CountryType[];
 }
 
 export default {
@@ -141,31 +142,35 @@ export const InputForEmail = () => {
   );
 };
 
+//Test purpose only:
+const possibleCountriesDummy = [
+  {
+    id: 1,
+    countryName: 'Chile',
+    countryDigitLength: 9,
+    countryPrefix: 56,
+  } as CountryType,
+  {
+    id: 2,
+    countryName: 'Peru',
+    countryDigitLength: 9,
+    countryPrefix: 51,
+  } as CountryType,
+  {
+    id: 3,
+    countryName: 'USA',
+    countryDigitLength: 11,
+    countryPrefix: 1,
+  } as CountryType,
+];
+
 export const InputForPhone = (props: InputforPhoneProps) => {
   const classes = useStyles();
 
+  // Uncomment this line when using component
   //const { possibleCountries } = props;
 
-  //Test purpose only:
-  const possibleCountries = [
-    {
-      countryName: 'Chile',
-      countryDigitLength: 9,
-      countryPrefix: 56,
-    },
-    {
-      countryName: 'Peru',
-      countryDigitLength: 9,
-      countryPrefix: 51,
-    },
-    {
-      countryName: 'USA',
-      countryDigitLength: 11,
-      countryPrefix: 1,
-    },
-  ];
-
-
+  const possibleCountries = possibleCountriesDummy;
   const nonNumeric = text('Teléfono no numérico error','¡Ups! Recuerda incluir sólo números');
   const required = text('Teléfono requerido error', 'Teléfono Requerido');
   const incompleteNumber = text(
@@ -173,26 +178,23 @@ export const InputForPhone = (props: InputforPhoneProps) => {
     '¡Ojo! Debes incluir la cantidad correcta de digitos para tu país',
   );
   const debounceTime = number('Debounce time (ms)', 800);
-  
-  const [countryDigits, setCountryDigits] = useState(possibleCountries[0].countryDigitLength);
-  const [country, setCountry] = useState(possibleCountries[0].countryName);
+
+  const [country, setCountry] = useState(possibleCountries[0]);
   
   const handleChange = (event: ChangeEvent<{ value: unknown}>) => {
-    setCountry(event.target.value as string);
-    const newDigits = possibleCountries.find(x => x.countryName === event.target.value as string).countryDigitLength;
-    if (newDigits) setCountryDigits(newDigits);
-    
+    const newCountry = event.target.value as CountryType;
+    setCountry(newCountry);
   };
   
   const [value, setValue, status, errors, handleBlur] = useInput('', {
-    //formatter: rutFormat,
     validators: [
       required && new RequiredValidator(required),
       nonNumeric && new NumericValidator(nonNumeric),
-      incompleteNumber && new PhoneValidator(incompleteNumber, countryDigits),
+      incompleteNumber && new PhoneValidator(incompleteNumber),
     ].filter(Boolean) as Validator<string>[],
     debounceTime,
-  });
+    extra: country,
+  })
   
   const handleWrite = useCallback(
     (e) => {
@@ -200,10 +202,6 @@ export const InputForPhone = (props: InputforPhoneProps) => {
     },
     [setValue],
   );
-
-  console.log('status: ', status);
-  console.log('erros: ', errors);
-  //console.log('validator digits', variableValidator.countryDigits);
 
 
   return (
@@ -216,7 +214,7 @@ export const InputForPhone = (props: InputforPhoneProps) => {
         {possibleCountries.map((item, index) => (
         <MenuItem
           key={index}
-          value={item.countryName}
+          value={item}
         >
           {item.countryName} (+{item.countryPrefix})
         </MenuItem>
