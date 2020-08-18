@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 11:51:01 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Monday, 17th August 2020 7:48:48 pm
+ * Last Modified: Tuesday, 18th August 2020 2:31:57 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -44,7 +44,7 @@ export const useInput = (
   options: useInputOptions = {},
 ): [string, (data: string) => void, InputStatus, string[], () => void] => {
   /**
-   * useInput function class. Validates and formats user input via a
+   * useInput class. Validates and formats user input via a
    * given @type Formatter and @type Validator list.
    *
    *
@@ -68,6 +68,18 @@ export const useInput = (
   });
   const [typing, setTyping] = useState<boolean>(false);
   const validate = useCallback(
+     /**
+     * validate method. callback function. Runs all validators given in
+     * useInput parameters to find user input errors. Synchronous validators 
+     * run first, followed by all asynchronous, if present. In case of erros, 
+     * they change the hook's state and display them accordingly.
+     *
+     *
+     * @param newValue- input to be validated
+     * @returns No return
+     * 
+     * @beta
+     */
     async (newValue) => {
       if (options.validators) {
         const syncErrors = options.validators.map((validator) =>
@@ -100,6 +112,17 @@ export const useInput = (
   );
   // eslint-disable-next-line
   const stopTyping = useCallback(
+    /**
+     * stopTyping method. callback function, called each time user inputs
+     * a new character. It runs the set debounce time, followed by validate 
+     * function to run all validators.
+     *
+     *
+     * @param newValue- input to be validated
+     * @returns No return
+     * 
+     * @beta
+     */
     debounce(
       (newValue: string) => {
         setTyping(false);
@@ -113,6 +136,16 @@ export const useInput = (
     false,
   );
   const handleSetValue = useCallback(
+    /**
+     * callback function, runs the input value through the formatter. 
+     * This new value is then set as SetValue.
+     *
+     *
+     * @param data- input to be formatted, then validated, then set.
+     * @returns No return
+     * 
+     * @beta
+     */
     async (data: string) => {
       const newValue =
         options && options.formatter ? options.formatter(data) : data;
@@ -124,6 +157,21 @@ export const useInput = (
   );
 
   const status = useMemo(() => {
+    /**
+     * useMemo function. Is in charge of setting the hook state, 
+     * according to:
+     *  - if user is typing, state will be PENDING.
+     *  - if there pending asynchronous validations, state will be PENDING.
+     *  - if all synchronous and asynchronous validations have finished running, 
+     *    hook state will be ERROR in case of validation errors, or 
+     *    SUCCESS otherwise.
+     *
+     *
+     * @param data- input to be validated
+     * @returns newStatus
+     * 
+     * @beta
+     */
     let newStatus;
     if (typing || (asyncValidatorLoading && errors.syncErrors.length === 0)) {
       newStatus = InputStatus.PENDING;
@@ -135,9 +183,18 @@ export const useInput = (
     return newStatus;
   }, [errors.asyncErrors, errors.syncErrors, asyncValidatorLoading, typing]);
   const flushValidate = useCallback(() => {
+    /**
+     * callback function, stops the debounce wait time and runs 
+     * actions according to specific conditions.
+     *
+     * @returns no return
+     * 
+     * @beta
+     */
     stopTyping(value);
     stopTyping.flush();
   }, [stopTyping, value]);
+  
   return [
     value,
     handleSetValue,
