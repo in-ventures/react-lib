@@ -4,8 +4,8 @@
  * File Created: Wednesday, 8th July 2020 11:51:01 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Friday, 24th July 2020 3:45:55 pm
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Tuesday, 18th August 2020 7:06:00 pm
+ * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -38,11 +38,14 @@ type useInputOptions = {
   debounceTime?: number;
   validators?: Validator[];
   asyncValidators?: AsyncValidator[];
+  extra?: any;
 };
 export const useInput = (
   defaultValue: string,
   options: useInputOptions = {},
 ): [string, (data: string) => void, InputStatus, string[], () => void] => {
+
+  console.log('extra global', options.extra);
   const [value, setValue] = useState<string>(defaultValue);
   const [errors, setErrors] = useState<InputErrors>({
     asyncErrors: [],
@@ -50,10 +53,14 @@ export const useInput = (
   });
   const [typing, setTyping] = useState<boolean>(false);
   const validate = useCallback(
-    async (newValue) => {
+    async (newValue, extra) => {
+      
+      console.log('extra validate', options.extra);
+
       if (options.validators) {
+        console.log('extra validate 2', options.extra);
         const syncErrors = options.validators.map((validator) =>
-          validator.validate(newValue) ? '' : validator.errorMsg,
+          validator.validate(newValue, extra) ? '' : validator.errorMsg,
         );
         setErrors((e) => ({
           ...e,
@@ -83,9 +90,10 @@ export const useInput = (
   // eslint-disable-next-line
   const stopTyping = useCallback(
     debounce(
-      (newValue: string) => {
+      (newValue: string, extra?: any) => {
+        console.log('extra stopTyping', options.extra);
         setTyping(false);
-        validate(newValue);
+        validate(newValue, extra);
       },
       options.debounceTime ? options.debounceTime : 1600,
     ),
@@ -95,12 +103,12 @@ export const useInput = (
     false,
   );
   const handleSetValue = useCallback(
-    async (data: string) => {
+    async (data: string, extra?: any) => {
       const newValue =
         options && options.formatter ? options.formatter(data) : data;
       setValue(newValue);
       setTyping(true);
-      stopTyping(newValue);
+      stopTyping(newValue, extra);
     },
     [options, stopTyping],
   );
@@ -116,8 +124,9 @@ export const useInput = (
     }
     return newStatus;
   }, [errors.asyncErrors, errors.syncErrors, asyncValidatorLoading, typing]);
-  const flushValidate = useCallback(() => {
-    stopTyping(value);
+  
+  const flushValidate = useCallback((extra) => {
+    stopTyping(value, extra);
     stopTyping.flush();
   }, [stopTyping, value]);
   return [
@@ -127,6 +136,6 @@ export const useInput = (
     status !== InputStatus.PENDING
       ? [...errors.syncErrors, ...errors.asyncErrors]
       : [],
-    flushValidate,
+    () => (flushValidate),
   ];
 };
