@@ -4,8 +4,8 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Thursday, 20th August 2020 9:29:07 am
- * Modified By: Mario Merino (mario@inventures.cl)
+ * Last Modified: Thursday, 20th August 2020 4:34:08 pm
+ * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -29,7 +29,7 @@ import {
   RutFormatValidator,
   EmailValidator,
   RutValidator,
-  PhoneValidator,
+  LengthValidator,
   NumericValidator,
 } from '../hooks/validators';
 import { LatinEmailFormatter } from '../hooks/formatters';
@@ -45,11 +45,22 @@ type InputforPhoneProps = {
   possibleCountries: CountryType[];
 };
 
+type rutInputProps = {
+  rutLength: number;
+};
+
 export default {
   title: 'Input',
 };
+const rutLengthDummy = 12;
+
 export const Base = () => <Input />;
-export const InputForRut = () => {
+export const InputForRut = (props: rutInputProps) => {
+  // Uncomment this line when using component
+  //const { rutLength } = props;
+
+  const rutLength = rutLengthDummy;
+
   const required = text('RUT requerido error', 'RUT Requerido');
   const incomplete = text(
     'RUT incompleto error',
@@ -59,11 +70,15 @@ export const InputForRut = () => {
     'RUT invalido error',
     'Este rut parece no estar bien escrito 🧐',
   );
-
+  const lenghtMsg = text(
+    'Error de largo de input',
+    'Debes incluir un largo de RUT correcto!!',
+  );
   const random = text(
     'RUT registrado error',
     'Ups, parece que ya estás registrado',
   );
+  
   const debounceTime = number('Debounce time (ms)', 800);
   const [value, setValue, status, errors, handleBlur] = useInput('', {
     formatter: rutFormat,
@@ -71,6 +86,7 @@ export const InputForRut = () => {
       required && new RequiredValidator(required),
       incomplete && new RutFormatValidator(incomplete),
       valid && new RutValidator(valid),
+      lenghtMsg && new LengthValidator(lenghtMsg),
     ].filter(Boolean) as Validator<string>[],
     asyncValidators: [
       {
@@ -82,6 +98,7 @@ export const InputForRut = () => {
       },
     ],
     debounceTime,
+    maxLength: rutLength,
   });
   const handleWrite = useCallback(
     (e) => {
@@ -171,6 +188,8 @@ export const InputForPhone = (props: InputforPhoneProps) => {
   //const { possibleCountries } = props;
 
   const possibleCountries = possibleCountriesDummy;
+  const [country, setCountry] = useState(possibleCountries[0]);
+ 
   const nonNumeric = text(
     'Teléfono no numérico error',
     '¡Ups! Recuerda incluir sólo números',
@@ -182,7 +201,6 @@ export const InputForPhone = (props: InputforPhoneProps) => {
   );
   const debounceTime = number('Debounce time (ms)', 800);
 
-  const [country, setCountry] = useState(possibleCountries[0]);
 
   const [
     value,
@@ -195,7 +213,7 @@ export const InputForPhone = (props: InputforPhoneProps) => {
     validators: [
       required && new RequiredValidator(required),
       nonNumeric && new NumericValidator(nonNumeric),
-      incompleteNumber && new PhoneValidator(incompleteNumber),
+      incompleteNumber && new LengthValidator(incompleteNumber),
     ].filter(Boolean) as Validator<string>[],
     debounceTime,
     maxLength: country.countryDigitLength,
