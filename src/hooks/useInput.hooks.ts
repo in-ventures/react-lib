@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 11:51:01 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Thursday, 20th August 2020 9:30:03 am
+ * Last Modified: Thursday, 20th August 2020 9:44:37 am
  * Modified By: Mario Merino (mario@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -85,7 +85,7 @@ export const useInput = (
         setErrors((e) => ({ ...e, asyncErrors: asyncErrors.filter(Boolean) }));
       }
     },
-
+    // todo validate if bit now can use elvis operator to avoid this mess
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [
       // eslint-disable-next-line react-hooks/exhaustive-deps
