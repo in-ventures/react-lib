@@ -4,7 +4,7 @@
  * File Created: Friday, 24th July 2020 3:45:07 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 18th August 2020 6:56:26 pm
+ * Last Modified: Thursday, 20th August 2020 4:13:43 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -18,4 +18,4 @@ export { RegexValidator } from './RegexValidator';
 export { RequiredValidator } from './RequiredValidator';
 export { RutFormatValidator } from './RutFormatValidator';
 export { RutValidator } from './RutValidator';
-export { PhoneValidator, NumericValidator} from './PhoneValidator'; 
+export { LengthValidator, NumericValidator} from './PhoneValidator'; 
