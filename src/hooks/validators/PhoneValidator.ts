@@ -4,7 +4,7 @@
  * File Created: Friday, 14th August 2020 3:09:48 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Tuesday, 18th August 2020 9:35:03 pm
+ * Last Modified: Wednesday, 19th August 2020 8:28:23 pm
  * Modified By: Mario Merino (mario@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -30,11 +30,10 @@ export class PhoneValidator extends Validator {
     //this.countryDigits = countryDigits;
   }
 
-  validate(input: string, countryInfo: CountryType) {
-    console.log('validate with:', countryInfo);
+  validate(input: string, maxLength: number) {
+    console.log('validate with:', maxLength);
     console.log('input at validator is: ', input);
-    if (countryInfo)
-      return Boolean(input.length == countryInfo.countryDigitLength);
+    if (maxLength) return Boolean(input.length == maxLength);
     return Boolean(true);
   }
 }

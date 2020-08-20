@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 18th August 2020 9:36:03 pm
+ * Last Modified: Thursday, 20th August 2020 9:29:07 am
  * Modified By: Mario Merino (mario@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -184,20 +184,32 @@ export const InputForPhone = (props: InputforPhoneProps) => {
 
   const [country, setCountry] = useState(possibleCountries[0]);
 
-  const handleChange = (event: ChangeEvent<{ value: unknown }>) => {
-    const newCountry = event.target.value as CountryType;
-    setCountry(newCountry);
-  };
-
-  const [value, setValue, status, errors, handleBlur] = useInput('', {
+  const [
+    value,
+    setValue,
+    status,
+    errors,
+    handleBlur,
+    updateMaxLength,
+  ] = useInput('', {
     validators: [
       required && new RequiredValidator(required),
       nonNumeric && new NumericValidator(nonNumeric),
       incompleteNumber && new PhoneValidator(incompleteNumber),
     ].filter(Boolean) as Validator<string>[],
     debounceTime,
-    extra: country,
+    maxLength: country.countryDigitLength,
   });
+
+  // when change of country, update the country and run callback functionon useInput to update max length
+  const handleChange = useCallback(
+    (event: ChangeEvent<{ value: unknown }>) => {
+      const newCountry = event.target.value as CountryType;
+      setCountry(newCountry);
+      updateMaxLength(newCountry.countryDigitLength);
+    },
+    [updateMaxLength, setCountry],
+  );
 
   const handleWrite = useCallback(
     (e) => {
@@ -211,6 +223,7 @@ export const InputForPhone = (props: InputforPhoneProps) => {
       <FormControl className={classes.formControl}>
         <Select value={country} onChange={handleChange}>
           {possibleCountries.map((item, index) => (
+            // todo see why complains about using an object - yet compiles and works fine
             <MenuItem key={index} value={item}>
               {item.countryName} (+{item.countryPrefix})
             </MenuItem>

@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 11:51:01 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 18th August 2020 9:40:43 pm
+ * Last Modified: Thursday, 20th August 2020 9:30:03 am
  * Modified By: Mario Merino (mario@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -17,6 +17,7 @@ import { useState, useCallback, useMemo } from 'react';
 import debounce from 'lodash/debounce';
 import { Validator } from './validators';
 
+// todo gabo to explain this typescript notation
 type Formatter<T = string> = (input: T) => T;
 
 interface AsyncValidator<T = string> {
@@ -38,27 +39,35 @@ type useInputOptions = {
   debounceTime?: number;
   validators?: Validator[];
   asyncValidators?: AsyncValidator[];
-  extra?: any;
+  maxLength?: number;
 };
 export const useInput = (
   defaultValue: string,
   options: useInputOptions = {},
-): [string, (data: string) => void, InputStatus, string[], () => void] => {
-  console.log('extra global', options.extra);
+): [
+  string,
+  (data: string) => void,
+  InputStatus,
+  string[],
+  () => void,
+  (length: number) => void,
+] => {
   const [value, setValue] = useState<string>(defaultValue);
   const [errors, setErrors] = useState<InputErrors>({
     asyncErrors: [],
     syncErrors: [],
   });
   const [typing, setTyping] = useState<boolean>(false);
+
+  // Here is to handle the potentially dynamic max length of the inputs - e.g. phone digit amount
+  // length must be added to the validate useCallback parameters array
+  const [length, setLength] = useState<number | undefined>(options.maxLength);
+
   const validate = useCallback(
     async (newValue) => {
-      console.log('extra validate', options.extra);
-
       if (options.validators) {
-        console.log('extra validate 2', options.extra);
         const syncErrors = options.validators.map((validator) =>
-          validator.validate(newValue, options.extra) ? '' : validator.errorMsg,
+          validator.validate(newValue, length) ? '' : validator.errorMsg,
         );
         setErrors((e) => ({
           ...e,
@@ -83,13 +92,13 @@ export const useInput = (
       options.validators && options.validators.length,
       // eslint-disable-next-line react-hooks/exhaustive-deps
       options.asyncValidators && options.asyncValidators.length,
+      length,
     ],
   );
   // eslint-disable-next-line
   const stopTyping = useCallback(
     debounce(
       (newValue: string) => {
-        console.log('extra stopTyping', options.extra);
         setTyping(false);
         validate(newValue);
       },
@@ -111,6 +120,12 @@ export const useInput = (
     [options, stopTyping],
   );
 
+  const updateMaxLength = useCallback(
+    (length: number) => setLength(length),
+    [],
+  );
+
+  // todo - gabo to explain usememo hook
   const status = useMemo(() => {
     let newStatus;
     if (typing || (asyncValidatorLoading && errors.syncErrors.length === 0)) {
@@ -134,6 +149,7 @@ export const useInput = (
     status !== InputStatus.PENDING
       ? [...errors.syncErrors, ...errors.asyncErrors]
       : [],
-    () => flushValidate,
+    flushValidate,
+    updateMaxLength,
   ];
 };
