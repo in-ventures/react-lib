@@ -4,8 +4,8 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 18th August 2020 6:58:22 pm
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Thursday, 20th August 2020 9:29:07 am
+ * Modified By: Mario Merino (mario@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -37,13 +37,13 @@ import { LatinEmailFormatter } from '../hooks/formatters';
 export type CountryType = {
   id: number;
   countryName: string;
-  countryDigitLength: Number;
-  countryPrefix: Number;
-}
+  countryDigitLength: number;
+  countryPrefix: number;
+};
 
 type InputforPhoneProps = {
   possibleCountries: CountryType[];
-}
+};
 
 export default {
   title: 'Input',
@@ -171,7 +171,10 @@ export const InputForPhone = (props: InputforPhoneProps) => {
   //const { possibleCountries } = props;
 
   const possibleCountries = possibleCountriesDummy;
-  const nonNumeric = text('Teléfono no numérico error','¡Ups! Recuerda incluir sólo números');
+  const nonNumeric = text(
+    'Teléfono no numérico error',
+    '¡Ups! Recuerda incluir sólo números',
+  );
   const required = text('Teléfono requerido error', 'Teléfono Requerido');
   const incompleteNumber = text(
     'Teléfono incompleto error',
@@ -180,22 +183,34 @@ export const InputForPhone = (props: InputforPhoneProps) => {
   const debounceTime = number('Debounce time (ms)', 800);
 
   const [country, setCountry] = useState(possibleCountries[0]);
-  
-  const handleChange = (event: ChangeEvent<{ value: unknown}>) => {
-    const newCountry = event.target.value as CountryType;
-    setCountry(newCountry);
-  };
-  
-  const [value, setValue, status, errors, handleBlur] = useInput('', {
+
+  const [
+    value,
+    setValue,
+    status,
+    errors,
+    handleBlur,
+    updateMaxLength,
+  ] = useInput('', {
     validators: [
       required && new RequiredValidator(required),
       nonNumeric && new NumericValidator(nonNumeric),
       incompleteNumber && new PhoneValidator(incompleteNumber),
     ].filter(Boolean) as Validator<string>[],
     debounceTime,
-    extra: country,
-  })
-  
+    maxLength: country.countryDigitLength,
+  });
+
+  // when change of country, update the country and run callback functionon useInput to update max length
+  const handleChange = useCallback(
+    (event: ChangeEvent<{ value: unknown }>) => {
+      const newCountry = event.target.value as CountryType;
+      setCountry(newCountry);
+      updateMaxLength(newCountry.countryDigitLength);
+    },
+    [updateMaxLength, setCountry],
+  );
+
   const handleWrite = useCallback(
     (e) => {
       setValue(String(e.target.value));
@@ -203,33 +218,27 @@ export const InputForPhone = (props: InputforPhoneProps) => {
     [setValue],
   );
 
-
   return (
     <>
-    <FormControl className={classes.formControl}>
-      <Select
-        value={country}
-        onChange={handleChange}
-      >
-        {possibleCountries.map((item, index) => (
-        <MenuItem
-          key={index}
-          value={item}
-        >
-          {item.countryName} (+{item.countryPrefix})
-        </MenuItem>
-        ))}
-      </Select>
-      <Input
-        value={value}
-        onChange={handleWrite}
-        onBlur={handleBlur}
-        error={status === InputStatus.ERROR}
-        helperText={errors[0]}
-        label={`Phone* (${debounceTime}ms)`}
-      />
-    </FormControl>
-  </>
+      <FormControl className={classes.formControl}>
+        <Select value={country} onChange={handleChange}>
+          {possibleCountries.map((item, index) => (
+            // todo see why complains about using an object - yet compiles and works fine
+            <MenuItem key={index} value={item}>
+              {item.countryName} (+{item.countryPrefix})
+            </MenuItem>
+          ))}
+        </Select>
+        <Input
+          value={value}
+          onChange={handleWrite}
+          onBlur={handleBlur}
+          error={status === InputStatus.ERROR}
+          helperText={errors[0]}
+          label={`Phone* (${debounceTime}ms)`}
+        />
+      </FormControl>
+    </>
   );
 };
 
