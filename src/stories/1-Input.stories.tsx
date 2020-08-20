@@ -78,7 +78,7 @@ export const InputForRut = (props: rutInputProps) => {
     'RUT registrado error',
     'Ups, parece que ya estás registrado',
   );
-  
+
   const debounceTime = number('Debounce time (ms)', 800);
   const [value, setValue, status, errors, handleBlur] = useInput('', {
     formatter: rutFormat,
@@ -189,7 +189,7 @@ export const InputForPhone = (props: InputforPhoneProps) => {
 
   const possibleCountries = possibleCountriesDummy;
   const [country, setCountry] = useState(possibleCountries[0]);
- 
+
   const nonNumeric = text(
     'Teléfono no numérico error',
     '¡Ups! Recuerda incluir sólo números',
@@ -200,7 +200,6 @@ export const InputForPhone = (props: InputforPhoneProps) => {
     '¡Ojo! Debes incluir la cantidad correcta de digitos para tu país',
   );
   const debounceTime = number('Debounce time (ms)', 800);
-
 
   const [
     value,

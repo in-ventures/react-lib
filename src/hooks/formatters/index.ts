@@ -15,9 +15,3 @@
 
 export { Formatter } from './Formatter';
 export { LatinFormatter, LatinEmailFormatter } from './LatinFormatter';
-
-
-
-
-
-

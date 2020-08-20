@@ -32,8 +32,11 @@ export class LengthValidator extends Validator {
 
   validate(input: string, maxLength: number) {
     if (maxLength) {
-      this.errorMsg = '¡Ojo! Te faltan ' + (maxLength - input.length) + ' dígitos'
-      if (input.length > maxLength) this.errorMsg = '¡Ojo! Te has pasado por ' + (input.length - maxLength) + ' dígitos'
+      this.errorMsg =
+        '¡Ojo! Te faltan ' + (maxLength - input.length) + ' dígitos';
+      if (input.length > maxLength)
+        this.errorMsg =
+          '¡Ojo! Te has pasado por ' + (input.length - maxLength) + ' dígitos';
       return Boolean(input.length == maxLength);
     }
 

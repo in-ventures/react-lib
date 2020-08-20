@@ -13,23 +13,15 @@
  * Inventures - www.inventures.cl
  */
 
-
 interface FormatterInterface<T = string> {
-    format: (input: T) => string;
+  format: (input: T) => string;
 }
 
-
 export class Formatter<T = string> implements FormatterInterface<T> {
-
-    /* eslint-disable */
+  /* eslint-disable */
     format(input: T) {
         throw new Error('validate is not implemented');
         return '';
     }
     /* eslint-enable */
 }
-
-
-
-
-

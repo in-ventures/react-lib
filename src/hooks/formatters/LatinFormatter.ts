@@ -13,22 +13,18 @@
  * Inventures - www.inventures.cl
  */
 
-
 import { Formatter } from './Formatter';
 
 export class LatinFormatter extends Formatter {
   format(input: string) {
-    const formattedText = input.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-    return (formattedText);
+    const formattedText = input
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '');
+    return formattedText;
   }
 }
 
 export const LatinEmailFormatter = (input: string) => {
-  const formattedText = input.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-  return (formattedText);
-}
-
-
-
-
-
+  const formattedText = input.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  return formattedText;
+};
