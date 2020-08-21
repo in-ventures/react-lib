@@ -4,7 +4,7 @@
  * File Created: Friday, 14th August 2020 3:09:48 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Friday, 21st August 2020 9:56:58 am
+ * Last Modified: Friday, 21st August 2020 10:50:47 am
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -30,13 +30,13 @@ export class LengthValidator extends Validator {
 
   validate(input: string, maxLength: number) {
     if (maxLength) {
-      if (input.length != maxLength)
+      if (input.length !== maxLength)
       this.errorMsg =
         `¡Ojo! Te faltan ${maxLength - input.length} dígitos`;
-      if (input.length != maxLength && input.length > maxLength)
+      if (input.length !== maxLength && input.length > maxLength)
         this.errorMsg =
           `¡Ojo! Te has pasado por  ${input.length - maxLength} dígitos`;
-      return Boolean(input.length == maxLength);
+      return Boolean(input.length === maxLength);
     }
 
     return Boolean(true);
