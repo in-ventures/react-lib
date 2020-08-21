@@ -1,6 +1,6 @@
 /*
  * File: RequiredValidator.ts
- * Project: components-lib
+ * Project:  @inventures/react-lib
  * File Created: Friday, 24th July 2020 3:46:35 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----

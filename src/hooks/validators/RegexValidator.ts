@@ -1,6 +1,6 @@
 /*
  * File: RegexValidator.ts
- * Project: components-lib
+ * Project:  @inventures/react-lib
  * File Created: Friday, 24th July 2020 3:54:54 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----

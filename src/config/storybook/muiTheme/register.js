@@ -1,6 +1,6 @@
 /*
  * File: register.js
- * Project: components-lib
+ * Project:  @inventures/react-lib
  * File Created: Thursday, 9th July 2020 8:39:57 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
