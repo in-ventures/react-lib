@@ -4,7 +4,7 @@
  * File Created: Monday, 17th August 2020 5:42:54 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Monday, 17th August 2020 6:07:44 pm
+ * Last Modified: Thursday, 20th August 2020 9:50:41 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -19,12 +19,15 @@ export class LatinFormatter extends Formatter {
   format(input: string) {
     const formattedText = input
       .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '');
+      .replace(/[\u0300-\u036f]/g, '')
     return formattedText;
   }
 }
 
 export const LatinEmailFormatter = (input: string) => {
-  const formattedText = input.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const formattedText = input
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();;
   return formattedText;
 };
