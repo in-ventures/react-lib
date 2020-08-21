@@ -4,7 +4,7 @@
  * File Created: Monday, 17th August 2020 5:42:54 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 20th August 2020 9:50:41 pm
+ * Last Modified: Friday, 21st August 2020 9:17:30 am
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -12,17 +12,6 @@
  * -----
  * Inventures - www.inventures.cl
  */
-
-import { Formatter } from './Formatter';
-
-export class LatinFormatter extends Formatter {
-  format(input: string) {
-    const formattedText = input
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-    return formattedText;
-  }
-}
 
 export const LatinEmailFormatter = (input: string) => {
   const formattedText = input

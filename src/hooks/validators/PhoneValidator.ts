@@ -4,7 +4,7 @@
  * File Created: Friday, 14th August 2020 3:09:48 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 20th August 2020 4:12:08 pm
+ * Last Modified: Friday, 21st August 2020 9:17:55 am
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -24,10 +24,8 @@ export type CountryType = {
 };
 
 export class LengthValidator extends Validator {
-  //countryDigits = 0;
   constructor(errorMsg: string) {
     super(errorMsg);
-    //this.countryDigits = countryDigits;
   }
 
   validate(input: string, maxLength: number) {
