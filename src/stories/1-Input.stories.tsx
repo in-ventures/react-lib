@@ -1,6 +1,6 @@
 /*
  * File: 2-TextField.stories.tsx
- * Project: components-lib
+ * Project:  @inventures/react-lib
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----

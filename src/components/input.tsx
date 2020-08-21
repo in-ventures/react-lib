@@ -1,6 +1,6 @@
 /*
  * File: input.tsx
- * Project: components-lib
+ * Project:  @inventures/react-lib
  * File Created: Wednesday, 8th July 2020 11:34:57 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----

@@ -1,6 +1,6 @@
 /*
  * File: themeGenerator.ts
- * Project: components-lib
+ * Project:  @inventures/react-lib
  * File Created: Friday, 10th July 2020 12:05:20 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----

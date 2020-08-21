@@ -1,6 +1,6 @@
 /*
  * File: index.tsx
- * Project: components-lib
+ * Project:  @inventures/react-lib
  * File Created: Thursday, 9th July 2020 8:52:10 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
