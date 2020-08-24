@@ -1,0 +1,31 @@
+/*
+ * File: settings.json
+ * Project: @inventures/react-lib
+ * File Created: Monday, 24th August 2020 5:14:51 pm
+ * Author: Gabriel Ulloa (gabriel@inventures.cl)
+ * -----
+ * Last Modified: Monday, 24th August 2020 5:15:36 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * -----
+ * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
+ * Terms and conditions defined in license.txt
+ * -----
+ * Inventures - www.inventures.cl
+ */
+
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": ["javascript", "typescript"],
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  "[typescript]": {
+    "editor.formatOnSave": false
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  }
+}
