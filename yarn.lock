@@ -1777,18 +1777,18 @@
     regenerator-runtime "^0.13.3"
     ts-dedent "^1.1.1"
 
-"@storybook/addon-storysource@^6.0.7":
-  version "6.0.7"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-storysource/-/addon-storysource-6.0.7.tgz#f7ecfea8fd48e478876ccf07babd9a48a47f74d3"
-  integrity sha512-JcCxNGygh09WGFo2PVoXMiKnoQNvRCj9ilsDRUmX6csrjEL4sKEquvffNyCmYQRBToTsF7AA92EeQkQaMIhYlg==
+"@storybook/addon-storysource@^6.0.16":
+  version "6.0.16"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-storysource/-/addon-storysource-6.0.16.tgz#5cd9e659054953da907630c7b5f05d5d19677dbe"
+  integrity sha512-9ZvWc7BLLmmEGkfdmMN5/iu5xXqpm46ucSml9K6m3L6w1y7opvELrhk4dzGd0ggSCrGfljaraJXUBeyAYYG+Pg==
   dependencies:
-    "@storybook/addons" "6.0.7"
-    "@storybook/api" "6.0.7"
-    "@storybook/client-logger" "6.0.7"
-    "@storybook/components" "6.0.7"
-    "@storybook/router" "6.0.7"
-    "@storybook/source-loader" "6.0.7"
-    "@storybook/theming" "6.0.7"
+    "@storybook/addons" "6.0.16"
+    "@storybook/api" "6.0.16"
+    "@storybook/client-logger" "6.0.16"
+    "@storybook/components" "6.0.16"
+    "@storybook/router" "6.0.16"
+    "@storybook/source-loader" "6.0.16"
+    "@storybook/theming" "6.0.16"
     core-js "^3.0.1"
     estraverse "^4.2.0"
     loader-utils "^2.0.0"
@@ -1813,6 +1813,21 @@
     global "^4.3.2"
     memoizerific "^1.11.3"
     prop-types "^15.7.2"
+    regenerator-runtime "^0.13.3"
+
+"@storybook/addons@6.0.16", "@storybook/addons@^6.0.16":
+  version "6.0.16"
+  resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-6.0.16.tgz#a20a219bd5b1474ad02b92e79a74652898a684d9"
+  integrity sha512-jGMaOJYTM2yZeX1tI6whEn+4xpI1aAybZBrc+OD21CcGoQrbF/jplZMq7xKI0Y6vOMguuTGulpUNCezD3LbBjA==
+  dependencies:
+    "@storybook/api" "6.0.16"
+    "@storybook/channels" "6.0.16"
+    "@storybook/client-logger" "6.0.16"
+    "@storybook/core-events" "6.0.16"
+    "@storybook/router" "6.0.16"
+    "@storybook/theming" "6.0.16"
+    core-js "^3.0.1"
+    global "^4.3.2"
     regenerator-runtime "^0.13.3"
 
 "@storybook/addons@6.0.5":
@@ -1841,21 +1856,6 @@
     "@storybook/core-events" "6.0.7"
     "@storybook/router" "6.0.7"
     "@storybook/theming" "6.0.7"
-    core-js "^3.0.1"
-    global "^4.3.2"
-    regenerator-runtime "^0.13.3"
-
-"@storybook/addons@^6.0.16":
-  version "6.0.16"
-  resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-6.0.16.tgz#a20a219bd5b1474ad02b92e79a74652898a684d9"
-  integrity sha512-jGMaOJYTM2yZeX1tI6whEn+4xpI1aAybZBrc+OD21CcGoQrbF/jplZMq7xKI0Y6vOMguuTGulpUNCezD3LbBjA==
-  dependencies:
-    "@storybook/api" "6.0.16"
-    "@storybook/channels" "6.0.16"
-    "@storybook/client-logger" "6.0.16"
-    "@storybook/core-events" "6.0.16"
-    "@storybook/router" "6.0.16"
-    "@storybook/theming" "6.0.16"
     core-js "^3.0.1"
     global "^4.3.2"
     regenerator-runtime "^0.13.3"
@@ -2060,6 +2060,34 @@
   dependencies:
     core-js "^3.0.1"
     global "^4.3.2"
+
+"@storybook/components@6.0.16":
+  version "6.0.16"
+  resolved "https://registry.yarnpkg.com/@storybook/components/-/components-6.0.16.tgz#d4c797f7897cefa11bbdb8dfd07bb3d4fa66b3e9"
+  integrity sha512-zpYGt3tWiN0yT7V0VhBl2T5Mr0COiNnTQUGCpA9Gl3pUBmAov2jCVf1sUxsIcBcMMZmDRcfo6NbJ/LqCFeUg+Q==
+  dependencies:
+    "@storybook/client-logger" "6.0.16"
+    "@storybook/csf" "0.0.1"
+    "@storybook/theming" "6.0.16"
+    "@types/overlayscrollbars" "^1.9.0"
+    "@types/react-color" "^3.0.1"
+    "@types/react-syntax-highlighter" "11.0.4"
+    core-js "^3.0.1"
+    fast-deep-equal "^3.1.1"
+    global "^4.3.2"
+    lodash "^4.17.15"
+    markdown-to-jsx "^6.11.4"
+    memoizerific "^1.11.3"
+    overlayscrollbars "^1.10.2"
+    polished "^3.4.4"
+    popper.js "^1.14.7"
+    react "^16.8.3"
+    react-color "^2.17.0"
+    react-dom "^16.8.3"
+    react-popper-tooltip "^2.11.0"
+    react-syntax-highlighter "^12.2.1"
+    react-textarea-autosize "^8.1.1"
+    ts-dedent "^1.1.1"
 
 "@storybook/components@6.0.5":
   version "6.0.5"
@@ -2341,13 +2369,13 @@
     core-js "^3.6.5"
     find-up "^4.1.0"
 
-"@storybook/source-loader@6.0.7":
-  version "6.0.7"
-  resolved "https://registry.yarnpkg.com/@storybook/source-loader/-/source-loader-6.0.7.tgz#0b0829c6a99601c2df8b04144f1a793131a54b1d"
-  integrity sha512-TNk7bGT44Ut2NwwkTPwiMm6QQ2VqRQfhTsPzICXnjjpmVQ8lR+Ge9S6omom30EuWnHWUcjr72GGsWAHxXxvS1A==
+"@storybook/source-loader@6.0.16":
+  version "6.0.16"
+  resolved "https://registry.yarnpkg.com/@storybook/source-loader/-/source-loader-6.0.16.tgz#a3eb2b0cbede7d9121387738a530d71df645db5d"
+  integrity sha512-Ub6bU7o2JJUigzu9MSrFH1RD2SmpZZnym+WEidWI9A1gseKp1Rd4KDq36AqJo/oL3hAzoAOirrv3ZixIwXLFMg==
   dependencies:
-    "@storybook/addons" "6.0.7"
-    "@storybook/client-logger" "6.0.7"
+    "@storybook/addons" "6.0.16"
+    "@storybook/client-logger" "6.0.16"
     "@storybook/csf" "0.0.1"
     core-js "^3.0.1"
     estraverse "^4.2.0"
