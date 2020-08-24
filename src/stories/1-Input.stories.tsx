@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Monday, 24th August 2020 4:22:57 pm
+ * Last Modified: Monday, 24th August 2020 5:47:06 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -180,7 +180,6 @@ export const InputForPhone = () => {
     status,
     errors,
     handleBlur,
-    updateMaxLength,
   ] = useInput('', {
     validators: [
       required && new RequiredValidator(required),
@@ -189,20 +188,17 @@ export const InputForPhone = () => {
         new LengthValidator(incompleteNumber, country.countryDigitLength),
     ].filter(Boolean) as Validator<string>[],
     debounceTime,
-    //maxLength: country.countryDigitLength,
   });
 
-  // when change of country, update the country and run callback functionon useInput to update max length
+  // when change of country, update the country
   const handleChange = useCallback(
     (event: ChangeEvent<{ value: unknown }>) => {
       const newCountry = possibleCountries.find(
         (x) => x.countryName === event.target.value,
       ) as CountryType;
-      //const newCountry = event.target.value as CountryType;
       setCountry(newCountry);
-      updateMaxLength(newCountry.countryDigitLength);
     },
-    [updateMaxLength, setCountry, possibleCountries],
+    [setCountry, possibleCountries],
   );
 
   const handleWrite = useCallback(
@@ -216,7 +212,6 @@ export const InputForPhone = () => {
     <FormControl className={classes.formControl}>
       <Select value={country.countryName} onChange={handleChange}>
         {possibleCountries.map((item, index) => (
-          // TODO: understand why it complains about using an object - yet compiles and works fine
           <MenuItem key={index} value={item.countryName}>
             {item.countryName} (+{item.countryPrefix})
           </MenuItem>

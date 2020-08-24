@@ -4,8 +4,8 @@
  * File Created: Wednesday, 8th July 2020 11:51:01 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Monday, 24th August 2020 2:14:41 pm
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Monday, 24th August 2020 5:46:14 pm
+ * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -17,7 +17,6 @@ import { useState, useCallback, useMemo } from 'react';
 import debounce from 'lodash/debounce';
 import { Validator } from './validators';
 
-// todo gabo to explain this typescript notation
 type Formatter<T = string> = (input: T) => T;
 
 interface AsyncValidator<T = string> {
@@ -39,7 +38,6 @@ type useInputOptions = {
   debounceTime?: number;
   validators?: Validator[];
   asyncValidators?: AsyncValidator[];
-  maxLength?: number;
 };
 export const useInput = (
   defaultValue: string,
@@ -50,7 +48,6 @@ export const useInput = (
   InputStatus,
   string[],
   () => void,
-  (length: number) => void,
 ] => {
   const [value, setValue] = useState<string>(defaultValue);
   const [errors, setErrors] = useState<InputErrors>({
@@ -59,15 +56,11 @@ export const useInput = (
   });
   const [typing, setTyping] = useState<boolean>(false);
 
-  // Here is to handle the potentially dynamic max length of the inputs - e.g. phone digit amount
-  // length must be added to the validate useCallback parameters array
-  const [length, setLength] = useState<number | undefined>(options.maxLength);
-
   const validate = useCallback(
     async (newValue) => {
       if (options.validators) {
         const syncErrors = options.validators.map((validator) =>
-          validator.validate(newValue, length) ? '' : validator.errorMsg,
+          validator.validate(newValue) ? '' : validator.errorMsg,
         );
         setErrors((e) => ({
           ...e,
@@ -85,14 +78,12 @@ export const useInput = (
         setErrors((e) => ({ ...e, asyncErrors: asyncErrors.filter(Boolean) }));
       }
     },
-    // todo validate if bit now can use elvis operator to avoid this mess
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [
       // eslint-disable-next-line react-hooks/exhaustive-deps
       ...(options.validators ? options.validators.map((v) => v._tag) : []),
       // eslint-disable-next-line react-hooks/exhaustive-deps
       options.asyncValidators && options.asyncValidators.length,
-      length,
     ],
   );
   // eslint-disable-next-line
@@ -120,12 +111,6 @@ export const useInput = (
     [options, stopTyping],
   );
 
-  const updateMaxLength = useCallback(
-    (length: number) => setLength(length),
-    [],
-  );
-
-  // todo - gabo to explain usememo hook
   const status = useMemo(() => {
     let newStatus;
     if (typing || (asyncValidatorLoading && errors.syncErrors.length === 0)) {
@@ -150,6 +135,5 @@ export const useInput = (
       ? [...errors.syncErrors, ...errors.asyncErrors]
       : [],
     flushValidate,
-    updateMaxLength,
   ];
 };
