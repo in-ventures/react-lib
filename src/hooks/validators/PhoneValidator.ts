@@ -4,8 +4,8 @@
  * File Created: Friday, 14th August 2020 3:09:48 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Friday, 21st August 2020 10:55:38 am
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Monday, 24th August 2020 2:40:51 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -24,18 +24,26 @@ export type CountryType = {
 };
 
 export class LengthValidator extends Validator {
-  constructor(errorMsg: string) {
+  maxLength: number;
+  constructor(errorMsg: string, maxLength: number) {
     super(errorMsg);
+    this.maxLength = maxLength;
   }
 
-  validate(input: string, maxLength: number) {
-    if (input.length !== maxLength)
-    this.errorMsg =
-      `¡Ojo! Te faltan ${maxLength - input.length} dígitos`;
-    if (input.length !== maxLength && input.length > maxLength)
-      this.errorMsg =
-        `¡Ojo! Te has pasado por  ${input.length - maxLength} dígitos`;
-    return Boolean(input.length === maxLength);
+  validate(input: string) {
+    console.log(this.maxLength);
+    if (input.length !== this.maxLength)
+      this.errorMsg = `¡Ojo! Te faltan ${
+        this.maxLength - input.length
+      } dígitos`;
+    if (input.length !== this.maxLength && input.length > this.maxLength)
+      this.errorMsg = `¡Ojo! Te has pasado por  ${
+        input.length - this.maxLength
+      } dígitos`;
+    return Boolean(input.length === this.maxLength);
+  }
+  get _tag() {
+    return this.errorMsg + `-${this.maxLength}`;
   }
 }
 

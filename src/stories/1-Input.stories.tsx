@@ -4,8 +4,8 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Monday, 24th August 2020 3:21:50 pm
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Monday, 24th August 2020 2:56:42 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -139,32 +139,31 @@ export const InputForEmail = () => {
   );
 };
 
-const possibleCountriesDummy = [
-  {
-    id: 1,
-    countryName: 'Chile',
-    countryDigitLength: 9,
-    countryPrefix: 56,
-  } as CountryType,
-  {
-    id: 2,
-    countryName: 'Peru',
-    countryDigitLength: 9,
-    countryPrefix: 51,
-  } as CountryType,
-  {
-    id: 3,
-    countryName: 'USA',
-    countryDigitLength: 11,
-    countryPrefix: 1,
-  } as CountryType,
-];
-
-export const InputForPhone = (props: InputforPhoneProps) => {
+export const InputForPhone = () => {
+  const possibleCountries: CountryType[] = [
+    {
+      id: 1,
+      countryName: 'Chile',
+      countryDigitLength: 9,
+      countryPrefix: 56,
+    },
+    {
+      id: 2,
+      countryName: 'Peru',
+      countryDigitLength: 9,
+      countryPrefix: 51,
+    },
+    {
+      id: 3,
+      countryName: 'USA',
+      countryDigitLength: 11,
+      countryPrefix: 1,
+    },
+  ];
+    
   const classes = useStyles();
 
   //const { possibleCountries } = props;
-  const possibleCountries = possibleCountriesDummy;
   const [country, setCountry] = useState(possibleCountries[0]);
 
   const nonNumeric = text(

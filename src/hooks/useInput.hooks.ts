@@ -4,8 +4,8 @@
  * File Created: Wednesday, 8th July 2020 11:51:01 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Thursday, 20th August 2020 9:44:37 am
- * Modified By: Mario Merino (mario@inventures.cl)
+ * Last Modified: Monday, 24th August 2020 2:14:41 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -89,7 +89,7 @@ export const useInput = (
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      options.validators && options.validators.length,
+      ...(options.validators ? options.validators.map((v) => v._tag) : []),
       // eslint-disable-next-line react-hooks/exhaustive-deps
       options.asyncValidators && options.asyncValidators.length,
       length,
