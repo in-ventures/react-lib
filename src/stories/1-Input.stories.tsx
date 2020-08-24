@@ -4,8 +4,8 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Friday, 21st August 2020 10:40:35 am
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Monday, 24th August 2020 2:56:42 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -127,25 +127,25 @@ export const InputForEmail = () => {
 };
 
 export const InputForPhone = () => {
-  const possibleCountries = [
+  const possibleCountries: CountryType[] = [
     {
       id: 1,
       countryName: 'Chile',
       countryDigitLength: 9,
       countryPrefix: 56,
-    } as CountryType,
+    },
     {
       id: 2,
       countryName: 'Peru',
       countryDigitLength: 9,
       countryPrefix: 51,
-    } as CountryType,
+    },
     {
       id: 3,
       countryName: 'USA',
       countryDigitLength: 11,
       countryPrefix: 1,
-    } as CountryType,
+    },
   ];
 
   return <InputForPhoneComponent possibleCountries={possibleCountries} />;
