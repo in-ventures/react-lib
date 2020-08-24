@@ -12,84 +12,16 @@
  * -----
  * Inventures - www.inventures.cl
  */
-import React, { useState, ChangeEvent, useCallback } from 'react';
+import React from 'react';
 import TextField, { TextFieldProps } from '@material-ui/core/TextField';
-import { rutFormat, rutValidate } from 'rut-helpers';
-import { useInput, InputStatus } from '../hooks/useInput.hooks';
-import { number, text } from '@storybook/addon-knobs';
-import Select from '@material-ui/core/Select';
-import FormControl from '@material-ui/core/FormControl';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
-import {
-  Validator,
-  RequiredValidator,
-  LengthValidator,
-  NumericValidator,
-} from '../hooks/validators';
 
 export const Input = (props: TextFieldProps) => <TextField {...props} />;
 
-export type CountryType = {
-  id: number;
-  countryName: string;
-  countryDigitLength: number;
-  countryPrefix: number;
-};
-
-type InputforPhoneProps = {
-  possibleCountries: CountryType[];
-};
-
-type RutInputProps = {
-  required?: boolean;
-  debounceTime?: number;
-  defaultValue?: string;
-} & TextFieldProps;
-export const RutInput = ({ debounceTime, ...props }: RutInputProps) => {
-  const [value, setValue, status, errors, handleBlur] = useInput('', {
-    formatter: rutFormat,
-    validators: [
-      { validate: (data: string) => Boolean(data), errorMsg: 'RUT Requerido' },
-      {
-        validate: (data: string) =>
-          Boolean(data.match(/^\d{1,2}\.\d{3}\.\d{3}[-][0-9K]{1}$/)),
-        errorMsg: '¡Ojo! Este rut está incompleto 🤷‍♀️',
-      },
-      {
-        validate: (data: string) => rutValidate(data),
-        errorMsg: 'Este rut parece no estar bien escrito 🧐',
-      },
-    ],
-    asyncValidators: [
-      {
-        validate: async () => {
-          await new Promise((res) => setTimeout(res, 500));
-          return Math.random() < 0.5;
-        },
-        errorMsg: 'Ups, parece que ya estás registrado',
-      },
-    ],
-    debounceTime,
-  });
-  return (
-    <Input
-      value={value}
-      onChange={(e) => setValue(String(e.target.value))}
-      onBlur={handleBlur}
-      error={status === InputStatus.ERROR}
-      helperText={errors[0]}
-      {...props}
-    />
-  );
-};
-
-export const InputForPhoneComponent = (props: InputforPhoneProps) => {
+export const InputForPhone = () => {
   const classes = useStyles();
 
-  const { possibleCountries } = props;
+  //const { possibleCountries } = props;
   const [country, setCountry] = useState(possibleCountries[0]);
-
   const nonNumeric = text(
     'Teléfono no numérico error',
     '¡Ups! Recuerda incluir sólo números',
