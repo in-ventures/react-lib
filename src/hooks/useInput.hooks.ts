@@ -4,8 +4,8 @@
  * File Created: Wednesday, 8th July 2020 11:51:01 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Friday, 24th July 2020 3:45:55 pm
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Tuesday, 25th August 2020 3:59:43 pm
+ * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -16,8 +16,7 @@
 import { useState, useCallback, useMemo } from 'react';
 import debounce from 'lodash/debounce';
 import { Validator } from './validators';
-
-type Formatter<T = string> = (input: T) => T;
+import { Formatter } from './formatters';
 
 interface AsyncValidator<T = string> {
   validate: (input: T) => Promise<boolean>;
@@ -42,13 +41,20 @@ type useInputOptions = {
 export const useInput = (
   defaultValue: string,
   options: useInputOptions = {},
-): [string, (data: string) => void, InputStatus, string[], () => void] => {
+): [
+  string,
+  (data: string) => void,
+  InputStatus,
+  string[],
+  () => void,
+] => {
   const [value, setValue] = useState<string>(defaultValue);
   const [errors, setErrors] = useState<InputErrors>({
     asyncErrors: [],
     syncErrors: [],
   });
   const [typing, setTyping] = useState<boolean>(false);
+
   const validate = useCallback(
     async (newValue) => {
       if (options.validators) {
@@ -71,11 +77,10 @@ export const useInput = (
         setErrors((e) => ({ ...e, asyncErrors: asyncErrors.filter(Boolean) }));
       }
     },
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      options.validators && options.validators.length,
+      ...(options.validators ? options.validators.map((v) => v._tag) : []),
       // eslint-disable-next-line react-hooks/exhaustive-deps
       options.asyncValidators && options.asyncValidators.length,
     ],
@@ -97,7 +102,7 @@ export const useInput = (
   const handleSetValue = useCallback(
     async (data: string) => {
       const newValue =
-        options && options.formatter ? options.formatter(data) : data;
+        options && options.formatter ? options.formatter.format(data) : data;
       setValue(newValue);
       setTyping(true);
       stopTyping(newValue);
@@ -116,6 +121,7 @@ export const useInput = (
     }
     return newStatus;
   }, [errors.asyncErrors, errors.syncErrors, asyncValidatorLoading, typing]);
+
   const flushValidate = useCallback(() => {
     stopTyping(value);
     stopTyping.flush();

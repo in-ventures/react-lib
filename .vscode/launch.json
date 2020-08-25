@@ -1,0 +1,30 @@
+/*
+ * File: launch.json
+ * Project: @inventures/react-lib
+ * File Created: Thursday, 20th August 2020 8:53:07 am
+ * Author: Mario Merino (mario@inventures.cl)
+ * -----
+ * Last Modified: Thursday, 20th August 2020 8:55:09 am
+ * Modified By: Mario Merino (mario@inventures.cl)
+ * -----
+ * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
+ * Terms and conditions defined in license.txt
+ * -----
+ * Inventures - www.inventures.cl
+ */
+
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome against localhost",
+      "url": "http://localhost:9009",
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
+}
