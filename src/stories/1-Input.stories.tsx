@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Monday, 24th August 2020 5:47:06 pm
+ * Last Modified: Tuesday, 25th August 2020 4:16:44 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -16,7 +16,6 @@ import React, { useCallback, useState, ChangeEvent } from 'react';
 import { number, text } from '@storybook/addon-knobs';
 import { Input } from '../components/input';
 import { InputStatus, useInput } from '../hooks/useInput.hooks';
-import { rutFormat } from 'rut-helpers';
 import {
   Validator,
   RequiredValidator,
@@ -26,7 +25,7 @@ import {
   LengthValidator,
   NumericValidator,
 } from '../hooks/validators';
-import { LatinEmailFormatter } from '../hooks/formatters';
+import { AccentRemoverFormatter, RutFormatter } from '../hooks/formatters';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
@@ -57,11 +56,16 @@ export const InputForRut = () => {
     'RUT registrado error',
     'Ups, parece que ya estás registrado',
   );
+  const validLength = text(
+    'RUT de largo inválido error',
+    'Recuerda incluir un largo válido de RUT',
+  );
 
   const debounceTime = number('Debounce time (ms)', 800);
   const [value, setValue, status, errors, handleBlur] = useInput('', {
-    formatter: rutFormat,
+    formatter: new RutFormatter(),
     validators: [
+      validLength && new LengthValidator(validLength, {min: 11, max: 12}),
       required && new RequiredValidator(required),
       incomplete && new RutFormatValidator(incomplete),
       valid && new RutValidator(valid),
@@ -108,7 +112,7 @@ export const InputForEmail = () => {
   );
   const debounceTime = number('Debounce time (ms)', 800);
   const [value, setValue, status, errors, handleBlur] = useInput('', {
-    formatter: LatinEmailFormatter,
+    formatter: new AccentRemoverFormatter(),
     validators: [
       required && new RequiredValidator(required),
       incomplete && new EmailValidator(incomplete),

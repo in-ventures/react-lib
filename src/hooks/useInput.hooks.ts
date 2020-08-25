@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 11:51:01 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Monday, 24th August 2020 5:46:14 pm
+ * Last Modified: Tuesday, 25th August 2020 3:59:43 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -16,8 +16,7 @@
 import { useState, useCallback, useMemo } from 'react';
 import debounce from 'lodash/debounce';
 import { Validator } from './validators';
-
-type Formatter<T = string> = (input: T) => T;
+import { Formatter } from './formatters';
 
 interface AsyncValidator<T = string> {
   validate: (input: T) => Promise<boolean>;
@@ -103,7 +102,7 @@ export const useInput = (
   const handleSetValue = useCallback(
     async (data: string) => {
       const newValue =
-        options && options.formatter ? options.formatter(data) : data;
+        options && options.formatter ? options.formatter.format(data) : data;
       setValue(newValue);
       setTyping(true);
       stopTyping(newValue);

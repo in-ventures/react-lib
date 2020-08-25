@@ -4,7 +4,7 @@
  * File Created: Monday, 17th August 2020 5:42:54 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Friday, 21st August 2020 9:17:30 am
+ * Last Modified: Tuesday, 25th August 2020 3:10:20 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -13,10 +13,14 @@
  * Inventures - www.inventures.cl
  */
 
-export const LatinEmailFormatter = (input: string) => {
-  const formattedText = input
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase();;
-  return formattedText;
-};
+import { Formatter } from './Formatter';
+
+export class AccentRemoverFormatter extends Formatter {
+  format(input: string) {
+    const formattedText = input
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase();
+    return formattedText;
+  }
+}

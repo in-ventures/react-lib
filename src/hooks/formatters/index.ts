@@ -4,7 +4,7 @@
  * File Created: Monday, 17th August 2020 5:42:59 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Monday, 24th August 2020 5:23:50 pm
+ * Last Modified: Tuesday, 25th August 2020 4:01:54 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -14,4 +14,5 @@
  */
 
 export { Formatter } from './Formatter';
-export { LatinEmailFormatter } from './LatinFormatter';
+export { AccentRemoverFormatter } from './AccentRemover';
+export { RutFormatter } from './RutFormatter';
