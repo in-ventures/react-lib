@@ -1688,19 +1688,19 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
   integrity sha512-9NET910DNaIPngYnLLPeg+Ogzqsi9uM4mSboU5y6p8S5DzMTVEsJZrawi+BoDNUVBa2DhJqQYUFvMDfgU062LQ==
 
-"@storybook/addon-a11y@^6.0.5":
-  version "6.0.5"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-6.0.5.tgz#6c1cb53f86165b82698b038d4829ee70bd48af3b"
-  integrity sha512-h1WGM48d8GvzoOFTVMquhrcFMEr/Ew6oAHNZ2SN3t9BwK7J5hfvrGxnnaayWVL9WVc3wUs0aTvcs16gxKcO8/w==
+"@storybook/addon-a11y@^6.0.18":
+  version "6.0.18"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-6.0.18.tgz#a6313222d0933c63eb30a779a1c858d6c32b5557"
+  integrity sha512-DloqjI+PqeAElUYnByxgJLH9TZY8vu2ZqGQalcN7e0LOXkCxOPu0ix3TlWizCBhKKLBLAFWdlR9CB43f2kIy9w==
   dependencies:
-    "@storybook/addons" "6.0.5"
-    "@storybook/api" "6.0.5"
-    "@storybook/channels" "6.0.5"
-    "@storybook/client-api" "6.0.5"
-    "@storybook/client-logger" "6.0.5"
-    "@storybook/components" "6.0.5"
-    "@storybook/core-events" "6.0.5"
-    "@storybook/theming" "6.0.5"
+    "@storybook/addons" "6.0.18"
+    "@storybook/api" "6.0.18"
+    "@storybook/channels" "6.0.18"
+    "@storybook/client-api" "6.0.18"
+    "@storybook/client-logger" "6.0.18"
+    "@storybook/components" "6.0.18"
+    "@storybook/core-events" "6.0.18"
+    "@storybook/theming" "6.0.18"
     axe-core "^3.5.2"
     core-js "^3.0.1"
     global "^4.3.2"
