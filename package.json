@@ -1,6 +1,6 @@
 {
   "name": "@inventures/react-lib",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "private": false,
@@ -39,7 +39,7 @@
     "build-storybook": "build-storybook -s public",
     "publish:gh": "yarn build-storybook && gh-pages -d storybook-static",
     "prepublish:npm": "cp ./package.json ./dist && touch ./dist/.npmignore",
-    "publish:npm": "yarn publish dist; cp ./dist/package.json .",
+    "publish:npm": "npm publish dist; cp ./dist/package.json .",
     "lint": "tsc --noEmit && eslint ./src/ --ext .js,.ts,.tsx",
     "lint:fix": "tsc --noEmit && eslint ./src/ --ext .js,.ts,.tsx --fix",
     "build:lib": "yarn clean && yarn build:babel && yarn build:types && node ./scripts/copyTS.js",
