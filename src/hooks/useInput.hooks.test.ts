@@ -99,12 +99,15 @@ describe('Should validate the correct input for phone', () => {
 
   // test that length validator works for changing length
   test('Should validate the correct phone length for the selected country', async () => {
-    const { result, rerender,  waitForNextUpdate } = renderHook((props) =>
-      useInput('', {
-        validators: [new LengthValidator('wrong phone length', props.countryDigits)],
-        debounceTime: 10,
-      }),
-      {initialProps: {countryDigits: 9} },
+    const { result, rerender, waitForNextUpdate } = renderHook(
+      (props) =>
+        useInput('', {
+          validators: [
+            new LengthValidator('wrong phone length', props.countryDigits),
+          ],
+          debounceTime: 10,
+        }),
+      { initialProps: { countryDigits: 9 } },
     );
 
     expect(result.current[2]).toBe('success');
@@ -191,7 +194,7 @@ describe('Should validate the presence of no accentuated characters', () => {
     });
 
     expect(result.current[0]).toBe('email@gmail.com');
-    
+
     // debounce wait
     expect(result.current[2]).toBe('pending');
     await waitForNextUpdate();
