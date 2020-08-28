@@ -4,7 +4,7 @@
  * File Created: Tuesday, 25th August 2020 4:50:02 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Wednesday, 26th August 2020 4:30:35 pm
+ * Last Modified: Friday, 28th August 2020 3:53:07 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -67,11 +67,11 @@ describe('Should validate correct RUT last digit', () => {
 });
 
 describe('Should validate the correct input for phone', () => {
+  // test length validator works for fixed lenght
   test('Should validate the correct phone length for the selected country', async () => {
-    let countryDigits = 9;
     const { result, waitForNextUpdate } = renderHook(() =>
       useInput('', {
-        validators: [new LengthValidator('wrong phone length', countryDigits)],
+        validators: [new LengthValidator('wrong phone length', 9)],
         debounceTime: 10,
       }),
     );
@@ -95,18 +95,36 @@ describe('Should validate the correct input for phone', () => {
     expect(result.current[2]).toBe('pending');
     await waitForNextUpdate();
     expect(result.current[2]).toBe('error');
+  });
 
-    // CHANGE COUNTRY DIGITS
-    countryDigits = 10;
+  // test that length validator works for changing length
+  test('Should validate the correct phone length for the selected country', async () => {
+    const { result, rerender,  waitForNextUpdate } = renderHook((props) =>
+      useInput('', {
+        validators: [new LengthValidator('wrong phone length', props.countryDigits)],
+        debounceTime: 10,
+      }),
+      {initialProps: {countryDigits: 9} },
+    );
+
+    expect(result.current[2]).toBe('success');
+
+    // Correct phone length
     act(() => {
       result.current[1]('123456789');
     });
     // debounce wait
     expect(result.current[2]).toBe('pending');
     await waitForNextUpdate();
+    expect(result.current[2]).toBe('success');
+
+    // CHANGE COUNTRY DIGITS
+    rerender({ countryDigits: 10 });
+    // debounce wait
     expect(result.current[2]).toBe('error');
   });
 
+  // test that numeric validator works correctly
   test('Should validate only numeric inputs for phone', async () => {
     const { result, waitForNextUpdate } = renderHook(() =>
       useInput('', {
@@ -171,6 +189,9 @@ describe('Should validate the presence of no accentuated characters', () => {
     act(() => {
       result.current[1]('éMáÍl@Gmáíl.Cóm');
     });
+
+    expect(result.current[0]).toBe('email@gmail.com');
+    
     // debounce wait
     expect(result.current[2]).toBe('pending');
     await waitForNextUpdate();

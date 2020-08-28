@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 11:51:01 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Wednesday, 26th August 2020 7:12:42 pm
+ * Last Modified: Friday, 28th August 2020 3:38:58 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -122,15 +122,9 @@ export const useInput = (
   }, [stopTyping, value]);
   
   useEffect(() => {
-    return () => {
-      validate(value);
-    };
-  }, [
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    ...(options.validators ? options.validators.map((v) => v._tag) : []),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    options.asyncValidators && options.asyncValidators.length,
-  ]);
+    if (value === '') return;
+    validate(value);
+  }, [ validate ]);
 
   return [
     value,
