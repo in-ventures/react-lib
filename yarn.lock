@@ -1777,22 +1777,22 @@
     regenerator-runtime "^0.13.3"
     ts-dedent "^1.1.1"
 
-"@storybook/addon-storysource@^6.0.7":
-  version "6.0.7"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-storysource/-/addon-storysource-6.0.7.tgz#f7ecfea8fd48e478876ccf07babd9a48a47f74d3"
-  integrity sha512-JcCxNGygh09WGFo2PVoXMiKnoQNvRCj9ilsDRUmX6csrjEL4sKEquvffNyCmYQRBToTsF7AA92EeQkQaMIhYlg==
+"@storybook/addon-storysource@^6.0.18":
+  version "6.0.18"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-storysource/-/addon-storysource-6.0.18.tgz#86ff8609f535d899c4a29690992a095bbc9a3148"
+  integrity sha512-NzVH+exLNIntdvz4o3HkNFMnlDOnon+DQnoTNNE17TzzsqLonb0tpzcjQg8nm0CxwsMYNrBiOVwauP3xtTJrhA==
   dependencies:
-    "@storybook/addons" "6.0.7"
-    "@storybook/api" "6.0.7"
-    "@storybook/client-logger" "6.0.7"
-    "@storybook/components" "6.0.7"
-    "@storybook/router" "6.0.7"
-    "@storybook/source-loader" "6.0.7"
-    "@storybook/theming" "6.0.7"
+    "@storybook/addons" "6.0.18"
+    "@storybook/api" "6.0.18"
+    "@storybook/client-logger" "6.0.18"
+    "@storybook/components" "6.0.18"
+    "@storybook/router" "6.0.18"
+    "@storybook/source-loader" "6.0.18"
+    "@storybook/theming" "6.0.18"
     core-js "^3.0.1"
     estraverse "^4.2.0"
     loader-utils "^2.0.0"
-    prettier "^2.0.5"
+    prettier "~2.0.5"
     prop-types "^15.7.2"
     react "^16.9.17"
     react-syntax-highlighter "^12.2.1"
@@ -2510,20 +2510,20 @@
     core-js "^3.6.5"
     find-up "^4.1.0"
 
-"@storybook/source-loader@6.0.7":
-  version "6.0.7"
-  resolved "https://registry.yarnpkg.com/@storybook/source-loader/-/source-loader-6.0.7.tgz#0b0829c6a99601c2df8b04144f1a793131a54b1d"
-  integrity sha512-TNk7bGT44Ut2NwwkTPwiMm6QQ2VqRQfhTsPzICXnjjpmVQ8lR+Ge9S6omom30EuWnHWUcjr72GGsWAHxXxvS1A==
+"@storybook/source-loader@6.0.18":
+  version "6.0.18"
+  resolved "https://registry.yarnpkg.com/@storybook/source-loader/-/source-loader-6.0.18.tgz#3d55bad9526ff715698673855b66b747cc045f3a"
+  integrity sha512-E3Y54VDpD6ElL73dgeKYa4TgDgUNMTaoky4dLL2LETHt7/HzvJ4mcgBKYx7u6q/E8iWUTM6TvD4A5SIXxfoEtw==
   dependencies:
-    "@storybook/addons" "6.0.7"
-    "@storybook/client-logger" "6.0.7"
+    "@storybook/addons" "6.0.18"
+    "@storybook/client-logger" "6.0.18"
     "@storybook/csf" "0.0.1"
     core-js "^3.0.1"
     estraverse "^4.2.0"
     global "^4.3.2"
     loader-utils "^2.0.0"
     lodash "^4.17.15"
-    prettier "^2.0.5"
+    prettier "~2.0.5"
     regenerator-runtime "^0.13.3"
 
 "@storybook/theming@6.0.16":
@@ -12233,7 +12233,7 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@^2.0.5:
+prettier@^2.0.5, prettier@~2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.0.5.tgz#d6d56282455243f2f92cc1716692c08aa31522d4"
   integrity sha512-7PtVymN48hGcO4fGjybyBSIWDsLU4H4XlvOHfq91pz9kkGlonzwTfYkaIEwiRg/dAJF9YlbsduBAgtYLi+8cFg==
