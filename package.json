@@ -1,12 +1,13 @@
 {
   "name": "@inventures/react-lib",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "private": false,
   "publishConfig": {
     "access": "public",
-    "tag": "prerelease"
+    "tag": "latest",
+    "registry": "https://registry.npmjs.org/"
   },
   "files": [
     "./**/*"
@@ -69,11 +70,11 @@
     "@babel/plugin-proposal-export-default-from": "^7.10.4",
     "@babel/plugin-transform-typescript": "^7.11.0",
     "@material-ui/system": "^4.9.14",
-    "@storybook/addon-a11y": "^6.0.5",
+    "@storybook/addon-a11y": "^6.0.18",
     "@storybook/addon-actions": "^6.0.5",
     "@storybook/addon-knobs": "^6.0.16",
     "@storybook/addon-links": "^6.0.18",
-    "@storybook/addon-storysource": "^6.0.7",
+    "@storybook/addon-storysource": "^6.0.18",
     "@storybook/addon-viewport": "^6.0.7",
     "@storybook/addons": "^6.0.16",
     "@storybook/preset-create-react-app": "^3.1.4",
