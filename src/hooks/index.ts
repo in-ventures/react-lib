@@ -13,3 +13,4 @@
  * Inventures - www.inventures.cl
  */
 export * from './useInput.hooks';
+export * from './useSearchBar.hooks';

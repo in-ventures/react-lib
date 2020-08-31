@@ -13,4 +13,5 @@
  * Inventures - www.inventures.cl
  */
 export * from './input';
+export * from './searchBar';
 export * from './ProductCardA';
