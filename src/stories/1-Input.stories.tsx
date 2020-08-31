@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 25th August 2020 4:16:44 pm
+ * Last Modified: Wednesday, 26th August 2020 7:13:39 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -12,7 +12,7 @@
  * -----
  * Inventures - www.inventures.cl
  */
-import React, { useCallback, useState, ChangeEvent } from 'react';
+import React, { useCallback, useState, ChangeEvent, useEffect } from 'react';
 import { number, text } from '@storybook/addon-knobs';
 import { Input } from '../components/input';
 import { InputStatus, useInput } from '../hooks/useInput.hooks';
@@ -186,10 +186,10 @@ export const InputForPhone = () => {
     handleBlur,
   ] = useInput('', {
     validators: [
-      required && new RequiredValidator(required),
-      nonNumeric && new NumericValidator(nonNumeric),
       incompleteNumber &&
         new LengthValidator(incompleteNumber, country.countryDigitLength),
+      required && new RequiredValidator(required),
+      nonNumeric && new NumericValidator(nonNumeric),
     ].filter(Boolean) as Validator<string>[],
     debounceTime,
   });

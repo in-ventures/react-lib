@@ -4,8 +4,8 @@
  * File Created: Wednesday, 8th July 2020 11:51:01 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 25th August 2020 3:59:43 pm
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Monday, 31st August 2020 10:47:33 am
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -13,7 +13,7 @@
  * Inventures - www.inventures.cl
  */
 
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo, useEffect, useRef } from 'react';
 import debounce from 'lodash/debounce';
 import { Validator } from './validators';
 import { Formatter } from './formatters';
@@ -23,7 +23,7 @@ interface AsyncValidator<T = string> {
   errorMsg: string;
 }
 export enum InputStatus {
-  SUCCESS = 'sucess',
+  SUCCESS = 'success',
   ERROR = 'error',
   PENDING = 'pending',
 }
@@ -41,14 +41,10 @@ type useInputOptions = {
 export const useInput = (
   defaultValue: string,
   options: useInputOptions = {},
-): [
-  string,
-  (data: string) => void,
-  InputStatus,
-  string[],
-  () => void,
-] => {
+): [string, (data: string) => void, InputStatus, string[], () => void] => {
   const [value, setValue] = useState<string>(defaultValue);
+  // save the last value ended of type. Useful for async validations
+  const valueRef = useRef<string>(value);
   const [errors, setErrors] = useState<InputErrors>({
     asyncErrors: [],
     syncErrors: [],
@@ -67,6 +63,7 @@ export const useInput = (
         }));
       }
       if (options.asyncValidators) {
+        console.log('validating async');
         setAsyncValidatorLoading(true);
         const asyncErrors = await Promise.all(
           options.asyncValidators.map(async (validator) =>
@@ -89,6 +86,7 @@ export const useInput = (
   const stopTyping = useCallback(
     debounce(
       (newValue: string) => {
+        valueRef.current = newValue;
         setTyping(false);
         validate(newValue);
       },
@@ -126,6 +124,12 @@ export const useInput = (
     stopTyping(value);
     stopTyping.flush();
   }, [stopTyping, value]);
+
+  useEffect(() => {
+    if (valueRef.current === '') return;
+    validate(valueRef.current);
+  }, [validate]);
+
   return [
     value,
     handleSetValue,
