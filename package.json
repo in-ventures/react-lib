@@ -71,7 +71,7 @@
     "@babel/plugin-transform-typescript": "^7.11.0",
     "@material-ui/system": "^4.9.14",
     "@storybook/addon-a11y": "^6.0.18",
-    "@storybook/addon-actions": "^6.0.5",
+    "@storybook/addon-actions": "^6.0.20",
     "@storybook/addon-knobs": "^6.0.16",
     "@storybook/addon-links": "^6.0.18",
     "@storybook/addon-storysource": "^6.0.18",
