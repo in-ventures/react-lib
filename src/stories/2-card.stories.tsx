@@ -4,8 +4,8 @@
  * File Created: Tuesday, 4th August 2020 5:47:50 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Friday, 14th August 2020 2:11:47 pm
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Monday, 31st August 2020 6:05:20 pm
+ * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -15,6 +15,7 @@
 
 import React from 'react';
 import ProductCardA from '../components/ProductCardA';
+import ProductCardB from '../components/ProductCardB';
 import { text, boolean, number } from '@storybook/addon-knobs';
 
 export default {
@@ -64,6 +65,7 @@ export const EditableCard = () => {
     </div>
   );
 };
+
 export const EditableCardGrid = () => {
   const urlImage = text(
     'Image url',
@@ -107,6 +109,21 @@ export const EditableCardGrid = () => {
     </div>
   );
 };
+
+export const EditableCardB = () => {
+  
+  return(
+    <ProductCardB
+      imageUrl={"https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw4914edc4/images/large/11101-glafornil-metformina-500-mg-30-comprimidos-recubiertos.jpg?sw=1000&sh=1000"}
+      title={'Glafornil'}
+      subtitle={'Metformina Clorhidrato'}
+      details={'30 comprimidos recubiertos'}
+      description={'500 mg'}
+      price={15990}
+      tag={'Receta retenida'}
+    />
+  );
+}
 
 Base.story = {
   name: 'Base element',
