@@ -81,7 +81,7 @@
     "@storybook/react": "^6.0.18",
     "@testing-library/react-hooks": "^3.4.1",
     "@types/lodash": "^4.14.157",
-    "@typescript-eslint/eslint-plugin": "^3.7.0",
+    "@typescript-eslint/eslint-plugin": "^3.10.1",
     "@typescript-eslint/parser": "^3.7.0",
     "@zeplin/cli": "^1.0.4",
     "@zeplin/cli-connect-react-plugin": "^0.2.5",
