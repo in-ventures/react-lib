@@ -15,31 +15,35 @@
 
 import { Validator } from './Validator';
 
-type LengthType = {
-  min: number;
-  max: number;
-} | number;
+type LengthType =
+  | {
+      min: number;
+      max: number;
+    }
+  | number;
 
 export class LengthValidator extends Validator {
   requiredLength?: number;
-  minLength ?: number;
-  maxLength ?: number;
+  minLength?: number;
+  maxLength?: number;
   constructor(errorMsg: string, length: LengthType) {
     super(errorMsg);
-    if (typeof(length) === 'number') {
+    if (typeof length === 'number') {
       this.requiredLength = length;
-      return
+      return;
     }
     this.minLength = length.min;
     this.maxLength = length.max;
   }
 
   validate(input: string) {
-    if (this.requiredLength){
+    if (this.requiredLength) {
       return Boolean(input.length === this.requiredLength);
     }
     if (!this.minLength || !this.maxLength) return false;
-    return Boolean(input.length >= this.minLength && input.length <= this.maxLength);
+    return Boolean(
+      input.length >= this.minLength && input.length <= this.maxLength,
+    );
   }
   get _tag() {
     return this.errorMsg + `-${this.requiredLength}`;

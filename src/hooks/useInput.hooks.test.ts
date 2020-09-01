@@ -4,8 +4,8 @@
  * File Created: Tuesday, 25th August 2020 4:50:02 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Friday, 28th August 2020 3:53:07 pm
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Tuesday, 1st September 2020 2:41:17 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -21,8 +21,8 @@ import {
   EmailValidator,
   NumericValidator,
   LengthValidator,
-} from '../hooks/validators';
-import { AccentRemoverFormatter, RutFormatter } from '../hooks/formatters';
+} from '../validators';
+import { AccentRemoverFormatter, RutFormatter } from '../formatters';
 
 describe('Should validate correct RUT last digit', () => {
   test('Correct last character of a Chilean RUT', async () => {
