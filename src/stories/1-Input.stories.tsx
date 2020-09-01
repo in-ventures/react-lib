@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 1st September 2020 2:43:27 pm
+ * Last Modified: Tuesday, 1st September 2020 4:52:13 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -30,6 +30,7 @@ import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
+import { MaskFormatter } from '../formatters/MaskFormatter';
 
 export default {
   title: 'Input',
@@ -224,6 +225,23 @@ export const InputForPhone = () => {
         label={`Phone* (${debounceTime}ms)`}
       />
     </FormControl>
+  );
+};
+
+export const InputWithMask = () => {
+  const debounceTime = number('Debounce time (ms)', 800);
+  const [value, setValue, status, errors, handleBlur] = useInput('', {
+    formatter: new MaskFormatter('**.***.***-*'),
+  });
+  return (
+    <Input
+      value={value}
+      onChange={(e) => setValue(String(e.target.value))}
+      onBlur={handleBlur}
+      error={status === InputStatus.ERROR}
+      helperText={errors[0]}
+      label={`Ingrese RUT (${debounceTime}ms)`}
+    />
   );
 };
 
