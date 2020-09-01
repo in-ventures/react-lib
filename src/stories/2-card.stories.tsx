@@ -4,7 +4,7 @@
  * File Created: Tuesday, 4th August 2020 5:47:50 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Monday, 31st August 2020 6:05:20 pm
+ * Last Modified: Tuesday, 1st September 2020 4:47:34 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -114,9 +114,10 @@ export const EditableCardB = () => {
   
   return(
     <ProductCardB
-      imageUrl={"https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw4914edc4/images/large/11101-glafornil-metformina-500-mg-30-comprimidos-recubiertos.jpg?sw=1000&sh=1000"}
+      //imageUrl={"https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw4914edc4/images/large/11101-glafornil-metformina-500-mg-30-comprimidos-recubiertos.jpg?sw=1000&sh=1000"}
+      imageUrl={"https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000"}
       title={'Glafornil'}
-      subtitle={'Metformina Clorhidrato'}
+      subtitle={'Metformina Clorhidrato Clorhidrato'}
       details={'30 comprimidos recubiertos'}
       description={'500 mg'}
       price={15990}

@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Monday, 31st August 2020 6:46:37 pm
+ * Last Modified: Tuesday, 1st September 2020 4:50:10 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -14,12 +14,11 @@
  */
 
 import React from 'react';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import { makeStyles, Theme, createStyles, MuiThemeProvider } from '@material-ui/core/styles';
+import InsertDriveFileOutlinedIcon from '@material-ui/icons/InsertDriveFileOutlined';
+import {Card, Box, CardMedia, CardContent, Typography, Chip} from '@material-ui/core';
 import { CurrencyFormatter } from './../hooks/formatters';
+import {mekiTheme} from './../config/themes/meki';
 
 type ProductBPropTypes = {
     imageUrl ?: string;
@@ -31,51 +30,64 @@ type ProductBPropTypes = {
     price: number;
 };
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      maxWidth: '162px',
-      maxHeight: '240px',
-      alignContent: 'center',
-      alignItems: 'center',
-      justifyContent: 'center',
-      textAlign: 'center',
-      padding: '8px',
-    },
-    title: {
+const useStyles = makeStyles((theme: Theme) => {
+  console.log(theme);
+  return(
+    {
+      root: {
+        maxWidth: '162px',
+        maxHeight: '250px',
+        alignContent: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+        padding: '8px',
+      },
+      title: {
         color: '#414046',
-    },
-    header: {
-        flex: 1,
-    },
-    content: {
+        marginBottom: '3px',
+      },
+      content: {
         paddingBottom: '10px',
-        flex: 1,
-    },
-    media: {
-      height: 0,
-      paddingTop: '56.25%',
-      width: '140px',
-      aspectRatio: '1',
-    },
-    price: {
+      },
+      media: {
+        height: 0,
+        paddingTop: '56.25%',
+        aspectRatio: '1',
+      },
+      price: {
         color: '#5185da',
-    },
-    tag: {
+        marginBottom: '5px',
+        marginTop:'5px',
+      },
+      tag: {
+          justifyContent: 'space-between',
+          fontFamily: theme.typography.fontFamily,
+          textAlign: 'center',
+          width: '160px',
+          height: '22px',
+          color: '#FFFFFF',
+          backgroundColor: '#5185da',
+          alignSelf: 'center',
+          alignContent: 'center',
+          paddingBottom: '2px',
+      },
+      textBox: {
         fontFamily: theme.typography.fontFamily,
-        marginLeft: '7%',
-        marginRight: '5%',
         textAlign: 'center',
         width: '140px',
-        height: '20px',
-        borderRadius: '4px',
-        color: '#FFFFFF',
-        backgroundColor: '#5185da',
         alignSelf: 'center',
         alignContent: 'center',
-    },
-  }),
-);
+        justifyContent: 'center',
+      },
+      icon: {
+        height: '18px',
+        paddingTop: '3px',
+      },
+    }
+  );
+});
+
 
 export default function ProductCardB(props: ProductBPropTypes) {
     const {imageUrl, title, subtitle, tag, details, description, price} = props;
@@ -84,37 +96,48 @@ export default function ProductCardB(props: ProductBPropTypes) {
     const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
-      <div className={classes.header}>
-          <CardMedia
-            className={classes.media}
-            image={imageUrl}
-          />
-          { tag
-            ? <div className={classes.tag}>
-                {tag}
-                </div>
-            : <div/>
-          }
-      </div>
-      <CardContent className={classes.content}>
-        <Typography variant="body2" component="h5" className={classes.title}>
-          {title}
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {subtitle}
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {description}
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {details}
-        </Typography>
-        <Typography variant="body2" color="textPrimary" component="h6" className={classes.price}>
-          {currencyPrice}
-        </Typography>
-      </CardContent>
-    </Card>
+      <Card className={classes.root}>
+        <CardMedia
+          className={classes.media}
+          image={imageUrl}
+        /> 
+        { tag
+          ? <div>
+              <Chip color="primary" size="small" icon={<InsertDriveFileOutlinedIcon /> } label={tag}/>
+            </div>
+          : <div/>
+        }
+        
+        <CardContent className={classes.content}>
+          <Typography variant="subtitle1" color="textPrimary" component="h5" className={classes.title}>
+            {title}
+          </Typography>
+          <Box
+            className={classes.textBox}
+            component="div"
+            textOverflow="ellipsis"
+            overflow="hidden"
+            whiteSpace="nowrap"
+          >{subtitle}</Box>
+          <Box
+            className={classes.textBox}
+            component="div"
+            textOverflow="ellipsis"
+            overflow="hidden"
+            whiteSpace="nowrap"
+          >{description}</Box>
+          <Box
+            className={classes.textBox}
+            component="div"
+            textOverflow="ellipsis"
+            overflow="hidden"
+            whiteSpace="nowrap"
+          >{details}</Box>
+          <Typography variant="body1" color="textPrimary" component="h6" className={classes.price}>
+            {currencyPrice}
+          </Typography>
+        </CardContent>
+      </Card>
   );
 }
 
