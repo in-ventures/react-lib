@@ -16,3 +16,4 @@ export * from './input';
 export * from './ProductCard';
 export * from './searchBar';
 export * from './CartProduct';
+export * from './ImageLoader';
