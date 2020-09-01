@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 3:45:13 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 1st September 2020 4:54:35 pm
+ * Last Modified: Tuesday, 1st September 2020 5:01:05 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -21,6 +21,16 @@ export class MaskFormatter extends Formatter {
     super();
     this.mask = mask;
   }
+  /**
+   * Format the string following a mask
+   * MaskChar replace supported:
+   * - *
+   *
+   * Replace all mask char supported with the input char given.
+   * If the mask have chars not supported for replace, the char will be put in the output string
+   * For examples, check the test file
+   * @param input String
+   */
   format(input: string) {
     let missingMask = this.mask;
     let newText = '';
