@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Tuesday, 1st September 2020 5:05:52 pm
+ * Last Modified: Tuesday, 1st September 2020 5:28:36 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -22,6 +22,7 @@ import {
 import InsertDriveFileOutlinedIcon from '@material-ui/icons/InsertDriveFileOutlined';
 import {
   Card,
+  CardActionArea,
   Box,
   CardMedia,
   CardContent,
@@ -38,6 +39,13 @@ type ProductBPropTypes = {
   description?: string;
   details?: string;
   price: number;
+  clickCard: () => void;
+};
+
+type ProductCarouselType = {
+  title: string;
+  onclick: any;
+  cardList: ProductBPropTypes[];
 };
 
 const useStyles = makeStyles((theme: Theme) => {
@@ -96,73 +104,78 @@ const useStyles = makeStyles((theme: Theme) => {
   };
 });
 
-export default function ProductCardB(props: ProductBPropTypes) {
-  const { imageUrl, title, subtitle, tag, details, description, price } = props;
+export function ProductCardB(props: ProductBPropTypes) {
+  const { imageUrl, title, subtitle, tag, details, description, price, clickCard } = props;
   const currFormat = new CurrencyFormatter();
   const currencyPrice = currFormat.format(price);
   const classes = useStyles();
 
   return (
     <Card className={classes.root}>
-      <CardMedia className={classes.media} image={imageUrl} />
-      {tag ? (
-        <div>
-          <Chip
-            color="primary"
-            size="small"
-            icon={<InsertDriveFileOutlinedIcon />}
-            label={tag}
-          />
-        </div>
-      ) : (
-        <div />
-      )}
-
-      <CardContent className={classes.content}>
-        <Typography
-          variant="subtitle1"
-          color="textPrimary"
-          component="h5"
-          className={classes.title}
-        >
-          {title}
-        </Typography>
-        <Box
-          className={classes.textBox}
-          component="div"
-          textOverflow="ellipsis"
-          overflow="hidden"
-          whiteSpace="nowrap"
-        >
-          {subtitle}
-        </Box>
-        <Box
-          className={classes.textBox}
-          component="div"
-          textOverflow="ellipsis"
-          overflow="hidden"
-          whiteSpace="nowrap"
-        >
-          {description}
-        </Box>
-        <Box
-          className={classes.textBox}
-          component="div"
-          textOverflow="ellipsis"
-          overflow="hidden"
-          whiteSpace="nowrap"
-        >
-          {details}
-        </Box>
-        <Typography
-          variant="body1"
-          color="textPrimary"
-          component="h6"
-          className={classes.price}
-        >
-          {currencyPrice}
-        </Typography>
-      </CardContent>
+      <CardActionArea>
+        <CardMedia className={classes.media} image={imageUrl} onClick={() => clickCard()}/>
+        {tag ? (
+          <div>
+            <Chip
+              color="primary"
+              size="small"
+              icon={<InsertDriveFileOutlinedIcon />}
+              label={tag}
+            />
+          </div>
+        ) : (
+          <div />
+        )}
+        <CardContent className={classes.content} onClick={() => clickCard()}>
+          <Typography
+            variant="subtitle1"
+            color="textPrimary"
+            component="h5"
+            className={classes.title}
+          >
+            {title}
+          </Typography>
+          <Box
+            className={classes.textBox}
+            component="div"
+            textOverflow="ellipsis"
+            overflow="hidden"
+            whiteSpace="nowrap"
+          >
+            {subtitle}
+          </Box>
+          <Box
+            className={classes.textBox}
+            component="div"
+            textOverflow="ellipsis"
+            overflow="hidden"
+            whiteSpace="nowrap"
+          >
+            {description}
+          </Box>
+          <Box
+            className={classes.textBox}
+            component="div"
+            textOverflow="ellipsis"
+            overflow="hidden"
+            whiteSpace="nowrap"
+          >
+            {details}
+          </Box>
+          <Typography
+            variant="body1"
+            color="textPrimary"
+            component="h6"
+            className={classes.price}
+          >
+            {currencyPrice}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
     </Card>
   );
-}
+};
+
+export function ProductCardCarousel(props: ProductCarouselType) {
+
+};
