@@ -111,11 +111,12 @@ export const EditableCardGrid = () => {
 };
 
 export const EditableCardB = () => {
-  
-  return(
+  return (
     <ProductCardB
       //imageUrl={"https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw4914edc4/images/large/11101-glafornil-metformina-500-mg-30-comprimidos-recubiertos.jpg?sw=1000&sh=1000"}
-      imageUrl={"https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000"}
+      imageUrl={
+        'https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000'
+      }
       title={'Glafornil'}
       subtitle={'Metformina Clorhidrato Clorhidrato'}
       details={'30 comprimidos recubiertos'}
@@ -124,7 +125,7 @@ export const EditableCardB = () => {
       tag={'Receta retenida'}
     />
   );
-}
+};
 
 Base.story = {
   name: 'Base element',
