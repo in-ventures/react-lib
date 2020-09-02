@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 3:45:13 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 1st September 2020 5:21:31 pm
+ * Last Modified: Wednesday, 2nd September 2020 11:02:01 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -14,14 +14,62 @@
  */
 
 import { Formatter } from './Formatter';
+import is from 'is_js';
 
 const SUPPORTED_MASK_CHAR_REPLACE = ['*', 'A', '9'];
 
+type Char = string | RegExp;
+type Mask = string | string[] | Char[];
+
+type SupportChecker = (char: Char) => boolean;
+type MatchChecker = (input: string, regex?: RegExp) => boolean;
+const CHAR_SUPPORT: [SupportChecker, MatchChecker][] = [
+  [(char: Char) => is.string(char) && char === '*', () => true],
+  [
+    (char: Char) => is.string(char) && char === 'A',
+    (char: string) => !!char.match(/[a-zA-Z]/),
+  ],
+  [
+    (char: Char) => is.string(char) && char === '9',
+    (char: string) => !!char.match(/[0-9]/),
+  ],
+  [
+    (char: Char) => is.regexp(char),
+    (char: string, regex?: RegExp) => !!regex && !!char.match(regex),
+  ],
+];
+
 export class MaskFormatter extends Formatter {
-  mask: string;
-  constructor(mask: string) {
+  mask: Mask;
+  constructor(mask: Mask) {
     super();
     this.mask = mask;
+  }
+  isSupportedChar(char: Char) {
+    return CHAR_SUPPORT.some(([supportVerify]) => supportVerify(char));
+  }
+
+  // If current mask char is supported, but current char doesn't match, omit char
+  isSupportedButMiss(inputChar: string, maskChar: Char) {
+    return CHAR_SUPPORT.some(
+      ([supportVerify, matchVerify]) =>
+        supportVerify(maskChar) &&
+        !matchVerify(
+          inputChar,
+          maskChar instanceof RegExp ? maskChar : undefined,
+        ),
+    );
+  }
+
+  isSupportedAndMatch(inputChar: string, maskChar: Char) {
+    return CHAR_SUPPORT.some(
+      ([supportVerify, matchVerify]) =>
+        supportVerify(maskChar) &&
+        matchVerify(
+          inputChar,
+          maskChar instanceof RegExp ? maskChar : undefined,
+        ),
+    );
   }
   /**
    * Format the string following a mask
@@ -29,6 +77,7 @@ export class MaskFormatter extends Formatter {
    * - *: replace any char
    * - A: replace a alphabetic char
    * - 9: replace a numeric char
+   * - /regex/: replace with a char if match
    * Also supports an array of chars or RegExps.
    * Replace all mask char supported with the input char given.
    * If the mask have chars not supported for replace, the char will be put in the output string
@@ -41,31 +90,17 @@ export class MaskFormatter extends Formatter {
     input.split('').forEach((char) => {
       if (missingMask.length === 0) return;
       let maskChar = missingMask[0];
-      // If current mask char is supported, but current char doesn't match, omit char
-      if (
-        (SUPPORTED_MASK_CHAR_REPLACE.includes(maskChar) &&
-          ((maskChar === 'A' && !char.match(/[a-zA-Z]/)) ||
-            (maskChar === '9' && !char.match(/[0-9]/)))) ||
-        (maskChar instanceof RegExp && !char.match(maskChar))
-      )
-        return;
+      if (this.isSupportedButMiss(char, maskChar)) return;
 
       missingMask = missingMask.slice(1);
       if (maskChar === char) return (newText += char);
 
-      while (
-        missingMask.length > 0 &&
-        !SUPPORTED_MASK_CHAR_REPLACE.includes(maskChar)
-      ) {
+      while (missingMask.length > 0 && !this.isSupportedChar(maskChar)) {
         newText += maskChar;
         maskChar = missingMask[0];
         missingMask = missingMask.slice(1);
       }
-      if (maskChar === '*') return (newText += char);
-      if (maskChar === 'A' && char.match(/[a-zA-Z]/)) return (newText += char);
-      if (maskChar === '9' && char.match(/[0-9]/)) return (newText += char);
-      if (maskChar instanceof RegExp && char.match(maskChar))
-        return (newText += char)
+      if (this.isSupportedAndMatch(char, maskChar)) return (newText += char);
     });
     const index = newText.indexOf('*');
     return index > -1 ? newText.slice(0, index) : newText;
