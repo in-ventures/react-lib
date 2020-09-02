@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Wednesday, 2nd September 2020 4:03:45 pm
+ * Last Modified: Wednesday, 2nd September 2020 4:17:37 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -14,11 +14,7 @@
  */
 
 import React from 'react';
-import {
-  makeStyles,
-  Theme,
-  createStyles,
-} from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 import InsertDriveFileOutlinedIcon from '@material-ui/icons/InsertDriveFileOutlined';
 import ChevronRightRoundedIcon from '@material-ui/icons/ChevronRightRounded';
 import {
@@ -48,7 +44,7 @@ type ProductBPropTypes = {
 type ProductCarouselType = {
   title: string;
   onClickCarousel: () => void;
-  cardList ?: ProductBPropTypes[];
+  cardList?: ProductBPropTypes[];
 };
 
 const useStyles = makeStyles((theme: Theme) => {
@@ -122,7 +118,16 @@ const useStyles = makeStyles((theme: Theme) => {
 });
 
 export function ProductCardB(props: ProductBPropTypes) {
-  const { imageUrl, title, subtitle, tag, details, description, price, onClickCard } = props;
+  const {
+    imageUrl,
+    title,
+    subtitle,
+    tag,
+    details,
+    description,
+    price,
+    onClickCard,
+  } = props;
   const currFormat = new CurrencyFormatter();
   const currencyPrice = currFormat.format(price);
   const classes = useStyles();
@@ -130,7 +135,11 @@ export function ProductCardB(props: ProductBPropTypes) {
   return (
     <Card className={classes.root}>
       <CardActionArea>
-        <CardMedia className={classes.media} image={imageUrl} onClick={() => onClickCard()}/>
+        <CardMedia
+          className={classes.media}
+          image={imageUrl}
+          onClick={() => onClickCard()}
+        />
         {tag ? (
           <div>
             <Chip
@@ -142,13 +151,10 @@ export function ProductCardB(props: ProductBPropTypes) {
           </div>
         ) : (
           <div>
-            <Chip
-              className={classes.disabled}
-              size="small"
-            />
+            <Chip className={classes.disabled} size="small" />
           </div>
         )}
-        
+
         <CardContent className={classes.content} onClick={() => onClickCard()}>
           <Typography
             variant="subtitle1"
@@ -197,16 +203,20 @@ export function ProductCardB(props: ProductBPropTypes) {
       </CardActionArea>
     </Card>
   );
-};
+}
 
 export function ProductCardCarousel(props: ProductCarouselType) {
-  const {title, onClickCarousel, cardList} = props;
+  const { title, onClickCarousel, cardList } = props;
   const classes = useStyles();
-  
-  return (
-    <Box display="block">    
-      <Grid container className={classes.gridContainer} spacing={2} justify="flex-start">
 
+  return (
+    <Box display="block">
+      <Grid
+        container
+        className={classes.gridContainer}
+        spacing={2}
+        justify="center"
+      >
         <Typography
           variant="body1"
           color="textPrimary"
@@ -215,16 +225,21 @@ export function ProductCardCarousel(props: ProductCarouselType) {
         >
           {title}
         </Typography>
-        <IconButton color="primary" aria-label="view product categories" className={classes.menuButton}>
+        <IconButton
+          color="primary"
+          aria-label="view product categories"
+          className={classes.menuButton}
+          onClick={onClickCarousel}
+        >
           <ChevronRightRoundedIcon />
         </IconButton>
 
         {cardList ? (
-          <Grid item xs={12}>
+          <Grid item xs={12} justify="center">
             <Grid container justify="flex-start" spacing={2}>
               {cardList.map((cardInfo, index) => (
                 <Grid key={index} item>
-                  <ProductCardB 
+                  <ProductCardB
                     imageUrl={cardInfo.imageUrl}
                     title={cardInfo.title}
                     subtitle={cardInfo.subtitle}
@@ -236,14 +251,12 @@ export function ProductCardCarousel(props: ProductCarouselType) {
                   />
                 </Grid>
               ))}
-
             </Grid>
           </Grid>
-          ) : (
-            <div />
+        ) : (
+          <div />
         )}
-
       </Grid>
     </Box>
   );
-};
+}

@@ -15,7 +15,7 @@
 
 import React from 'react';
 import ProductCardA from '../components/ProductCardA';
-import {ProductCardB, ProductCardCarousel} from '../components';
+import { ProductCardB, ProductCardCarousel } from '../components';
 import { text, boolean, number } from '@storybook/addon-knobs';
 
 export default {
@@ -122,7 +122,7 @@ export const EditableCardB = () => {
       description={'500 mg'}
       price={15990}
       tag={'Receta retenida'}
-      onClickCard={ () => console.log('You clicked B1!') }
+      onClickCard={() => console.log('You clicked B1!')}
     />
   );
 };
@@ -131,40 +131,43 @@ export const ProductCarousel = () => {
   return (
     <ProductCardCarousel
       title={'Más vendidos'}
-      onClickCarousel={ () => console.log('Want to know more about the carousel products?') }
-      cardList={[{
-        imageUrl:
-        'https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000',
-        title:'Glafornil',
-        subtitle: 'Metformina Clorhidrato Clorhidrato',
-        details: '30 comprimidos recubiertos',
-        description: '500 mg',
-        price: 15990,
-        tag: 'Receta retenida',
-        onClickCard: () => console.log('You clicked B1!'),
-      },
-      {
-        imageUrl:
-        'https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000',
-        title:'Glafornil',
-        subtitle: 'Metformina Clorhidrato Clorhidrato',
-        details: '30 comprimidos recubiertos',
-        description: '500 mg',
-        price: 15990,
-        //tag: 'Receta retenida',
-        onClickCard: () => console.log('You clicked B2!'),
-      },
-      {
-        imageUrl:
-        'https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000',
-        title:'Glafornil',
-        subtitle: 'Metformina Clorhidrato Clorhidrato',
-        details: '30 comprimidos recubiertos',
-        description: '500 mg',
-        price: 15990,
-        tag: 'Receta retenida',
-        onClickCard: () => console.log('You clicked B3!'),
-      },
+      onClickCarousel={() =>
+        console.log('Want to know more about the carousel products?')
+      }
+      cardList={[
+        {
+          imageUrl:
+            'https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000',
+          title: 'Glafornil',
+          subtitle: 'Metformina Clorhidrato Clorhidrato',
+          details: '30 comprimidos recubiertos',
+          description: '500 mg',
+          price: 15990,
+          tag: 'Receta retenida',
+          onClickCard: () => console.log('You clicked B1!'),
+        },
+        {
+          imageUrl:
+            'https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000',
+          title: 'Glafornil',
+          subtitle: 'Metformina Clorhidrato Clorhidrato',
+          details: '30 comprimidos recubiertos',
+          description: '500 mg',
+          price: 15990,
+          //tag: 'Receta retenida',
+          onClickCard: () => console.log('You clicked B2!'),
+        },
+        {
+          imageUrl:
+            'https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000',
+          title: 'Glafornil',
+          subtitle: 'Metformina Clorhidrato Clorhidrato',
+          details: '30 comprimidos recubiertos',
+          description: '500 mg',
+          price: 15990,
+          tag: 'Receta retenida',
+          onClickCard: () => console.log('You clicked B3!'),
+        },
       ]}
     />
   );
