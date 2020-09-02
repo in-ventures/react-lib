@@ -4,8 +4,8 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Wednesday, 2nd September 2020 12:06:06 pm
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Wednesday, 2nd September 2020 1:10:50 pm
+ * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -33,9 +33,13 @@ export const useSearchBar = <T = Record<string, unknown>>(
   const valueRef = useRef<string>(searchValue);
 
   const queryRef = useRef<null | T[] | ((data: string) => Promise<string[]>)>();
+
+  //Setting queryRef values when changes in query
   useEffect(() => {
     queryRef.current = query;
   }, [query]);
+
+  //Handle searching of elements depending of the query type
   const search = useCallback(
     async (newValue: string) => {
       if (!queryRef.current) return;
@@ -56,6 +60,7 @@ export const useSearchBar = <T = Record<string, unknown>>(
     [...Object.values(options), setSearchResult],
   );
 
+  //Setting debounce for searching elements
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const stopTyping = useCallback(
     debounce(
@@ -68,8 +73,9 @@ export const useSearchBar = <T = Record<string, unknown>>(
     [options.debounceTime, search],
   );
 
+  //Updating stopTyping when searching values change
   const handleSetSearchValue = useCallback(
-    async (data: string) => {
+    (data: string) => {
       const newValue = data;
       setSearchValue(newValue);
       stopTyping(newValue);
