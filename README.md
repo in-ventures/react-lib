@@ -126,10 +126,10 @@ ___
         * if there pending asynchronous validations, state will be *PENDING*.
         * if all synchronous and asynchronous validations have finished running, hook state will be *ERROR* in case of validation errors, or *SUCCESS* otherwise.
 ### - useSearchBar.hook
-* *Return type*: this hook returns an array with it's value from the search of diffrent types of query
+* *Return type*: this hook returns an array of objects or strings with it's value from the searching values depending of different types of query.
 * *Methods*:
-    * `search`: callback function, that handles the type of query recib and runs actions according to specific conditions to return the searching values.
+    * `search`: callback function, that handles the type of query recib and runs actions according to specific conditions to return the searching elements. In case of a Synchronous function it waits for the function to finish and get its values.
     *   `handleSetValue`: callback function, runs the input value through the formatter. This new value is then set as SetValue.
-    *   `stopTyping`: callback function, called each time user inputs a new character. It runs the set debounce time.
+    *   `stopTyping`: callback function, called each time user inputs a new character to search. It runs the set debounce time.
  
 
