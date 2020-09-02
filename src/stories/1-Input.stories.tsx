@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 1st September 2020 4:52:13 pm
+ * Last Modified: Wednesday, 2nd September 2020 11:20:32 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -228,22 +228,54 @@ export const InputForPhone = () => {
   );
 };
 
-const rutMask = ['9', '9', '.', '9', '9', '9', '.', '9', '9', '9', '-', /[0-9kK]/]
+const rutMask = [
+  '9',
+  '9',
+  '.',
+  '9',
+  '9',
+  '9',
+  '.',
+  '9',
+  '9',
+  '9',
+  '-',
+  /[0-9kK]/,
+];
 
 export const InputWithMask = () => {
   const debounceTime = number('Debounce time (ms)', 800);
+
+  const [length, setLength] = useInput('', {
+    formatter: new MaskFormatter('****'),
+  });
+  const [birthdate, setBirthdate] = useInput('', {
+    formatter: new MaskFormatter('99/99/9999'),
+  });
   const [value, setValue, status, errors, handleBlur] = useInput('', {
     formatter: new MaskFormatter(rutMask),
   });
   return (
-    <Input
-      value={value}
-      onChange={(e) => setValue(String(e.target.value))}
-      onBlur={handleBlur}
-      error={status === InputStatus.ERROR}
-      helperText={errors[0]}
-      label={`Ingrese RUT (${debounceTime}ms)`}
-    />
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <Input
+        value={length}
+        onChange={(e) => setLength(String(e.target.value))}
+        label={`Maximo 4`}
+      />
+      <Input
+        value={birthdate}
+        onChange={(e) => setBirthdate(String(e.target.value))}
+        label={`fecha de nacimiento `}
+      />
+      <Input
+        value={value}
+        onChange={(e) => setValue(String(e.target.value))}
+        onBlur={handleBlur}
+        error={status === InputStatus.ERROR}
+        helperText={errors[0]}
+        label={`Ingrese RUT (${debounceTime}ms)`}
+      />
+    </div>
   );
 };
 
