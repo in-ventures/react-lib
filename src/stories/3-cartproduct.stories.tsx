@@ -6,22 +6,6 @@ import { text, number } from '@storybook/addon-knobs';
 export default {
     title: 'Cart',
 };
-export const Base = () => (
-    <CartProduct
-    urlImage="https://www.laboratoriochile.cl/wp-content//uploads/2015/11/Clonazepam_05MG_30C_BE_HD.jpg"
-    title1="Nombre comercial"
-    title2="100 mcg"
-    title3="50 comprimidos"
-    title4=""
-    quantity={1}
-    unitPrice={10}
-    event1={() =>{}}
-    addQuantity={() =>{return 1}}
-    subQuantity={() =>{return 1}}
-    sendToTrash={() =>{}}
-    checkDetails={() =>{}}
-  ></CartProduct>
-);
 
 export const EditableCartProduct = () => {
 
