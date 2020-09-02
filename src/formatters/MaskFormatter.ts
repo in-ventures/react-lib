@@ -29,6 +29,7 @@ export class MaskFormatter extends Formatter {
    * - *: replace any char
    * - A: replace a alphabetic char
    * - 9: replace a numeric char
+   * Also supports an array of chars or RegExps.
    * Replace all mask char supported with the input char given.
    * If the mask have chars not supported for replace, the char will be put in the output string
    * For examples, check the test file
@@ -42,11 +43,13 @@ export class MaskFormatter extends Formatter {
       let maskChar = missingMask[0];
       // If current mask char is supported, but current char doesn't match, omit char
       if (
-        SUPPORTED_MASK_CHAR_REPLACE.includes(maskChar) &&
-        ((maskChar === 'A' && !char.match(/[a-zA-Z]/)) ||
-          (maskChar === '9' && !char.match(/[0-9]/)))
+        (SUPPORTED_MASK_CHAR_REPLACE.includes(maskChar) &&
+          ((maskChar === 'A' && !char.match(/[a-zA-Z]/)) ||
+            (maskChar === '9' && !char.match(/[0-9]/)))) ||
+        (maskChar instanceof RegExp && !char.match(maskChar))
       )
         return;
+
       missingMask = missingMask.slice(1);
       if (maskChar === char) return (newText += char);
 
@@ -61,6 +64,8 @@ export class MaskFormatter extends Formatter {
       if (maskChar === '*') return (newText += char);
       if (maskChar === 'A' && char.match(/[a-zA-Z]/)) return (newText += char);
       if (maskChar === '9' && char.match(/[0-9]/)) return (newText += char);
+      if (maskChar instanceof RegExp && char.match(maskChar))
+        return (newText += char)
     });
     const index = newText.indexOf('*');
     return index > -1 ? newText.slice(0, index) : newText;

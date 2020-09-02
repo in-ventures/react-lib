@@ -228,10 +228,12 @@ export const InputForPhone = () => {
   );
 };
 
+const rutMask = ['9', '9', '.', '9', '9', '9', '.', '9', '9', '9', '-', /[0-9kK]/]
+
 export const InputWithMask = () => {
   const debounceTime = number('Debounce time (ms)', 800);
   const [value, setValue, status, errors, handleBlur] = useInput('', {
-    formatter: new MaskFormatter('**.***.***-*'),
+    formatter: new MaskFormatter(rutMask),
   });
   return (
     <Input
