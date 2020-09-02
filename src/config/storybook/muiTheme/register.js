@@ -4,7 +4,7 @@
  * File Created: Thursday, 9th July 2020 8:39:57 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 21st July 2020 1:39:51 pm
+ * Last Modified: Tuesday, 1st September 2020 5:47:35 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -28,6 +28,7 @@ const MyPanel = ({ api }) => {
   const handleChange = useCallback(
     (e) => {
       const newTheme = e.target.value;
+      console.debug('[THEME ADDON] Set theme', { newTheme });
       setTheme(newTheme);
       api.emit(CHANGE_THEME_EVENT, { theme: newTheme });
     },
@@ -52,6 +53,7 @@ const MyPanel = ({ api }) => {
 };
 
 addons.register(ADDON_ID, (api) => {
+  console.debug('[THEME ADDON] Register addon');
   const render = ({ active, key }) => (
     <AddonPanel active={active} key={key}>
       <MyPanel api={api} />
