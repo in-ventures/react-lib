@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Wednesday, 2nd September 2020 4:17:37 pm
+ * Last Modified: Wednesday, 2nd September 2020 4:22:47 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -28,7 +28,7 @@ import {
   Typography,
   Chip,
 } from '@material-ui/core';
-import { CurrencyFormatter } from './../hooks/formatters';
+import { CurrencyFormatter } from './../formatters';
 
 type ProductBPropTypes = {
   imageUrl?: string;
