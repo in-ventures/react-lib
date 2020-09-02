@@ -27,7 +27,6 @@ const MyPanel = ({ api }) => {
   const [theme, setTheme] = useState('mekiTheme');
   const handleChange = useCallback(
     (e) => {
-      
       const newTheme = e.target.value;
       console.debug('[THEME ADDON] Set theme', { newTheme });
       setTheme(newTheme);

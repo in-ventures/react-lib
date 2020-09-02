@@ -36,5 +36,5 @@ jobs:
 
       - name: Install JS dependencies
         run: yarn install
-      - name: Test
+      - name: Lint
         run: yarn lint
