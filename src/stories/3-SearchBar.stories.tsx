@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Tuesday, 1st September 2020 10:46:25 am
+ * Last Modified: Wednesday, 2nd September 2020 11:31:03 am
  * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -13,30 +13,48 @@
  * Inventures - www.inventures.cl
  */
 
-import React from 'react';
+import React, { useCallback } from 'react';
 import { SearchBar } from '../components/searchBar';
 import { useSearchBar } from '../hooks/useSearchBar.hooks';
-
-const query = ['Google', 'Facebook', 'Twitter', 'Linkedin', 'PcGamer'];
+import { number } from '@storybook/addon-knobs';
 
 export default {
   title: 'SearchBar',
 };
 
+const query = [
+  {
+    item: 'Long Sword',
+  },
+  {
+    item: 'Battle Axe',
+  },
+  {
+    item: 'Short Sword',
+  },
+  {
+    item: 'Short Bow',
+  },
+  {
+    item: 'Long Bow',
+  },
+  {
+    item: 'Long Bow + 1',
+  },
+  {
+    item: 'Staff',
+  },
+  {
+    weapon: 'Staff',
+  },
+];
+
+const debounceTime = number('Debounce time (ms)', 800);
+
+// To-Do Fix Fuse.js Options
 const filterOptions = {
-  isCaseSensitive: false,
-  includeScore: false,
-  shouldSort: true,
-  includeMatches: false,
-  findAllMatches: true,
-  minMatchCharLength: 3,
-  location: 0,
-  threshold: 0.6,
-  distance: 100,
-  useExtendedSearch: true,
-  ignoreLocation: false,
-  ignoreFieldNorm: false,
-  keys: [],
+  keys: ['item'],
+  debounceTime,
 };
 
 export const Base = () => {
@@ -45,21 +63,25 @@ export const Base = () => {
     query,
     filterOptions,
   );
-  const handleChange = (e) => {
-    setSearchValue(e.target.value);
-  };
+
+  const handleWrite = useCallback(
+    (e) => {
+      setSearchValue(String(e.target.value));
+    },
+    [setSearchValue],
+  );
 
   return (
     <div>
       <SearchBar
         value={searchValue}
-        onChange={handleChange}
-        label={'Search'}
+        onChange={handleWrite}
+        label={`Search (${debounceTime}ms)`}
         type={'Text'}
       />
       <ul>
-        {searchResults.map((item) => (
-          <li key={item}>{item}</li>
+        {searchResults.map((result) => (
+          <li key={result}>{result}</li>
         ))}
       </ul>
     </div>
