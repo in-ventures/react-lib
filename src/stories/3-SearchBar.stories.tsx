@@ -4,8 +4,8 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Wednesday, 2nd September 2020 11:31:03 am
- * Modified By: Luis Aparicio (luis@inventures.cl)
+ * Last Modified: Wednesday, 2nd September 2020 11:57:39 am
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -44,9 +44,6 @@ const query = [
   {
     item: 'Staff',
   },
-  {
-    weapon: 'Staff',
-  },
 ];
 
 const debounceTime = number('Debounce time (ms)', 800);
@@ -58,11 +55,9 @@ const filterOptions = {
 };
 
 export const Base = () => {
-  const [searchValue, setSearchValue, searchResults] = useSearchBar(
-    '',
-    query,
-    filterOptions,
-  );
+  const [searchValue, setSearchValue, searchResults] = useSearchBar<{
+    item: string;
+  }>('', query, filterOptions);
 
   const handleWrite = useCallback(
     (e) => {
@@ -80,8 +75,8 @@ export const Base = () => {
         type={'Text'}
       />
       <ul>
-        {searchResults.map((result) => (
-          <li key={result}>{result}</li>
+        {(searchResults as { item: string }[]).map((result) => (
+          <li key={result.item}>{result.item}</li>
         ))}
       </ul>
     </div>
