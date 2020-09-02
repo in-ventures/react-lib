@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Wednesday, 26th August 2020 7:13:39 pm
+ * Last Modified: Wednesday, 2nd September 2020 4:24:49 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -24,8 +24,8 @@ import {
   RutValidator,
   LengthValidator,
   NumericValidator,
-} from '../hooks/validators';
-import { AccentRemoverFormatter, RutFormatter } from '../hooks/formatters';
+} from '../validators';
+import { AccentRemoverFormatter, RutFormatter } from '../formatters';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
