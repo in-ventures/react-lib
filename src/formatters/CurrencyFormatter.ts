@@ -18,14 +18,10 @@ import { Formatter } from './Formatter';
 export class CurrencyFormatter extends Formatter {
   format(input: number) {
     const formatter = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'CLP',
-      });
-    const formattedText = '$ '
-      .concat(
-        formatter.format(input)
-        .substr(4,)
-      );
+      style: 'currency',
+      currency: 'CLP',
+    });
+    const formattedText = '$ '.concat(formatter.format(input).substr(4));
     return formattedText;
   }
 }
