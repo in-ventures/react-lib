@@ -4,7 +4,7 @@
  * File Created: Thursday, 9th July 2020 12:56:32 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Thursday, 13th August 2020 11:22:08 am
+ * Last Modified: Tuesday, 1st September 2020 5:50:59 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -14,9 +14,10 @@
  */
 import { addParameters } from '@storybook/client-api';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-
-addParameters({
+import { muiThemeDecorator } from '../src/config/storybook/muiTheme'
+export const parameters = {
   viewport: {
     viewports: INITIAL_VIEWPORTS,
   },
-});
+};
+export const decorators = [muiThemeDecorator];
