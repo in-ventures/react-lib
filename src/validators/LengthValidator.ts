@@ -45,6 +45,7 @@ export class LengthValidator extends Validator {
       input.length >= this.minLength && input.length <= this.maxLength,
     );
   }
+
   get _tag() {
     return this.errorMsg + `-${this.requiredLength}`;
   }

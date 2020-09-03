@@ -16,4 +16,5 @@
 export { Formatter } from './Formatter';
 export { AccentRemoverFormatter } from './AccentRemover';
 export { RutFormatter } from './RutFormatter';
+export { CurrencyFormatter } from './CurrencyFormatter';
 export { MaskFormatter } from './MaskFormatter';
