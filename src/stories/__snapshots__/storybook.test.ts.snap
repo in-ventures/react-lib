@@ -1491,6 +1491,214 @@ exports[`Storyshots Card Editable Card Grid 1`] = `
 </div>
 `;
 
+exports[`Storyshots Cart Editable Cart Product 1`] = `
+<div
+  className="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+>
+  <button
+    className="MuiButtonBase-root MuiCardActionArea-root"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="button"
+  >
+    <div
+      className="makeStyles-root-56"
+    >
+      <div
+        className="MuiCardMedia-root makeStyles-cover-60"
+        style={
+          Object {
+            "backgroundImage": "url(\\"https://www.laboratoriochile.cl/wp-content//uploads/2015/11/Clonazepam_05MG_30C_BE_HD.jpg\\")",
+          }
+        }
+        title=""
+      />
+      <div
+        className="makeStyles-details-57"
+      >
+        <div
+          className="MuiCardContent-root makeStyles-content-59"
+        >
+          <div
+            className="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom"
+          >
+            <div
+              className="MuiBox-root MuiBox-root-65"
+            >
+              Nombre comercial
+            </div>
+          </div>
+          <div
+            className="MuiTypography-root makeStyles-smalltext-64 MuiTypography-body1 MuiTypography-gutterBottom"
+          >
+            <div
+              className="MuiBox-root MuiBox-root-66"
+            >
+              100 mcg
+            </div>
+            <div
+              className="MuiBox-root MuiBox-root-67"
+            >
+              50 comprimidos
+            </div>
+            <a
+              className="MuiTypography-root MuiLink-root MuiLink-underlineHover makeStyles-underline-63 MuiTypography-colorPrimary"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+            >
+              Volverás a necesitar 05/08/20
+            </a>
+          </div>
+          <div
+            className="MuiTypography-root makeStyles-smalltext-64 MuiTypography-body1"
+          >
+            <div
+              className="MuiBox-root MuiBox-root-68"
+            >
+              Valor unitario: $ 
+              10
+            </div>
+          </div>
+          <div
+            className="MuiTypography-root MuiTypography-body1"
+          >
+            <div
+              className="MuiBox-root MuiBox-root-69"
+            >
+              Total: $ 
+              10
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span
+      className="MuiCardActionArea-focusHighlight"
+    />
+  </button>
+  <div
+    className="MuiCardActions-root makeStyles-actions-58 MuiCardActions-spacing"
+  >
+    <button
+      aria-label="delete"
+      className="MuiButtonBase-root MuiIconButton-root makeStyles-trashicon-62 MuiIconButton-sizeSmall"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiIconButton-label"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+          />
+        </svg>
+      </span>
+    </button>
+    <button
+      aria-label="add"
+      className="MuiButtonBase-root MuiIconButton-root makeStyles-sumicon-61"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiIconButton-label"
+      >
+        <span
+          aria-hidden={true}
+          className="material-icons MuiIcon-root MuiIcon-colorPrimary MuiIcon-fontSizeLarge"
+        >
+          add_circle
+        </span>
+      </span>
+    </button>
+    <div
+      className="MuiTypography-root MuiTypography-subtitle1"
+    >
+      <div
+        className="MuiBox-root MuiBox-root-70"
+      >
+        1
+      </div>
+    </div>
+    <button
+      aria-label="sub"
+      className="MuiButtonBase-root MuiIconButton-root makeStyles-sumicon-61"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiIconButton-label"
+      >
+        <span
+          aria-hidden={true}
+          className="material-icons MuiIcon-root MuiIcon-colorPrimary MuiIcon-fontSizeLarge"
+        >
+          remove_circle
+        </span>
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Input Base element 1`] = `
 <div
   className="MuiFormControl-root MuiTextField-root"
@@ -1744,5 +1952,39 @@ exports[`Storyshots Input Input With Mask 1`] = `
       />
     </div>
   </div>
+</div>
+`;
+
+exports[`Storyshots SearchBar Base 1`] = `
+<div>
+  <div
+    className="MuiFormControl-root MuiTextField-root"
+  >
+    <label
+      className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+      data-shrink={false}
+    >
+      Search (800ms)
+    </label>
+    <div
+      className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+      onClick={[Function]}
+    >
+      <input
+        aria-invalid={false}
+        autoFocus={false}
+        className="MuiInputBase-input MuiInput-input"
+        disabled={false}
+        onAnimationStart={[Function]}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        required={false}
+        type="Text"
+        value=""
+      />
+    </div>
+  </div>
+  <ul />
 </div>
 `;
