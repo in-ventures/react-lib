@@ -2,10 +2,10 @@
 
 exports[`Storyshots Card Base element 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-9 makeStyles-root-2"
+  className="MuiPaper-root MuiCard-root makeStyles-root-2 MuiPaper-elevation1 MuiPaper-rounded"
 >
   <button
-    className="MuiButtonBase-root MuiCardActionArea-root makeStyles-actionArea-8"
+    className="MuiButtonBase-root MuiCardActionArea-root"
     disabled={false}
     onBlur={[Function]}
     onDragLeave={[Function]}
@@ -21,283 +21,165 @@ exports[`Storyshots Card Base element 1`] = `
     tabIndex={0}
     type="button"
   >
-    <img
-      alt="Clonazepam 05 mg"
-      className="MuiCardMedia-root makeStyles-media-3 MuiCardMedia-media MuiCardMedia-img"
-      src="https://www.laboratoriochile.cl/wp-content//uploads/2015/11/Clonazepam_05MG_30C_BE_HD.jpg"
-      title="Clonazepam 05 mg"
+    <div
+      className="MuiCardMedia-root makeStyles-media-5"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundImage": "url(\\"https://www.laboratoriochile.cl/wp-content//uploads/2015/11/Clonazepam_05MG_30C_BE_HD.jpg\\")",
+        }
+      }
     />
     <div
-      className="MuiCardContent-root makeStyles-content-5"
+      className="MuiChip-root makeStyles-disabled-12 MuiChip-sizeSmall"
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+    >
+      <span
+        className="MuiChip-label MuiChip-labelSmall"
+      />
+    </div>
+    <div
+      className="MuiCardContent-root makeStyles-content-4"
       onClick={[Function]}
     >
-      <h2
-        className="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextPrimary MuiTypography-gutterBottom MuiTypography-alignCenter"
+      <h5
+        className="MuiTypography-root makeStyles-title-3 MuiTypography-subtitle1 MuiTypography-colorTextPrimary"
       >
         Clonazepam · 2 mg
-      </h2>
+      </h5>
       <div
-        className="MuiBox-root MuiBox-root-10 makeStyles-box-4"
+        className="MuiBox-root MuiBox-root-13 makeStyles-textBox-7"
       >
-        <div
-          className="MuiChip-root MuiChip-sizeSmall"
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-        >
-          <div
-            className="MuiAvatar-root MuiAvatar-circle MuiChip-avatar MuiChip-avatarSmall"
-          >
-            <img
-              alt="Bioequivalente"
-              className="MuiAvatar-img"
-              src="/static/images/avatar/1.jpg"
-            />
-          </div>
-          <span
-            className="MuiChip-label MuiChip-labelSmall"
-          >
-            BioE
-          </span>
-        </div>
-        <div
-          className="MuiChip-root MuiChip-sizeSmall"
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-        >
-          <div
-            className="MuiAvatar-root MuiAvatar-circle MuiChip-avatar MuiChip-avatarSmall"
-          >
-            <img
-              alt="Receta retenida"
-              className="MuiAvatar-img"
-              src="/static/images/avatar/1.jpg"
-            />
-          </div>
-          <span
-            className="MuiChip-label MuiChip-labelSmall"
-          >
-            Receta retenida
-          </span>
-        </div>
+        subtitle
       </div>
-      <p
-        className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-gutterBottom MuiTypography-alignCenter"
+      <div
+        className="MuiBox-root MuiBox-root-14 makeStyles-textBox-7"
       >
         Clonazepam · 2 mg · 30 comprimidos
-      </p>
-      <div
-        className="MuiBox-root MuiBox-root-11"
-      >
-        <h2
-          className="MuiTypography-root MuiTypography-h6 MuiTypography-colorPrimary MuiTypography-alignCenter"
-        >
-          $ 
-          5025
-        </h2>
-        <h3
-          className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignCenter"
-        >
-          $ 168 / comprimido
-        </h3>
       </div>
+      <div
+        className="MuiBox-root MuiBox-root-15 makeStyles-textBox-7"
+      />
+      <h6
+        className="MuiTypography-root makeStyles-price-6 MuiTypography-body1 MuiTypography-colorTextPrimary"
+      >
+        CLP 5,025
+      </h6>
     </div>
     <span
       className="MuiCardActionArea-focusHighlight"
     />
   </button>
-  <div
-    className="MuiCardActions-root makeStyles-actions-6 MuiCardActions-spacing"
-    onClick={[Function]}
-  >
-    <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-button-7 MuiButton-containedPrimary"
-      disabled={false}
-      onBlur={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Agregar
-      </span>
-    </button>
-  </div>
 </div>
 `;
 
 exports[`Storyshots Card Editable Card 1`] = `
 <div
-  style={
-    Object {
-      "display": "flex",
-    }
-  }
+  className="MuiPaper-root MuiCard-root makeStyles-root-16 MuiPaper-elevation1 MuiPaper-rounded"
 >
-  <div
-    className="MuiBox-root MuiBox-root-19 makeStyles-root-12"
+  <button
+    className="MuiButtonBase-root MuiCardActionArea-root"
+    disabled={false}
+    onBlur={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="button"
   >
-    <button
-      className="MuiButtonBase-root MuiCardActionArea-root makeStyles-actionArea-18"
-      disabled={false}
-      onBlur={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
+    <div
+      className="MuiCardMedia-root makeStyles-media-19"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundImage": "url(\\"https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000\\")",
+        }
+      }
+    />
+    <div
+      className="MuiChip-root MuiChip-colorPrimary MuiChip-sizeSmall"
       onKeyDown={[Function]}
       onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
     >
-      <img
-        alt="Clonazepam 05 mg"
-        className="MuiCardMedia-root makeStyles-media-13 MuiCardMedia-media MuiCardMedia-img"
-        src="https://www.laboratoriochile.cl/wp-content//uploads/2015/11/Clonazepam_05MG_30C_BE_HD.jpg"
-        title="Clonazepam 05 mg"
-      />
-      <div
-        className="MuiCardContent-root makeStyles-content-15"
-        onClick={[Function]}
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root MuiChip-icon MuiChip-iconSmall MuiChip-iconColorPrimary"
+        focusable="false"
+        viewBox="0 0 24 24"
       >
-        <h2
-          className="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextPrimary MuiTypography-gutterBottom MuiTypography-alignCenter"
-        >
-          Clonazepam · 2 mg
-        </h2>
-        <div
-          className="MuiBox-root MuiBox-root-20 makeStyles-box-14"
-        >
-          <div
-            className="MuiChip-root MuiChip-sizeSmall"
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-          >
-            <div
-              className="MuiAvatar-root MuiAvatar-circle MuiChip-avatar MuiChip-avatarSmall"
-            >
-              <img
-                alt="Bioequivalente"
-                className="MuiAvatar-img"
-                src="/static/images/avatar/1.jpg"
-              />
-            </div>
-            <span
-              className="MuiChip-label MuiChip-labelSmall"
-            >
-              BioE
-            </span>
-          </div>
-          <div
-            className="MuiChip-root MuiChip-sizeSmall"
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-          >
-            <div
-              className="MuiAvatar-root MuiAvatar-circle MuiChip-avatar MuiChip-avatarSmall"
-            >
-              <img
-                alt="Receta retenida"
-                className="MuiAvatar-img"
-                src="/static/images/avatar/1.jpg"
-              />
-            </div>
-            <span
-              className="MuiChip-label MuiChip-labelSmall"
-            >
-              Receta retenida
-            </span>
-          </div>
-        </div>
-        <p
-          className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-gutterBottom MuiTypography-alignCenter"
-        >
-          Clonazepam · 2 mg · 30 comprimidos
-        </p>
-        <div
-          className="MuiBox-root MuiBox-root-21"
-        >
-          <h2
-            className="MuiTypography-root MuiTypography-h6 MuiTypography-colorPrimary MuiTypography-alignCenter"
-          >
-            $ 
-            5025
-          </h2>
-          <h3
-            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignCenter"
-          >
-            $ 168 / comprimido
-          </h3>
-        </div>
-      </div>
+        <path
+          d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"
+        />
+      </svg>
       <span
-        className="MuiCardActionArea-focusHighlight"
-      />
-    </button>
+        className="MuiChip-label MuiChip-labelSmall"
+      >
+        Receta retenida
+      </span>
+    </div>
     <div
-      className="MuiCardActions-root makeStyles-actions-16 MuiCardActions-spacing"
+      className="MuiCardContent-root makeStyles-content-18"
       onClick={[Function]}
     >
-      <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-button-17 MuiButton-containedPrimary"
-        disabled={false}
-        onBlur={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
+      <h5
+        className="MuiTypography-root makeStyles-title-17 MuiTypography-subtitle1 MuiTypography-colorTextPrimary"
       >
-        <span
-          className="MuiButton-label"
-        >
-          Agregar
-        </span>
-      </button>
+        Glafornil
+      </h5>
+      <div
+        className="MuiBox-root MuiBox-root-27 makeStyles-textBox-21"
+      >
+        Metformina Clorhidrato Clorhidrato
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root-28 makeStyles-textBox-21"
+      >
+        500 mg
+      </div>
+      <div
+        className="MuiBox-root MuiBox-root-29 makeStyles-textBox-21"
+      >
+        30 comprimidos recubiertos
+      </div>
+      <h6
+        className="MuiTypography-root makeStyles-price-20 MuiTypography-body1 MuiTypography-colorTextPrimary"
+      >
+        CLP 15,990
+      </h6>
     </div>
-  </div>
+    <span
+      className="MuiCardActionArea-focusHighlight"
+    />
+  </button>
 </div>
 `;
 
-exports[`Storyshots Card Editable Card Grid 1`] = `
+exports[`Storyshots Card Product Carousel 1`] = `
 <div
-  style={
-    Object {
-      "display": "grid",
-      "gap": "40px 10px",
-      "gridTemplateColumns": "repeat(3, 1fr)",
-      "gridTemplateRows": "repeat(3, 1fr)",
-    }
-  }
+  className="MuiBox-root MuiBox-root-41"
 >
   <div
-    className="MuiBox-root MuiBox-root-29 makeStyles-root-22"
+    className="MuiGrid-root makeStyles-gridContainer-38 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-justify-xs-center"
   >
+    <h5
+      className="MuiTypography-root makeStyles-title-31 MuiTypography-body1 MuiTypography-colorTextPrimary"
+    >
+      Más vendidos
+    </h5>
     <button
-      className="MuiButtonBase-root MuiCardActionArea-root makeStyles-actionArea-28"
+      aria-label="view product categories"
+      className="MuiButtonBase-root MuiIconButton-root makeStyles-menuButton-39 MuiIconButton-colorPrimary"
       disabled={false}
       onBlur={[Function]}
+      onClick={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -311,1181 +193,283 @@ exports[`Storyshots Card Editable Card Grid 1`] = `
       tabIndex={0}
       type="button"
     >
-      <img
-        alt="Clonazepam 05 mg"
-        className="MuiCardMedia-root makeStyles-media-23 MuiCardMedia-media MuiCardMedia-img"
-        src="https://www.laboratoriochile.cl/wp-content//uploads/2015/11/Clonazepam_05MG_30C_BE_HD.jpg"
-        title="Clonazepam 05 mg"
-      />
-      <div
-        className="MuiCardContent-root makeStyles-content-25"
-        onClick={[Function]}
-      >
-        <h2
-          className="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextPrimary MuiTypography-gutterBottom MuiTypography-alignCenter"
-        >
-          Clonazepam · 2 mg
-        </h2>
-        <div
-          className="MuiBox-root MuiBox-root-30 makeStyles-box-24"
-        >
-          <div
-            className="MuiChip-root MuiChip-sizeSmall"
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-          >
-            <div
-              className="MuiAvatar-root MuiAvatar-circle MuiChip-avatar MuiChip-avatarSmall"
-            >
-              <img
-                alt="Bioequivalente"
-                className="MuiAvatar-img"
-                src="/static/images/avatar/1.jpg"
-              />
-            </div>
-            <span
-              className="MuiChip-label MuiChip-labelSmall"
-            >
-              BioE
-            </span>
-          </div>
-          <div
-            className="MuiChip-root MuiChip-sizeSmall"
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-          >
-            <div
-              className="MuiAvatar-root MuiAvatar-circle MuiChip-avatar MuiChip-avatarSmall"
-            >
-              <img
-                alt="Receta retenida"
-                className="MuiAvatar-img"
-                src="/static/images/avatar/1.jpg"
-              />
-            </div>
-            <span
-              className="MuiChip-label MuiChip-labelSmall"
-            >
-              Receta retenida
-            </span>
-          </div>
-        </div>
-        <p
-          className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-gutterBottom MuiTypography-alignCenter"
-        >
-          Clonazepam · 2 mg · 30 comprimidos
-        </p>
-        <div
-          className="MuiBox-root MuiBox-root-31"
-        >
-          <h2
-            className="MuiTypography-root MuiTypography-h6 MuiTypography-colorPrimary MuiTypography-alignCenter"
-          >
-            $ 
-            5025
-          </h2>
-          <h3
-            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignCenter"
-          >
-            $ 168 / comprimido
-          </h3>
-        </div>
-      </div>
       <span
-        className="MuiCardActionArea-focusHighlight"
-      />
+        className="MuiIconButton-label"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M9.29 6.71c-.39.39-.39 1.02 0 1.41L13.17 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"
+          />
+        </svg>
+      </span>
     </button>
     <div
-      className="MuiCardActions-root makeStyles-actions-26 MuiCardActions-spacing"
-      onClick={[Function]}
+      className="MuiGrid-root MuiGrid-item MuiGrid-justify-xs-center MuiGrid-grid-xs-12"
     >
-      <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-button-27 MuiButton-containedPrimary"
-        disabled={false}
-        onBlur={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="MuiButton-label"
-        >
-          Agregar
-        </span>
-      </button>
-    </div>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root-32 makeStyles-root-22"
-  >
-    <button
-      className="MuiButtonBase-root MuiCardActionArea-root makeStyles-actionArea-28"
-      disabled={false}
-      onBlur={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <img
-        alt="Clonazepam 05 mg"
-        className="MuiCardMedia-root makeStyles-media-23 MuiCardMedia-media MuiCardMedia-img"
-        src="https://www.laboratoriochile.cl/wp-content//uploads/2015/11/Clonazepam_05MG_30C_BE_HD.jpg"
-        title="Clonazepam 05 mg"
-      />
       <div
-        className="MuiCardContent-root makeStyles-content-25"
-        onClick={[Function]}
+        className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
       >
-        <h2
-          className="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextPrimary MuiTypography-gutterBottom MuiTypography-alignCenter"
-        >
-          Clonazepam · 2 mg
-        </h2>
         <div
-          className="MuiBox-root MuiBox-root-33 makeStyles-box-24"
+          className="MuiGrid-root MuiGrid-item"
         >
           <div
-            className="MuiChip-root MuiChip-sizeSmall"
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
+            className="MuiPaper-root MuiCard-root makeStyles-root-30 MuiPaper-elevation1 MuiPaper-rounded"
           >
-            <div
-              className="MuiAvatar-root MuiAvatar-circle MuiChip-avatar MuiChip-avatarSmall"
+            <button
+              className="MuiButtonBase-root MuiCardActionArea-root"
+              disabled={false}
+              onBlur={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={0}
+              type="button"
             >
-              <img
-                alt="Bioequivalente"
-                className="MuiAvatar-img"
-                src="/static/images/avatar/1.jpg"
+              <div
+                className="MuiCardMedia-root makeStyles-media-33"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "backgroundImage": "url(\\"https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000\\")",
+                  }
+                }
               />
-            </div>
-            <span
-              className="MuiChip-label MuiChip-labelSmall"
-            >
-              BioE
-            </span>
-          </div>
-          <div
-            className="MuiChip-root MuiChip-sizeSmall"
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-          >
-            <div
-              className="MuiAvatar-root MuiAvatar-circle MuiChip-avatar MuiChip-avatarSmall"
-            >
-              <img
-                alt="Receta retenida"
-                className="MuiAvatar-img"
-                src="/static/images/avatar/1.jpg"
+              <div
+                className="MuiChip-root MuiChip-colorPrimary MuiChip-sizeSmall"
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root MuiChip-icon MuiChip-iconSmall MuiChip-iconColorPrimary"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"
+                  />
+                </svg>
+                <span
+                  className="MuiChip-label MuiChip-labelSmall"
+                >
+                  Receta retenida
+                </span>
+              </div>
+              <div
+                className="MuiCardContent-root makeStyles-content-32"
+                onClick={[Function]}
+              >
+                <h5
+                  className="MuiTypography-root makeStyles-title-31 MuiTypography-subtitle1 MuiTypography-colorTextPrimary"
+                >
+                  Glafornil
+                </h5>
+                <div
+                  className="MuiBox-root MuiBox-root-42 makeStyles-textBox-35"
+                >
+                  Metformina Clorhidrato Clorhidrato
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root-43 makeStyles-textBox-35"
+                >
+                  500 mg
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root-44 makeStyles-textBox-35"
+                >
+                  30 comprimidos recubiertos
+                </div>
+                <h6
+                  className="MuiTypography-root makeStyles-price-34 MuiTypography-body1 MuiTypography-colorTextPrimary"
+                >
+                  CLP 15,990
+                </h6>
+              </div>
+              <span
+                className="MuiCardActionArea-focusHighlight"
               />
-            </div>
-            <span
-              className="MuiChip-label MuiChip-labelSmall"
-            >
-              Receta retenida
-            </span>
+            </button>
           </div>
         </div>
-        <p
-          className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-gutterBottom MuiTypography-alignCenter"
-        >
-          Clonazepam · 2 mg · 30 comprimidos
-        </p>
         <div
-          className="MuiBox-root MuiBox-root-34"
+          className="MuiGrid-root MuiGrid-item"
         >
-          <h2
-            className="MuiTypography-root MuiTypography-h6 MuiTypography-colorPrimary MuiTypography-alignCenter"
+          <div
+            className="MuiPaper-root MuiCard-root makeStyles-root-30 MuiPaper-elevation1 MuiPaper-rounded"
           >
-            $ 
-            5025
-          </h2>
-          <h3
-            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignCenter"
+            <button
+              className="MuiButtonBase-root MuiCardActionArea-root"
+              disabled={false}
+              onBlur={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={0}
+              type="button"
+            >
+              <div
+                className="MuiCardMedia-root makeStyles-media-33"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "backgroundImage": "url(\\"https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000\\")",
+                  }
+                }
+              />
+              <div
+                className="MuiChip-root makeStyles-disabled-40 MuiChip-sizeSmall"
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+              >
+                <span
+                  className="MuiChip-label MuiChip-labelSmall"
+                />
+              </div>
+              <div
+                className="MuiCardContent-root makeStyles-content-32"
+                onClick={[Function]}
+              >
+                <h5
+                  className="MuiTypography-root makeStyles-title-31 MuiTypography-subtitle1 MuiTypography-colorTextPrimary"
+                >
+                  Glafornil
+                </h5>
+                <div
+                  className="MuiBox-root MuiBox-root-45 makeStyles-textBox-35"
+                >
+                  Metformina Clorhidrato Clorhidrato
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root-46 makeStyles-textBox-35"
+                >
+                  500 mg
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root-47 makeStyles-textBox-35"
+                >
+                  30 comprimidos recubiertos
+                </div>
+                <h6
+                  className="MuiTypography-root makeStyles-price-34 MuiTypography-body1 MuiTypography-colorTextPrimary"
+                >
+                  CLP 15,990
+                </h6>
+              </div>
+              <span
+                className="MuiCardActionArea-focusHighlight"
+              />
+            </button>
+          </div>
+        </div>
+        <div
+          className="MuiGrid-root MuiGrid-item"
+        >
+          <div
+            className="MuiPaper-root MuiCard-root makeStyles-root-30 MuiPaper-elevation1 MuiPaper-rounded"
           >
-            $ 168 / comprimido
-          </h3>
+            <button
+              className="MuiButtonBase-root MuiCardActionArea-root"
+              disabled={false}
+              onBlur={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={0}
+              type="button"
+            >
+              <div
+                className="MuiCardMedia-root makeStyles-media-33"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "backgroundImage": "url(\\"https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000\\")",
+                  }
+                }
+              />
+              <div
+                className="MuiChip-root MuiChip-colorPrimary MuiChip-sizeSmall"
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root MuiChip-icon MuiChip-iconSmall MuiChip-iconColorPrimary"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"
+                  />
+                </svg>
+                <span
+                  className="MuiChip-label MuiChip-labelSmall"
+                >
+                  Receta retenida
+                </span>
+              </div>
+              <div
+                className="MuiCardContent-root makeStyles-content-32"
+                onClick={[Function]}
+              >
+                <h5
+                  className="MuiTypography-root makeStyles-title-31 MuiTypography-subtitle1 MuiTypography-colorTextPrimary"
+                >
+                  Glafornil
+                </h5>
+                <div
+                  className="MuiBox-root MuiBox-root-48 makeStyles-textBox-35"
+                >
+                  Metformina Clorhidrato Clorhidrato
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root-49 makeStyles-textBox-35"
+                >
+                  500 mg
+                </div>
+                <div
+                  className="MuiBox-root MuiBox-root-50 makeStyles-textBox-35"
+                >
+                  30 comprimidos recubiertos
+                </div>
+                <h6
+                  className="MuiTypography-root makeStyles-price-34 MuiTypography-body1 MuiTypography-colorTextPrimary"
+                >
+                  CLP 15,990
+                </h6>
+              </div>
+              <span
+                className="MuiCardActionArea-focusHighlight"
+              />
+            </button>
+          </div>
         </div>
       </div>
-      <span
-        className="MuiCardActionArea-focusHighlight"
-      />
-    </button>
-    <div
-      className="MuiCardActions-root makeStyles-actions-26 MuiCardActions-spacing"
-      onClick={[Function]}
-    >
-      <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-button-27 MuiButton-containedPrimary"
-        disabled={false}
-        onBlur={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="MuiButton-label"
-        >
-          Agregar
-        </span>
-      </button>
-    </div>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root-35 makeStyles-root-22"
-  >
-    <button
-      className="MuiButtonBase-root MuiCardActionArea-root makeStyles-actionArea-28"
-      disabled={false}
-      onBlur={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <img
-        alt="Clonazepam 05 mg"
-        className="MuiCardMedia-root makeStyles-media-23 MuiCardMedia-media MuiCardMedia-img"
-        src="https://www.laboratoriochile.cl/wp-content//uploads/2015/11/Clonazepam_05MG_30C_BE_HD.jpg"
-        title="Clonazepam 05 mg"
-      />
-      <div
-        className="MuiCardContent-root makeStyles-content-25"
-        onClick={[Function]}
-      >
-        <h2
-          className="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextPrimary MuiTypography-gutterBottom MuiTypography-alignCenter"
-        >
-          Clonazepam · 2 mg
-        </h2>
-        <div
-          className="MuiBox-root MuiBox-root-36 makeStyles-box-24"
-        >
-          <div
-            className="MuiChip-root MuiChip-sizeSmall"
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-          >
-            <div
-              className="MuiAvatar-root MuiAvatar-circle MuiChip-avatar MuiChip-avatarSmall"
-            >
-              <img
-                alt="Bioequivalente"
-                className="MuiAvatar-img"
-                src="/static/images/avatar/1.jpg"
-              />
-            </div>
-            <span
-              className="MuiChip-label MuiChip-labelSmall"
-            >
-              BioE
-            </span>
-          </div>
-          <div
-            className="MuiChip-root MuiChip-sizeSmall"
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-          >
-            <div
-              className="MuiAvatar-root MuiAvatar-circle MuiChip-avatar MuiChip-avatarSmall"
-            >
-              <img
-                alt="Receta retenida"
-                className="MuiAvatar-img"
-                src="/static/images/avatar/1.jpg"
-              />
-            </div>
-            <span
-              className="MuiChip-label MuiChip-labelSmall"
-            >
-              Receta retenida
-            </span>
-          </div>
-        </div>
-        <p
-          className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-gutterBottom MuiTypography-alignCenter"
-        >
-          Clonazepam · 2 mg · 30 comprimidos
-        </p>
-        <div
-          className="MuiBox-root MuiBox-root-37"
-        >
-          <h2
-            className="MuiTypography-root MuiTypography-h6 MuiTypography-colorPrimary MuiTypography-alignCenter"
-          >
-            $ 
-            5025
-          </h2>
-          <h3
-            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignCenter"
-          >
-            $ 168 / comprimido
-          </h3>
-        </div>
-      </div>
-      <span
-        className="MuiCardActionArea-focusHighlight"
-      />
-    </button>
-    <div
-      className="MuiCardActions-root makeStyles-actions-26 MuiCardActions-spacing"
-      onClick={[Function]}
-    >
-      <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-button-27 MuiButton-containedPrimary"
-        disabled={false}
-        onBlur={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="MuiButton-label"
-        >
-          Agregar
-        </span>
-      </button>
-    </div>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root-38 makeStyles-root-22"
-  >
-    <button
-      className="MuiButtonBase-root MuiCardActionArea-root makeStyles-actionArea-28"
-      disabled={false}
-      onBlur={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <img
-        alt="Clonazepam 05 mg"
-        className="MuiCardMedia-root makeStyles-media-23 MuiCardMedia-media MuiCardMedia-img"
-        src="https://www.laboratoriochile.cl/wp-content//uploads/2015/11/Clonazepam_05MG_30C_BE_HD.jpg"
-        title="Clonazepam 05 mg"
-      />
-      <div
-        className="MuiCardContent-root makeStyles-content-25"
-        onClick={[Function]}
-      >
-        <h2
-          className="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextPrimary MuiTypography-gutterBottom MuiTypography-alignCenter"
-        >
-          Clonazepam · 2 mg
-        </h2>
-        <div
-          className="MuiBox-root MuiBox-root-39 makeStyles-box-24"
-        >
-          <div
-            className="MuiChip-root MuiChip-sizeSmall"
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-          >
-            <div
-              className="MuiAvatar-root MuiAvatar-circle MuiChip-avatar MuiChip-avatarSmall"
-            >
-              <img
-                alt="Bioequivalente"
-                className="MuiAvatar-img"
-                src="/static/images/avatar/1.jpg"
-              />
-            </div>
-            <span
-              className="MuiChip-label MuiChip-labelSmall"
-            >
-              BioE
-            </span>
-          </div>
-          <div
-            className="MuiChip-root MuiChip-sizeSmall"
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-          >
-            <div
-              className="MuiAvatar-root MuiAvatar-circle MuiChip-avatar MuiChip-avatarSmall"
-            >
-              <img
-                alt="Receta retenida"
-                className="MuiAvatar-img"
-                src="/static/images/avatar/1.jpg"
-              />
-            </div>
-            <span
-              className="MuiChip-label MuiChip-labelSmall"
-            >
-              Receta retenida
-            </span>
-          </div>
-        </div>
-        <p
-          className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-gutterBottom MuiTypography-alignCenter"
-        >
-          Clonazepam · 2 mg · 30 comprimidos
-        </p>
-        <div
-          className="MuiBox-root MuiBox-root-40"
-        >
-          <h2
-            className="MuiTypography-root MuiTypography-h6 MuiTypography-colorPrimary MuiTypography-alignCenter"
-          >
-            $ 
-            5025
-          </h2>
-          <h3
-            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignCenter"
-          >
-            $ 168 / comprimido
-          </h3>
-        </div>
-      </div>
-      <span
-        className="MuiCardActionArea-focusHighlight"
-      />
-    </button>
-    <div
-      className="MuiCardActions-root makeStyles-actions-26 MuiCardActions-spacing"
-      onClick={[Function]}
-    >
-      <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-button-27 MuiButton-containedPrimary"
-        disabled={false}
-        onBlur={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="MuiButton-label"
-        >
-          Agregar
-        </span>
-      </button>
-    </div>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root-41 makeStyles-root-22"
-  >
-    <button
-      className="MuiButtonBase-root MuiCardActionArea-root makeStyles-actionArea-28"
-      disabled={false}
-      onBlur={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <img
-        alt="Clonazepam 05 mg"
-        className="MuiCardMedia-root makeStyles-media-23 MuiCardMedia-media MuiCardMedia-img"
-        src="https://www.laboratoriochile.cl/wp-content//uploads/2015/11/Clonazepam_05MG_30C_BE_HD.jpg"
-        title="Clonazepam 05 mg"
-      />
-      <div
-        className="MuiCardContent-root makeStyles-content-25"
-        onClick={[Function]}
-      >
-        <h2
-          className="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextPrimary MuiTypography-gutterBottom MuiTypography-alignCenter"
-        >
-          Clonazepam · 2 mg
-        </h2>
-        <div
-          className="MuiBox-root MuiBox-root-42 makeStyles-box-24"
-        >
-          <div
-            className="MuiChip-root MuiChip-sizeSmall"
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-          >
-            <div
-              className="MuiAvatar-root MuiAvatar-circle MuiChip-avatar MuiChip-avatarSmall"
-            >
-              <img
-                alt="Bioequivalente"
-                className="MuiAvatar-img"
-                src="/static/images/avatar/1.jpg"
-              />
-            </div>
-            <span
-              className="MuiChip-label MuiChip-labelSmall"
-            >
-              BioE
-            </span>
-          </div>
-          <div
-            className="MuiChip-root MuiChip-sizeSmall"
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-          >
-            <div
-              className="MuiAvatar-root MuiAvatar-circle MuiChip-avatar MuiChip-avatarSmall"
-            >
-              <img
-                alt="Receta retenida"
-                className="MuiAvatar-img"
-                src="/static/images/avatar/1.jpg"
-              />
-            </div>
-            <span
-              className="MuiChip-label MuiChip-labelSmall"
-            >
-              Receta retenida
-            </span>
-          </div>
-        </div>
-        <p
-          className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-gutterBottom MuiTypography-alignCenter"
-        >
-          Clonazepam · 2 mg · 30 comprimidos
-        </p>
-        <div
-          className="MuiBox-root MuiBox-root-43"
-        >
-          <h2
-            className="MuiTypography-root MuiTypography-h6 MuiTypography-colorPrimary MuiTypography-alignCenter"
-          >
-            $ 
-            5025
-          </h2>
-          <h3
-            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignCenter"
-          >
-            $ 168 / comprimido
-          </h3>
-        </div>
-      </div>
-      <span
-        className="MuiCardActionArea-focusHighlight"
-      />
-    </button>
-    <div
-      className="MuiCardActions-root makeStyles-actions-26 MuiCardActions-spacing"
-      onClick={[Function]}
-    >
-      <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-button-27 MuiButton-containedPrimary"
-        disabled={false}
-        onBlur={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="MuiButton-label"
-        >
-          Agregar
-        </span>
-      </button>
-    </div>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root-44 makeStyles-root-22"
-  >
-    <button
-      className="MuiButtonBase-root MuiCardActionArea-root makeStyles-actionArea-28"
-      disabled={false}
-      onBlur={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <img
-        alt="Clonazepam 05 mg"
-        className="MuiCardMedia-root makeStyles-media-23 MuiCardMedia-media MuiCardMedia-img"
-        src="https://www.laboratoriochile.cl/wp-content//uploads/2015/11/Clonazepam_05MG_30C_BE_HD.jpg"
-        title="Clonazepam 05 mg"
-      />
-      <div
-        className="MuiCardContent-root makeStyles-content-25"
-        onClick={[Function]}
-      >
-        <h2
-          className="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextPrimary MuiTypography-gutterBottom MuiTypography-alignCenter"
-        >
-          Clonazepam · 2 mg
-        </h2>
-        <div
-          className="MuiBox-root MuiBox-root-45 makeStyles-box-24"
-        >
-          <div
-            className="MuiChip-root MuiChip-sizeSmall"
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-          >
-            <div
-              className="MuiAvatar-root MuiAvatar-circle MuiChip-avatar MuiChip-avatarSmall"
-            >
-              <img
-                alt="Bioequivalente"
-                className="MuiAvatar-img"
-                src="/static/images/avatar/1.jpg"
-              />
-            </div>
-            <span
-              className="MuiChip-label MuiChip-labelSmall"
-            >
-              BioE
-            </span>
-          </div>
-          <div
-            className="MuiChip-root MuiChip-sizeSmall"
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-          >
-            <div
-              className="MuiAvatar-root MuiAvatar-circle MuiChip-avatar MuiChip-avatarSmall"
-            >
-              <img
-                alt="Receta retenida"
-                className="MuiAvatar-img"
-                src="/static/images/avatar/1.jpg"
-              />
-            </div>
-            <span
-              className="MuiChip-label MuiChip-labelSmall"
-            >
-              Receta retenida
-            </span>
-          </div>
-        </div>
-        <p
-          className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-gutterBottom MuiTypography-alignCenter"
-        >
-          Clonazepam · 2 mg · 30 comprimidos
-        </p>
-        <div
-          className="MuiBox-root MuiBox-root-46"
-        >
-          <h2
-            className="MuiTypography-root MuiTypography-h6 MuiTypography-colorPrimary MuiTypography-alignCenter"
-          >
-            $ 
-            5025
-          </h2>
-          <h3
-            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignCenter"
-          >
-            $ 168 / comprimido
-          </h3>
-        </div>
-      </div>
-      <span
-        className="MuiCardActionArea-focusHighlight"
-      />
-    </button>
-    <div
-      className="MuiCardActions-root makeStyles-actions-26 MuiCardActions-spacing"
-      onClick={[Function]}
-    >
-      <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-button-27 MuiButton-containedPrimary"
-        disabled={false}
-        onBlur={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="MuiButton-label"
-        >
-          Agregar
-        </span>
-      </button>
-    </div>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root-47 makeStyles-root-22"
-  >
-    <button
-      className="MuiButtonBase-root MuiCardActionArea-root makeStyles-actionArea-28"
-      disabled={false}
-      onBlur={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <img
-        alt="Clonazepam 05 mg"
-        className="MuiCardMedia-root makeStyles-media-23 MuiCardMedia-media MuiCardMedia-img"
-        src="https://www.laboratoriochile.cl/wp-content//uploads/2015/11/Clonazepam_05MG_30C_BE_HD.jpg"
-        title="Clonazepam 05 mg"
-      />
-      <div
-        className="MuiCardContent-root makeStyles-content-25"
-        onClick={[Function]}
-      >
-        <h2
-          className="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextPrimary MuiTypography-gutterBottom MuiTypography-alignCenter"
-        >
-          Clonazepam · 2 mg
-        </h2>
-        <div
-          className="MuiBox-root MuiBox-root-48 makeStyles-box-24"
-        >
-          <div
-            className="MuiChip-root MuiChip-sizeSmall"
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-          >
-            <div
-              className="MuiAvatar-root MuiAvatar-circle MuiChip-avatar MuiChip-avatarSmall"
-            >
-              <img
-                alt="Bioequivalente"
-                className="MuiAvatar-img"
-                src="/static/images/avatar/1.jpg"
-              />
-            </div>
-            <span
-              className="MuiChip-label MuiChip-labelSmall"
-            >
-              BioE
-            </span>
-          </div>
-          <div
-            className="MuiChip-root MuiChip-sizeSmall"
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-          >
-            <div
-              className="MuiAvatar-root MuiAvatar-circle MuiChip-avatar MuiChip-avatarSmall"
-            >
-              <img
-                alt="Receta retenida"
-                className="MuiAvatar-img"
-                src="/static/images/avatar/1.jpg"
-              />
-            </div>
-            <span
-              className="MuiChip-label MuiChip-labelSmall"
-            >
-              Receta retenida
-            </span>
-          </div>
-        </div>
-        <p
-          className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-gutterBottom MuiTypography-alignCenter"
-        >
-          Clonazepam · 2 mg · 30 comprimidos
-        </p>
-        <div
-          className="MuiBox-root MuiBox-root-49"
-        >
-          <h2
-            className="MuiTypography-root MuiTypography-h6 MuiTypography-colorPrimary MuiTypography-alignCenter"
-          >
-            $ 
-            5025
-          </h2>
-          <h3
-            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignCenter"
-          >
-            $ 168 / comprimido
-          </h3>
-        </div>
-      </div>
-      <span
-        className="MuiCardActionArea-focusHighlight"
-      />
-    </button>
-    <div
-      className="MuiCardActions-root makeStyles-actions-26 MuiCardActions-spacing"
-      onClick={[Function]}
-    >
-      <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-button-27 MuiButton-containedPrimary"
-        disabled={false}
-        onBlur={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="MuiButton-label"
-        >
-          Agregar
-        </span>
-      </button>
-    </div>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root-50 makeStyles-root-22"
-  >
-    <button
-      className="MuiButtonBase-root MuiCardActionArea-root makeStyles-actionArea-28"
-      disabled={false}
-      onBlur={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <img
-        alt="Clonazepam 05 mg"
-        className="MuiCardMedia-root makeStyles-media-23 MuiCardMedia-media MuiCardMedia-img"
-        src="https://www.laboratoriochile.cl/wp-content//uploads/2015/11/Clonazepam_05MG_30C_BE_HD.jpg"
-        title="Clonazepam 05 mg"
-      />
-      <div
-        className="MuiCardContent-root makeStyles-content-25"
-        onClick={[Function]}
-      >
-        <h2
-          className="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextPrimary MuiTypography-gutterBottom MuiTypography-alignCenter"
-        >
-          Clonazepam · 2 mg
-        </h2>
-        <div
-          className="MuiBox-root MuiBox-root-51 makeStyles-box-24"
-        >
-          <div
-            className="MuiChip-root MuiChip-sizeSmall"
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-          >
-            <div
-              className="MuiAvatar-root MuiAvatar-circle MuiChip-avatar MuiChip-avatarSmall"
-            >
-              <img
-                alt="Bioequivalente"
-                className="MuiAvatar-img"
-                src="/static/images/avatar/1.jpg"
-              />
-            </div>
-            <span
-              className="MuiChip-label MuiChip-labelSmall"
-            >
-              BioE
-            </span>
-          </div>
-          <div
-            className="MuiChip-root MuiChip-sizeSmall"
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-          >
-            <div
-              className="MuiAvatar-root MuiAvatar-circle MuiChip-avatar MuiChip-avatarSmall"
-            >
-              <img
-                alt="Receta retenida"
-                className="MuiAvatar-img"
-                src="/static/images/avatar/1.jpg"
-              />
-            </div>
-            <span
-              className="MuiChip-label MuiChip-labelSmall"
-            >
-              Receta retenida
-            </span>
-          </div>
-        </div>
-        <p
-          className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-gutterBottom MuiTypography-alignCenter"
-        >
-          Clonazepam · 2 mg · 30 comprimidos
-        </p>
-        <div
-          className="MuiBox-root MuiBox-root-52"
-        >
-          <h2
-            className="MuiTypography-root MuiTypography-h6 MuiTypography-colorPrimary MuiTypography-alignCenter"
-          >
-            $ 
-            5025
-          </h2>
-          <h3
-            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignCenter"
-          >
-            $ 168 / comprimido
-          </h3>
-        </div>
-      </div>
-      <span
-        className="MuiCardActionArea-focusHighlight"
-      />
-    </button>
-    <div
-      className="MuiCardActions-root makeStyles-actions-26 MuiCardActions-spacing"
-      onClick={[Function]}
-    >
-      <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-button-27 MuiButton-containedPrimary"
-        disabled={false}
-        onBlur={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="MuiButton-label"
-        >
-          Agregar
-        </span>
-      </button>
-    </div>
-  </div>
-  <div
-    className="MuiBox-root MuiBox-root-53 makeStyles-root-22"
-  >
-    <button
-      className="MuiButtonBase-root MuiCardActionArea-root makeStyles-actionArea-28"
-      disabled={false}
-      onBlur={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <img
-        alt="Clonazepam 05 mg"
-        className="MuiCardMedia-root makeStyles-media-23 MuiCardMedia-media MuiCardMedia-img"
-        src="https://www.laboratoriochile.cl/wp-content//uploads/2015/11/Clonazepam_05MG_30C_BE_HD.jpg"
-        title="Clonazepam 05 mg"
-      />
-      <div
-        className="MuiCardContent-root makeStyles-content-25"
-        onClick={[Function]}
-      >
-        <h2
-          className="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextPrimary MuiTypography-gutterBottom MuiTypography-alignCenter"
-        >
-          Clonazepam · 2 mg
-        </h2>
-        <div
-          className="MuiBox-root MuiBox-root-54 makeStyles-box-24"
-        >
-          <div
-            className="MuiChip-root MuiChip-sizeSmall"
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-          >
-            <div
-              className="MuiAvatar-root MuiAvatar-circle MuiChip-avatar MuiChip-avatarSmall"
-            >
-              <img
-                alt="Bioequivalente"
-                className="MuiAvatar-img"
-                src="/static/images/avatar/1.jpg"
-              />
-            </div>
-            <span
-              className="MuiChip-label MuiChip-labelSmall"
-            >
-              BioE
-            </span>
-          </div>
-          <div
-            className="MuiChip-root MuiChip-sizeSmall"
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-          >
-            <div
-              className="MuiAvatar-root MuiAvatar-circle MuiChip-avatar MuiChip-avatarSmall"
-            >
-              <img
-                alt="Receta retenida"
-                className="MuiAvatar-img"
-                src="/static/images/avatar/1.jpg"
-              />
-            </div>
-            <span
-              className="MuiChip-label MuiChip-labelSmall"
-            >
-              Receta retenida
-            </span>
-          </div>
-        </div>
-        <p
-          className="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-gutterBottom MuiTypography-alignCenter"
-        >
-          Clonazepam · 2 mg · 30 comprimidos
-        </p>
-        <div
-          className="MuiBox-root MuiBox-root-55"
-        >
-          <h2
-            className="MuiTypography-root MuiTypography-h6 MuiTypography-colorPrimary MuiTypography-alignCenter"
-          >
-            $ 
-            5025
-          </h2>
-          <h3
-            className="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorPrimary MuiTypography-alignCenter"
-          >
-            $ 168 / comprimido
-          </h3>
-        </div>
-      </div>
-      <span
-        className="MuiCardActionArea-focusHighlight"
-      />
-    </button>
-    <div
-      className="MuiCardActions-root makeStyles-actions-26 MuiCardActions-spacing"
-      onClick={[Function]}
-    >
-      <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-button-27 MuiButton-containedPrimary"
-        disabled={false}
-        onBlur={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="MuiButton-label"
-        >
-          Agregar
-        </span>
-      </button>
     </div>
   </div>
 </div>
@@ -1514,10 +498,10 @@ exports[`Storyshots Cart Editable Cart Product 1`] = `
     type="button"
   >
     <div
-      className="makeStyles-root-56"
+      className="makeStyles-root-51"
     >
       <div
-        className="MuiCardMedia-root makeStyles-cover-60"
+        className="MuiCardMedia-root makeStyles-cover-55"
         style={
           Object {
             "backgroundImage": "url(\\"https://www.laboratoriochile.cl/wp-content//uploads/2015/11/Clonazepam_05MG_30C_BE_HD.jpg\\")",
@@ -1526,35 +510,35 @@ exports[`Storyshots Cart Editable Cart Product 1`] = `
         title=""
       />
       <div
-        className="makeStyles-details-57"
+        className="makeStyles-details-52"
       >
         <div
-          className="MuiCardContent-root makeStyles-content-59"
+          className="MuiCardContent-root makeStyles-content-54"
         >
           <div
             className="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom"
           >
             <div
-              className="MuiBox-root MuiBox-root-65"
+              className="MuiBox-root MuiBox-root-60"
             >
               Nombre comercial
             </div>
           </div>
           <div
-            className="MuiTypography-root makeStyles-smalltext-64 MuiTypography-body1 MuiTypography-gutterBottom"
+            className="MuiTypography-root makeStyles-smalltext-59 MuiTypography-body1 MuiTypography-gutterBottom"
           >
             <div
-              className="MuiBox-root MuiBox-root-66"
+              className="MuiBox-root MuiBox-root-61"
             >
               100 mcg
             </div>
             <div
-              className="MuiBox-root MuiBox-root-67"
+              className="MuiBox-root MuiBox-root-62"
             >
               50 comprimidos
             </div>
             <a
-              className="MuiTypography-root MuiLink-root MuiLink-underlineHover makeStyles-underline-63 MuiTypography-colorPrimary"
+              className="MuiTypography-root MuiLink-root MuiLink-underlineHover makeStyles-underline-58 MuiTypography-colorPrimary"
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
@@ -1563,10 +547,10 @@ exports[`Storyshots Cart Editable Cart Product 1`] = `
             </a>
           </div>
           <div
-            className="MuiTypography-root makeStyles-smalltext-64 MuiTypography-body1"
+            className="MuiTypography-root makeStyles-smalltext-59 MuiTypography-body1"
           >
             <div
-              className="MuiBox-root MuiBox-root-68"
+              className="MuiBox-root MuiBox-root-63"
             >
               Valor unitario: $ 
               10
@@ -1576,7 +560,7 @@ exports[`Storyshots Cart Editable Cart Product 1`] = `
             className="MuiTypography-root MuiTypography-body1"
           >
             <div
-              className="MuiBox-root MuiBox-root-69"
+              className="MuiBox-root MuiBox-root-64"
             >
               Total: $ 
               10
@@ -1590,11 +574,11 @@ exports[`Storyshots Cart Editable Cart Product 1`] = `
     />
   </button>
   <div
-    className="MuiCardActions-root makeStyles-actions-58 MuiCardActions-spacing"
+    className="MuiCardActions-root makeStyles-actions-53 MuiCardActions-spacing"
   >
     <button
       aria-label="delete"
-      className="MuiButtonBase-root MuiIconButton-root makeStyles-trashicon-62 MuiIconButton-sizeSmall"
+      className="MuiButtonBase-root MuiIconButton-root makeStyles-trashicon-57 MuiIconButton-sizeSmall"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -1628,7 +612,7 @@ exports[`Storyshots Cart Editable Cart Product 1`] = `
     </button>
     <button
       aria-label="add"
-      className="MuiButtonBase-root MuiIconButton-root makeStyles-sumicon-61"
+      className="MuiButtonBase-root MuiIconButton-root makeStyles-sumicon-56"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -1660,14 +644,14 @@ exports[`Storyshots Cart Editable Cart Product 1`] = `
       className="MuiTypography-root MuiTypography-subtitle1"
     >
       <div
-        className="MuiBox-root MuiBox-root-70"
+        className="MuiBox-root MuiBox-root-65"
       >
         1
       </div>
     </div>
     <button
       aria-label="sub"
-      className="MuiButtonBase-root MuiIconButton-root makeStyles-sumicon-61"
+      className="MuiButtonBase-root MuiIconButton-root makeStyles-sumicon-56"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
