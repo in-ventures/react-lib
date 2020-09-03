@@ -16,7 +16,7 @@ export const EditableCartProduct = () => {
     const title1 = text('Title', 'Nombre comercial');
     const title2 = text('Title 2', '100 mcg');
     const title3 = text('Title 3', '50 comprimidos');
-    const title4 = text('Title 4', 'Volverás a necesitar el 05/08/20');
+    const title4 = text('Title 4', 'Volverás a necesitar 05/08/20');
     const unitPrice = number('Unit price', 10);
 
     let [quantity, setQuantity] = useState(1);

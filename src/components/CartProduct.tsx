@@ -47,7 +47,7 @@ const useStyles = makeStyles({
       textDecoration: "underline",
     },
     smalltext:{
-      fontSize:12
+      fontSize:13
     }
   },
 );
