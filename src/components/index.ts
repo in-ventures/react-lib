@@ -15,3 +15,5 @@
 export * from './input';
 export * from './searchBar';
 export * from './ProductCardA';
+
+export * from './CartProduct';
