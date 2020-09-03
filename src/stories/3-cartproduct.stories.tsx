@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useCallback} from 'react';
 import CartProduct from '../components/CartProduct';
 import { text, number } from '@storybook/addon-knobs';
 
@@ -17,23 +17,42 @@ export const EditableCartProduct = () => {
     const title2 = text('Title 2', '100 mcg');
     const title3 = text('Title 3', '50 comprimidos');
     const title4 = text('Title 4', 'Volverás a necesitar el 05/08/20');
+    const unitPrice = number('Unit price', 10);
 
-    let quantity = number('Quantity', 1);
-    let unitPrice = number('Unit price', 10);
+    let [quantity, setQuantity] = useState(1);
+    let [totalPrice, setTotalPrice] = useState(quantity*unitPrice);
 
+    const addQuantity = useCallback(
+        () => {
+            setQuantity(quantity+1); 
+            setTotalPrice((quantity+1)*unitPrice);
+        },
+        [quantity],
+    );
+    
+    const subQuantity = useCallback(
+        () => {
+            if( quantity > 1) {
+                setQuantity(quantity-1);
+                setTotalPrice((quantity-1)*unitPrice);
+            }
+        },
+        [quantity],
+    );
 
-    const addQuantity = (quantity: number) => {
-        quantity += 1;
-        return quantity;
+    
+
+    /*const addQuantity = () => { 
+        setQuantity(quantity+1); 
+        setTotalPrice((quantity+1)*unitPrice);
     }
 
-    const subQuantity = (quantity: number) => {
-
-        if( quantity > 1)
-        quantity -= 1;
-        
-        return quantity;
-    }
+    const subQuantity = () => {
+        if( quantity > 1) {
+            setQuantity(quantity-1);
+            setTotalPrice((quantity-1)*unitPrice);
+        }    
+    }*/
 
     return(
         <CartProduct
@@ -44,11 +63,12 @@ export const EditableCartProduct = () => {
         title4={title4}
         quantity={quantity}
         unitPrice={unitPrice}
-        event1={() =>{alert("Ha presionado evento por defecto")}}
-        addQuantity={addQuantity}
-        subQuantity={subQuantity}
-        sendToTrash={() =>{alert("Ha presionado enviar a la papelera")}}
-        checkDetails={() =>{alert("Ha presionado revisar detalles")}}
+        totalPrice={totalPrice}
+        onDefaultClick={() =>{alert("Ha presionado evento por defecto")}}
+        onAddClick={addQuantity}
+        onSubClick={subQuantity}
+        onTrashClick={() =>{alert("Ha presionado enviar a la papelera")}}
+        onDetailsClick={() =>{alert("Ha presionado enviar ver detalles")}}
         ></CartProduct>
     );
 }

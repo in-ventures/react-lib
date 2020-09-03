@@ -1,7 +1,7 @@
 
-import React, {useState, useEffect}  from "react";
+import React, {useCallback} from "react";
 
-import { makeStyles, createStyles, Theme  } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { TextFieldProps } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
@@ -12,14 +12,11 @@ import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import IconButton from '@material-ui/core/IconButton';
-import AddIcon from '@material-ui/icons/Add';
-import RemoveIcon from '@material-ui/icons/Remove';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 import Icon from '@material-ui/core/Icon'
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+const useStyles = makeStyles({  
     root: {
       display: 'flex',
     },
@@ -46,8 +43,11 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     trashicon: {
       marginLeft: 33
+    },
+    underline:{
+      textDecoration: "underline",
     }
-  }),
+  },
 );
 
 
@@ -60,11 +60,12 @@ type CartProductProps = {
     title4?: string;
     quantity?: number
     unitPrice?: number;
-    event1?: () => void;
-    addQuantity?: (quantity: number) => number;
-    subQuantity?: (quantity: number) => number;
-    sendToTrash?: () => void;
-    checkDetails?: () => void;
+    totalPrice?: number;
+    onDefaultClick?: () => void;
+    onAddClick?: () => void;
+    onSubClick?: () => void;
+    onTrashClick?: () => void;
+    onDetailsClick?: () => void;
   } & TextFieldProps;
 
 //Component
@@ -74,26 +75,26 @@ export default function CartProduct({
     title2,
     title3,
     title4,
-    quantity=1,
-    unitPrice=1,
-    event1 = () => {},
-    addQuantity = () => {return quantity},
-    subQuantity = () => {return quantity},
-    sendToTrash = () => {},
-    checkDetails = () => {},
+    quantity,
+    unitPrice,
+    totalPrice,
+    onDefaultClick = () => {},
+    onAddClick = () => {},
+    onSubClick = () => {},
+    onTrashClick = () => {},
+    onDetailsClick = () => {},
 }: CartProductProps) {
 
   const classes = useStyles();
-  const [qntity, setQntity] = useState(quantity);
-  const [totalPrce, setTotalPrce] = useState(quantity*unitPrice);
 
-  useEffect(() => {
-    setTotalPrce(qntity*unitPrice);
-  }, [qntity, unitPrice]);
-  
+  const handleDefaultClick = useCallback((e) => {
+    e.stopPropagation();
+    onDefaultClick();
+  }, [onDefaultClick])
+
     return (
       <Card >
-        <CardActionArea onClick={ ()=>{checkDetails()} }>
+        <CardActionArea onClick={onDetailsClick}>
           <div className={classes.root}>
           
             <CardMedia
@@ -105,25 +106,25 @@ export default function CartProduct({
             <div className={classes.details}>
               <CardContent className={classes.content}>
             
-                <Typography component="div" variant="subtitle2" gutterBottom>
+                <Typography component="div" variant="body1" gutterBottom>
                   <Box color="text.primary" alignItems="flex-start">{title1}</Box>
                 </Typography>
    
-                  <Typography component="div" variant="body2" gutterBottom>
-                    <Box color="text.secondary" alignItems="flex-start">{title2}</Box>
-                    <Box color="text.secondary" alignItems="flex-start">{title3}</Box>            
-                    <Link  onClick={ ()=>{event1()} } color="secondary">
-                    {title4}
-                    </Link>
-                  </Typography>
-        
-                  <Typography component="div" variant="body2">
-                    <Box color="text.primary" alignItems="flex-start">Valor unitario: $ {unitPrice}</Box>
-                  </Typography>
+                <Typography component="div" variant="body2" gutterBottom >
+                  <Box color="text.secondary" alignItems="flex-start">{title2}</Box>
+                  <Box color="text.secondary" alignItems="flex-start">{title3}</Box>            
+                  <Link  onClick={handleDefaultClick} color="primary" className={classes.underline}>
+                  {title4}
+                  </Link>
+                </Typography>
+      
+                <Typography component="div" variant="body2">
+                  <Box color="text.primary" alignItems="flex-start">Valor unitario: $ {unitPrice}</Box>
+                </Typography>
 
-                  <Typography component="div" variant="body1" >
-                    <Box color="info.main" alignItems="flex-start">Total: $ {totalPrce}</Box>
-                  </Typography>
+                <Typography component="div" variant="body1" >
+                  <Box  alignItems="flex-start">Total: $ {totalPrice}</Box>
+                </Typography>
               
               </CardContent>
             </div>
@@ -133,21 +134,19 @@ export default function CartProduct({
 
         <CardActions className={classes.actions}>
         
-          <IconButton className={classes.trashicon} aria-label="delete" onClick={ ()=>{sendToTrash()}} size="small" >
-            <DeleteIcon color="secondary" fontSize="small"/>
+          <IconButton className={classes.trashicon} aria-label="delete" onClick={onTrashClick} size="small" >
+            <DeleteIcon fontSize="small"/>
           </IconButton>
    
-          <IconButton className={classes.sumicon} aria-label="add" onClick={ ()=>{setQntity(addQuantity(qntity));}}>
-            {/*<AddIcon />*/}
+          <IconButton className={classes.sumicon} aria-label="add" onClick={onAddClick}>
             <Icon color="primary" fontSize="large">add_circle</Icon>
           </IconButton>
 
           <Typography component="div" variant="subtitle1" >
-            <Box color="text.primary" >{qntity}</Box>
+            <Box color="text.primary" >{quantity}</Box>
           </Typography>
         
-          <IconButton className={classes.sumicon} aria-label="sub" onClick={()=>{setQntity(subQuantity(qntity))}}>
-            {/*<RemoveIcon />*/}
+          <IconButton className={classes.sumicon} aria-label="sub" onClick={onSubClick}>
             <Icon color="primary" fontSize="large">remove_circle</Icon>
           </IconButton>
 
