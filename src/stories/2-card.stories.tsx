@@ -4,7 +4,7 @@
  * File Created: Tuesday, 4th August 2020 5:47:50 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Friday, 14th August 2020 2:11:47 pm
+ * Last Modified: Thursday, 3rd September 2020 3:21:55 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -81,7 +81,6 @@ export const EditableCardGrid = () => {
   const rows = number('Rows', 3);
 
   const total = Array.from(Array(columns * rows).keys());
-  console.log(total);
   return (
     <div
       style={{
