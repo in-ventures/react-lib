@@ -40,20 +40,6 @@ export const EditableCartProduct = () => {
         [quantity],
     );
 
-    
-
-    /*const addQuantity = () => { 
-        setQuantity(quantity+1); 
-        setTotalPrice((quantity+1)*unitPrice);
-    }
-
-    const subQuantity = () => {
-        if( quantity > 1) {
-            setQuantity(quantity-1);
-            setTotalPrice((quantity-1)*unitPrice);
-        }    
-    }*/
-
     return(
         <CartProduct
         urlImage={urlImage}

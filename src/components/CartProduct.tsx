@@ -13,7 +13,6 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
-
 import Icon from '@material-ui/core/Icon'
 
 const useStyles = makeStyles({  
@@ -46,6 +45,9 @@ const useStyles = makeStyles({
     },
     underline:{
       textDecoration: "underline",
+    },
+    smalltext:{
+      fontSize:12
     }
   },
 );
@@ -90,7 +92,7 @@ export default function CartProduct({
   const handleDefaultClick = useCallback((e) => {
     e.stopPropagation();
     onDefaultClick();
-  }, [onDefaultClick])
+  }, [onDefaultClick]);
 
     return (
       <Card >
@@ -106,11 +108,11 @@ export default function CartProduct({
             <div className={classes.details}>
               <CardContent className={classes.content}>
             
-                <Typography component="div" variant="body1" gutterBottom>
+                <Typography component="div"  variant="body2" gutterBottom>
                   <Box color="text.primary" alignItems="flex-start">{title1}</Box>
                 </Typography>
    
-                <Typography component="div" variant="body2" gutterBottom >
+                <Typography component="div" className={classes.smalltext} gutterBottom >
                   <Box color="text.secondary" alignItems="flex-start">{title2}</Box>
                   <Box color="text.secondary" alignItems="flex-start">{title3}</Box>            
                   <Link  onClick={handleDefaultClick} color="primary" className={classes.underline}>
@@ -118,7 +120,7 @@ export default function CartProduct({
                   </Link>
                 </Typography>
       
-                <Typography component="div" variant="body2">
+                <Typography component="div" className={classes.smalltext}>
                   <Box color="text.primary" alignItems="flex-start">Valor unitario: $ {unitPrice}</Box>
                 </Typography>
 
