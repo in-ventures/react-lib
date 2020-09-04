@@ -1,6 +1,6 @@
 {
   "name": "@inventures/react-lib",
-  "version": "0.1.5-rc3",
+  "version": "0.1.5",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "private": false,
@@ -50,7 +50,8 @@
     "build:babel:cjs": "BABEL_ENV=cjs babel --source-maps --extensions \".js,.ts,.tsx\" src --out-dir dist --presets=@babel/env",
     "build:types": "tsc -p tsconfig.gen-dts.json",
     "clean": "rimraf dist",
-    "develop": "yarn build:types && yarn build:babel:esm --skip-initial-build --watch --verbose"
+    "develop": "yarn build:types && yarn build:babel:esm --skip-initial-build --watch --verbose",
+    "storybook:build": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": "react-app"
