@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Friday, 4th September 2020 12:34:44 pm
+ * Last Modified: Friday, 4th September 2020 4:53:47 pm
  * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -16,7 +16,7 @@
 import React, { useCallback, useState } from 'react';
 import { SearchBar, SearchResultList } from '../components/searchBar';
 import { useSearchBar } from '../hooks/useSearchBar.hooks';
-import { number } from '@storybook/addon-knobs';
+import { number, text } from '@storybook/addon-knobs';
 
 export default {
   title: 'SearchBar',
@@ -49,14 +49,6 @@ const query = [
   },
 ];
 
-const debounceTime = number('Debounce time (ms)', 800);
-
-// To-Do Fix Fuse.js Options
-const filterOptions = {
-  keys: ['item'],
-  debounceTime,
-};
-
 export const Base = () => {
   const [searchValue, setSearchValue] = useState<string>('');
 
@@ -84,12 +76,11 @@ export const Base = () => {
 };
 
 export const ListResults = () => {
+  const value = text('Item', 'Rapier');
   return (
     <div>
       <SearchResultList
-        searchResults={(query as { item: string }[]).map(
-          (result) => result.item,
-        )}
+        searchResults={[...query, { item: value }].map((result) => result.item)}
         onSuggestedClick={() => ''}
       />
     </div>
@@ -97,6 +88,13 @@ export const ListResults = () => {
 };
 
 export const SearchBarResult = () => {
+  const debounceTime = number('Debounce time (ms)', 800);
+
+  // To-Do Fix Fuse.js Options
+  const filterOptions = {
+    keys: ['item'],
+    debounceTime,
+  };
   const [searchValue, setSearchValue, searchResults] = useSearchBar<{
     item: string;
   }>('', query, filterOptions);

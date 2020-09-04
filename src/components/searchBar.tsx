@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Friday, 4th September 2020 3:22:41 pm
+ * Last Modified: Friday, 4th September 2020 4:00:44 pm
  * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -20,7 +20,6 @@ import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import SearchIcon from '@material-ui/icons/Search';
 import ClearIcon from '@material-ui/icons/Clear';
@@ -30,15 +29,12 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import { ReactComponent as NorthWestArrow } from '../assets/north_west-24px.svg';
 import Collapse from '@material-ui/core/Collapse';
 import Fade from '@material-ui/core/Fade';
-import { display } from '@material-ui/system';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     box: {
-      padding: '0px',
       backgroundColor: 'white',
-      margin: '1px',
     },
     textField: {
       fontFamily: theme.typography.fontFamily,
