@@ -14,5 +14,5 @@
  */
 export * from './input';
 export * from './ProductCardA';
-
 export * from './CartProduct';
+export * from './ImageLoader';
