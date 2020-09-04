@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Friday, 4th September 2020 10:00:14 am
+ * Last Modified: Friday, 4th September 2020 3:22:41 pm
  * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -28,6 +28,10 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { ReactComponent as NorthWestArrow } from '../assets/north_west-24px.svg';
+import Collapse from '@material-ui/core/Collapse';
+import Fade from '@material-ui/core/Fade';
+import { display } from '@material-ui/system';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -36,7 +40,7 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: 'white',
       margin: '1px',
     },
-    textBox: {
+    textField: {
       fontFamily: theme.typography.fontFamily,
       overflow: 'hidden',
       'white-space': 'nowrap',
@@ -45,6 +49,7 @@ const useStyles = makeStyles((theme: Theme) =>
       fontstyle: 'normal',
       lineheight: 'normal',
       letterspacing: 0.15,
+      textOverflow: 'ellipsis',
     },
     northWestArrow: {
       fill: '#757575',
@@ -52,6 +57,15 @@ const useStyles = makeStyles((theme: Theme) =>
     inputField: {
       border: 'none',
       borderRadius: 4,
+    },
+    searchButtonHide: {
+      display: 'none',
+    },
+    listIcon: {
+      minWidth: 35,
+    },
+    dividerMargin: {
+      marginLeft: 50,
     },
   }),
 );
@@ -66,30 +80,52 @@ export const SearchBar = ({
 }: SearchBarProps & TextFieldProps) => {
   const classes = useStyles();
   const [showIcon, setShowIcon] = useState<boolean>(false);
+  const [showInputField, setshowInputField] = useState<boolean>(false);
+
+  const handleInputChange = () => {
+    setshowInputField((prev) => !prev);
+  };
+
+  const handleIconChange = () => {
+    setShowIcon((prev) => !prev);
+  };
 
   return (
-    <TextField
-      {...props}
-      className={classes.inputField}
-      onFocus={() => {
-        setShowIcon(true);
-      }}
-      onBlur={() => setShowIcon(false)}
-      InputProps={{
-        startAdornment: (!showIcon || !props.value) && (
-          <InputAdornment position="start">
-            <SearchIcon fontSize="small" />
-          </InputAdornment>
-        ),
-        endAdornment: (showIcon || props.value) && (
-          <InputAdornment position="end">
-            <IconButton onClick={() => clearSearch('')}>
-              <ClearIcon fontSize="small" />
-            </IconButton>
-          </InputAdornment>
-        ),
-      }}
-    ></TextField>
+    <Box display="flex">
+      <Fade in={!showInputField}>
+        <IconButton
+          size="small"
+          onClick={handleInputChange}
+          className={showInputField ? classes.searchButtonHide : ''}
+        >
+          <SearchIcon />
+        </IconButton>
+      </Fade>
+      <Collapse in={showInputField}>
+        <TextField
+          {...props}
+          className={classes.inputField}
+          onFocus={() => !showIcon && handleIconChange()}
+          InputProps={{
+            startAdornment: (!showIcon || !props.value) && (
+              <InputAdornment position="start">
+                <SearchIcon fontSize="small" />
+              </InputAdornment>
+            ),
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  size="small"
+                  onClick={() => (handleInputChange(), clearSearch(''))}
+                >
+                  <ClearIcon fontSize="small" />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+        ></TextField>
+      </Collapse>
+    </Box>
   );
 };
 
@@ -98,7 +134,7 @@ type SearchBoxProps = {
   onSuggestedClick: (value: string) => void;
 };
 
-export const SearchBox = ({
+export const SearchResultList = ({
   searchResults,
   onSuggestedClick,
 }: SearchBoxProps) => {
@@ -110,27 +146,29 @@ export const SearchBox = ({
         {searchResults.map((value) => (
           <React.Fragment key={value}>
             <ListItem key={value} href="#simple-list" button component="a">
-              <ListItemIcon>
+              <ListItemIcon className={classes.listIcon}>
                 <SearchIcon fontSize="small" />
               </ListItemIcon>
-              <Box
-                className={classes.textBox}
-                component="div"
-                textOverflow="ellipsis"
-                overflow="hidden"
+              <Typography
+                className={classes.textField}
+                color="textSecondary"
+                component="p"
               >
-                <ListItemText secondary={value} />
-              </Box>
+                {value}
+              </Typography>
               <ListItemSecondaryAction>
                 <IconButton
                   size="small"
                   onClick={() => onSuggestedClick(value)}
                 >
-                  <NorthWestArrow className={classes.northWestArrow} />
+                  <NorthWestArrow
+                    className={classes.northWestArrow}
+                    fontSize="small"
+                  />
                 </IconButton>
               </ListItemSecondaryAction>
             </ListItem>
-            <Divider />
+            <Divider className={classes.dividerMargin} component="li" />
           </React.Fragment>
         ))}
       </List>

@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Thursday, 3rd September 2020 6:49:16 pm
+ * Last Modified: Friday, 4th September 2020 12:34:44 pm
  * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -14,7 +14,7 @@
  */
 
 import React, { useCallback, useState } from 'react';
-import { SearchBar, SearchBox } from '../components/searchBar';
+import { SearchBar, SearchResultList } from '../components/searchBar';
 import { useSearchBar } from '../hooks/useSearchBar.hooks';
 import { number } from '@storybook/addon-knobs';
 
@@ -45,7 +45,7 @@ const query = [
     item: 'Staff',
   },
   {
-    item: 'Text is too loooooooooooooooooooooooooooooong',
+    item: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
   },
 ];
 
@@ -58,7 +58,7 @@ const filterOptions = {
 };
 
 export const Base = () => {
-  const [searchValue, setSearchValue] = useState<string>();
+  const [searchValue, setSearchValue] = useState<string>('');
 
   const handleWrite = useCallback(
     (e) => {
@@ -84,17 +84,13 @@ export const Base = () => {
 };
 
 export const ListResults = () => {
-  const handleSuggest = (value: string) => {
-    ('');
-  };
-
   return (
     <div>
-      <SearchBox
+      <SearchResultList
         searchResults={(query as { item: string }[]).map(
           (result) => result.item,
         )}
-        onSuggestedClick={handleSuggest}
+        onSuggestedClick={() => ''}
       />
     </div>
   );
@@ -125,11 +121,11 @@ export const SearchBarResult = () => {
       <SearchBar
         value={searchValue}
         onChange={handleWrite}
-        size="small"
         clearSearch={handleClickClearSearch}
+        size="small"
       />
 
-      <SearchBox
+      <SearchResultList
         searchResults={(searchResults as { item: string }[]).map(
           (result) => result.item,
         )}
