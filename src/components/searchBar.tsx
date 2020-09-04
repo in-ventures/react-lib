@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Friday, 4th September 2020 4:00:44 pm
+ * Last Modified: Friday, 4th September 2020 6:13:51 pm
  * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -13,7 +13,7 @@
  * Inventures - www.inventures.cl
  */
 
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import TextField, { TextFieldProps } from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
@@ -78,13 +78,22 @@ export const SearchBar = ({
   const [showIcon, setShowIcon] = useState<boolean>(false);
   const [showInputField, setshowInputField] = useState<boolean>(false);
 
-  const handleInputChange = () => {
+  const handleInputChange = useCallback(() => {
     setshowInputField((prev) => !prev);
-  };
+  }, [setshowInputField]);
 
-  const handleIconChange = () => {
+  const handleIconChange = useCallback(() => {
     setShowIcon((prev) => !prev);
-  };
+  }, [setShowIcon]);
+
+  const handleTextFieldOnFocus = useCallback(() => {
+    !showIcon && handleIconChange();
+  }, [handleIconChange, showIcon]);
+
+  const handleClearOnClick = useCallback(() => {
+    handleInputChange();
+    clearSearch('');
+  }, [clearSearch, handleInputChange]);
 
   return (
     <Box display="flex">
@@ -101,7 +110,7 @@ export const SearchBar = ({
         <TextField
           {...props}
           className={classes.inputField}
-          onFocus={() => !showIcon && handleIconChange()}
+          onFocus={handleTextFieldOnFocus}
           InputProps={{
             startAdornment: (!showIcon || !props.value) && (
               <InputAdornment position="start">
@@ -110,10 +119,7 @@ export const SearchBar = ({
             ),
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton
-                  size="small"
-                  onClick={() => (handleInputChange(), clearSearch(''))}
-                >
+                <IconButton size="small" onClick={handleClearOnClick}>
                   <ClearIcon fontSize="small" />
                 </IconButton>
               </InputAdornment>
@@ -136,6 +142,13 @@ export const SearchResultList = ({
 }: SearchBoxProps) => {
   const classes = useStyles();
 
+  const handleSuggestedOnClick = useCallback(
+    (value) => () => {
+      onSuggestedClick(String(value));
+    },
+    [onSuggestedClick],
+  );
+
   return (
     <Box className={classes.box} display="block">
       <List>
@@ -155,7 +168,7 @@ export const SearchResultList = ({
               <ListItemSecondaryAction>
                 <IconButton
                   size="small"
-                  onClick={() => onSuggestedClick(value)}
+                  onClick={handleSuggestedOnClick(value)}
                 >
                   <NorthWestArrow
                     className={classes.northWestArrow}
