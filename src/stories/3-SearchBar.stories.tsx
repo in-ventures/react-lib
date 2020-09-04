@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Thursday, 3rd September 2020 3:52:26 pm
+ * Last Modified: Thursday, 3rd September 2020 6:49:16 pm
  * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -67,9 +67,18 @@ export const Base = () => {
     [setSearchValue],
   );
 
+  const handleClickClearSearch = (value: string) => {
+    setSearchValue(String(value));
+  };
+
   return (
     <div>
-      <SearchBar value={searchValue} onChange={handleWrite} size="small" />
+      <SearchBar
+        value={searchValue}
+        onChange={handleWrite}
+        clearSearch={handleClickClearSearch}
+        size="small"
+      />
     </div>
   );
 };
@@ -107,9 +116,18 @@ export const SearchBarResult = () => {
     setSearchValue(String(value));
   };
 
+  const handleClickClearSearch = (value: string) => {
+    setSearchValue(String(value));
+  };
+
   return (
     <div>
-      <SearchBar value={searchValue} onChange={handleWrite} size="small" />
+      <SearchBar
+        value={searchValue}
+        onChange={handleWrite}
+        size="small"
+        clearSearch={handleClickClearSearch}
+      />
 
       <SearchBox
         searchResults={(searchResults as { item: string }[]).map(

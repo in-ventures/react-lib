@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Thursday, 3rd September 2020 3:52:17 pm
+ * Last Modified: Friday, 4th September 2020 10:00:14 am
  * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -13,7 +13,7 @@
  * Inventures - www.inventures.cl
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import TextField, { TextFieldProps } from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
@@ -24,16 +24,14 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import SearchIcon from '@material-ui/icons/Search';
 import ClearIcon from '@material-ui/icons/Clear';
-import CallMadeIcon from '@material-ui/icons/CallMade';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import { ReactComponent as NorthWestArrow } from '../assets/north_west-24px.svg';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     box: {
-      maxWidth: 348,
-      height: 360,
       padding: '0px',
       backgroundColor: 'white',
       margin: '1px',
@@ -42,64 +40,56 @@ const useStyles = makeStyles((theme: Theme) =>
       fontFamily: theme.typography.fontFamily,
       overflow: 'hidden',
       'white-space': 'nowrap',
-      fontsize: 15,
       fontweight: 'normal',
       fontstretch: 'normal',
       fontstyle: 'normal',
       lineheight: 'normal',
       letterspacing: 0.15,
     },
-
+    northWestArrow: {
+      fill: '#757575',
+    },
     inputField: {
-      width: 272,
-      height: 40,
       border: 'none',
       borderRadius: 4,
-      boxShadow: '0px 0px 2px #888888',
-      // '& label': {
-      //   'padding-top': '8px',
-      // },
-      '& label.Mui-focused': {
-        display: 'none',
-      },
-      '& .MuiOutlinedInput-root': {
-        '& fieldset': {
-          border: 'none',
-        },
-        '&.Mui-focused fieldset': {
-          border: 'none',
-          'box-shadow': '0px 0px 2px #888888',
-        },
-        '&:hover fieldset': {
-          border: 'none',
-        },
-      },
-      // 'label + &': {
-      //   display: 'none',
-      // },
     },
   }),
 );
 
-export const SearchBar = (props: TextFieldProps) => {
+type SearchBarProps = {
+  clearSearch: (value: string) => void;
+};
+
+export const SearchBar = ({
+  clearSearch,
+  ...props
+}: SearchBarProps & TextFieldProps) => {
   const classes = useStyles();
+  const [showIcon, setShowIcon] = useState<boolean>(false);
+
   return (
     <TextField
       {...props}
       className={classes.inputField}
-      /*       label={
-        <InputAdornment position="start">
-          <SearchIcon fontSize="small" />
-        </InputAdornment>
-      } */
+      onFocus={() => {
+        setShowIcon(true);
+      }}
+      onBlur={() => setShowIcon(false)}
       InputProps={{
-        startAdornment: (
+        startAdornment: (!showIcon || !props.value) && (
           <InputAdornment position="start">
             <SearchIcon fontSize="small" />
           </InputAdornment>
         ),
+        endAdornment: (showIcon || props.value) && (
+          <InputAdornment position="end">
+            <IconButton onClick={() => clearSearch('')}>
+              <ClearIcon fontSize="small" />
+            </IconButton>
+          </InputAdornment>
+        ),
       }}
-    />
+    ></TextField>
   );
 };
 
@@ -133,11 +123,10 @@ export const SearchBox = ({
               </Box>
               <ListItemSecondaryAction>
                 <IconButton
-                  edge="end"
-                  aria-label="call-made"
+                  size="small"
                   onClick={() => onSuggestedClick(value)}
                 >
-                  <CallMadeIcon fontSize="small" />
+                  <NorthWestArrow className={classes.northWestArrow} />
                 </IconButton>
               </ListItemSecondaryAction>
             </ListItem>
