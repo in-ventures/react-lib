@@ -13,10 +13,12 @@
  * Inventures - www.inventures.cl
  */
 
+
 import React, { useCallback, useState } from 'react';
 import { SearchBar, SearchResultList } from '../components/searchBar';
 import { useSearchBar } from '../hooks/useSearchBar.hooks';
 import { number, text } from '@storybook/addon-knobs';
+
 
 export default {
   title: 'SearchBar',
@@ -95,6 +97,7 @@ export const SearchBarResult = () => {
     keys: ['item'],
     debounceTime,
   };
+
   const [searchValue, setSearchValue, searchResults] = useSearchBar<{
     item: string;
   }>('', query, filterOptions);
