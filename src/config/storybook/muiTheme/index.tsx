@@ -4,7 +4,7 @@
  * File Created: Thursday, 9th July 2020 8:52:10 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 1st September 2020 5:48:44 pm
+ * Last Modified: Thursday, 3rd September 2020 3:20:51 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -42,7 +42,6 @@ export const muiThemeDecorator = makeDecorator({
         channel.current.emit(SET_THEME_EVENT, 'mekiTheme');
       }
     }, [theme, channel]);
-    console.debug('[THEME ADDON] Render decorator', { theme });
     if (!theme) return getStory(context);
     return (
       <MuiThemeProvider theme={theme}>{getStory(context)}</MuiThemeProvider>
