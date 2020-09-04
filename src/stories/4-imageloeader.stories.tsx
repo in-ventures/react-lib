@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState} from 'react';
 import ImageLoader from '../components/ImageLoader';
 import { text } from '@storybook/addon-knobs';
 

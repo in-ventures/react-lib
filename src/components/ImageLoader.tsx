@@ -5,9 +5,6 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { ReactComponent as ImageLoaderIcon } from '../assets/imageloader.svg';
 
-
-import { TextFieldProps } from '@material-ui/core';
-
 const useStyles = makeStyles({   
     container: {
         width:"100%", 
