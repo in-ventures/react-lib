@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, {useCallback} from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -38,17 +38,26 @@ const useStyles = makeStyles({
 //Type
 type ImageLoaderProps = {
     imagesrc?:string;
-    onLoadClick?: (event:any) => void;
-    onTrashClick?: () => void;
+    imagealt?:string;
+    setImagesrc?: (url:string) => void;
 } & TextFieldProps;
 
 
 export default function ImageLoader({
     imagesrc,
-    onLoadClick = () => {},
-    onTrashClick = () => {} 
+    imagealt,
+    setImagesrc = () => {},
 } : ImageLoaderProps ) {
     const classes = useStyles(); 
+
+    const loadImage = useCallback((event:any) => {
+        let file = event.target.files[0]; 
+        setImagesrc(URL.createObjectURL(file));
+    }, [imagesrc]);
+
+    const deleteImage = useCallback(() => {
+        setImagesrc("");
+    }, [imagesrc]);
 
     return (
         <div className={classes.container}>
@@ -58,10 +67,10 @@ export default function ImageLoader({
                 <div style={{display: "contents"}}>
                     <img className={classes.borderedArea} 
                     src={imagesrc} 
-                    alt="Medicamento"
+                    alt={imagealt}
                     ></img>
 
-                    <IconButton aria-label="delete" onClick={onTrashClick} size="small" >
+                    <IconButton aria-label="delete" onClick={deleteImage} size="small" >
                         <DeleteIcon fontSize="small"/>
                     </IconButton>
                 </div>
@@ -73,7 +82,7 @@ export default function ImageLoader({
                         <ImageLoaderIcon className={classes.default}/>
                     </label>
                     <input type="file" id="file-upload" accept="image/*;capture=camera"  className={classes.borderedArea} 
-                    style={{display: "none"}} onChange={onLoadClick} />
+                    style={{display: "none"}} onChange={loadImage} />
                 </div>
                 
             }
