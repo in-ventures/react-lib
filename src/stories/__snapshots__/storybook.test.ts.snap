@@ -683,6 +683,48 @@ exports[`Storyshots Cart Editable Cart Product 1`] = `
 </div>
 `;
 
+exports[`Storyshots Image Loader Base 1`] = `
+<div
+  style={
+    Object {
+      "height": "200px",
+      "width": "200px",
+    }
+  }
+>
+  <div
+    className="makeStyles-container-66"
+  >
+    <div
+      className="makeStyles-borderedArea-67"
+    >
+      <label
+        className="makeStyles-customfileupload-68"
+        htmlFor="file-upload"
+      >
+        <svg
+          className="makeStyles-default-69"
+        >
+          imageloader.svg
+        </svg>
+      </label>
+      <input
+        accept="image/*;capture=camera"
+        className="makeStyles-borderedArea-67"
+        id="file-upload"
+        onChange={[Function]}
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+        type="file"
+      />
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Input Base element 1`] = `
 <div
   className="MuiFormControl-root MuiTextField-root"

@@ -23,14 +23,14 @@ export const EditableCartProduct = () => {
   const addQuantity = useCallback(() => {
     setQuantity(quantity + 1);
     setTotalPrice((quantity + 1) * unitPrice);
-  }, [quantity]);
+  }, [quantity, unitPrice]);
 
   const subQuantity = useCallback(() => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
       setTotalPrice((quantity - 1) * unitPrice);
     }
-  }, [quantity]);
+  }, [quantity, unitPrice]);
 
   return (
     <CartProduct
