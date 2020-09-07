@@ -48,7 +48,7 @@
     "build:types": "tsc -p tsconfig.gen-dts.json",
     "clean": "rimraf dist",
     "develop": "yarn build:types && yarn build:babel:esm --skip-initial-build --watch --verbose",
-    "storybook:build": "build-storybook -s public"
+    "storybook:build": "npx build-storybook -s public"
   },
   "eslintConfig": {
     "extends": "react-app"
