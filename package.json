@@ -36,7 +36,7 @@
   "scripts": {
     "test": "react-scripts test",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public",
+    "build-storybook": "npx build-storybook -s public",
     "publish:gh": "yarn build-storybook && gh-pages -d storybook-static",
     "prepublish:npm": "cp ./package.json ./dist && touch ./dist/.npmignore",
     "publish:npm": "npm publish dist; cp ./dist/package.json .",
