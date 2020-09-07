@@ -498,10 +498,10 @@ exports[`Storyshots Cart Editable Cart Product 1`] = `
     type="button"
   >
     <div
-      className="makeStyles-root-76"
+      className="makeStyles-root-51"
     >
       <div
-        className="MuiCardMedia-root makeStyles-cover-80"
+        className="MuiCardMedia-root makeStyles-cover-55"
         style={
           Object {
             "backgroundImage": "url(\\"https://www.laboratoriochile.cl/wp-content//uploads/2015/11/Clonazepam_05MG_30C_BE_HD.jpg\\")",
@@ -510,35 +510,35 @@ exports[`Storyshots Cart Editable Cart Product 1`] = `
         title=""
       />
       <div
-        className="makeStyles-details-77"
+        className="makeStyles-details-52"
       >
         <div
-          className="MuiCardContent-root makeStyles-content-79"
+          className="MuiCardContent-root makeStyles-content-54"
         >
           <div
             className="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom"
           >
             <div
-              className="MuiBox-root MuiBox-root-85"
+              className="MuiBox-root MuiBox-root-60"
             >
               Nombre comercial
             </div>
           </div>
           <div
-            className="MuiTypography-root makeStyles-smalltext-84 MuiTypography-body1 MuiTypography-gutterBottom"
+            className="MuiTypography-root makeStyles-smalltext-59 MuiTypography-body1 MuiTypography-gutterBottom"
           >
             <div
-              className="MuiBox-root MuiBox-root-86"
+              className="MuiBox-root MuiBox-root-61"
             >
               100 mcg
             </div>
             <div
-              className="MuiBox-root MuiBox-root-87"
+              className="MuiBox-root MuiBox-root-62"
             >
               50 comprimidos
             </div>
             <a
-              className="MuiTypography-root MuiLink-root MuiLink-underlineHover makeStyles-underline-83 MuiTypography-colorPrimary"
+              className="MuiTypography-root MuiLink-root MuiLink-underlineHover makeStyles-underline-58 MuiTypography-colorPrimary"
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
@@ -547,10 +547,10 @@ exports[`Storyshots Cart Editable Cart Product 1`] = `
             </a>
           </div>
           <div
-            className="MuiTypography-root makeStyles-smalltext-84 MuiTypography-body1"
+            className="MuiTypography-root makeStyles-smalltext-59 MuiTypography-body1"
           >
             <div
-              className="MuiBox-root MuiBox-root-88"
+              className="MuiBox-root MuiBox-root-63"
             >
               Valor unitario: $ 
               10
@@ -560,7 +560,7 @@ exports[`Storyshots Cart Editable Cart Product 1`] = `
             className="MuiTypography-root MuiTypography-body1"
           >
             <div
-              className="MuiBox-root MuiBox-root-89"
+              className="MuiBox-root MuiBox-root-64"
             >
               Total: $ 
               10
@@ -574,11 +574,11 @@ exports[`Storyshots Cart Editable Cart Product 1`] = `
     />
   </button>
   <div
-    className="MuiCardActions-root makeStyles-actions-78 MuiCardActions-spacing"
+    className="MuiCardActions-root makeStyles-actions-53 MuiCardActions-spacing"
   >
     <button
       aria-label="delete"
-      className="MuiButtonBase-root MuiIconButton-root makeStyles-trashicon-82 MuiIconButton-sizeSmall"
+      className="MuiButtonBase-root MuiIconButton-root makeStyles-trashicon-57 MuiIconButton-sizeSmall"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -612,7 +612,7 @@ exports[`Storyshots Cart Editable Cart Product 1`] = `
     </button>
     <button
       aria-label="add"
-      className="MuiButtonBase-root MuiIconButton-root makeStyles-sumicon-81"
+      className="MuiButtonBase-root MuiIconButton-root makeStyles-sumicon-56"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -644,14 +644,14 @@ exports[`Storyshots Cart Editable Cart Product 1`] = `
       className="MuiTypography-root MuiTypography-subtitle1"
     >
       <div
-        className="MuiBox-root MuiBox-root-90"
+        className="MuiBox-root MuiBox-root-65"
       >
         1
       </div>
     </div>
     <button
       aria-label="sub"
-      className="MuiButtonBase-root MuiIconButton-root makeStyles-sumicon-81"
+      className="MuiButtonBase-root MuiIconButton-root makeStyles-sumicon-56"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -693,24 +693,24 @@ exports[`Storyshots Image Loader Base 1`] = `
   }
 >
   <div
-    className="makeStyles-container-66"
+    className="makeStyles-container-91"
   >
     <div
-      className="makeStyles-borderedArea-67"
+      className="makeStyles-borderedArea-92"
     >
       <label
-        className="makeStyles-customfileupload-68"
+        className="makeStyles-customfileupload-93"
         htmlFor="file-upload"
       >
         <svg
-          className="makeStyles-default-69"
+          className="makeStyles-default-94"
         >
           imageloader.svg
         </svg>
       </label>
       <input
         accept="image/*;capture=camera"
-        className="makeStyles-borderedArea-67"
+        className="makeStyles-borderedArea-92"
         id="file-upload"
         onChange={[Function]}
         style={
@@ -984,7 +984,7 @@ exports[`Storyshots Input Input With Mask 1`] = `
 exports[`Storyshots SearchBar Base 1`] = `
 <div>
   <div
-    className="MuiBox-root MuiBox-root-58"
+    className="MuiBox-root MuiBox-root-73"
   >
     <button
       className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
@@ -1034,7 +1034,7 @@ exports[`Storyshots SearchBar Base 1`] = `
           className="MuiCollapse-wrapperInner"
         >
           <div
-            className="MuiFormControl-root MuiTextField-root makeStyles-inputField-54"
+            className="MuiFormControl-root MuiTextField-root makeStyles-inputField-69"
           >
             <div
               className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedStart MuiInputBase-adornedEnd MuiInputBase-marginDense MuiInput-marginDense"
@@ -1116,7 +1116,7 @@ exports[`Storyshots SearchBar Base 1`] = `
 exports[`Storyshots SearchBar List Results 1`] = `
 <div>
   <div
-    className="MuiBox-root MuiBox-root-66 makeStyles-box-59"
+    className="MuiBox-root MuiBox-root-81 makeStyles-box-74"
   >
     <ul
       className="MuiList-root MuiList-padding"
@@ -1142,7 +1142,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
           tabIndex={0}
         >
           <div
-            className="MuiListItemIcon-root makeStyles-listIcon-64"
+            className="MuiListItemIcon-root makeStyles-listIcon-79"
           >
             <svg
               aria-hidden={true}
@@ -1156,7 +1156,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
             </svg>
           </div>
           <p
-            className="MuiTypography-root makeStyles-textField-60 MuiTypography-body1 MuiTypography-colorTextSecondary"
+            className="MuiTypography-root makeStyles-textField-75 MuiTypography-body1 MuiTypography-colorTextSecondary"
           >
             Long Sword
           </p>
@@ -1186,7 +1186,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
               className="MuiIconButton-label"
             >
               <svg
-                className="makeStyles-northWestArrow-61"
+                className="makeStyles-northWestArrow-76"
                 fontSize="small"
               >
                 north_west-24px.svg
@@ -1196,7 +1196,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
         </div>
       </li>
       <li
-        className="MuiDivider-root makeStyles-dividerMargin-65"
+        className="MuiDivider-root makeStyles-dividerMargin-80"
         role="separator"
       />
       <li
@@ -1220,7 +1220,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
           tabIndex={0}
         >
           <div
-            className="MuiListItemIcon-root makeStyles-listIcon-64"
+            className="MuiListItemIcon-root makeStyles-listIcon-79"
           >
             <svg
               aria-hidden={true}
@@ -1234,7 +1234,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
             </svg>
           </div>
           <p
-            className="MuiTypography-root makeStyles-textField-60 MuiTypography-body1 MuiTypography-colorTextSecondary"
+            className="MuiTypography-root makeStyles-textField-75 MuiTypography-body1 MuiTypography-colorTextSecondary"
           >
             Battle Axe
           </p>
@@ -1264,7 +1264,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
               className="MuiIconButton-label"
             >
               <svg
-                className="makeStyles-northWestArrow-61"
+                className="makeStyles-northWestArrow-76"
                 fontSize="small"
               >
                 north_west-24px.svg
@@ -1274,7 +1274,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
         </div>
       </li>
       <li
-        className="MuiDivider-root makeStyles-dividerMargin-65"
+        className="MuiDivider-root makeStyles-dividerMargin-80"
         role="separator"
       />
       <li
@@ -1298,7 +1298,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
           tabIndex={0}
         >
           <div
-            className="MuiListItemIcon-root makeStyles-listIcon-64"
+            className="MuiListItemIcon-root makeStyles-listIcon-79"
           >
             <svg
               aria-hidden={true}
@@ -1312,7 +1312,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
             </svg>
           </div>
           <p
-            className="MuiTypography-root makeStyles-textField-60 MuiTypography-body1 MuiTypography-colorTextSecondary"
+            className="MuiTypography-root makeStyles-textField-75 MuiTypography-body1 MuiTypography-colorTextSecondary"
           >
             Short Sword
           </p>
@@ -1342,7 +1342,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
               className="MuiIconButton-label"
             >
               <svg
-                className="makeStyles-northWestArrow-61"
+                className="makeStyles-northWestArrow-76"
                 fontSize="small"
               >
                 north_west-24px.svg
@@ -1352,7 +1352,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
         </div>
       </li>
       <li
-        className="MuiDivider-root makeStyles-dividerMargin-65"
+        className="MuiDivider-root makeStyles-dividerMargin-80"
         role="separator"
       />
       <li
@@ -1376,7 +1376,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
           tabIndex={0}
         >
           <div
-            className="MuiListItemIcon-root makeStyles-listIcon-64"
+            className="MuiListItemIcon-root makeStyles-listIcon-79"
           >
             <svg
               aria-hidden={true}
@@ -1390,7 +1390,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
             </svg>
           </div>
           <p
-            className="MuiTypography-root makeStyles-textField-60 MuiTypography-body1 MuiTypography-colorTextSecondary"
+            className="MuiTypography-root makeStyles-textField-75 MuiTypography-body1 MuiTypography-colorTextSecondary"
           >
             Short Bow
           </p>
@@ -1420,7 +1420,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
               className="MuiIconButton-label"
             >
               <svg
-                className="makeStyles-northWestArrow-61"
+                className="makeStyles-northWestArrow-76"
                 fontSize="small"
               >
                 north_west-24px.svg
@@ -1430,7 +1430,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
         </div>
       </li>
       <li
-        className="MuiDivider-root makeStyles-dividerMargin-65"
+        className="MuiDivider-root makeStyles-dividerMargin-80"
         role="separator"
       />
       <li
@@ -1454,7 +1454,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
           tabIndex={0}
         >
           <div
-            className="MuiListItemIcon-root makeStyles-listIcon-64"
+            className="MuiListItemIcon-root makeStyles-listIcon-79"
           >
             <svg
               aria-hidden={true}
@@ -1468,7 +1468,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
             </svg>
           </div>
           <p
-            className="MuiTypography-root makeStyles-textField-60 MuiTypography-body1 MuiTypography-colorTextSecondary"
+            className="MuiTypography-root makeStyles-textField-75 MuiTypography-body1 MuiTypography-colorTextSecondary"
           >
             Long Bow
           </p>
@@ -1498,7 +1498,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
               className="MuiIconButton-label"
             >
               <svg
-                className="makeStyles-northWestArrow-61"
+                className="makeStyles-northWestArrow-76"
                 fontSize="small"
               >
                 north_west-24px.svg
@@ -1508,7 +1508,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
         </div>
       </li>
       <li
-        className="MuiDivider-root makeStyles-dividerMargin-65"
+        className="MuiDivider-root makeStyles-dividerMargin-80"
         role="separator"
       />
       <li
@@ -1532,7 +1532,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
           tabIndex={0}
         >
           <div
-            className="MuiListItemIcon-root makeStyles-listIcon-64"
+            className="MuiListItemIcon-root makeStyles-listIcon-79"
           >
             <svg
               aria-hidden={true}
@@ -1546,7 +1546,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
             </svg>
           </div>
           <p
-            className="MuiTypography-root makeStyles-textField-60 MuiTypography-body1 MuiTypography-colorTextSecondary"
+            className="MuiTypography-root makeStyles-textField-75 MuiTypography-body1 MuiTypography-colorTextSecondary"
           >
             Long Bow + 1
           </p>
@@ -1576,7 +1576,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
               className="MuiIconButton-label"
             >
               <svg
-                className="makeStyles-northWestArrow-61"
+                className="makeStyles-northWestArrow-76"
                 fontSize="small"
               >
                 north_west-24px.svg
@@ -1586,7 +1586,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
         </div>
       </li>
       <li
-        className="MuiDivider-root makeStyles-dividerMargin-65"
+        className="MuiDivider-root makeStyles-dividerMargin-80"
         role="separator"
       />
       <li
@@ -1610,7 +1610,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
           tabIndex={0}
         >
           <div
-            className="MuiListItemIcon-root makeStyles-listIcon-64"
+            className="MuiListItemIcon-root makeStyles-listIcon-79"
           >
             <svg
               aria-hidden={true}
@@ -1624,7 +1624,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
             </svg>
           </div>
           <p
-            className="MuiTypography-root makeStyles-textField-60 MuiTypography-body1 MuiTypography-colorTextSecondary"
+            className="MuiTypography-root makeStyles-textField-75 MuiTypography-body1 MuiTypography-colorTextSecondary"
           >
             Staff
           </p>
@@ -1654,7 +1654,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
               className="MuiIconButton-label"
             >
               <svg
-                className="makeStyles-northWestArrow-61"
+                className="makeStyles-northWestArrow-76"
                 fontSize="small"
               >
                 north_west-24px.svg
@@ -1664,7 +1664,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
         </div>
       </li>
       <li
-        className="MuiDivider-root makeStyles-dividerMargin-65"
+        className="MuiDivider-root makeStyles-dividerMargin-80"
         role="separator"
       />
       <li
@@ -1688,7 +1688,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
           tabIndex={0}
         >
           <div
-            className="MuiListItemIcon-root makeStyles-listIcon-64"
+            className="MuiListItemIcon-root makeStyles-listIcon-79"
           >
             <svg
               aria-hidden={true}
@@ -1702,7 +1702,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
             </svg>
           </div>
           <p
-            className="MuiTypography-root makeStyles-textField-60 MuiTypography-body1 MuiTypography-colorTextSecondary"
+            className="MuiTypography-root makeStyles-textField-75 MuiTypography-body1 MuiTypography-colorTextSecondary"
           >
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
           </p>
@@ -1732,7 +1732,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
               className="MuiIconButton-label"
             >
               <svg
-                className="makeStyles-northWestArrow-61"
+                className="makeStyles-northWestArrow-76"
                 fontSize="small"
               >
                 north_west-24px.svg
@@ -1742,7 +1742,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
         </div>
       </li>
       <li
-        className="MuiDivider-root makeStyles-dividerMargin-65"
+        className="MuiDivider-root makeStyles-dividerMargin-80"
         role="separator"
       />
       <li
@@ -1766,7 +1766,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
           tabIndex={0}
         >
           <div
-            className="MuiListItemIcon-root makeStyles-listIcon-64"
+            className="MuiListItemIcon-root makeStyles-listIcon-79"
           >
             <svg
               aria-hidden={true}
@@ -1780,7 +1780,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
             </svg>
           </div>
           <p
-            className="MuiTypography-root makeStyles-textField-60 MuiTypography-body1 MuiTypography-colorTextSecondary"
+            className="MuiTypography-root makeStyles-textField-75 MuiTypography-body1 MuiTypography-colorTextSecondary"
           >
             Rapier
           </p>
@@ -1810,7 +1810,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
               className="MuiIconButton-label"
             >
               <svg
-                className="makeStyles-northWestArrow-61"
+                className="makeStyles-northWestArrow-76"
                 fontSize="small"
               >
                 north_west-24px.svg
@@ -1820,7 +1820,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
         </div>
       </li>
       <li
-        className="MuiDivider-root makeStyles-dividerMargin-65"
+        className="MuiDivider-root makeStyles-dividerMargin-80"
         role="separator"
       />
     </ul>
@@ -1831,7 +1831,7 @@ exports[`Storyshots SearchBar List Results 1`] = `
 exports[`Storyshots SearchBar Search Bar Result 1`] = `
 <div>
   <div
-    className="MuiBox-root MuiBox-root-74"
+    className="MuiBox-root MuiBox-root-89"
   >
     <button
       className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
@@ -1881,7 +1881,7 @@ exports[`Storyshots SearchBar Search Bar Result 1`] = `
           className="MuiCollapse-wrapperInner"
         >
           <div
-            className="MuiFormControl-root MuiTextField-root makeStyles-inputField-70"
+            className="MuiFormControl-root MuiTextField-root makeStyles-inputField-85"
           >
             <div
               className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedStart MuiInputBase-adornedEnd MuiInputBase-marginDense MuiInput-marginDense"
@@ -1958,7 +1958,7 @@ exports[`Storyshots SearchBar Search Bar Result 1`] = `
     </div>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-75 makeStyles-box-67"
+    className="MuiBox-root MuiBox-root-90 makeStyles-box-82"
   >
     <ul
       className="MuiList-root MuiList-padding"
