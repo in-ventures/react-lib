@@ -4,7 +4,7 @@
  * File Created: Thursday, 3rd September 2020 3:01:00 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Thursday, 3rd September 2020 3:01:15 pm
+ * Last Modified: Monday, 7th September 2020 10:31:49 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -12,6 +12,10 @@
  * -----
  * Inventures - www.inventures.cl
  */
-
+import React from 'react';
+jest.mock(
+  '@material-ui/core/Fade',
+  (): React.FC => ({ children }) => children as React.ReactElement,
+);
 import initStoryshots from '@storybook/addon-storyshots';
 initStoryshots();

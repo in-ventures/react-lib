@@ -4,8 +4,8 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Friday, 4th September 2020 4:53:47 pm
- * Modified By: Luis Aparicio (luis@inventures.cl)
+ * Last Modified: Monday, 7th September 2020 10:28:05 am
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -13,12 +13,10 @@
  * Inventures - www.inventures.cl
  */
 
-
 import React, { useCallback, useState } from 'react';
 import { SearchBar, SearchResultList } from '../components/searchBar';
 import { useSearchBar } from '../hooks/useSearchBar.hooks';
 import { number, text } from '@storybook/addon-knobs';
-
 
 export default {
   title: 'SearchBar',
