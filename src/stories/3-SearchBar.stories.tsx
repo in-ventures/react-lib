@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Wednesday, 2nd September 2020 11:57:39 am
+ * Last Modified: Monday, 7th September 2020 10:28:05 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -13,10 +13,10 @@
  * Inventures - www.inventures.cl
  */
 
-import React, { useCallback } from 'react';
-import { SearchBar } from '../components/searchBar';
+import React, { useCallback, useState } from 'react';
+import { SearchBar, SearchResultList } from '../components/searchBar';
 import { useSearchBar } from '../hooks/useSearchBar.hooks';
-import { number } from '@storybook/addon-knobs';
+import { number, text } from '@storybook/addon-knobs';
 
 export default {
   title: 'SearchBar',
@@ -44,17 +44,58 @@ const query = [
   {
     item: 'Staff',
   },
+  {
+    item: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
+  },
 ];
 
-const debounceTime = number('Debounce time (ms)', 800);
+export const Base = () => {
+  const [searchValue, setSearchValue] = useState<string>('');
 
-// To-Do Fix Fuse.js Options
-const filterOptions = {
-  keys: ['item'],
-  debounceTime,
+  const handleWrite = useCallback(
+    (e) => {
+      setSearchValue(String(e.target.value));
+    },
+    [setSearchValue],
+  );
+
+  const handleClickClearSearch = (value: string) => {
+    setSearchValue(String(value));
+  };
+
+  return (
+    <div>
+      <SearchBar
+        value={searchValue}
+        onChange={handleWrite}
+        clearSearch={handleClickClearSearch}
+        size="small"
+      />
+    </div>
+  );
 };
 
-export const Base = () => {
+export const ListResults = () => {
+  const value = text('Item', 'Rapier');
+  return (
+    <div>
+      <SearchResultList
+        searchResults={[...query, { item: value }].map((result) => result.item)}
+        onSuggestedClick={() => ''}
+      />
+    </div>
+  );
+};
+
+export const SearchBarResult = () => {
+  const debounceTime = number('Debounce time (ms)', 800);
+
+  // To-Do Fix Fuse.js Options
+  const filterOptions = {
+    keys: ['item'],
+    debounceTime,
+  };
+
   const [searchValue, setSearchValue, searchResults] = useSearchBar<{
     item: string;
   }>('', query, filterOptions);
@@ -66,19 +107,29 @@ export const Base = () => {
     [setSearchValue],
   );
 
+  const handleSuggest = (value: string) => {
+    setSearchValue(String(value));
+  };
+
+  const handleClickClearSearch = (value: string) => {
+    setSearchValue(String(value));
+  };
+
   return (
     <div>
       <SearchBar
         value={searchValue}
         onChange={handleWrite}
-        label={`Search (${debounceTime}ms)`}
-        type={'Text'}
+        clearSearch={handleClickClearSearch}
+        size="small"
       />
-      <ul>
-        {(searchResults as { item: string }[]).map((result) => (
-          <li key={result.item}>{result.item}</li>
-        ))}
-      </ul>
+
+      <SearchResultList
+        searchResults={(searchResults as { item: string }[]).map(
+          (result) => result.item,
+        )}
+        onSuggestedClick={handleSuggest}
+      />
     </div>
   );
 };
