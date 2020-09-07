@@ -1,8 +1,11 @@
 {
-  "name": "react-lib-dev",
+  "name": "react-lib",
   "description": "",
   "scripts": {},
-  "env": {},
+  "env": {
+    "NPM_CONFIG_PRODUCTION": false,
+    "YARN_PRODUCTION": false
+  },
   "formation": {
     "web": {
       "quantity": 1,
