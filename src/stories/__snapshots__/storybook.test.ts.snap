@@ -209,7 +209,7 @@ exports[`Storyshots Card Product Carousel 1`] = `
       </span>
     </button>
     <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-justify-xs-center MuiGrid-grid-xs-12"
+      className="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-justify-xs-center MuiGrid-grid-xs-12"
     >
       <div
         className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
@@ -498,10 +498,10 @@ exports[`Storyshots Cart Editable Cart Product 1`] = `
     type="button"
   >
     <div
-      className="makeStyles-root-51"
+      className="makeStyles-root-76"
     >
       <div
-        className="MuiCardMedia-root makeStyles-cover-55"
+        className="MuiCardMedia-root makeStyles-cover-80"
         style={
           Object {
             "backgroundImage": "url(\\"https://www.laboratoriochile.cl/wp-content//uploads/2015/11/Clonazepam_05MG_30C_BE_HD.jpg\\")",
@@ -510,35 +510,35 @@ exports[`Storyshots Cart Editable Cart Product 1`] = `
         title=""
       />
       <div
-        className="makeStyles-details-52"
+        className="makeStyles-details-77"
       >
         <div
-          className="MuiCardContent-root makeStyles-content-54"
+          className="MuiCardContent-root makeStyles-content-79"
         >
           <div
             className="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom"
           >
             <div
-              className="MuiBox-root MuiBox-root-60"
+              className="MuiBox-root MuiBox-root-85"
             >
               Nombre comercial
             </div>
           </div>
           <div
-            className="MuiTypography-root makeStyles-smalltext-59 MuiTypography-body1 MuiTypography-gutterBottom"
+            className="MuiTypography-root makeStyles-smalltext-84 MuiTypography-body1 MuiTypography-gutterBottom"
           >
             <div
-              className="MuiBox-root MuiBox-root-61"
+              className="MuiBox-root MuiBox-root-86"
             >
               100 mcg
             </div>
             <div
-              className="MuiBox-root MuiBox-root-62"
+              className="MuiBox-root MuiBox-root-87"
             >
               50 comprimidos
             </div>
             <a
-              className="MuiTypography-root MuiLink-root MuiLink-underlineHover makeStyles-underline-58 MuiTypography-colorPrimary"
+              className="MuiTypography-root MuiLink-root MuiLink-underlineHover makeStyles-underline-83 MuiTypography-colorPrimary"
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
@@ -547,10 +547,10 @@ exports[`Storyshots Cart Editable Cart Product 1`] = `
             </a>
           </div>
           <div
-            className="MuiTypography-root makeStyles-smalltext-59 MuiTypography-body1"
+            className="MuiTypography-root makeStyles-smalltext-84 MuiTypography-body1"
           >
             <div
-              className="MuiBox-root MuiBox-root-63"
+              className="MuiBox-root MuiBox-root-88"
             >
               Valor unitario: $ 
               10
@@ -560,7 +560,7 @@ exports[`Storyshots Cart Editable Cart Product 1`] = `
             className="MuiTypography-root MuiTypography-body1"
           >
             <div
-              className="MuiBox-root MuiBox-root-64"
+              className="MuiBox-root MuiBox-root-89"
             >
               Total: $ 
               10
@@ -574,11 +574,11 @@ exports[`Storyshots Cart Editable Cart Product 1`] = `
     />
   </button>
   <div
-    className="MuiCardActions-root makeStyles-actions-53 MuiCardActions-spacing"
+    className="MuiCardActions-root makeStyles-actions-78 MuiCardActions-spacing"
   >
     <button
       aria-label="delete"
-      className="MuiButtonBase-root MuiIconButton-root makeStyles-trashicon-57 MuiIconButton-sizeSmall"
+      className="MuiButtonBase-root MuiIconButton-root makeStyles-trashicon-82 MuiIconButton-sizeSmall"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -612,7 +612,7 @@ exports[`Storyshots Cart Editable Cart Product 1`] = `
     </button>
     <button
       aria-label="add"
-      className="MuiButtonBase-root MuiIconButton-root makeStyles-sumicon-56"
+      className="MuiButtonBase-root MuiIconButton-root makeStyles-sumicon-81"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -644,14 +644,14 @@ exports[`Storyshots Cart Editable Cart Product 1`] = `
       className="MuiTypography-root MuiTypography-subtitle1"
     >
       <div
-        className="MuiBox-root MuiBox-root-65"
+        className="MuiBox-root MuiBox-root-90"
       >
         1
       </div>
     </div>
     <button
       aria-label="sub"
-      className="MuiButtonBase-root MuiIconButton-root makeStyles-sumicon-56"
+      className="MuiButtonBase-root MuiIconButton-root makeStyles-sumicon-81"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -942,33 +942,985 @@ exports[`Storyshots Input Input With Mask 1`] = `
 exports[`Storyshots SearchBar Base 1`] = `
 <div>
   <div
-    className="MuiFormControl-root MuiTextField-root"
+    className="MuiBox-root MuiBox-root-58"
   >
-    <label
-      className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
-      data-shrink={false}
-    >
-      Search (800ms)
-    </label>
-    <div
-      className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+    <button
+      className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+      disabled={false}
+      onBlur={[Function]}
       onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
     >
-      <input
-        aria-invalid={false}
-        autoFocus={false}
-        className="MuiInputBase-input MuiInput-input"
-        disabled={false}
-        onAnimationStart={[Function]}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        required={false}
-        type="Text"
-        value=""
-      />
+      <span
+        className="MuiIconButton-label"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+          />
+        </svg>
+      </span>
+    </button>
+    <div
+      className="MuiCollapse-container MuiCollapse-hidden"
+      style={
+        Object {
+          "minHeight": "0px",
+        }
+      }
+    >
+      <div
+        className="MuiCollapse-wrapper"
+      >
+        <div
+          className="MuiCollapse-wrapperInner"
+        >
+          <div
+            className="MuiFormControl-root MuiTextField-root makeStyles-inputField-54"
+          >
+            <div
+              className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedStart MuiInputBase-adornedEnd MuiInputBase-marginDense MuiInput-marginDense"
+              onClick={[Function]}
+            >
+              <div
+                className="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-marginDense"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                  />
+                </svg>
+              </div>
+              <input
+                aria-invalid={false}
+                autoFocus={false}
+                className="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedStart MuiInputBase-inputAdornedEnd MuiInputBase-inputMarginDense MuiInput-inputMarginDense"
+                disabled={false}
+                onAnimationStart={[Function]}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                required={false}
+                type="text"
+                value=""
+              />
+              <div
+                className="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-marginDense"
+              >
+                <button
+                  className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={0}
+                  type="button"
+                >
+                  <span
+                    className="MuiIconButton-label"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <ul />
+</div>
+`;
+
+exports[`Storyshots SearchBar List Results 1`] = `
+<div>
+  <div
+    className="MuiBox-root MuiBox-root-66 makeStyles-box-59"
+  >
+    <ul
+      className="MuiList-root MuiList-padding"
+    >
+      <li
+        className="MuiListItem-container"
+      >
+        <a
+          aria-disabled={false}
+          className="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+          href="#simple-list"
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+        >
+          <div
+            className="MuiListItemIcon-root makeStyles-listIcon-64"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+              />
+            </svg>
+          </div>
+          <p
+            className="MuiTypography-root makeStyles-textField-60 MuiTypography-body1 MuiTypography-colorTextSecondary"
+          >
+            Long Sword
+          </p>
+        </a>
+        <div
+          className="MuiListItemSecondaryAction-root"
+        >
+          <button
+            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <svg
+                className="makeStyles-northWestArrow-61"
+                fontSize="small"
+              >
+                north_west-24px.svg
+              </svg>
+            </span>
+          </button>
+        </div>
+      </li>
+      <li
+        className="MuiDivider-root makeStyles-dividerMargin-65"
+        role="separator"
+      />
+      <li
+        className="MuiListItem-container"
+      >
+        <a
+          aria-disabled={false}
+          className="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+          href="#simple-list"
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+        >
+          <div
+            className="MuiListItemIcon-root makeStyles-listIcon-64"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+              />
+            </svg>
+          </div>
+          <p
+            className="MuiTypography-root makeStyles-textField-60 MuiTypography-body1 MuiTypography-colorTextSecondary"
+          >
+            Battle Axe
+          </p>
+        </a>
+        <div
+          className="MuiListItemSecondaryAction-root"
+        >
+          <button
+            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <svg
+                className="makeStyles-northWestArrow-61"
+                fontSize="small"
+              >
+                north_west-24px.svg
+              </svg>
+            </span>
+          </button>
+        </div>
+      </li>
+      <li
+        className="MuiDivider-root makeStyles-dividerMargin-65"
+        role="separator"
+      />
+      <li
+        className="MuiListItem-container"
+      >
+        <a
+          aria-disabled={false}
+          className="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+          href="#simple-list"
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+        >
+          <div
+            className="MuiListItemIcon-root makeStyles-listIcon-64"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+              />
+            </svg>
+          </div>
+          <p
+            className="MuiTypography-root makeStyles-textField-60 MuiTypography-body1 MuiTypography-colorTextSecondary"
+          >
+            Short Sword
+          </p>
+        </a>
+        <div
+          className="MuiListItemSecondaryAction-root"
+        >
+          <button
+            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <svg
+                className="makeStyles-northWestArrow-61"
+                fontSize="small"
+              >
+                north_west-24px.svg
+              </svg>
+            </span>
+          </button>
+        </div>
+      </li>
+      <li
+        className="MuiDivider-root makeStyles-dividerMargin-65"
+        role="separator"
+      />
+      <li
+        className="MuiListItem-container"
+      >
+        <a
+          aria-disabled={false}
+          className="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+          href="#simple-list"
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+        >
+          <div
+            className="MuiListItemIcon-root makeStyles-listIcon-64"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+              />
+            </svg>
+          </div>
+          <p
+            className="MuiTypography-root makeStyles-textField-60 MuiTypography-body1 MuiTypography-colorTextSecondary"
+          >
+            Short Bow
+          </p>
+        </a>
+        <div
+          className="MuiListItemSecondaryAction-root"
+        >
+          <button
+            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <svg
+                className="makeStyles-northWestArrow-61"
+                fontSize="small"
+              >
+                north_west-24px.svg
+              </svg>
+            </span>
+          </button>
+        </div>
+      </li>
+      <li
+        className="MuiDivider-root makeStyles-dividerMargin-65"
+        role="separator"
+      />
+      <li
+        className="MuiListItem-container"
+      >
+        <a
+          aria-disabled={false}
+          className="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+          href="#simple-list"
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+        >
+          <div
+            className="MuiListItemIcon-root makeStyles-listIcon-64"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+              />
+            </svg>
+          </div>
+          <p
+            className="MuiTypography-root makeStyles-textField-60 MuiTypography-body1 MuiTypography-colorTextSecondary"
+          >
+            Long Bow
+          </p>
+        </a>
+        <div
+          className="MuiListItemSecondaryAction-root"
+        >
+          <button
+            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <svg
+                className="makeStyles-northWestArrow-61"
+                fontSize="small"
+              >
+                north_west-24px.svg
+              </svg>
+            </span>
+          </button>
+        </div>
+      </li>
+      <li
+        className="MuiDivider-root makeStyles-dividerMargin-65"
+        role="separator"
+      />
+      <li
+        className="MuiListItem-container"
+      >
+        <a
+          aria-disabled={false}
+          className="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+          href="#simple-list"
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+        >
+          <div
+            className="MuiListItemIcon-root makeStyles-listIcon-64"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+              />
+            </svg>
+          </div>
+          <p
+            className="MuiTypography-root makeStyles-textField-60 MuiTypography-body1 MuiTypography-colorTextSecondary"
+          >
+            Long Bow + 1
+          </p>
+        </a>
+        <div
+          className="MuiListItemSecondaryAction-root"
+        >
+          <button
+            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <svg
+                className="makeStyles-northWestArrow-61"
+                fontSize="small"
+              >
+                north_west-24px.svg
+              </svg>
+            </span>
+          </button>
+        </div>
+      </li>
+      <li
+        className="MuiDivider-root makeStyles-dividerMargin-65"
+        role="separator"
+      />
+      <li
+        className="MuiListItem-container"
+      >
+        <a
+          aria-disabled={false}
+          className="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+          href="#simple-list"
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+        >
+          <div
+            className="MuiListItemIcon-root makeStyles-listIcon-64"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+              />
+            </svg>
+          </div>
+          <p
+            className="MuiTypography-root makeStyles-textField-60 MuiTypography-body1 MuiTypography-colorTextSecondary"
+          >
+            Staff
+          </p>
+        </a>
+        <div
+          className="MuiListItemSecondaryAction-root"
+        >
+          <button
+            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <svg
+                className="makeStyles-northWestArrow-61"
+                fontSize="small"
+              >
+                north_west-24px.svg
+              </svg>
+            </span>
+          </button>
+        </div>
+      </li>
+      <li
+        className="MuiDivider-root makeStyles-dividerMargin-65"
+        role="separator"
+      />
+      <li
+        className="MuiListItem-container"
+      >
+        <a
+          aria-disabled={false}
+          className="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+          href="#simple-list"
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+        >
+          <div
+            className="MuiListItemIcon-root makeStyles-listIcon-64"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+              />
+            </svg>
+          </div>
+          <p
+            className="MuiTypography-root makeStyles-textField-60 MuiTypography-body1 MuiTypography-colorTextSecondary"
+          >
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+          </p>
+        </a>
+        <div
+          className="MuiListItemSecondaryAction-root"
+        >
+          <button
+            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <svg
+                className="makeStyles-northWestArrow-61"
+                fontSize="small"
+              >
+                north_west-24px.svg
+              </svg>
+            </span>
+          </button>
+        </div>
+      </li>
+      <li
+        className="MuiDivider-root makeStyles-dividerMargin-65"
+        role="separator"
+      />
+      <li
+        className="MuiListItem-container"
+      >
+        <a
+          aria-disabled={false}
+          className="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button MuiListItem-secondaryAction"
+          href="#simple-list"
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+        >
+          <div
+            className="MuiListItemIcon-root makeStyles-listIcon-64"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+              />
+            </svg>
+          </div>
+          <p
+            className="MuiTypography-root makeStyles-textField-60 MuiTypography-body1 MuiTypography-colorTextSecondary"
+          >
+            Rapier
+          </p>
+        </a>
+        <div
+          className="MuiListItemSecondaryAction-root"
+        >
+          <button
+            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <svg
+                className="makeStyles-northWestArrow-61"
+                fontSize="small"
+              >
+                north_west-24px.svg
+              </svg>
+            </span>
+          </button>
+        </div>
+      </li>
+      <li
+        className="MuiDivider-root makeStyles-dividerMargin-65"
+        role="separator"
+      />
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`Storyshots SearchBar Search Bar Result 1`] = `
+<div>
+  <div
+    className="MuiBox-root MuiBox-root-74"
+  >
+    <button
+      className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiIconButton-label"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+          />
+        </svg>
+      </span>
+    </button>
+    <div
+      className="MuiCollapse-container MuiCollapse-hidden"
+      style={
+        Object {
+          "minHeight": "0px",
+        }
+      }
+    >
+      <div
+        className="MuiCollapse-wrapper"
+      >
+        <div
+          className="MuiCollapse-wrapperInner"
+        >
+          <div
+            className="MuiFormControl-root MuiTextField-root makeStyles-inputField-70"
+          >
+            <div
+              className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedStart MuiInputBase-adornedEnd MuiInputBase-marginDense MuiInput-marginDense"
+              onClick={[Function]}
+            >
+              <div
+                className="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-marginDense"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                  />
+                </svg>
+              </div>
+              <input
+                aria-invalid={false}
+                autoFocus={false}
+                className="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedStart MuiInputBase-inputAdornedEnd MuiInputBase-inputMarginDense MuiInput-inputMarginDense"
+                disabled={false}
+                onAnimationStart={[Function]}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                required={false}
+                type="text"
+                value=""
+              />
+              <div
+                className="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-marginDense"
+              >
+                <button
+                  className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={0}
+                  type="button"
+                >
+                  <span
+                    className="MuiIconButton-label"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root-75 makeStyles-box-67"
+  >
+    <ul
+      className="MuiList-root MuiList-padding"
+    />
+  </div>
 </div>
 `;
