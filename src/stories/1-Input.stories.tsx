@@ -4,8 +4,8 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Wednesday, 2nd September 2020 11:20:32 am
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Friday, 4th September 2020 4:44:12 pm
+ * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -23,7 +23,7 @@ import {
   EmailValidator,
   RutValidator,
   LengthValidator,
-  NumericValidator,
+  DateValidator,
 } from '../validators';
 import { AccentRemoverFormatter, RutFormatter } from '../formatters';
 import Select from '@material-ui/core/Select';
@@ -168,10 +168,6 @@ export const InputForPhone = () => {
   //const { possibleCountries } = props;
   const [country, setCountry] = useState(possibleCountries[0]);
 
-  const nonNumeric = text(
-    'Teléfono no numérico error',
-    '¡Ups! Recuerda incluir sólo números',
-  );
   const required = text('Teléfono requerido error', 'Teléfono Requerido');
   const incompleteNumber = text(
     'Teléfono incompleto error',
@@ -180,11 +176,11 @@ export const InputForPhone = () => {
   const debounceTime = number('Debounce time (ms)', 800);
 
   const [value, setValue, status, errors, handleBlur] = useInput('', {
+    formatter: new MaskFormatter('9 99 999 999 999 999'),
     validators: [
       incompleteNumber &&
         new LengthValidator(incompleteNumber, country.countryDigitLength),
       required && new RequiredValidator(required),
-      nonNumeric && new NumericValidator(nonNumeric),
     ].filter(Boolean) as Validator<string>[],
     debounceTime,
   });
@@ -249,12 +245,14 @@ export const InputWithMask = () => {
   const [length, setLength] = useInput('', {
     formatter: new MaskFormatter('****'),
   });
-  const [birthdate, setBirthdate] = useInput('', {
+  const [birthdate, setBirthdate, birthStatus] = useInput('', {
     formatter: new MaskFormatter('99/99/9999'),
+    validators: [new DateValidator('formato incorrecto para fecha')],
   });
   const [value, setValue, status, errors, handleBlur] = useInput('', {
     formatter: new MaskFormatter(rutMask),
   });
+  console.log(birthStatus);
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <Input

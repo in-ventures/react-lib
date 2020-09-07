@@ -28,7 +28,7 @@ const useStyles = makeStyles({
   content: {
     flex: '1 0 auto',
     paddingLeft: 0,
-    paddingBottom: '0!important' as any,
+    paddingBottom: '0!important',
   },
   cover: {
     width: 88,

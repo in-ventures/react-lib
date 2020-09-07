@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 3:45:13 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Wednesday, 2nd September 2020 11:02:01 am
+ * Last Modified: Monday, 7th September 2020 10:33:07 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -15,8 +15,6 @@
 
 import { Formatter } from './Formatter';
 import is from 'is_js';
-
-const SUPPORTED_MASK_CHAR_REPLACE = ['*', 'A', '9'];
 
 type Char = string | RegExp;
 type Mask = string | string[] | Char[];

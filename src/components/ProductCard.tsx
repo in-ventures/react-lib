@@ -4,8 +4,8 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 3rd September 2020 5:10:03 pm
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Monday, 7th September 2020 10:08:29 am
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -219,7 +219,7 @@ export function ProductCardCarousel(props: ProductCarouselType) {
         )}
 
         {cardList ? (
-          <Grid item xs={12} justify="center">
+          <Grid item xs={12} container justify="center">
             <Grid container justify="flex-start" spacing={2}>
               {cardList.map((cardInfo, index) => (
                 <Grid key={index} item>
