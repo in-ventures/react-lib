@@ -4,9 +4,9 @@ import { TextFieldProps } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { ReactComponent as ImageLoaderIcon } from '../assets/imageloader.svg';
+import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import { useState } from '@storybook/addons';
 
 const useStyles = makeStyles({
   container: {
@@ -87,15 +87,15 @@ export default function ImageLoader({
 
           <iframe ref={iframeRef} src={file} className={classes.borderedArea} onLoad={onIframeLoad} ></iframe>
 
-          <Typography component="div" variant="caption">
-              <Box color="primary" >
-                {fileName}
+          
+          <Typography component="div" variant="caption" >
+              <Box color="primary" style={{alignContent: 'space-between',alignItems: 'center'}}>
+                {fileName} 
                 <IconButton aria-label="delete" onClick={deleteFile} size="small">
                   <DeleteIcon fontSize="small" color="inherit"/>
-                </IconButton>
-              </Box>        
-          </Typography>
-          
+                </IconButton> 
+              </Box>       
+          </Typography>     
           
         </div>
       ) : (
