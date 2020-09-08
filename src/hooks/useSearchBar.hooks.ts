@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Tuesday, 8th September 2020 4:29:26 pm
+ * Last Modified: Tuesday, 8th September 2020 4:42:13 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -30,8 +30,6 @@ export const useSearchBar = <T = Record<string, unknown>>(
 ): [string, (value: string) => void, T[]] => {
   const [searchValue, setSearchValue] = useState<string>(defaultValue);
   const [searchResult, setSearchResult] = useState<T[]>([]);
-  const valueRef = useRef<string>(searchValue);
-
   const queryRef = useRef<null | T[] | ((data: string) => Promise<T[]>)>();
 
   //Setting queryRef values when changes in query
@@ -65,11 +63,11 @@ export const useSearchBar = <T = Record<string, unknown>>(
   const stopTyping = useCallback(
     debounce(
       (newValue: string) => {
-        valueRef.current = newValue;
         search(newValue);
       },
       options.debounceTime ? options.debounceTime : 1600,
     ),
+    // TODO: fix with array of element, always changing "search"
     [options.debounceTime, search],
   );
 
