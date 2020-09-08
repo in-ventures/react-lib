@@ -53,47 +53,41 @@ export default function ImageLoader({
   setFile = () => {},
   onError = () => {},
 }: ImageLoaderProps) {
-
   const classes = useStyles();
   const iframeRef: React.RefObject<HTMLIFrameElement> = React.createRef();
   const [fileName, setFileName] = React.useState();
-  const divisor = 1048576;
 
   const loadFile = useCallback(
     (event: React.BaseSyntheticEvent) => {
+      const divisor = 1024 * 1024;
       const file = event.target.files[0];
-
-      if( types.includes(file.type) ){
-        
-        if( (file.size/divisor) <= maxFileSize ){
+      if (file && types.includes(file.type)) {
+        if (file.size / divisor <= maxFileSize) {
           setFile(URL.createObjectURL(file));
           setFileName(file.name);
-        }else{
+        } else {
           onError();
         }
-
-      }else{
+      } else {
         onError();
-      }  
-      
+      }
     },
-    [setFile, setFileName],
+    [setFile, setFileName, maxFileSize, onError, types],
   );
 
   const deleteFile = useCallback(() => {
     setFile('');
   }, [setFile]);
 
-  
-  function onIframeLoad(){
-    let iframe = iframeRef.current; 
-    if( iframe && iframe.contentDocument ){
-      let imgs = iframe.contentDocument.getElementsByTagName("img");
-      if(imgs.length){
-        imgs[0].style.width = "100%";
-        imgs[0].style.height = "100%";
-        imgs[0].style.objectFit = objectFit?objectFit:"";
-        imgs[0].alt = alt?alt:"Default";
+  function onIframeLoad() {
+    const iframe = iframeRef.current;
+    if (iframe && iframe.contentDocument) {
+      const imgs = iframe.contentDocument.getElementsByTagName('img');
+      if (imgs.length) {
+        imgs[0].style.width = '100%';
+        imgs[0].style.height = '100%';
+        imgs[0].style.objectFit = objectFit ? objectFit : '';
+        imgs[0].alt = alt ? alt : 'Default';
       }
     }
   }
@@ -102,24 +96,30 @@ export default function ImageLoader({
     <div className={classes.container}>
       {file ? (
         <div style={{ display: 'contents' }}>
-
-          <iframe ref={iframeRef} src={file} className={classes.borderedArea} onLoad={onIframeLoad} ></iframe>  
-          <Typography component="div" variant="caption" >
-              <Box color="primary" style={{alignContent: 'space-between',alignItems: 'center'}}>
-                {fileName} 
-                <IconButton aria-label="delete" onClick={deleteFile} size="small">
-                  <DeleteIcon fontSize="small" color="inherit"/>
-                </IconButton> 
-              </Box>       
-          </Typography>     
-          
+          <iframe
+            ref={iframeRef}
+            src={file}
+            className={classes.borderedArea}
+            onLoad={onIframeLoad}
+          ></iframe>
+          <Typography component="div" variant="caption">
+            <Box
+              color="primary"
+              style={{ alignContent: 'space-between', alignItems: 'center' }}
+            >
+              {fileName}
+              <IconButton aria-label="delete" onClick={deleteFile} size="small">
+                <DeleteIcon fontSize="small" color="inherit" />
+              </IconButton>
+            </Box>
+          </Typography>
         </div>
       ) : (
         <div className={classes.borderedArea}>
           <label htmlFor="file-upload" className={classes.customfileupload}>
             <ImageLoaderIcon className={classes.default} />
           </label>
-          
+
           <input
             type="file"
             id="file-upload"
@@ -127,7 +127,7 @@ export default function ImageLoader({
             className={classes.borderedArea}
             style={{ display: 'none' }}
             onChange={loadFile}
-          />  
+          />
         </div>
       )}
     </div>

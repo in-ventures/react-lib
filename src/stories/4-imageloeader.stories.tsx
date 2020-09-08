@@ -6,14 +6,13 @@ export default {
   title: 'Image Loader',
 };
 
-
 const onError = () => {
-  alert("Ha ocurrido un error");
-}
+  alert('Ha ocurrido un error');
+};
 
 export const Base = () => {
   const [file, setFile] = useState('');
-  const types = ["application/pdf", "text/plain", "image/jpeg"];
+  const types = ['application/pdf', 'text/plain', 'image/jpeg', 'image/png'];
   const alt = text('Name', 'Medicamento');
   const objectFit = text('Object fit', 'contain');
   const maxFileSize = number('Max size', 14);
@@ -35,11 +34,11 @@ export const Base = () => {
 
 export const BaseTwo = () => {
   const [file, setFile] = useState('');
-  const types = ["application/pdf", "text/plain", "image/jpeg"];
+  const types = ['application/pdf', 'text/plain', 'image/jpeg'];
   const alt = text('Name', 'Medicamento');
   const objectFit = text('Object fit', 'contain');
   const maxFileSize = number('Max size', 8);
-  
+
   return (
     <div style={{ width: '300px', height: '400px' }}>
       <ImageLoader
