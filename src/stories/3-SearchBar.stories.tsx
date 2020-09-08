@@ -4,8 +4,8 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Monday, 7th September 2020 10:28:05 am
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Tuesday, 8th September 2020 11:33:51 am
+ * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -77,11 +77,15 @@ export const Base = () => {
 
 export const ListResults = () => {
   const value = text('Item', 'Rapier');
+  const behaviorOnClick = () => {
+    return alert('Click en elemento de lista!');
+  };
   return (
     <div>
       <SearchResultList
         searchResults={[...query, { item: value }].map((result) => result.item)}
         onSuggestedClick={() => ''}
+        itemBehaviorOnClick={behaviorOnClick}
       />
     </div>
   );
@@ -115,6 +119,10 @@ export const SearchBarResult = () => {
     setSearchValue(String(value));
   };
 
+  const behaviorOnClick = () => {
+    return alert('Click en elemento de lista!');
+  };
+
   return (
     <div>
       <SearchBar
@@ -129,6 +137,7 @@ export const SearchBarResult = () => {
           (result) => result.item,
         )}
         onSuggestedClick={handleSuggest}
+        itemBehaviorOnClick={behaviorOnClick}
       />
     </div>
   );

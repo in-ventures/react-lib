@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Tuesday, 8th September 2020 11:02:47 am
+ * Last Modified: Tuesday, 8th September 2020 11:37:13 am
  * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -30,7 +30,6 @@ import { ReactComponent as NorthWestArrow } from '../assets/north_west-24px.svg'
 import Collapse from '@material-ui/core/Collapse';
 import Fade from '@material-ui/core/Fade';
 import Typography from '@material-ui/core/Typography';
-import { width } from '@material-ui/system';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -137,11 +136,13 @@ export const SearchBar = ({
 type SearchBoxProps = {
   searchResults: string[];
   onSuggestedClick: (value: string) => void;
+  itemBehaviorOnClick?: () => void;
 };
 
 export const SearchResultList = ({
   searchResults,
   onSuggestedClick,
+  itemBehaviorOnClick,
 }: SearchBoxProps) => {
   const classes = useStyles();
 
@@ -157,7 +158,7 @@ export const SearchResultList = ({
       <List>
         {searchResults.map((value) => (
           <React.Fragment key={value}>
-            <ListItem key={value} href="#simple-list" button component="a">
+            <ListItem key={value} onClick={itemBehaviorOnClick} button>
               <ListItemIcon className={classes.listIcon}>
                 <SearchIcon fontSize="small" />
               </ListItemIcon>
