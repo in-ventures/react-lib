@@ -4,7 +4,6 @@ import { TextFieldProps } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { ReactComponent as ImageLoaderIcon } from '../assets/imageloader.svg';
-import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 
@@ -36,28 +35,47 @@ const useStyles = makeStyles({
 
 //Type
 type ImageLoaderProps = {
+  types?: string[];
   objectFit?: string;
   file?: string;
+  maxFileSize?: number;
   alt?: string;
   setFile?: (url: string) => void;
+  onError?: () => void;
 } & TextFieldProps;
 
 export default function ImageLoader({
+  types = [],
   objectFit,
   file,
+  maxFileSize = 14,
   alt,
   setFile = () => {},
+  onError = () => {},
 }: ImageLoaderProps) {
 
   const classes = useStyles();
   const iframeRef: React.RefObject<HTMLIFrameElement> = React.createRef();
   const [fileName, setFileName] = React.useState();
+  const divisor = 1048576;
 
   const loadFile = useCallback(
     (event: React.BaseSyntheticEvent) => {
       const file = event.target.files[0];
-      setFile(URL.createObjectURL(file));
-      setFileName(file.name);
+
+      if( types.includes(file.type) ){
+        
+        if( (file.size/divisor) <= maxFileSize ){
+          setFile(URL.createObjectURL(file));
+          setFileName(file.name);
+        }else{
+          onError();
+        }
+
+      }else{
+        onError();
+      }  
+      
     },
     [setFile, setFileName],
   );
@@ -85,9 +103,7 @@ export default function ImageLoader({
       {file ? (
         <div style={{ display: 'contents' }}>
 
-          <iframe ref={iframeRef} src={file} className={classes.borderedArea} onLoad={onIframeLoad} ></iframe>
-
-          
+          <iframe ref={iframeRef} src={file} className={classes.borderedArea} onLoad={onIframeLoad} ></iframe>  
           <Typography component="div" variant="caption" >
               <Box color="primary" style={{alignContent: 'space-between',alignItems: 'center'}}>
                 {fileName} 
