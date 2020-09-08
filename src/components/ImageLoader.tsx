@@ -79,6 +79,16 @@ export default function ImageLoader({
     setFile('');
   }, [setFile]);
 
+  React.useEffect( () => {
+    const iframe = iframeRef.current;
+    if (iframe && iframe.contentDocument) {
+      const imgs = iframe.contentDocument.getElementsByTagName('img');
+      if (imgs.length) {
+        imgs[0].style.objectFit = objectFit ? objectFit : '';
+      }
+    }
+  }, [objectFit]);
+
   function onIframeLoad() {
     const iframe = iframeRef.current;
     if (iframe && iframe.contentDocument) {
