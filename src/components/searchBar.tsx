@@ -4,8 +4,8 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Tuesday, 8th September 2020 11:37:13 am
- * Modified By: Luis Aparicio (luis@inventures.cl)
+ * Last Modified: Tuesday, 8th September 2020 3:41:03 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
