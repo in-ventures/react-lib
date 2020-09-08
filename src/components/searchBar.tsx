@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Friday, 4th September 2020 6:24:18 pm
+ * Last Modified: Tuesday, 8th September 2020 10:31:04 am
  * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -112,11 +112,6 @@ export const SearchBar = ({
           className={classes.inputField}
           onFocus={handleTextFieldOnFocus}
           InputProps={{
-            startAdornment: (!showIcon || !props.value) && (
-              <InputAdornment position="start">
-                <SearchIcon fontSize="small" />
-              </InputAdornment>
-            ),
             endAdornment: (
               <InputAdornment position="end">
                 <IconButton size="small" onClick={handleClearOnClick}>
