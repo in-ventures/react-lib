@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Tuesday, 8th September 2020 3:41:03 pm
+ * Last Modified: Tuesday, 8th September 2020 3:51:46 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -13,7 +13,7 @@
  * Inventures - www.inventures.cl
  */
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef, useLayoutEffect } from 'react';
 import TextField, { TextFieldProps } from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
@@ -115,6 +115,7 @@ export const SearchBar = ({
         <Collapse in={showInputField} className={classes.inputFieldCollapse}>
           <TextField
             {...props}
+            autoFocus
             className={classes.inputField}
             onFocus={handleTextFieldOnFocus}
             InputProps={{
@@ -136,13 +137,13 @@ export const SearchBar = ({
 type SearchBoxProps = {
   searchResults: string[];
   onSuggestedClick: (value: string) => void;
-  itemBehaviorOnClick?: () => void;
+  onClick?: () => void;
 };
 
 export const SearchResultList = ({
   searchResults,
   onSuggestedClick,
-  itemBehaviorOnClick,
+  onClick,
 }: SearchBoxProps) => {
   const classes = useStyles();
 
@@ -158,7 +159,7 @@ export const SearchResultList = ({
       <List>
         {searchResults.map((value) => (
           <React.Fragment key={value}>
-            <ListItem key={value} onClick={itemBehaviorOnClick} button>
+            <ListItem key={value} onClick={onClick} button>
               <ListItemIcon className={classes.listIcon}>
                 <SearchIcon fontSize="small" />
               </ListItemIcon>
