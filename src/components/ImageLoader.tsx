@@ -4,6 +4,9 @@ import { TextFieldProps } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { ReactComponent as ImageLoaderIcon } from '../assets/imageloader.svg';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+import { useState } from '@storybook/addons';
 
 const useStyles = makeStyles({
   container: {
@@ -33,57 +36,82 @@ const useStyles = makeStyles({
 
 //Type
 type ImageLoaderProps = {
-  imagesrc?: string;
-  imagealt?: string;
-  setImagesrc?: (url: string) => void;
+  objectFit?: string;
+  file?: string;
+  alt?: string;
+  setFile?: (url: string) => void;
 } & TextFieldProps;
 
 export default function ImageLoader({
-  imagesrc,
-  imagealt,
-  setImagesrc = () => {},
+  objectFit,
+  file,
+  alt,
+  setFile = () => {},
 }: ImageLoaderProps) {
-  const classes = useStyles();
 
-  const loadImage = useCallback(
+  const classes = useStyles();
+  const iframeRef: React.RefObject<HTMLIFrameElement> = React.createRef();
+  const [fileName, setFileName] = React.useState();
+
+  const loadFile = useCallback(
     (event: React.BaseSyntheticEvent) => {
       const file = event.target.files[0];
-      setImagesrc(URL.createObjectURL(file));
+      setFile(URL.createObjectURL(file));
+      setFileName(file.name);
     },
-    [setImagesrc],
+    [setFile, setFileName],
   );
 
-  const deleteImage = useCallback(() => {
-    setImagesrc('');
-  }, [setImagesrc]);
+  const deleteFile = useCallback(() => {
+    setFile('');
+  }, [setFile]);
+
+  
+  function onIframeLoad(){
+    let iframe = iframeRef.current; 
+    if( iframe && iframe.contentDocument ){
+      let imgs = iframe.contentDocument.getElementsByTagName("img");
+      if(imgs.length){
+        imgs[0].style.width = "100%";
+        imgs[0].style.height = "100%";
+        imgs[0].style.objectFit = objectFit?objectFit:"";
+        imgs[0].alt = alt?alt:"Default";
+      }
+    }
+  }
 
   return (
     <div className={classes.container}>
-      {imagesrc ? (
+      {file ? (
         <div style={{ display: 'contents' }}>
-          <img
-            className={classes.borderedArea}
-            src={imagesrc}
-            alt={imagealt}
-          ></img>
 
-          <IconButton aria-label="delete" onClick={deleteImage} size="small">
-            <DeleteIcon fontSize="small" />
-          </IconButton>
+          <iframe ref={iframeRef} src={file} className={classes.borderedArea} onLoad={onIframeLoad} ></iframe>
+
+          <Typography component="div" variant="caption">
+              <Box color="primary" >
+                {fileName}
+                <IconButton aria-label="delete" onClick={deleteFile} size="small">
+                  <DeleteIcon fontSize="small" color="inherit"/>
+                </IconButton>
+              </Box>        
+          </Typography>
+          
+          
         </div>
       ) : (
         <div className={classes.borderedArea}>
           <label htmlFor="file-upload" className={classes.customfileupload}>
             <ImageLoaderIcon className={classes.default} />
           </label>
+          
           <input
             type="file"
             id="file-upload"
             accept="image/*;capture=camera"
             className={classes.borderedArea}
             style={{ display: 'none' }}
-            onChange={loadImage}
-          />
+            onChange={loadFile}
+          />  
         </div>
       )}
     </div>

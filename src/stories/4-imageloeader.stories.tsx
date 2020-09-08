@@ -7,15 +7,17 @@ export default {
 };
 
 export const Base = () => {
-  const imagealt = text('Alt', 'Medicamento');
-  const [imagesrc, setImagesrc] = useState('');
+  const [file, setFile] = useState('');
+  const alt = text('Alt', 'Medicamento');
+  const objectFit = text('Object fit', 'contain');
 
   return (
     <div style={{ width: '200px', height: '200px' }}>
       <ImageLoader
-        imagesrc={imagesrc}
-        imagealt={imagealt}
-        setImagesrc={setImagesrc}
+        objectFit={objectFit}
+        file={file}
+        alt={alt}
+        setFile={setFile}
       ></ImageLoader>
     </div>
   );
