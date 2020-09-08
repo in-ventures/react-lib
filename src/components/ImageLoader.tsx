@@ -79,7 +79,7 @@ export default function ImageLoader({
     setFile('');
   }, [setFile]);
 
-  React.useEffect( () => {
+  React.useEffect(() => {
     const iframe = iframeRef.current;
     if (iframe && iframe.contentDocument) {
       const imgs = iframe.contentDocument.getElementsByTagName('img');
@@ -87,7 +87,7 @@ export default function ImageLoader({
         imgs[0].style.objectFit = objectFit ? objectFit : '';
       }
     }
-  }, [objectFit]);
+  }, [objectFit, iframeRef]);
 
   function onIframeLoad() {
     const iframe = iframeRef.current;
