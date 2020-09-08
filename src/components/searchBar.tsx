@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Tuesday, 8th September 2020 10:31:04 am
+ * Last Modified: Tuesday, 8th September 2020 11:02:47 am
  * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -30,6 +30,7 @@ import { ReactComponent as NorthWestArrow } from '../assets/north_west-24px.svg'
 import Collapse from '@material-ui/core/Collapse';
 import Fade from '@material-ui/core/Fade';
 import Typography from '@material-ui/core/Typography';
+import { width } from '@material-ui/system';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -53,6 +54,10 @@ const useStyles = makeStyles((theme: Theme) =>
     inputField: {
       border: 'none',
       borderRadius: 4,
+      width: '100%',
+    },
+    inputFieldCollapse: {
+      width: '100%',
     },
     searchButtonHide: {
       display: 'none',
@@ -62,6 +67,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     dividerMargin: {
       marginLeft: 50,
+    },
+    searchInputBox: {
+      justifyContent: 'flex-end',
     },
   }),
 );
@@ -96,32 +104,32 @@ export const SearchBar = ({
   }, [clearSearch, handleInputChange]);
 
   return (
-    <Box display="flex">
-      <Fade in={!showInputField}>
-        <IconButton
-          size="small"
-          onClick={handleInputChange}
-          className={showInputField ? classes.searchButtonHide : ''}
-        >
-          <SearchIcon />
-        </IconButton>
-      </Fade>
-      <Collapse in={showInputField}>
-        <TextField
-          {...props}
-          className={classes.inputField}
-          onFocus={handleTextFieldOnFocus}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton size="small" onClick={handleClearOnClick}>
-                  <ClearIcon fontSize="small" />
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        ></TextField>
-      </Collapse>
+    <Box display="flex" className={classes.searchInputBox}>
+      {!showInputField && (
+        <Fade in={!showInputField}>
+          <IconButton size="small" onClick={handleInputChange}>
+            <SearchIcon />
+          </IconButton>
+        </Fade>
+      )}
+      {showInputField && (
+        <Collapse in={showInputField} className={classes.inputFieldCollapse}>
+          <TextField
+            {...props}
+            className={classes.inputField}
+            onFocus={handleTextFieldOnFocus}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton size="small" onClick={handleClearOnClick}>
+                    <ClearIcon fontSize="small" />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          ></TextField>
+        </Collapse>
+      )}
     </Box>
   );
 };
