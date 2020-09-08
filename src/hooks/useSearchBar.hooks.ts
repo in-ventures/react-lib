@@ -4,8 +4,8 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Wednesday, 2nd September 2020 1:10:50 pm
- * Modified By: Luis Aparicio (luis@inventures.cl)
+ * Last Modified: Tuesday, 8th September 2020 4:29:26 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -25,14 +25,14 @@ type useSearchBarOptions = {
 
 export const useSearchBar = <T = Record<string, unknown>>(
   defaultValue: string,
-  query: T[] | ((data: string) => Promise<string[]>),
+  query: T[] | ((data: string) => Promise<T[]>),
   options: useSearchBarOptions = {},
-): [string, (value: string) => void, (T | string)[]] => {
+): [string, (value: string) => void, T[]] => {
   const [searchValue, setSearchValue] = useState<string>(defaultValue);
-  const [searchResult, setSearchResult] = useState<(T | string)[]>([]);
+  const [searchResult, setSearchResult] = useState<T[]>([]);
   const valueRef = useRef<string>(searchValue);
 
-  const queryRef = useRef<null | T[] | ((data: string) => Promise<string[]>)>();
+  const queryRef = useRef<null | T[] | ((data: string) => Promise<T[]>)>();
 
   //Setting queryRef values when changes in query
   useEffect(() => {

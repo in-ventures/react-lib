@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Tuesday, 8th September 2020 3:51:46 pm
+ * Last Modified: Tuesday, 8th September 2020 4:32:10 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -140,52 +140,46 @@ type SearchBoxProps = {
   onClick?: () => void;
 };
 
-export const SearchResultList = ({
-  searchResults,
+type SearchElementItemProps = {
+  value: string;
+  onSuggestedClick?: (value: string) => void;
+  onClick: () => void;
+};
+export const SearchElementItem = ({
+  value,
   onSuggestedClick,
   onClick,
-}: SearchBoxProps) => {
+}: SearchElementItemProps) => {
   const classes = useStyles();
-
-  const handleSuggestedOnClick = useCallback(
-    (value) => () => {
-      onSuggestedClick(String(value));
-    },
-    [onSuggestedClick],
-  );
-
+  const handleSuggestedOnClick = useCallback(() => {
+    if (!onSuggestedClick) return;
+    onSuggestedClick(String(value));
+  }, [onSuggestedClick, value]);
   return (
-    <Box className={classes.box} display="block">
-      <List>
-        {searchResults.map((value) => (
-          <React.Fragment key={value}>
-            <ListItem key={value} onClick={onClick} button>
-              <ListItemIcon className={classes.listIcon}>
-                <SearchIcon fontSize="small" />
-              </ListItemIcon>
-              <Typography
-                className={classes.textField}
-                color="textSecondary"
-                component="p"
-              >
-                {value}
-              </Typography>
-              <ListItemSecondaryAction>
-                <IconButton
-                  size="small"
-                  onClick={handleSuggestedOnClick(value)}
-                >
-                  <NorthWestArrow
-                    className={classes.northWestArrow}
-                    fontSize="small"
-                  />
-                </IconButton>
-              </ListItemSecondaryAction>
-            </ListItem>
-            <Divider className={classes.dividerMargin} component="li" />
-          </React.Fragment>
-        ))}
-      </List>
-    </Box>
+    <>
+      <ListItem onClick={onClick} button ContainerComponent="div">
+        <ListItemIcon className={classes.listIcon}>
+          <SearchIcon fontSize="small" />
+        </ListItemIcon>
+        <Typography
+          className={classes.textField}
+          color="textSecondary"
+          component="p"
+        >
+          {value}
+        </Typography>
+        {!!onSuggestedClick && (
+          <ListItemSecondaryAction>
+            <IconButton size="small" onClick={handleSuggestedOnClick}>
+              <NorthWestArrow
+                className={classes.northWestArrow}
+                fontSize="small"
+              />
+            </IconButton>
+          </ListItemSecondaryAction>
+        )}
+      </ListItem>
+      <Divider className={classes.dividerMargin} component="div" />
+    </>
   );
 };

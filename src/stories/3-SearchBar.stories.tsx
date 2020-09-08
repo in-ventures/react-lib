@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Tuesday, 8th September 2020 3:43:57 pm
+ * Last Modified: Tuesday, 8th September 2020 4:38:09 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -14,7 +14,7 @@
  */
 
 import React, { useCallback, useState } from 'react';
-import { SearchBar, SearchResultList } from '../components/searchBar';
+import { SearchBar, SearchElementItem } from '../components/searchBar';
 import { useSearchBar } from '../hooks/useSearchBar.hooks';
 import { number, text } from '@storybook/addon-knobs';
 
@@ -77,16 +77,16 @@ export const Base = () => {
 
 export const ListResults = () => {
   const value = text('Item', 'Rapier');
-  const behaviorOnClick = () => {
-    return alert('Click en elemento de lista!');
-  };
   return (
     <div>
-      <SearchResultList
-        searchResults={[...query, { item: value }].map((result) => result.item)}
-        onSuggestedClick={() => ''}
-        onClick={behaviorOnClick}
-      />
+      {[...query, { item: value }].map((result) => (
+        <SearchElementItem
+          key={result.item}
+          value={result.item}
+          onClick={() => alert(result.item)}
+          onSuggestedClick={() => alert('autocomplete')}
+        />
+      ))}
     </div>
   );
 };
@@ -111,16 +111,8 @@ export const SearchBarResult = () => {
     [setSearchValue],
   );
 
-  const handleSuggest = (value: string) => {
-    setSearchValue(String(value));
-  };
-
   const handleClickClearSearch = (value: string) => {
     setSearchValue(String(value));
-  };
-
-  const behaviorOnClick = () => {
-    return alert('Click en elemento de lista!');
   };
 
   return (
@@ -132,13 +124,22 @@ export const SearchBarResult = () => {
         size="small"
       />
 
-      <SearchResultList
-        searchResults={(searchResults as { item: string }[]).map(
-          (result) => result.item,
-        )}
-        onSuggestedClick={handleSuggest}
-        onClick={behaviorOnClick}
-      />
+      {!!searchValue && (
+        <SearchElementItem
+          value={searchValue}
+          onClick={() => alert(searchValue)}
+        />
+      )}
+      {searchResults
+        .filter(({ item }) => item !== searchValue)
+        .map((result, i) => (
+          <SearchElementItem
+            key={result.item}
+            value={result.item}
+            onClick={() => alert(result.item)}
+            onSuggestedClick={(newValue) => setSearchValue(newValue)}
+          />
+        ))}
     </div>
   );
 };
