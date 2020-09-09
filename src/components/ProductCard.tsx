@@ -4,8 +4,8 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Monday, 7th September 2020 10:08:29 am
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Wednesday, 9th September 2020 5:21:54 pm
+ * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -26,6 +26,7 @@ import {
   CardContent,
   Typography,
   Chip,
+  Button,
 } from '@material-ui/core';
 import { CurrencyFormatter } from '../formatters';
 
@@ -43,25 +44,31 @@ type ProductBPropTypes = {
 
 type ProductCarouselType = {
   title: string;
-  onClickCarousel?: () => void;
+  onClickCarousel: () => void;
   cardList?: ProductBPropTypes[];
 };
 
 const useStyles = makeStyles((theme: Theme) => {
   return {
     root: {
-      width: '162px',
-      height: '250px',
+      minWidth: '160px',
+      minHeight: '250px',
       alignContent: 'center',
       alignItems: 'center',
       justifyContent: 'center',
       textAlign: 'center',
-      padding: '8px',
-      mergin: '5px',
+      padding: '4px',
+      margin: '4px',
+      flexGrow: 1,
+    },
+    carouselRoot: {
+      flexGrow: 1,
+      margin: '4px',
     },
     title: {
       marginBottom: '3px',
-      flexGrow: 1,
+      backgroundColor: '#FFFFFF',
+      flex: 1,
     },
     content: {
       paddingBottom: '10px',
@@ -70,33 +77,21 @@ const useStyles = makeStyles((theme: Theme) => {
       height: 0,
       paddingTop: '56.25%',
       aspectRatio: '1',
-    },
-    price: {
-      color: '#5185da',
-      marginBottom: '5px',
-      marginTop: '5px',
+      marginLeft: '4px',
+      marginRight: '4px',
     },
     textBox: {
       fontFamily: theme.typography.fontFamily,
       textAlign: 'center',
-      width: '140px',
       alignSelf: 'center',
       alignContent: 'center',
       justifyContent: 'center',
     },
-    icon: {
-      height: '18px',
-      paddingTop: '3px',
-    },
     carouselHeader: {
       flexDirection: 'row',
     },
-    gridContainer: {
-      flexGrow: 1,
-      margin: '10px',
-    },
     menuButton: {
-      marginRight: theme.spacing(2),
+      //marginRight: theme.spacing(2),
     },
     disabled: {
       backgroundColor: '#FFFFFF',
@@ -111,11 +106,12 @@ export function ProductCard(props: ProductBPropTypes) {
     subtitle,
     tagText,
     tagIcon,
-    details,
-    description,
     price,
+    description,
+    details,
     onClickCard,
   } = props;
+  
   const currFormat = new CurrencyFormatter();
   const currencyPrice = currFormat.format(price);
   const classes = useStyles();
@@ -174,7 +170,6 @@ export function ProductCard(props: ProductBPropTypes) {
             variant="body1"
             color="textPrimary"
             component="h6"
-            className={classes.price}
           >
             {currencyPrice}
           </Typography>
@@ -189,23 +184,20 @@ export function ProductCardCarousel(props: ProductCarouselType) {
   const classes = useStyles();
 
   return (
-    <Box display="block">
-      <Grid
-        container
-        className={classes.gridContainer}
-        spacing={2}
-        justify="center"
-      >
-        <Typography
-          variant="body1"
-          color="textPrimary"
-          component="h5"
-          className={classes.title}
-        >
-          {title}
-        </Typography>
+    <div className={classes.carouselRoot}>
+      <Grid container spacing={3} justify='flex-start'>
+        <Grid item xs={8} justify='flex-end'>
+          <Typography
+            variant="body1"
+            color="textPrimary"
+            component="h5"
+            //className={classes.title}
+          >
+            {title}
+          </Typography>
+        </Grid>
 
-        {onClickCarousel ? (
+        <Grid item xs={4} justify='flex-start'>
           <IconButton
             color="primary"
             aria-label="view product categories"
@@ -214,34 +206,31 @@ export function ProductCardCarousel(props: ProductCarouselType) {
           >
             <ChevronRightRoundedIcon />
           </IconButton>
-        ) : (
-          <div />
-        )}
-
-        {cardList ? (
-          <Grid item xs={12} container justify="center">
-            <Grid container justify="flex-start" spacing={2}>
-              {cardList.map((cardInfo, index) => (
-                <Grid key={index} item>
-                  <ProductCard
-                    imageUrl={cardInfo.imageUrl}
-                    title={cardInfo.title}
-                    subtitle={cardInfo.subtitle}
-                    details={cardInfo.details}
-                    description={cardInfo.description}
-                    price={cardInfo.price}
-                    tagText={cardInfo.tagText}
-                    tagIcon={cardInfo.tagIcon}
-                    onClickCard={cardInfo.onClickCard}
-                  />
-                </Grid>
-              ))}
+        </Grid>
+              
+      {cardList ? (
+        <>
+          {cardList.map((cardInfo, index) => (
+            <Grid key={index} item xs={9} sm={3}>
+              <ProductCard
+                imageUrl={cardInfo.imageUrl}
+                title={cardInfo.title}
+                subtitle={cardInfo.subtitle}
+                details={cardInfo.details}
+                description={cardInfo.description}
+                price={cardInfo.price}
+                tagText={cardInfo.tagText}
+                tagIcon={cardInfo.tagIcon}
+                onClickCard={cardInfo.onClickCard}
+              />
             </Grid>
-          </Grid>
-        ) : (
-          <div />
-        )}
+          ))}
+        </>
+      ) : (
+        <div />
+      )}
+
       </Grid>
-    </Box>
+    </div>
   );
 }
