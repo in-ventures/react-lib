@@ -2,84 +2,79 @@ import React, { useCallback } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { TextFieldProps } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
+import Card from '@material-ui/core/Card';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import Divider from '@material-ui/core/Divider';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { ReactComponent as ImageLoaderIcon } from '../assets/imageloader.svg';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   container: {
     width: '100%',
     height: '100%',
-    textAlign: 'right',
   },
-  borderedArea: {
+  cardactionarea: {
+    height: '80%',
+    display: 'flex',
+  },
+  loading: {
+    opacity: 0.4,
     width: '100%',
     height: '100%',
-    border: '1px solid #414047',
-    borderRadius: '4px',
-    position: 'relative',
   },
-  customfileupload: {
-    cursor: 'pointer',
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
+  actions: {
+    justifyContent: 'center',
   },
-  default: {
-    width: '48px',
-    height: '48px',
+  input: {
+    display: 'none',
   },
 });
 
 //Type
 type ImageLoaderProps = {
   types?: string[];
-  objectFit?: string;
-  file?: string;
-  maxFileSize?: number;
   alt?: string;
-  setFile?: (url: string) => void;
+  objectFit?: string;
+  maxFileSize?: number;
+  defaultImage?: string;
   onError?: () => void;
+  file?: string;
+  setFile?: (url: string) => void;
+  loading?: boolean;
+  setLoading?: (loading: boolean) => void;
+  loaded?: boolean;
+  setLoaded?: (loaded: boolean) => void;
 } & TextFieldProps;
 
 export default function ImageLoader({
   types = [],
-  objectFit,
-  file,
-  maxFileSize = 14,
   alt,
-  setFile = () => {},
+  objectFit = 'cover',
+  maxFileSize = 14,
+  defaultImage,
   onError = () => {},
+  file,
+  setFile = () => {},
+  loading,
+  setLoading = () => {},
+  loaded,
+  setLoaded = () => {},
 }: ImageLoaderProps) {
   const classes = useStyles();
   const iframeRef: React.RefObject<HTMLIFrameElement> = React.createRef();
-  const [fileName, setFileName] = React.useState();
+  const mediaRef: React.RefObject<HTMLImageElement> = React.createRef();
+  const inputRef: React.RefObject<HTMLInputElement> = React.createRef();
 
-  const loadFile = useCallback(
-    (event: React.BaseSyntheticEvent) => {
-      const divisor = 1024 * 1024;
-      const file = event.target.files[0];
-      if (file && types.includes(file.type)) {
-        if (file.size / divisor <= maxFileSize) {
-          setFile(URL.createObjectURL(file));
-          setFileName(file.name);
-        } else {
-          onError();
-        }
-      } else {
-        onError();
-      }
-    },
-    [setFile, setFileName, maxFileSize, onError, types],
-  );
-
-  const deleteFile = useCallback(() => {
-    setFile('');
-  }, [setFile]);
-
+  //Update object fit atr
   React.useEffect(() => {
+    //Reset default image's property
+    const media = mediaRef.current;
+    if (media) media.style.objectFit = objectFit;
+
+    //Reset iframe's objectFit property
     const iframe = iframeRef.current;
     if (iframe && iframe.contentDocument) {
       const imgs = iframe.contentDocument.getElementsByTagName('img');
@@ -87,8 +82,42 @@ export default function ImageLoader({
         imgs[0].style.objectFit = objectFit ? objectFit : '';
       }
     }
-  }, [objectFit, iframeRef]);
+  }, [objectFit, iframeRef, mediaRef]);
 
+  const loadFile = useCallback(
+    (event: React.BaseSyntheticEvent) => {
+      const divisor = 1024 * 1024;
+      const file = event.target.files[0];
+      if (file && types.includes(file.type)) {
+        if (file.size / divisor <= maxFileSize) {
+          setLoading(true);
+          setLoaded(false);
+
+          //Compression
+
+          //Then (if success)
+          setFile(URL.createObjectURL(file));
+          setLoaded(true);
+          setLoading(false);
+
+          //If error
+          //setLoading(false);
+        } else {
+          onError();
+        }
+      } else {
+        onError();
+      }
+    },
+    [setFile, setLoaded, setLoading, maxFileSize, onError, types],
+  );
+
+  const deleteFile = useCallback(() => {
+    setFile('');
+    setLoaded(false);
+  }, [setFile, setLoaded]);
+
+  //Set iframe's properties
   function onIframeLoad() {
     const iframe = iframeRef.current;
     if (iframe && iframe.contentDocument) {
@@ -102,44 +131,76 @@ export default function ImageLoader({
     }
   }
 
+  function onCardActionAreaClick() {
+    const input = inputRef.current;
+    input?.click();
+  }
+
   return (
     <div className={classes.container}>
-      {file ? (
-        <div style={{ display: 'contents' }}>
-          <iframe
-            ref={iframeRef}
-            src={file}
-            className={classes.borderedArea}
-            onLoad={onIframeLoad}
-          ></iframe>
-          <Typography component="div" variant="caption">
-            <Box
-              color="primary"
-              style={{ alignContent: 'space-between', alignItems: 'center' }}
-            >
-              {fileName}
-              <IconButton aria-label="delete" onClick={deleteFile} size="small">
-                <DeleteIcon fontSize="small" color="inherit" />
-              </IconButton>
-            </Box>
-          </Typography>
-        </div>
-      ) : (
-        <div className={classes.borderedArea}>
-          <label htmlFor="file-upload" className={classes.customfileupload}>
-            <ImageLoaderIcon className={classes.default} />
-          </label>
+      <Card className={classes.container}>
+        <CardActionArea
+          className={classes.cardactionarea}
+          onClick={onCardActionAreaClick}
+        >
+          {!loaded && !loading ? (
+            <CardMedia
+              className={classes.container}
+              ref={mediaRef}
+              component="img"
+              alt="Subir elemento"
+              title="Subir elemento"
+              image={defaultImage}
+            />
+          ) : (
+            <iframe
+              title="Contenedor"
+              ref={iframeRef}
+              src={file}
+              className={loading ? classes.loading : classes.container}
+              onLoad={onIframeLoad}
+            ></iframe>
+          )}
+        </CardActionArea>
 
+        {loading ? <LinearProgress variant="determinate" value={10} /> : ''}
+        <Divider />
+
+        <CardActions className={classes.actions}>
+          {loaded ? (
+            <IconButton
+              color="primary"
+              aria-label="Eliminar elemento"
+              component="span"
+              disabled={loading}
+              onClick={deleteFile}
+            >
+              <DeleteIcon />
+            </IconButton>
+          ) : (
+            ''
+          )}
           <input
+            ref={inputRef}
+            id="icon-button-file"
             type="file"
-            id="file-upload"
             accept="image/*;capture=camera"
-            className={classes.borderedArea}
-            style={{ display: 'none' }}
+            className={classes.input}
             onChange={loadFile}
+            disabled={loading}
           />
-        </div>
-      )}
+          <label htmlFor="icon-button-file">
+            <IconButton
+              color="primary"
+              aria-label="Subir elemento"
+              component="span"
+              disabled={loading}
+            >
+              <PhotoCamera />
+            </IconButton>
+          </label>
+        </CardActions>
+      </Card>
     </div>
   );
 }
