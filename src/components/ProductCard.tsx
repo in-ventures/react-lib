@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Wednesday, 9th September 2020 5:24:41 pm
+ * Last Modified: Wednesday, 9th September 2020 5:54:08 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -50,34 +50,33 @@ type ProductCarouselType = {
 const useStyles = makeStyles((theme: Theme) => {
   return {
     root: {
-      minWidth: '160px',
+      minWidth: '162px',
       minHeight: '250px',
       alignContent: 'center',
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'space-between',
       textAlign: 'center',
-      padding: '4px',
+      padding: '8px',
       margin: '4px',
       flexGrow: 1,
+      justifyItems: 'space-between',
     },
     carouselRoot: {
       flexGrow: 1,
       margin: '4px',
     },
     title: {
-      marginBottom: '3px',
+      margin: '4px 0px 8px 0px',
       backgroundColor: '#FFFFFF',
       flex: 1,
     },
     content: {
-      paddingBottom: '10px',
+      padding: '0px',
     },
     media: {
       height: 0,
       paddingTop: '56.25%',
       aspectRatio: '1',
-      marginLeft: '4px',
-      marginRight: '4px',
     },
     textBox: {
       fontFamily: theme.typography.fontFamily,
@@ -91,6 +90,9 @@ const useStyles = makeStyles((theme: Theme) => {
     },
     disabled: {
       backgroundColor: '#FFFFFF',
+    },
+    price: {
+      marginTop: '8px',
     },
   };
 });
@@ -162,7 +164,7 @@ export function ProductCard(props: ProductBPropTypes) {
           >
             {details}
           </Box>
-          <Typography variant="body1" color="textPrimary" component="h6">
+          <Typography variant="body1" color="textPrimary" component="h6" className={classes.price}>
             {currencyPrice}
           </Typography>
         </CardContent>
