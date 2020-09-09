@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Wednesday, 9th September 2020 5:54:08 pm
+ * Last Modified: Wednesday, 9th September 2020 7:24:58 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -19,7 +19,6 @@ import ChevronRightRoundedIcon from '@material-ui/icons/ChevronRightRounded';
 import {
   Card,
   CardActionArea,
-  Box,
   Grid,
   IconButton,
   CardMedia,
@@ -40,7 +39,6 @@ type ProductBPropTypes = {
   price: number;
   onClickCard: () => void;
 };
-
 type ProductCarouselType = {
   title: string;
   onClickCarousel: () => void;
@@ -50,14 +48,11 @@ type ProductCarouselType = {
 const useStyles = makeStyles((theme: Theme) => {
   return {
     root: {
-      minWidth: '162px',
-      minHeight: '250px',
       alignContent: 'center',
       alignItems: 'center',
       justifyContent: 'space-between',
       textAlign: 'center',
       padding: '8px',
-      margin: '4px',
       flexGrow: 1,
       justifyItems: 'space-between',
     },
@@ -66,30 +61,37 @@ const useStyles = makeStyles((theme: Theme) => {
       margin: '4px',
     },
     title: {
+      width: '100%',
       margin: '4px 0px 8px 0px',
       backgroundColor: '#FFFFFF',
-      flex: 1,
     },
     content: {
       padding: '0px',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      height: '118px',
+      display: 'flex',
     },
     media: {
-      height: 0,
-      paddingTop: '56.25%',
-      aspectRatio: '1',
+      height: '92px',
+      objectFit: 'contain',
+    },
+    tag: {
+      marginTop: '-14px',
     },
     textBox: {
-      fontFamily: theme.typography.fontFamily,
       textAlign: 'center',
       alignSelf: 'center',
       alignContent: 'center',
       justifyContent: 'center',
+      maxWidth: '100%',
     },
     carouselHeader: {
       flexDirection: 'row',
     },
     disabled: {
       backgroundColor: '#FFFFFF',
+      marginTop: '-14px',
     },
     price: {
       marginTop: '8px',
@@ -121,9 +123,16 @@ export function ProductCard(props: ProductBPropTypes) {
           className={classes.media}
           image={imageUrl}
           onClick={onClickCard}
+          component="img"
         />
         {tagText ? (
-          <Chip color="primary" size="small" icon={tagIcon} label={tagText} />
+          <Chip
+            color="primary"
+            size="small"
+            icon={tagIcon}
+            label={tagText}
+            className={classes.tag}
+          />
         ) : (
           <Chip className={classes.disabled} size="small" />
         )}
@@ -132,39 +141,43 @@ export function ProductCard(props: ProductBPropTypes) {
           <Typography
             variant="subtitle1"
             color="textPrimary"
-            component="h5"
+            component="h4"
             className={classes.title}
+            noWrap
           >
             {title}
           </Typography>
-          <Box
+          <Typography
+            variant="body2"
+            color="textPrimary"
             className={classes.textBox}
-            component="div"
-            textOverflow="ellipsis"
-            overflow="hidden"
-            whiteSpace="nowrap"
+            noWrap
           >
             {subtitle}
-          </Box>
-          <Box
+          </Typography>
+
+          <Typography
+            variant="body2"
+            color="textPrimary"
             className={classes.textBox}
-            component="div"
-            textOverflow="ellipsis"
-            overflow="hidden"
-            whiteSpace="nowrap"
+            noWrap
           >
             {description}
-          </Box>
-          <Box
+          </Typography>
+          <Typography
+            variant="body2"
+            color="textPrimary"
             className={classes.textBox}
-            component="div"
-            textOverflow="ellipsis"
-            overflow="hidden"
-            whiteSpace="nowrap"
+            noWrap
           >
             {details}
-          </Box>
-          <Typography variant="body1" color="textPrimary" component="h6" className={classes.price}>
+          </Typography>
+          <Typography
+            variant="body1"
+            color="textPrimary"
+            component="h6"
+            className={classes.price}
+          >
             {currencyPrice}
           </Typography>
         </CardContent>
@@ -179,14 +192,14 @@ export function ProductCardCarousel(props: ProductCarouselType) {
 
   return (
     <div className={classes.carouselRoot}>
-      <Grid container spacing={3} justify="flex-start">
-        <Grid item xs={8} justify="flex-end">
+      <Grid container spacing={1} justify="flex-start">
+        <Grid item xs={11} justify="flex-end">
           <Typography variant="body1" color="textPrimary" component="h5">
             {title}
           </Typography>
         </Grid>
 
-        <Grid item xs={4} justify="flex-start">
+        <Grid item xs={1} justify="flex-start">
           <IconButton
             color="primary"
             aria-label="view product categories"
@@ -199,7 +212,7 @@ export function ProductCardCarousel(props: ProductCarouselType) {
         {cardList ? (
           <>
             {cardList.map((cardInfo, index) => (
-              <Grid key={index} item xs={9} sm={3}>
+              <Grid key={index} item xs={6} sm={4} lg={2}>
                 <ProductCard
                   imageUrl={cardInfo.imageUrl}
                   title={cardInfo.title}
