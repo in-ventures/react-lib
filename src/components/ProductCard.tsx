@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Wednesday, 9th September 2020 5:21:54 pm
+ * Last Modified: Wednesday, 9th September 2020 5:24:41 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -26,7 +26,6 @@ import {
   CardContent,
   Typography,
   Chip,
-  Button,
 } from '@material-ui/core';
 import { CurrencyFormatter } from '../formatters';
 
@@ -90,9 +89,6 @@ const useStyles = makeStyles((theme: Theme) => {
     carouselHeader: {
       flexDirection: 'row',
     },
-    menuButton: {
-      //marginRight: theme.spacing(2),
-    },
     disabled: {
       backgroundColor: '#FFFFFF',
     },
@@ -111,7 +107,7 @@ export function ProductCard(props: ProductBPropTypes) {
     details,
     onClickCard,
   } = props;
-  
+
   const currFormat = new CurrencyFormatter();
   const currencyPrice = currFormat.format(price);
   const classes = useStyles();
@@ -166,11 +162,7 @@ export function ProductCard(props: ProductBPropTypes) {
           >
             {details}
           </Box>
-          <Typography
-            variant="body1"
-            color="textPrimary"
-            component="h6"
-          >
+          <Typography variant="body1" color="textPrimary" component="h6">
             {currencyPrice}
           </Typography>
         </CardContent>
@@ -185,51 +177,44 @@ export function ProductCardCarousel(props: ProductCarouselType) {
 
   return (
     <div className={classes.carouselRoot}>
-      <Grid container spacing={3} justify='flex-start'>
-        <Grid item xs={8} justify='flex-end'>
-          <Typography
-            variant="body1"
-            color="textPrimary"
-            component="h5"
-            //className={classes.title}
-          >
+      <Grid container spacing={3} justify="flex-start">
+        <Grid item xs={8} justify="flex-end">
+          <Typography variant="body1" color="textPrimary" component="h5">
             {title}
           </Typography>
         </Grid>
 
-        <Grid item xs={4} justify='flex-start'>
+        <Grid item xs={4} justify="flex-start">
           <IconButton
             color="primary"
             aria-label="view product categories"
-            className={classes.menuButton}
             onClick={onClickCarousel}
           >
             <ChevronRightRoundedIcon />
           </IconButton>
         </Grid>
-              
-      {cardList ? (
-        <>
-          {cardList.map((cardInfo, index) => (
-            <Grid key={index} item xs={9} sm={3}>
-              <ProductCard
-                imageUrl={cardInfo.imageUrl}
-                title={cardInfo.title}
-                subtitle={cardInfo.subtitle}
-                details={cardInfo.details}
-                description={cardInfo.description}
-                price={cardInfo.price}
-                tagText={cardInfo.tagText}
-                tagIcon={cardInfo.tagIcon}
-                onClickCard={cardInfo.onClickCard}
-              />
-            </Grid>
-          ))}
-        </>
-      ) : (
-        <div />
-      )}
 
+        {cardList ? (
+          <>
+            {cardList.map((cardInfo, index) => (
+              <Grid key={index} item xs={9} sm={3}>
+                <ProductCard
+                  imageUrl={cardInfo.imageUrl}
+                  title={cardInfo.title}
+                  subtitle={cardInfo.subtitle}
+                  details={cardInfo.details}
+                  description={cardInfo.description}
+                  price={cardInfo.price}
+                  tagText={cardInfo.tagText}
+                  tagIcon={cardInfo.tagIcon}
+                  onClickCard={cardInfo.onClickCard}
+                />
+              </Grid>
+            ))}
+          </>
+        ) : (
+          <div />
+        )}
       </Grid>
     </div>
   );
