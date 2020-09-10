@@ -4,8 +4,8 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 10th September 2020 1:42:39 pm
- * Modified By: Mario Merino (mario@inventures.cl)
+ * Last Modified: Thursday, 10th September 2020 2:30:34 pm
+ * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -50,48 +50,46 @@ type ProductList = {
   products: ProductBPropTypes[];
 };
 
-const useStyles = makeStyles((theme: Theme) => {
-  return {
-    root: {
-      textAlign: 'center',
-      padding: '8px',
-    },
+const useStyles = makeStyles({
+  root: {
+    textAlign: 'center',
+    padding: '8px',
+  },
 
-    title: {
-      width: '100%',
-      margin: '4px 0px 8px 0px',
-    },
-    content: {
-      padding: '0px',
-      flexDirection: 'column',
-      justifyContent: 'space-between',
-      height: '118px',
-      display: 'flex',
-    },
-    media: {
-      height: '92px',
-      objectFit: 'contain',
-    },
-    tag: {
-      marginTop: '-14px',
-      maxWidth: '100%',
-    },
-    carouselHeader: {
-      paddingBottom: '8px',
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'flex-end',
-    },
-    disabledTag: {
-      backgroundColor: '#FFFFFF',
-    },
-    price: {
-      marginTop: '8px',
-    },
-    viewMore: {
-      padding: '0px',
-    },
-  };
+  title: {
+    width: '100%',
+    margin: '4px 0px 8px 0px',
+  },
+  content: {
+    padding: '0px',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    height: '118px',
+    display: 'flex',
+  },
+  media: {
+    height: '92px',
+    objectFit: 'contain',
+  },
+  tag: {
+    marginTop: '-14px',
+    maxWidth: '100%',
+  },
+  carouselHeader: {
+    paddingBottom: '8px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+  },
+  disabledTag: {
+    backgroundColor: '#FFFFFF',
+  },
+  price: {
+    marginTop: '8px',
+  },
+  viewMore: {
+    padding: '0px',
+  },
 });
 
 export function ProductCard(props: ProductBPropTypes) {
