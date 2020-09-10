@@ -4,7 +4,7 @@
  * File Created: Tuesday, 4th August 2020 5:47:50 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Thursday, 10th September 2020 10:17:24 am
+ * Last Modified: Thursday, 10th September 2020 12:42:17 pm
  * Modified By: Mario Merino (mario@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -54,7 +54,7 @@ export const ProductCarousel = () => {
     <ProductCardCarousel
       title={'Más vendidos'}
       onClickCarousel={() =>
-        console.log('Want to know more about the carousel products?')
+        window.alert('Want to know more about the carousel products?')
       }
       cardList={[
         {

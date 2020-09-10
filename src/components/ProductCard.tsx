@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 10th September 2020 12:03:17 pm
+ * Last Modified: Thursday, 10th September 2020 12:41:40 pm
  * Modified By: Mario Merino (mario@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -42,8 +42,8 @@ type ProductBPropTypes = {
   onClickCard: () => void;
 };
 type ProductCarouselType = {
-  title: string;
-  onClickCarousel: () => void;
+  title?: string;
+  onClickCarousel?: () => void;
   cardList?: ProductBPropTypes[];
 };
 
@@ -164,84 +164,43 @@ export function ProductCardCarousel(props: ProductCarouselType) {
 
   return (
     <Box>
-      <Box className={classes.carouselHeader}>
-        <Typography variant="h6" color="textPrimary">
-          {title}
-        </Typography>
-        <IconButton
-          color="primary"
-          aria-label="ver más resultados"
-          onClick={onClickCarousel}
-          className={classes.viewMore}
-        >
-          <ChevronRightRoundedIcon fontSize="large" />
-        </IconButton>
-      </Box>
-      <Grid container spacing={1}>
-        {cardList ? (
-          <>
-            {cardList.map((cardInfo, index) => (
-              <Grid key={index} item xs={6} sm={4} md={3} lg={2} xl={1}>
-                <ProductCard
-                  imageUrl={cardInfo.imageUrl}
-                  title={cardInfo.title}
-                  subtitle={cardInfo.subtitle}
-                  details={cardInfo.details}
-                  description={cardInfo.description}
-                  price={cardInfo.price}
-                  tagText={cardInfo.tagText}
-                  tagIcon={cardInfo.tagIcon}
-                  onClickCard={cardInfo.onClickCard}
-                />
-              </Grid>
-            ))}
-          </>
-        ) : (
-          <div />
-        )}
-      </Grid>
+      {title && (
+        <Box className={classes.carouselHeader}>
+          <Typography variant="h6" color="textPrimary">
+            {title}
+          </Typography>
+
+          {onClickCarousel && (
+            <IconButton
+              color="primary"
+              aria-label="ver más resultados"
+              onClick={onClickCarousel}
+              className={classes.viewMore}
+            >
+              <ChevronRightRoundedIcon fontSize="large" />
+            </IconButton>
+          )}
+        </Box>
+      )}
+      {cardList && (
+        <Grid container spacing={1}>
+          {cardList.map((cardInfo, index) => (
+            <Grid key={index} item xs={6} sm={4} md={3} lg={2} xl={1}>
+              <ProductCard
+                imageUrl={cardInfo.imageUrl}
+                title={cardInfo.title}
+                subtitle={cardInfo.subtitle}
+                details={cardInfo.details}
+                description={cardInfo.description}
+                price={cardInfo.price}
+                tagText={cardInfo.tagText}
+                tagIcon={cardInfo.tagIcon}
+                onClickCard={cardInfo.onClickCard}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      )}
     </Box>
   );
 }
-
-/* <div className={classes.carouselRoot}>
-<Grid container spacing={1} justify="flex-start">
-  <Grid item xs={11} justify="flex-end">
-    <Typography variant="h6" color="textPrimary">
-      {title}
-    </Typography>
-  </Grid>
-
-  <Grid item xs={1} justify="flex-start">
-    <IconButton
-      color="primary"
-      aria-label="view product categories"
-      onClick={onClickCarousel}
-    >
-      <ChevronRightRoundedIcon />
-    </IconButton>
-  </Grid>
-
-  {cardList ? (
-    <>
-      {cardList.map((cardInfo, index) => (
-        <Grid key={index} item xs={6} sm={4} md={3} lg={2} xl={1}>
-          <ProductCard
-            imageUrl={cardInfo.imageUrl}
-            title={cardInfo.title}
-            subtitle={cardInfo.subtitle}
-            details={cardInfo.details}
-            description={cardInfo.description}
-            price={cardInfo.price}
-            tagText={cardInfo.tagText}
-            tagIcon={cardInfo.tagIcon}
-            onClickCard={cardInfo.onClickCard}
-          />
-        </Grid>
-      ))}
-    </>
-  ) : (
-    <div />
-  )}
-</Grid>
-</div> */
