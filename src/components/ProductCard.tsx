@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 10th September 2020 12:41:40 pm
+ * Last Modified: Thursday, 10th September 2020 1:04:44 pm
  * Modified By: Mario Merino (mario@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -41,10 +41,13 @@ type ProductBPropTypes = {
   price: number;
   onClickCard: () => void;
 };
-type ProductCarouselType = {
+type ProductListHeader = {
   title?: string;
   onClickCarousel?: () => void;
-  cardList?: ProductBPropTypes[];
+};
+
+type ProductList = {
+  products: ProductBPropTypes[];
 };
 
 const useStyles = makeStyles((theme: Theme) => {
@@ -158,8 +161,31 @@ export function ProductCard(props: ProductBPropTypes) {
   );
 }
 
-export function ProductCardCarousel(props: ProductCarouselType) {
-  const { title, onClickCarousel, cardList } = props;
+export function ProductList(props: ProductList) {
+  const { products } = props;
+  return (
+    <Grid container spacing={1}>
+      {products.map((cardInfo: ProductBPropTypes, index: number) => (
+        <Grid key={index} item xs={6} sm={4} md={3} lg={2} xl={1}>
+          <ProductCard
+            imageUrl={cardInfo.imageUrl}
+            title={cardInfo.title}
+            subtitle={cardInfo.subtitle}
+            details={cardInfo.details}
+            description={cardInfo.description}
+            price={cardInfo.price}
+            tagText={cardInfo.tagText}
+            tagIcon={cardInfo.tagIcon}
+            onClickCard={cardInfo.onClickCard}
+          />
+        </Grid>
+      ))}
+    </Grid>
+  );
+}
+
+export function ProductListHeader(props: ProductListHeader) {
+  const { title, onClickCarousel } = props;
   const classes = useStyles();
 
   return (
@@ -181,25 +207,6 @@ export function ProductCardCarousel(props: ProductCarouselType) {
             </IconButton>
           )}
         </Box>
-      )}
-      {cardList && (
-        <Grid container spacing={1}>
-          {cardList.map((cardInfo, index) => (
-            <Grid key={index} item xs={6} sm={4} md={3} lg={2} xl={1}>
-              <ProductCard
-                imageUrl={cardInfo.imageUrl}
-                title={cardInfo.title}
-                subtitle={cardInfo.subtitle}
-                details={cardInfo.details}
-                description={cardInfo.description}
-                price={cardInfo.price}
-                tagText={cardInfo.tagText}
-                tagIcon={cardInfo.tagIcon}
-                onClickCard={cardInfo.onClickCard}
-              />
-            </Grid>
-          ))}
-        </Grid>
       )}
     </Box>
   );
