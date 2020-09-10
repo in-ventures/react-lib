@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 10th September 2020 10:46:54 am
+ * Last Modified: Thursday, 10th September 2020 11:32:44 am
  * Modified By: Mario Merino (mario@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -28,6 +28,7 @@ import {
   Box,
 } from '@material-ui/core';
 import { CurrencyFormatter } from '../formatters';
+import clsx from 'clsx';
 
 type ProductBPropTypes = {
   imageUrl?: string;
@@ -78,19 +79,11 @@ const useStyles = makeStyles((theme: Theme) => {
       marginTop: '-14px',
       maxWidth: '100%',
     },
-    textBox: {
-      textAlign: 'center',
-      alignSelf: 'center',
-      alignContent: 'center',
-      justifyContent: 'center',
-      maxWidth: '100%',
-    },
     carouselHeader: {
       flexDirection: 'row',
     },
-    disabled: {
+    disabledTag: {
       backgroundColor: '#FFFFFF',
-      marginTop: '-14px',
     },
     price: {
       marginTop: '8px',
@@ -124,17 +117,13 @@ export function ProductCard(props: ProductBPropTypes) {
           onClick={onClickCard}
           component="img"
         />
-        {tagText ? (
-          <Chip
-            color="primary"
-            size="small"
-            icon={tagIcon}
-            label={tagText}
-            className={classes.tag}
-          />
-        ) : (
-          <Chip className={classes.disabled} size="small" />
-        )}
+        <Chip
+          color="primary"
+          size="small"
+          icon={tagIcon}
+          label={tagText}
+          className={clsx(classes.tag, !tagText && classes.disabledTag)}
+        />
 
         <CardContent className={classes.content} onClick={onClickCard}>
           <Typography
@@ -146,32 +135,17 @@ export function ProductCard(props: ProductBPropTypes) {
             {title}
           </Typography>
           {subtitle && (
-            <Typography
-              variant="body2"
-              color="textSecondary"
-              className={classes.textBox}
-              noWrap
-            >
+            <Typography variant="body2" color="textSecondary" noWrap>
               {subtitle}
             </Typography>
           )}
           {description && (
-            <Typography
-              variant="body2"
-              color="textPrimary"
-              className={classes.textBox}
-              noWrap
-            >
+            <Typography variant="body2" color="textPrimary" noWrap>
               {description}
             </Typography>
           )}
           {details && (
-            <Typography
-              variant="body2"
-              color="textSecondary"
-              className={classes.textBox}
-              noWrap
-            >
+            <Typography variant="body2" color="textSecondary" noWrap>
               {details}
             </Typography>
           )}
@@ -189,7 +163,7 @@ export function ProductCardCarousel(props: ProductCarouselType) {
   const classes = useStyles();
 
   return (
-    <Box className={classes.carouselRoot}>
+    <Box>
       <Grid container spacing={1}>
         {cardList ? (
           <>
