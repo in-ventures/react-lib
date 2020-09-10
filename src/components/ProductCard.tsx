@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 10th September 2020 11:32:44 am
+ * Last Modified: Thursday, 10th September 2020 11:37:53 am
  * Modified By: Mario Merino (mario@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -50,19 +50,13 @@ type ProductCarouselType = {
 const useStyles = makeStyles((theme: Theme) => {
   return {
     root: {
-      alignContent: 'center',
-      alignItems: 'center',
-      justifyContent: 'space-between',
       textAlign: 'center',
       padding: '8px',
-      flexGrow: 1,
-      justifyItems: 'space-between',
     },
 
     title: {
       width: '100%',
       margin: '4px 0px 8px 0px',
-      backgroundColor: '#FFFFFF',
     },
     content: {
       padding: '0px',
