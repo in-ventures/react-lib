@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 10th September 2020 10:22:04 am
+ * Last Modified: Thursday, 10th September 2020 10:29:37 am
  * Modified By: Mario Merino (mario@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -195,7 +195,7 @@ export function ProductCardCarousel(props: ProductCarouselType) {
     <div className={classes.carouselRoot}>
       <Grid container spacing={1} justify="flex-start">
         <Grid item xs={11} justify="flex-end">
-          <Typography variant="body1" color="textPrimary" component="h5">
+          <Typography variant="h6" color="textPrimary">
             {title}
           </Typography>
         </Grid>
