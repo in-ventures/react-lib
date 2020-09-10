@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 10th September 2020 1:04:44 pm
+ * Last Modified: Thursday, 10th September 2020 1:42:39 pm
  * Modified By: Mario Merino (mario@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -152,7 +152,12 @@ export function ProductCard(props: ProductBPropTypes) {
               {details}
             </Typography>
           )}
-          <Typography variant="h6" color="primary" className={classes.price}>
+          <Typography
+            variant="h6"
+            color="primary"
+            className={classes.price}
+            noWrap
+          >
             {currencyPrice}
           </Typography>
         </CardContent>
