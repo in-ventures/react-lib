@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   container: {
     width: '100%',
     height: '100%',
-    border: 'none'
+    border: 'none',
   },
   cardactionarea: {
     height: '80%',
@@ -25,7 +25,7 @@ const useStyles = makeStyles({
     opacity: 0.4,
     width: '100%',
     height: '100%',
-    border: 'none'
+    border: 'none',
   },
   actions: {
     justifyContent: 'center',
@@ -97,48 +97,49 @@ export default function ImageLoader({
       const divisor = 1024 * 1024;
       const file = event.target.files[0];
       if (file && types.includes(file.type)) {
+        const sizeIsPermitted = file.size / divisor <= maxFileSize;
+        const isImage = file.type === 'image/jpeg' || file.type === 'image/png';
 
-        const sizeIsPermitted = (file.size / divisor) <= maxFileSize;
-        const isImage = file.type === "image/jpeg" || file.type === "image/png";
-        
         //Compression
-        if ( isImage && !sizeIsPermitted ) {
+        if (isImage && !sizeIsPermitted) {
           setLoading(true);
           setLoaded(false);
           //Compression
           compressImage(file);
-        } else
-        if( sizeIsPermitted ) {
-          setFile(URL.createObjectURL(file)); 
+        } else if (sizeIsPermitted) {
+          setFile(URL.createObjectURL(file));
           setLoaded(true);
-        }else{
+        } else {
           onError();
         }
-
-
       } else {
         onError();
       }
     },
-    [setFile, setLoaded, setLoading, maxFileSize, onError, compressImage, types],
+    [
+      setFile,
+      setLoaded,
+      setLoading,
+      maxFileSize,
+      onError,
+      compressImage,
+      types,
+    ],
   );
 
   const deleteFile = React.useCallback(() => {
     setFile('');
     setLoaded(false);
     const input = inputRef.current;
-    if(input) input.value = ""; 
+    if (input) input.value = '';
   }, [setFile, setLoaded, inputRef]);
 
   //Set iframe's properties
-  const onIframeLoad = React.useCallback(() => { 
-    const iframe = iframeRef.current; 
-
-    console.log({iframe});
-    console.log(iframe?.contentDocument);
+  const onIframeLoad = React.useCallback(() => {
+    const iframe = iframeRef.current;
 
     if (iframe && iframe.contentDocument) {
-      const imgs = iframe.contentDocument.getElementsByTagName('img'); 
+      const imgs = iframe.contentDocument.getElementsByTagName('img');
       if (imgs.length) {
         imgs[0].style.width = '100%';
         imgs[0].style.height = '100%';
@@ -180,7 +181,11 @@ export default function ImageLoader({
           )}
         </CardActionArea>
 
-        {loading ? <LinearProgress variant="determinate" value={progress} /> : ''}
+        {loading ? (
+          <LinearProgress variant="determinate" value={progress} />
+        ) : (
+          ''
+        )}
         <Divider />
 
         <CardActions className={classes.actions}>

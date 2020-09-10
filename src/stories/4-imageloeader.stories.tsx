@@ -12,14 +12,13 @@ const onError = () => {
 };
 
 export const LandscapeEditable = () => {
-
   const types = ['application/pdf', 'text/plain', 'image/jpeg', 'image/png'];
   const objectFit = text('Object fit', 'contain');
   const defaultImage = text(
     'Default image',
     'https://previews.123rf.com/images/creativepriyanka/creativepriyanka1906/creativepriyanka190600379/124982633-prescription-icon.jpg',
   );
-  const file = text('Loaded image', 'https://www.laboratoriochile.cl/wp-content//uploads/2015/11/Clonazepam_05MG_30C_BE_HD.jpg');
+  const [file, setFile] = useState('');
   const loading = boolean('Loading', false);
   const progress = number('Progress', 0);
 
@@ -31,24 +30,23 @@ export const LandscapeEditable = () => {
         defaultImage={defaultImage}
         onError={onError}
         file={file}
+        setFile={setFile}
         loading={loading}
         progress={progress}
-        loaded={file?true:false}
+        loaded={file ? true : false}
       ></ImageLoader>
     </div>
   );
-
 };
 
 export const PortraitEditable = () => {
-  
   const types = ['application/pdf', 'text/plain', 'image/jpeg', 'image/png'];
   const objectFit = text('Object fit', 'contain');
   const defaultImage = text(
     'Default image',
     'https://previews.123rf.com/images/creativepriyanka/creativepriyanka1906/creativepriyanka190600379/124982633-prescription-icon.jpg',
   );
-  const file = text('Loaded image', 'https://www.laboratoriochile.cl/wp-content//uploads/2015/11/Clonazepam_05MG_30C_BE_HD.jpg');
+  const [file, setFile] = useState('');
   const loading = boolean('Loading', false);
   const progress = number('Progress', 0);
 
@@ -60,13 +58,13 @@ export const PortraitEditable = () => {
         defaultImage={defaultImage}
         onError={onError}
         file={file}
+        setFile={setFile}
         loading={loading}
         progress={progress}
-        loaded={file?true:false}
+        loaded={file ? true : false}
       ></ImageLoader>
     </div>
   );
-
 };
 
 export const Landscape = () => {
@@ -88,8 +86,10 @@ export const Landscape = () => {
     const options = {
       maxSizeMB: maxFileSize,
       useWebWorker: true,
-      onProgress: (progress:number)=>{setProgress(progress)}
-    }
+      onProgress: (progress: number) => {
+        setProgress(progress);
+      },
+    };
 
     try {
       //Compression
@@ -100,8 +100,7 @@ export const Landscape = () => {
     } catch (error) {
       setLoading(false);
     }
-
-  }
+  };
 
   return (
     <div style={{ width: '400px', height: '300px' }}>
@@ -144,8 +143,10 @@ export const Portrait = () => {
     const options = {
       maxSizeMB: maxFileSize,
       useWebWorker: true,
-      onProgress: (progress:number)=>{setProgress(progress)}
-    }
+      onProgress: (progress: number) => {
+        setProgress(progress);
+      },
+    };
 
     try {
       //Compression
@@ -156,8 +157,7 @@ export const Portrait = () => {
     } catch (error) {
       setLoading(false);
     }
-
-  }
+  };
 
   return (
     <div style={{ width: '300px', height: '400px' }}>
