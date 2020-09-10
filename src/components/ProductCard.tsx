@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 10th September 2020 5:21:45 pm
+ * Last Modified: Thursday, 10th September 2020 5:51:09 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -247,8 +247,10 @@ export function ProductCard(props: ProductBPropTypes) {
 }
 
 export function ProductList(props: ProductList) {
-  const { products, gridBreakpoints } = props;
-  const { products, gridBreakpoints: { xs = 6, sm = 4, md = 3, lg = 2, xl = 1 } = {} } = props
+  const {
+    products,
+    gridBreakpoints: { xs = 6, sm = 4, md = 3, lg = 2, xl = 1 } = {},
+  } = props;
   return (
     <Grid container spacing={1}>
       {products.map((cardInfo: ProductBPropTypes, index: number) => (
