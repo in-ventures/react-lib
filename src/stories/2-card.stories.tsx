@@ -4,8 +4,8 @@
  * File Created: Tuesday, 4th August 2020 5:47:50 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Thursday, 10th September 2020 1:41:45 pm
- * Modified By: Mario Merino (mario@inventures.cl)
+ * Last Modified: Thursday, 10th September 2020 5:31:26 pm
+ * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -147,6 +147,7 @@ export const ProductCarousel = () => {
             onClickCard: () => console.log('You clicked B3!'),
           },
         ]}
+        gridBreakpoints={{ xs: 6, sm: 4, md: 3, lg: 2, xl: 1 }}
       />
     </>
   );

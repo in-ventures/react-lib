@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 10th September 2020 2:30:34 pm
+ * Last Modified: Thursday, 10th September 2020 5:21:45 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -45,9 +45,91 @@ type ProductListHeader = {
   title?: string;
   onClickCarousel?: () => void;
 };
-
 type ProductList = {
   products: ProductBPropTypes[];
+  gridBreakpoints: GridBreakpoints;
+};
+type GridBreakpoints = {
+  xs:
+    | boolean
+    | 'auto'
+    | 1
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | undefined;
+  sm:
+    | boolean
+    | 'auto'
+    | 1
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | undefined;
+  md:
+    | boolean
+    | 'auto'
+    | 1
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | undefined;
+  lg:
+    | boolean
+    | 'auto'
+    | 1
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | undefined;
+  xl:
+    | boolean
+    | 'auto'
+    | 1
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | undefined;
 };
 
 const useStyles = makeStyles({
@@ -165,11 +247,12 @@ export function ProductCard(props: ProductBPropTypes) {
 }
 
 export function ProductList(props: ProductList) {
-  const { products } = props;
+  const { products, gridBreakpoints } = props;
+  const { xs, sm, md, lg, xl } = gridBreakpoints;
   return (
     <Grid container spacing={1}>
       {products.map((cardInfo: ProductBPropTypes, index: number) => (
-        <Grid key={index} item xs={6} sm={4} md={3} lg={2} xl={1}>
+        <Grid key={index} item xs={xs} sm={sm} md={md} lg={lg} xl={xl}>
           <ProductCard
             imageUrl={cardInfo.imageUrl}
             title={cardInfo.title}
