@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 10th September 2020 11:37:53 am
+ * Last Modified: Thursday, 10th September 2020 12:03:17 pm
  * Modified By: Mario Merino (mario@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -74,13 +74,19 @@ const useStyles = makeStyles((theme: Theme) => {
       maxWidth: '100%',
     },
     carouselHeader: {
-      flexDirection: 'row',
+      paddingBottom: '8px',
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'flex-end',
     },
     disabledTag: {
       backgroundColor: '#FFFFFF',
     },
     price: {
       marginTop: '8px',
+    },
+    viewMore: {
+      padding: '0px',
     },
   };
 });
@@ -158,6 +164,19 @@ export function ProductCardCarousel(props: ProductCarouselType) {
 
   return (
     <Box>
+      <Box className={classes.carouselHeader}>
+        <Typography variant="h6" color="textPrimary">
+          {title}
+        </Typography>
+        <IconButton
+          color="primary"
+          aria-label="ver más resultados"
+          onClick={onClickCarousel}
+          className={classes.viewMore}
+        >
+          <ChevronRightRoundedIcon fontSize="large" />
+        </IconButton>
+      </Box>
       <Grid container spacing={1}>
         {cardList ? (
           <>
