@@ -4,8 +4,8 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Wednesday, 9th September 2020 7:24:58 pm
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Thursday, 10th September 2020 10:09:26 am
+ * Modified By: Mario Merino (mario@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -78,6 +78,7 @@ const useStyles = makeStyles((theme: Theme) => {
     },
     tag: {
       marginTop: '-14px',
+      maxWidth: '100%',
     },
     textBox: {
       textAlign: 'center',
@@ -147,37 +148,37 @@ export function ProductCard(props: ProductBPropTypes) {
           >
             {title}
           </Typography>
-          <Typography
-            variant="body2"
-            color="textPrimary"
-            className={classes.textBox}
-            noWrap
-          >
-            {subtitle}
-          </Typography>
-
-          <Typography
-            variant="body2"
-            color="textPrimary"
-            className={classes.textBox}
-            noWrap
-          >
-            {description}
-          </Typography>
-          <Typography
-            variant="body2"
-            color="textPrimary"
-            className={classes.textBox}
-            noWrap
-          >
-            {details}
-          </Typography>
-          <Typography
-            variant="body1"
-            color="textPrimary"
-            component="h6"
-            className={classes.price}
-          >
+          {subtitle && (
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              className={classes.textBox}
+              noWrap
+            >
+              {subtitle}
+            </Typography>
+          )}
+          {description && (
+            <Typography
+              variant="body2"
+              color="textPrimary"
+              className={classes.textBox}
+              noWrap
+            >
+              {description}
+            </Typography>
+          )}
+          {details && (
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              className={classes.textBox}
+              noWrap
+            >
+              {details}
+            </Typography>
+          )}
+          <Typography variant="h6" color="primary" className={classes.price}>
             {currencyPrice}
           </Typography>
         </CardContent>
