@@ -248,7 +248,7 @@ export function ProductCard(props: ProductBPropTypes) {
 
 export function ProductList(props: ProductList) {
   const { products, gridBreakpoints } = props;
-  const { xs, sm, md, lg, xl } = gridBreakpoints;
+  const { products, gridBreakpoints: { xs = 6, sm = 4, md = 3, lg = 2, xl = 1 } = {} } = props
   return (
     <Grid container spacing={1}>
       {products.map((cardInfo: ProductBPropTypes, index: number) => (
