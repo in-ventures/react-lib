@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 10th September 2020 10:09:26 am
+ * Last Modified: Thursday, 10th September 2020 10:22:04 am
  * Modified By: Mario Merino (mario@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -31,7 +31,7 @@ import { CurrencyFormatter } from '../formatters';
 type ProductBPropTypes = {
   imageUrl?: string;
   title: string;
-  subtitle: string;
+  subtitle?: string;
   tagText?: string;
   tagIcon?: React.ReactElement;
   description?: string;
@@ -213,7 +213,7 @@ export function ProductCardCarousel(props: ProductCarouselType) {
         {cardList ? (
           <>
             {cardList.map((cardInfo, index) => (
-              <Grid key={index} item xs={6} sm={4} lg={2}>
+              <Grid key={index} item xs={6} sm={4} md={3} lg={2} xl={1}>
                 <ProductCard
                   imageUrl={cardInfo.imageUrl}
                   title={cardInfo.title}
