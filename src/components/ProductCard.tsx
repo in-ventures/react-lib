@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 10th September 2020 10:29:37 am
+ * Last Modified: Thursday, 10th September 2020 10:46:54 am
  * Modified By: Mario Merino (mario@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -14,7 +14,7 @@
  */
 
 import React from 'react';
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import ChevronRightRoundedIcon from '@material-ui/icons/ChevronRightRounded';
 import {
   Card,
@@ -25,6 +25,7 @@ import {
   CardContent,
   Typography,
   Chip,
+  Box,
 } from '@material-ui/core';
 import { CurrencyFormatter } from '../formatters';
 
@@ -56,10 +57,7 @@ const useStyles = makeStyles((theme: Theme) => {
       flexGrow: 1,
       justifyItems: 'space-between',
     },
-    carouselRoot: {
-      flexGrow: 1,
-      margin: '4px',
-    },
+
     title: {
       width: '100%',
       margin: '4px 0px 8px 0px',
@@ -142,7 +140,6 @@ export function ProductCard(props: ProductBPropTypes) {
           <Typography
             variant="subtitle1"
             color="textPrimary"
-            component="h4"
             className={classes.title}
             noWrap
           >
@@ -192,24 +189,8 @@ export function ProductCardCarousel(props: ProductCarouselType) {
   const classes = useStyles();
 
   return (
-    <div className={classes.carouselRoot}>
-      <Grid container spacing={1} justify="flex-start">
-        <Grid item xs={11} justify="flex-end">
-          <Typography variant="h6" color="textPrimary">
-            {title}
-          </Typography>
-        </Grid>
-
-        <Grid item xs={1} justify="flex-start">
-          <IconButton
-            color="primary"
-            aria-label="view product categories"
-            onClick={onClickCarousel}
-          >
-            <ChevronRightRoundedIcon />
-          </IconButton>
-        </Grid>
-
+    <Box className={classes.carouselRoot}>
+      <Grid container spacing={1}>
         {cardList ? (
           <>
             {cardList.map((cardInfo, index) => (
@@ -232,6 +213,48 @@ export function ProductCardCarousel(props: ProductCarouselType) {
           <div />
         )}
       </Grid>
-    </div>
+    </Box>
   );
 }
+
+/* <div className={classes.carouselRoot}>
+<Grid container spacing={1} justify="flex-start">
+  <Grid item xs={11} justify="flex-end">
+    <Typography variant="h6" color="textPrimary">
+      {title}
+    </Typography>
+  </Grid>
+
+  <Grid item xs={1} justify="flex-start">
+    <IconButton
+      color="primary"
+      aria-label="view product categories"
+      onClick={onClickCarousel}
+    >
+      <ChevronRightRoundedIcon />
+    </IconButton>
+  </Grid>
+
+  {cardList ? (
+    <>
+      {cardList.map((cardInfo, index) => (
+        <Grid key={index} item xs={6} sm={4} md={3} lg={2} xl={1}>
+          <ProductCard
+            imageUrl={cardInfo.imageUrl}
+            title={cardInfo.title}
+            subtitle={cardInfo.subtitle}
+            details={cardInfo.details}
+            description={cardInfo.description}
+            price={cardInfo.price}
+            tagText={cardInfo.tagText}
+            tagIcon={cardInfo.tagIcon}
+            onClickCard={cardInfo.onClickCard}
+          />
+        </Grid>
+      ))}
+    </>
+  ) : (
+    <div />
+  )}
+</Grid>
+</div> */
