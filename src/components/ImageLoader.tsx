@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { TextFieldProps } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
@@ -15,6 +15,7 @@ const useStyles = makeStyles({
   container: {
     width: '100%',
     height: '100%',
+    border: 'none'
   },
   cardactionarea: {
     height: '80%',
@@ -24,6 +25,7 @@ const useStyles = makeStyles({
     opacity: 0.4,
     width: '100%',
     height: '100%',
+    border: 'none'
   },
   actions: {
     justifyContent: 'center',
@@ -41,10 +43,13 @@ type ImageLoaderProps = {
   maxFileSize?: number;
   defaultImage?: string;
   onError?: () => void;
+  compressImage?: (file: File) => void;
   file?: string;
   setFile?: (url: string) => void;
   loading?: boolean;
   setLoading?: (loading: boolean) => void;
+  progress?: number;
+  setProgress?: (progress: number) => void;
   loaded?: boolean;
   setLoaded?: (loaded: boolean) => void;
 } & TextFieldProps;
@@ -52,14 +57,17 @@ type ImageLoaderProps = {
 export default function ImageLoader({
   types = [],
   alt,
-  objectFit = 'cover',
+  objectFit = 'contain',
   maxFileSize = 14,
   defaultImage,
   onError = () => {},
+  compressImage = (file: File) => {},
   file,
   setFile = () => {},
   loading,
   setLoading = () => {},
+  progress,
+  setProgress = () => {},
   loaded,
   setLoaded = () => {},
 }: ImageLoaderProps) {
@@ -84,57 +92,66 @@ export default function ImageLoader({
     }
   }, [objectFit, iframeRef, mediaRef]);
 
-  const loadFile = useCallback(
+  const loadFile = React.useCallback(
     (event: React.BaseSyntheticEvent) => {
       const divisor = 1024 * 1024;
       const file = event.target.files[0];
       if (file && types.includes(file.type)) {
-        if (file.size / divisor <= maxFileSize) {
+
+        const sizeIsPermitted = (file.size / divisor) <= maxFileSize;
+        const isImage = file.type === "image/jpeg" || file.type === "image/png";
+        
+        //Compression
+        if ( isImage && !sizeIsPermitted ) {
           setLoading(true);
           setLoaded(false);
-
           //Compression
-
-          //Then (if success)
-          setFile(URL.createObjectURL(file));
+          compressImage(file);
+        } else
+        if( sizeIsPermitted ) {
+          setFile(URL.createObjectURL(file)); 
           setLoaded(true);
-          setLoading(false);
-
-          //If error
-          //setLoading(false);
-        } else {
+        }else{
           onError();
         }
+
+
       } else {
         onError();
       }
     },
-    [setFile, setLoaded, setLoading, maxFileSize, onError, types],
+    [setFile, setLoaded, setLoading, maxFileSize, onError, compressImage, types],
   );
 
-  const deleteFile = useCallback(() => {
+  const deleteFile = React.useCallback(() => {
     setFile('');
     setLoaded(false);
-  }, [setFile, setLoaded]);
+    const input = inputRef.current;
+    if(input) input.value = ""; 
+  }, [setFile, setLoaded, inputRef]);
 
   //Set iframe's properties
-  function onIframeLoad() {
-    const iframe = iframeRef.current;
+  const onIframeLoad = React.useCallback(() => { 
+    const iframe = iframeRef.current; 
+
+    console.log({iframe});
+    console.log(iframe?.contentDocument);
+
     if (iframe && iframe.contentDocument) {
-      const imgs = iframe.contentDocument.getElementsByTagName('img');
+      const imgs = iframe.contentDocument.getElementsByTagName('img'); 
       if (imgs.length) {
         imgs[0].style.width = '100%';
         imgs[0].style.height = '100%';
-        imgs[0].style.objectFit = objectFit ? objectFit : '';
+        imgs[0].style.objectFit = objectFit ? objectFit : 'contain';
         imgs[0].alt = alt ? alt : 'Default';
       }
     }
-  }
+  }, [iframeRef, alt, objectFit]);
 
-  function onCardActionAreaClick() {
+  const onCardActionAreaClick = React.useCallback(() => {
     const input = inputRef.current;
     input?.click();
-  }
+  }, [inputRef]);
 
   return (
     <div className={classes.container}>
@@ -163,7 +180,7 @@ export default function ImageLoader({
           )}
         </CardActionArea>
 
-        {loading ? <LinearProgress variant="determinate" value={10} /> : ''}
+        {loading ? <LinearProgress variant="determinate" value={progress} /> : ''}
         <Divider />
 
         <CardActions className={classes.actions}>
