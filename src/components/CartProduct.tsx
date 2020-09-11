@@ -24,7 +24,9 @@ const useStyles = makeStyles({
     flexDirection: 'column',
   },
   actions: {
-    flexDirection: 'row-reverse',
+    //flexDirection: 'row-reverse',
+    display: "flex",
+    justifyContent: "space-between"
   },
   content: {
     flex: '1 0 auto',
@@ -38,7 +40,7 @@ const useStyles = makeStyles({
     margin: 16,
   },
   trashicon: {
-    marginLeft: 20,
+    marginLeft: 22,
     marginRight: 8,
   },
   underline: {
@@ -47,9 +49,19 @@ const useStyles = makeStyles({
   smalltext: {
     fontSize: 13,
   },
-  button: {
+  addbutton:{
+    marginLeft: 10
+  },
+  subbutton:{
+    marginRight: 10
+  },
+  extrabutton: {
     borderRadius: 15,
   },
+  rightbuttons: {
+    display: "flex",
+    alignItems: "center",
+  }
 });
 
 //Type
@@ -154,46 +166,51 @@ export default function CartProduct({
       </CardActionArea>
 
       <CardActions className={classes.actions}>
-        <IconButton
-          className={classes.trashicon}
-          aria-label="delete"
-          onClick={onTrashClick}
-          size="small"
-        >
-          <DeleteIcon fontSize="small" />
-        </IconButton>
+          
+        <Box >
+          {extraColor && extraText && extraIcon ? (
+            <Button
+              variant="contained"
+              color={extraColor}
+              className={classes.extrabutton}
+              startIcon={<Icon>{extraIcon}</Icon>}
+              onClick={onExtraClick}
+            >
+              <Typography component="div" className={classes.smalltext}>
+                <Box>{extraText}</Box>
+              </Typography>
+            </Button>
+          ) : ('')
+          }
+        </Box>
+        
+        <Box className={classes.rightbuttons}>        
+          <IconButton aria-label="sub" onClick={onSubClick} className={classes.subbutton}>
+            <Icon color="primary" fontSize="small">
+              remove
+            </Icon>
+          </IconButton>
 
-        <IconButton aria-label="add" onClick={onAddClick}>
-          <Icon color="primary" fontSize="small">
-            add
-          </Icon>
-        </IconButton>
+          <Typography component="div" variant="subtitle1">
+            <Box color="text.primary">{quantity}</Box>
+          </Typography>
 
-        <Typography component="div" variant="subtitle1">
-          <Box color="text.primary">{quantity}</Box>
-        </Typography>
+          <IconButton aria-label="add" onClick={onAddClick} className={classes.addbutton}>
+            <Icon color="primary" fontSize="small">
+              add
+            </Icon>
+          </IconButton>
 
-        <IconButton aria-label="sub" onClick={onSubClick}>
-          <Icon color="primary" fontSize="small">
-            remove
-          </Icon>
-        </IconButton>
-
-        {extraColor && extraText && extraIcon ? (
-          <Button
-            variant="contained"
-            color={extraColor}
-            className={classes.button}
-            startIcon={<Icon>{extraIcon}</Icon>}
-            onClick={onExtraClick}
+          <IconButton
+            className={classes.trashicon}
+            aria-label="delete"
+            onClick={onTrashClick}
+            size="small"
           >
-            <Typography component="div" className={classes.smalltext}>
-              <Box>{extraText}</Box>
-            </Typography>
-          </Button>
-        ) : (
-          ''
-        )}
+            <DeleteIcon fontSize="small" />
+          </IconButton>     
+        </Box>
+
       </CardActions>
     </Card>
   );
