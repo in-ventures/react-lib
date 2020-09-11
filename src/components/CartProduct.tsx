@@ -25,8 +25,8 @@ const useStyles = makeStyles({
   },
   actions: {
     //flexDirection: 'row-reverse',
-    display: "flex",
-    justifyContent: "space-between"
+    display: 'flex',
+    justifyContent: 'space-between',
   },
   content: {
     flex: '1 0 auto',
@@ -49,19 +49,19 @@ const useStyles = makeStyles({
   smalltext: {
     fontSize: 13,
   },
-  addbutton:{
-    marginLeft: 10
+  addbutton: {
+    marginLeft: 10,
   },
-  subbutton:{
-    marginRight: 10
+  subbutton: {
+    marginRight: 10,
   },
   extrabutton: {
     borderRadius: 15,
   },
   rightbuttons: {
-    display: "flex",
-    alignItems: "center",
-  }
+    display: 'flex',
+    alignItems: 'center',
+  },
 });
 
 //Type
@@ -166,8 +166,7 @@ export default function CartProduct({
       </CardActionArea>
 
       <CardActions className={classes.actions}>
-          
-        <Box >
+        <Box>
           {extraColor && extraText && extraIcon ? (
             <Button
               variant="contained"
@@ -180,12 +179,17 @@ export default function CartProduct({
                 <Box>{extraText}</Box>
               </Typography>
             </Button>
-          ) : ('')
-          }
+          ) : (
+            ''
+          )}
         </Box>
-        
-        <Box className={classes.rightbuttons}>        
-          <IconButton aria-label="sub" onClick={onSubClick} className={classes.subbutton}>
+
+        <Box className={classes.rightbuttons}>
+          <IconButton
+            aria-label="sub"
+            onClick={onSubClick}
+            className={classes.subbutton}
+          >
             <Icon color="primary" fontSize="small">
               remove
             </Icon>
@@ -195,7 +199,11 @@ export default function CartProduct({
             <Box color="text.primary">{quantity}</Box>
           </Typography>
 
-          <IconButton aria-label="add" onClick={onAddClick} className={classes.addbutton}>
+          <IconButton
+            aria-label="add"
+            onClick={onAddClick}
+            className={classes.addbutton}
+          >
             <Icon color="primary" fontSize="small">
               add
             </Icon>
@@ -208,9 +216,8 @@ export default function CartProduct({
             size="small"
           >
             <DeleteIcon fontSize="small" />
-          </IconButton>     
+          </IconButton>
         </Box>
-
       </CardActions>
     </Card>
   );
