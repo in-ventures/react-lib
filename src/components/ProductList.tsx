@@ -4,7 +4,7 @@
  * File Created: Friday, 11th September 2020 10:18:24 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Friday, 11th September 2020 10:51:13 am
+ * Last Modified: Friday, 11th September 2020 11:27:46 am
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -104,6 +104,15 @@ type GridBreakpoints = {
 };
 
 export function ProductList(props: ProductList) {
+  /**
+   * Returns the a product card list component, which uses ProductCard component
+   * and Material UI Grid to place a customizable amount of product cards.
+   * Header for Product List is available on ProductListHeader component.
+   *
+   * @param props - defined by ProductList.
+   * @returns React Component
+   *
+   */
   const {
     products,
     gridBreakpoints: { xs = 6, sm = 4, md = 3, lg = 2, xl = 1 } = {},

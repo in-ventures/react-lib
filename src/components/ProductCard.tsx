@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Friday, 11th September 2020 10:54:14 am
+ * Last Modified: Friday, 11th September 2020 11:26:34 am
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -71,6 +71,14 @@ const useStyles = makeStyles({
 });
 
 export function ProductCard(props: ProductPropTypes) {
+  /**
+   * Returns the a product card react coomponent, which places customizable product information.
+   * Uses Material UI Card to place information
+   *
+   * @param props - defined by ProductPropTypes.
+   * @returns React Component
+   *
+   */
   const {
     imageUrl,
     title,

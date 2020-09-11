@@ -4,7 +4,7 @@
  * File Created: Friday, 11th September 2020 10:18:53 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Friday, 11th September 2020 11:00:47 am
+ * Last Modified: Friday, 11th September 2020 11:26:28 am
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -69,6 +69,14 @@ const useStyles = makeStyles({
 });
 
 export function ProductDetails(props: ProductDetailsProps) {
+  /**
+   * Returns the a product details component.
+   * It places customizable product information in a Material UI Box component.
+   *
+   * @param props - defined by ProductDetailsProps
+   * @returns React Component
+   *
+   */
   const {
     imageUrl,
     title,
