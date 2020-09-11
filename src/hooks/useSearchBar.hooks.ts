@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Tuesday, 8th September 2020 4:42:13 pm
+ * Last Modified: Friday, 11th September 2020 2:51:04 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -49,7 +49,7 @@ export const useSearchBar = <T = Record<string, unknown>>(
 
         const result = fuse.search(newValue);
 
-        return setSearchResult(result);
+        return setSearchResult(result.map((e) => e.item));
       }
       const data = await queryRef.current(newValue);
       setSearchResult(data);

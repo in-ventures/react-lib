@@ -1,6 +1,6 @@
 {
   "name": "@inventures/react-lib",
-  "version": "0.1.6-rc7",
+  "version": "0.1.6-rc9",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "private": false,
@@ -23,6 +23,7 @@
     "@types/react": "^16.9.49",
     "@types/react-dom": "^16.9.0",
     "clsx": "^1.1.1",
+    "fuse.js": "^6.4.1",
     "http-server": "^0.12.3",
     "is_js": "^0.9.0",
     "lodash": "^4.17.20",
