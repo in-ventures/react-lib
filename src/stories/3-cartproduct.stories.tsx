@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import CartProduct from '../components/CartProduct';
-import { text, number } from '@storybook/addon-knobs';
+import { text, number, select } from '@storybook/addon-knobs';
 
 export default {
   title: 'Cart',
@@ -16,6 +16,21 @@ export const EditableCartProduct = () => {
   const title3 = text('Title 3', '50 comprimidos');
   const title4 = text('Title 4', 'Volverás a necesitar 05/08/20');
   const unitPrice = number('Unit price', 10);
+
+  //const extraColor = text('Color', 'primary');
+  const extraColor = select(
+    'Color',
+    {
+      primary: 'primary',
+      secondary: 'secondary',
+      inherit: 'inherit',
+      default: 'default',
+    },
+    'primary',
+  );
+
+  const extraText = text('Text', 'POR VALIDAR');
+  const extraIcon = text('Icon', 'add');
 
   const [quantity, setQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(quantity * unitPrice);
@@ -42,6 +57,12 @@ export const EditableCartProduct = () => {
       quantity={quantity}
       unitPrice={unitPrice}
       totalPrice={totalPrice}
+      extraColor={extraColor}
+      extraText={extraText}
+      extraIcon={extraIcon}
+      onExtraClick={() => {
+        alert('Ha presionado extra');
+      }}
       onDefaultClick={() => {
         alert('Ha presionado evento por defecto');
       }}

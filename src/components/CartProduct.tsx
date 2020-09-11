@@ -3,6 +3,7 @@ import React, { useCallback } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { TextFieldProps } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -36,17 +37,18 @@ const useStyles = makeStyles({
     backgroundSize: 'contain',
     margin: 16,
   },
-  sumicon: {
-    padding: 0,
-  },
   trashicon: {
-    marginLeft: 33,
+    marginLeft: 20,
+    marginRight: 8,
   },
   underline: {
     textDecoration: 'underline',
   },
   smalltext: {
     fontSize: 13,
+  },
+  button: {
+    borderRadius: 15,
   },
 });
 
@@ -60,6 +62,10 @@ type CartProductProps = {
   quantity?: number;
   unitPrice?: number;
   totalPrice?: number;
+  extraColor?: 'inherit' | 'primary' | 'secondary' | 'default' | undefined;
+  extraText?: string;
+  extraIcon?: string;
+  onExtraClick?: () => void;
   onDefaultClick?: () => void;
   onAddClick?: () => void;
   onSubClick?: () => void;
@@ -77,6 +83,10 @@ export default function CartProduct({
   quantity,
   unitPrice,
   totalPrice,
+  extraColor,
+  extraText,
+  extraIcon,
+  onExtraClick = () => {},
   onDefaultClick = () => {},
   onAddClick = () => {},
   onSubClick = () => {},
@@ -120,7 +130,7 @@ export default function CartProduct({
                 </Box>
                 <Link
                   onClick={handleDefaultClick}
-                  color="primary"
+                  color="textSecondary"
                   className={classes.underline}
                 >
                   {title4}
@@ -133,8 +143,10 @@ export default function CartProduct({
                 </Box>
               </Typography>
 
-              <Typography component="div" variant="body1">
-                <Box alignItems="flex-start">Total: $ {totalPrice}</Box>
+              <Typography component="div" variant="body1" color="primary">
+                <Box alignItems="flex-start" color="inherit">
+                  Total: $ {totalPrice}
+                </Box>
               </Typography>
             </CardContent>
           </div>
@@ -151,13 +163,9 @@ export default function CartProduct({
           <DeleteIcon fontSize="small" />
         </IconButton>
 
-        <IconButton
-          className={classes.sumicon}
-          aria-label="add"
-          onClick={onAddClick}
-        >
-          <Icon color="primary" fontSize="large">
-            add_circle
+        <IconButton aria-label="add" onClick={onAddClick}>
+          <Icon color="primary" fontSize="small">
+            add
           </Icon>
         </IconButton>
 
@@ -165,15 +173,27 @@ export default function CartProduct({
           <Box color="text.primary">{quantity}</Box>
         </Typography>
 
-        <IconButton
-          className={classes.sumicon}
-          aria-label="sub"
-          onClick={onSubClick}
-        >
-          <Icon color="primary" fontSize="large">
-            remove_circle
+        <IconButton aria-label="sub" onClick={onSubClick}>
+          <Icon color="primary" fontSize="small">
+            remove
           </Icon>
         </IconButton>
+
+        {extraColor && extraText && extraIcon ? (
+          <Button
+            variant="contained"
+            color={extraColor}
+            className={classes.button}
+            startIcon={<Icon>{extraIcon}</Icon>}
+            onClick={onExtraClick}
+          >
+            <Typography component="div" className={classes.smalltext}>
+              <Box>{extraText}</Box>
+            </Typography>
+          </Button>
+        ) : (
+          ''
+        )}
       </CardActions>
     </Card>
   );
