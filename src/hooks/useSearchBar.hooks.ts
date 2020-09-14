@@ -4,8 +4,8 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Wednesday, 2nd September 2020 1:10:50 pm
- * Modified By: Luis Aparicio (luis@inventures.cl)
+ * Last Modified: Friday, 11th September 2020 2:51:04 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -25,14 +25,12 @@ type useSearchBarOptions = {
 
 export const useSearchBar = <T = Record<string, unknown>>(
   defaultValue: string,
-  query: T[] | ((data: string) => Promise<string[]>),
+  query: T[] | ((data: string) => Promise<T[]>),
   options: useSearchBarOptions = {},
-): [string, (value: string) => void, (T | string)[]] => {
+): [string, (value: string) => void, T[]] => {
   const [searchValue, setSearchValue] = useState<string>(defaultValue);
-  const [searchResult, setSearchResult] = useState<(T | string)[]>([]);
-  const valueRef = useRef<string>(searchValue);
-
-  const queryRef = useRef<null | T[] | ((data: string) => Promise<string[]>)>();
+  const [searchResult, setSearchResult] = useState<T[]>([]);
+  const queryRef = useRef<null | T[] | ((data: string) => Promise<T[]>)>();
 
   //Setting queryRef values when changes in query
   useEffect(() => {
@@ -51,7 +49,7 @@ export const useSearchBar = <T = Record<string, unknown>>(
 
         const result = fuse.search(newValue);
 
-        return setSearchResult(result);
+        return setSearchResult(result.map((e) => e.item));
       }
       const data = await queryRef.current(newValue);
       setSearchResult(data);
@@ -65,11 +63,11 @@ export const useSearchBar = <T = Record<string, unknown>>(
   const stopTyping = useCallback(
     debounce(
       (newValue: string) => {
-        valueRef.current = newValue;
         search(newValue);
       },
       options.debounceTime ? options.debounceTime : 1600,
     ),
+    // TODO: fix with array of element, always changing "search"
     [options.debounceTime, search],
   );
 

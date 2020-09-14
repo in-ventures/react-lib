@@ -4,7 +4,7 @@
  * File Created: Tuesday, 4th August 2020 5:47:50 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Thursday, 10th September 2020 5:31:26 pm
+ * Last Modified: Friday, 11th September 2020 10:13:32 am
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -14,7 +14,12 @@
  */
 
 import React from 'react';
-import { ProductCard, ProductList, ProductListHeader } from '../components';
+import {
+  ProductCard,
+  ProductList,
+  ProductListHeader,
+  ProductDetails,
+} from '../components';
 import InsertDriveFileOutlinedIcon from '@material-ui/icons/InsertDriveFileOutlined';
 
 import { text, number } from '@storybook/addon-knobs';
@@ -148,6 +153,27 @@ export const ProductCarousel = () => {
           },
         ]}
         gridBreakpoints={{ xs: 6, sm: 4, md: 3, lg: 2, xl: 1 }}
+      />
+    </>
+  );
+};
+
+export const ProductDetailsCard = () => {
+  const image = text(
+    'ImageUrl',
+    'https://compra.ligaepilepsia.cl/wp-content/uploads/2020/01/00234-300x300.jpg',
+  );
+  return (
+    <>
+      <ProductDetails
+        imageUrl={image}
+        title="Sertac"
+        subtitle="Sertralina • 100mg"
+        description="30 comprimidos • Andrómaco"
+        price={15813}
+        tagText={'Receta simple'}
+        tagIcon={<InsertDriveFileOutlinedIcon />}
+        pricePerUnit="$527 /comprimido"
       />
     </>
   );
