@@ -4,7 +4,7 @@
  * File Created: Thursday, 9th July 2020 12:56:32 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 1st September 2020 5:50:59 pm
+ * Last Modified: Monday, 14th September 2020 9:46:27 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -18,6 +18,21 @@ import { muiThemeDecorator } from '../src/config/storybook/muiTheme'
 export const parameters = {
   viewport: {
     viewports: INITIAL_VIEWPORTS,
+  },
+  backgrounds: {
+    default: 'twitter',
+    values: [
+      {
+        name: 'twitter',
+        value: '#00aced',
+      },
+      {
+        name: 'facebook',
+        value: '#3b5998',
+      },
+      { name: 'Meki Main', value: '#1C3E71' },
+      { name: 'DercocenterX Main', value: '#1F2183' },
+    ],
   },
 };
 export const decorators = [muiThemeDecorator];

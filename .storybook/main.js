@@ -12,5 +12,6 @@ module.exports = {
       name: '@storybook/addon-storysource',
       options: { loaderOptions: { parser: 'typescript' } },
     },
+    '@storybook/addon-backgrounds',
   ],
 };
