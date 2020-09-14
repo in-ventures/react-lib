@@ -13,5 +13,6 @@ module.exports = {
       options: { loaderOptions: { parser: 'typescript' } },
     },
     '@storybook/addon-backgrounds',
+    'storybook-addon-paddings'
   ],
 };

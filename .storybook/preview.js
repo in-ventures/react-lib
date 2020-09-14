@@ -4,7 +4,7 @@
  * File Created: Thursday, 9th July 2020 12:56:32 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Monday, 14th September 2020 9:46:27 am
+ * Last Modified: Monday, 14th September 2020 11:10:32 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -14,6 +14,7 @@
  */
 import { addParameters } from '@storybook/client-api';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import { withPaddings } from 'storybook-addon-paddings';
 import { muiThemeDecorator } from '../src/config/storybook/muiTheme'
 export const parameters = {
   viewport: {
@@ -22,6 +23,7 @@ export const parameters = {
   backgrounds: {
     default: 'twitter',
     values: [
+      { name: 'white', value: '#fff'},
       {
         name: 'twitter',
         value: '#00aced',
@@ -34,5 +36,11 @@ export const parameters = {
       { name: 'DercocenterX Main', value: '#1F2183' },
     ],
   },
+  paddings: [
+    { name: 'None', value: '0', default: true},
+    { name: 'Small', value: '16px' },
+    { name: 'Medium', value: '32px' },
+    { name: 'Large', value: '64px' },
+  ],
 };
-export const decorators = [muiThemeDecorator];
+export const decorators = [muiThemeDecorator, withPaddings];
