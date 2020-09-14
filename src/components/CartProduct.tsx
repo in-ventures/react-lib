@@ -14,6 +14,8 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Icon from '@material-ui/core/Icon';
 
+import { useToast } from '../hooks/toast.hook';
+
 const useStyles = makeStyles({
   root: {
     display: 'flex',
@@ -84,6 +86,9 @@ export default function CartProduct({
   onDetailsClick = () => {},
 }: CartProductProps) {
   const classes = useStyles();
+
+  const toast = useToast();
+  console.log({ toast });
 
   const handleDefaultClick = useCallback(
     (e) => {
