@@ -49,6 +49,9 @@ const useStyles = makeStyles({
   smalltext: {
     fontSize: 13,
   },
+  bigtext: {
+    fontSize: 15,
+  },
   addbutton: {
     marginLeft: 10,
   },
@@ -56,7 +59,7 @@ const useStyles = makeStyles({
     marginRight: 10,
   },
   extrabutton: {
-    borderRadius: 15,
+    borderRadius: 4,
   },
   rightbuttons: {
     display: 'flex',
@@ -123,15 +126,15 @@ export default function CartProduct({
 
           <div className={classes.details}>
             <CardContent className={classes.content}>
-              <Typography component="div" variant="body2" gutterBottom>
-                <Box color="text.primary" alignItems="flex-start">
+              <Typography component="div" variant="subtitle1" gutterBottom>
+                <Box color="text.primary"  alignItems="flex-start">
                   {title1}
                 </Box>
               </Typography>
 
               <Typography
                 component="div"
-                className={classes.smalltext}
+                variant="body2" 
                 gutterBottom
               >
                 <Box color="text.secondary" alignItems="flex-start">
@@ -149,7 +152,7 @@ export default function CartProduct({
                 </Link>
               </Typography>
 
-              <Typography component="div" className={classes.smalltext}>
+              <Typography component="div" variant="body2">
                 <Box color="text.primary" alignItems="flex-start">
                   Valor unitario: $ {unitPrice}
                 </Box>
