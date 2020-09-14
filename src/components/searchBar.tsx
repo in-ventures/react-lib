@@ -4,8 +4,8 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Friday, 4th September 2020 6:24:18 pm
- * Modified By: Luis Aparicio (luis@inventures.cl)
+ * Last Modified: Thursday, 10th September 2020 4:47:55 pm
+ * Modified By: Mario Merino (mario@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -16,8 +16,7 @@
 import React, { useState, useCallback } from 'react';
 import TextField, { TextFieldProps } from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Divider from '@material-ui/core/Divider';
@@ -26,42 +25,38 @@ import ClearIcon from '@material-ui/icons/Clear';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import { ReactComponent as NorthWestArrow } from '../assets/north_west-24px.svg';
+import { NorthWestIcon } from '../icons/NorthWest';
 import Collapse from '@material-ui/core/Collapse';
 import Fade from '@material-ui/core/Fade';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     box: {
       backgroundColor: 'white',
     },
     textField: {
-      fontFamily: theme.typography.fontFamily,
       overflow: 'hidden',
-      'white-space': 'nowrap',
-      fontweight: 'normal',
-      fontstretch: 'normal',
-      fontstyle: 'normal',
-      lineheight: 'normal',
-      letterspacing: 0.15,
       textOverflow: 'ellipsis',
-    },
-    northWestArrow: {
-      fill: '#757575',
+      whiteSpace: 'nowrap',
     },
     inputField: {
       border: 'none',
       borderRadius: 4,
+      width: '100%',
+    },
+    inputFieldCollapse: {
+      width: '100%',
     },
     searchButtonHide: {
       display: 'none',
     },
     listIcon: {
-      minWidth: 35,
+      minWidth: 32,
     },
-    dividerMargin: {
-      marginLeft: 50,
+
+    searchInputBox: {
+      justifyContent: 'flex-end',
     },
   }),
 );
@@ -96,37 +91,33 @@ export const SearchBar = ({
   }, [clearSearch, handleInputChange]);
 
   return (
-    <Box display="flex">
-      <Fade in={!showInputField}>
-        <IconButton
-          size="small"
-          onClick={handleInputChange}
-          className={showInputField ? classes.searchButtonHide : ''}
-        >
-          <SearchIcon />
-        </IconButton>
-      </Fade>
-      <Collapse in={showInputField}>
-        <TextField
-          {...props}
-          className={classes.inputField}
-          onFocus={handleTextFieldOnFocus}
-          InputProps={{
-            startAdornment: (!showIcon || !props.value) && (
-              <InputAdornment position="start">
-                <SearchIcon fontSize="small" />
-              </InputAdornment>
-            ),
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton size="small" onClick={handleClearOnClick}>
-                  <ClearIcon fontSize="small" />
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        ></TextField>
-      </Collapse>
+    <Box display="flex" className={classes.searchInputBox}>
+      {!showInputField && (
+        <Fade in={!showInputField}>
+          <IconButton size="small" onClick={handleInputChange}>
+            <SearchIcon />
+          </IconButton>
+        </Fade>
+      )}
+      {showInputField && (
+        <Collapse in={showInputField} className={classes.inputFieldCollapse}>
+          <TextField
+            {...props}
+            autoFocus
+            className={classes.inputField}
+            onFocus={handleTextFieldOnFocus}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton size="small" onClick={handleClearOnClick}>
+                    <ClearIcon fontSize="small" />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          ></TextField>
+        </Collapse>
+      )}
     </Box>
   );
 };
@@ -134,53 +125,51 @@ export const SearchBar = ({
 type SearchBoxProps = {
   searchResults: string[];
   onSuggestedClick: (value: string) => void;
+  onClick?: () => void;
 };
 
-export const SearchResultList = ({
-  searchResults,
+type SearchElementItemProps = {
+  value: string;
+  onSuggestedClick?: (value: string) => void;
+  onClick: () => void;
+};
+export const SearchElementItem = ({
+  value,
   onSuggestedClick,
-}: SearchBoxProps) => {
+  onClick,
+}: SearchElementItemProps) => {
   const classes = useStyles();
-
-  const handleSuggestedOnClick = useCallback(
-    (value) => () => {
-      onSuggestedClick(String(value));
-    },
-    [onSuggestedClick],
-  );
-
+  const handleSuggestedOnClick = useCallback(() => {
+    if (!onSuggestedClick) return;
+    onSuggestedClick(String(value));
+  }, [onSuggestedClick, value]);
   return (
-    <Box className={classes.box} display="block">
-      <List>
-        {searchResults.map((value) => (
-          <React.Fragment key={value}>
-            <ListItem key={value} href="#simple-list" button component="a">
-              <ListItemIcon className={classes.listIcon}>
-                <SearchIcon fontSize="small" />
-              </ListItemIcon>
-              <Typography
-                className={classes.textField}
-                color="textSecondary"
-                component="p"
-              >
-                {value}
-              </Typography>
-              <ListItemSecondaryAction>
-                <IconButton
-                  size="small"
-                  onClick={handleSuggestedOnClick(value)}
-                >
-                  <NorthWestArrow
-                    className={classes.northWestArrow}
-                    fontSize="small"
-                  />
-                </IconButton>
-              </ListItemSecondaryAction>
-            </ListItem>
-            <Divider className={classes.dividerMargin} component="li" />
-          </React.Fragment>
-        ))}
-      </List>
-    </Box>
+    <>
+      <ListItem onClick={onClick} button ContainerComponent="div">
+        <ListItemIcon className={classes.listIcon}>
+          <SearchIcon />
+        </ListItemIcon>
+        <Typography
+          className={classes.textField}
+          color="textSecondary"
+          component="p"
+        >
+          {value}
+        </Typography>
+        {!!onSuggestedClick && (
+          <ListItemSecondaryAction>
+            <IconButton
+              size="small"
+              onClick={handleSuggestedOnClick}
+              edge="end"
+              aria-label="buscar sugerencia"
+            >
+              <NorthWestIcon />
+            </IconButton>
+          </ListItemSecondaryAction>
+        )}
+      </ListItem>
+      <Divider component="div" />
+    </>
   );
 };
