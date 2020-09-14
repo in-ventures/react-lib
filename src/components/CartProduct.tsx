@@ -132,16 +132,12 @@ export default function CartProduct({
           <div className={classes.details}>
             <CardContent className={classes.content}>
               <Typography component="div" variant="subtitle1" gutterBottom>
-                <Box color="text.primary"  alignItems="flex-start">
+                <Box color="text.primary" alignItems="flex-start">
                   {title1}
                 </Box>
               </Typography>
 
-              <Typography
-                component="div"
-                variant="body2" 
-                gutterBottom
-              >
+              <Typography component="div" variant="body2" gutterBottom>
                 <Box color="text.secondary" alignItems="flex-start">
                   {title2}
                 </Box>
