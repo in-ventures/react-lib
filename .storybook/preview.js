@@ -4,7 +4,7 @@
  * File Created: Thursday, 9th July 2020 12:56:32 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Monday, 14th September 2020 11:10:32 am
+ * Last Modified: Monday, 14th September 2020 11:23:45 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -21,7 +21,7 @@ export const parameters = {
     viewports: INITIAL_VIEWPORTS,
   },
   backgrounds: {
-    default: 'twitter',
+    default: 'white',
     values: [
       { name: 'white', value: '#fff'},
       {
