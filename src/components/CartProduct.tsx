@@ -3,6 +3,7 @@ import React, { useCallback } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { TextFieldProps } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -25,7 +26,9 @@ const useStyles = makeStyles({
     flexDirection: 'column',
   },
   actions: {
-    flexDirection: 'row-reverse',
+    //flexDirection: 'row-reverse',
+    display: 'flex',
+    justifyContent: 'space-between',
   },
   content: {
     flex: '1 0 auto',
@@ -38,17 +41,31 @@ const useStyles = makeStyles({
     backgroundSize: 'contain',
     margin: 16,
   },
-  sumicon: {
-    padding: 0,
-  },
   trashicon: {
-    marginLeft: 33,
+    marginLeft: 22,
+    marginRight: 8,
   },
   underline: {
     textDecoration: 'underline',
   },
   smalltext: {
     fontSize: 13,
+  },
+  bigtext: {
+    fontSize: 15,
+  },
+  addbutton: {
+    marginLeft: 10,
+  },
+  subbutton: {
+    marginRight: 10,
+  },
+  extrabutton: {
+    borderRadius: 4,
+  },
+  rightbuttons: {
+    display: 'flex',
+    alignItems: 'center',
   },
 });
 
@@ -62,6 +79,10 @@ type CartProductProps = {
   quantity?: number;
   unitPrice?: number;
   totalPrice?: number;
+  extraColor?: 'inherit' | 'primary' | 'secondary' | 'default' | undefined;
+  extraText?: string;
+  extraIcon?: string;
+  onExtraClick?: () => void;
   onDefaultClick?: () => void;
   onAddClick?: () => void;
   onSubClick?: () => void;
@@ -79,6 +100,10 @@ export default function CartProduct({
   quantity,
   unitPrice,
   totalPrice,
+  extraColor,
+  extraText,
+  extraIcon,
+  onExtraClick = () => {},
   onDefaultClick = () => {},
   onAddClick = () => {},
   onSubClick = () => {},
@@ -106,17 +131,13 @@ export default function CartProduct({
 
           <div className={classes.details}>
             <CardContent className={classes.content}>
-              <Typography component="div" variant="body2" gutterBottom>
+              <Typography component="div" variant="subtitle1" gutterBottom>
                 <Box color="text.primary" alignItems="flex-start">
                   {title1}
                 </Box>
               </Typography>
 
-              <Typography
-                component="div"
-                className={classes.smalltext}
-                gutterBottom
-              >
+              <Typography component="div" variant="body2" gutterBottom>
                 <Box color="text.secondary" alignItems="flex-start">
                   {title2}
                 </Box>
@@ -125,21 +146,23 @@ export default function CartProduct({
                 </Box>
                 <Link
                   onClick={handleDefaultClick}
-                  color="primary"
+                  color="textSecondary"
                   className={classes.underline}
                 >
                   {title4}
                 </Link>
               </Typography>
 
-              <Typography component="div" className={classes.smalltext}>
+              <Typography component="div" variant="body2">
                 <Box color="text.primary" alignItems="flex-start">
                   Valor unitario: $ {unitPrice}
                 </Box>
               </Typography>
 
-              <Typography component="div" variant="body1">
-                <Box alignItems="flex-start">Total: $ {totalPrice}</Box>
+              <Typography component="div" variant="body1" color="primary">
+                <Box alignItems="flex-start" color="inherit">
+                  Total: $ {totalPrice}
+                </Box>
               </Typography>
             </CardContent>
           </div>
@@ -147,38 +170,58 @@ export default function CartProduct({
       </CardActionArea>
 
       <CardActions className={classes.actions}>
-        <IconButton
-          className={classes.trashicon}
-          aria-label="delete"
-          onClick={onTrashClick}
-          size="small"
-        >
-          <DeleteIcon fontSize="small" />
-        </IconButton>
+        <Box>
+          {extraColor && extraText && extraIcon ? (
+            <Button
+              variant="contained"
+              color={extraColor}
+              className={classes.extrabutton}
+              startIcon={<Icon>{extraIcon}</Icon>}
+              onClick={onExtraClick}
+            >
+              <Typography component="div" className={classes.smalltext}>
+                <Box>{extraText}</Box>
+              </Typography>
+            </Button>
+          ) : (
+            ''
+          )}
+        </Box>
 
-        <IconButton
-          className={classes.sumicon}
-          aria-label="add"
-          onClick={onAddClick}
-        >
-          <Icon color="primary" fontSize="large">
-            add_circle
-          </Icon>
-        </IconButton>
+        <Box className={classes.rightbuttons}>
+          <IconButton
+            aria-label="sub"
+            onClick={onSubClick}
+            className={classes.subbutton}
+          >
+            <Icon color="primary" fontSize="small">
+              remove
+            </Icon>
+          </IconButton>
 
-        <Typography component="div" variant="subtitle1">
-          <Box color="text.primary">{quantity}</Box>
-        </Typography>
+          <Typography component="div" variant="subtitle1">
+            <Box color="text.primary">{quantity}</Box>
+          </Typography>
 
-        <IconButton
-          className={classes.sumicon}
-          aria-label="sub"
-          onClick={onSubClick}
-        >
-          <Icon color="primary" fontSize="large">
-            remove_circle
-          </Icon>
-        </IconButton>
+          <IconButton
+            aria-label="add"
+            onClick={onAddClick}
+            className={classes.addbutton}
+          >
+            <Icon color="primary" fontSize="small">
+              add
+            </Icon>
+          </IconButton>
+
+          <IconButton
+            className={classes.trashicon}
+            aria-label="delete"
+            onClick={onTrashClick}
+            size="small"
+          >
+            <DeleteIcon fontSize="small" />
+          </IconButton>
+        </Box>
       </CardActions>
     </Card>
   );
