@@ -4,7 +4,7 @@
  * File Created: Friday, 11th September 2020 10:18:53 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Friday, 11th September 2020 11:26:28 am
+ * Last Modified: Tuesday, 15th September 2020 4:30:08 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -39,7 +39,6 @@ type ProductDetailsProps = {
 const useStyles = makeStyles({
   root: {
     textAlign: 'center',
-    padding: '55px',
   },
   title: {
     width: '100%',
