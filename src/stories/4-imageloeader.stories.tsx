@@ -94,7 +94,6 @@ export const Landscape = () => {
     try {
       //Compression
       const compressedFile = await imageCompression(file, options);
-      setFile(URL.createObjectURL(compressedFile));
       setLoaded(true);
       setLoading(false);
     } catch (error) {
@@ -151,7 +150,6 @@ export const Portrait = () => {
     try {
       //Compression
       const compressedFile = await imageCompression(file, options);
-      setFile(URL.createObjectURL(compressedFile));
       setLoaded(true);
       setLoading(false);
     } catch (error) {
