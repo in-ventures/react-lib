@@ -20,6 +20,7 @@ const useStyles = makeStyles({
   cardactionarea: {
     height: '80%',
     display: 'flex',
+    padding: 0
   },
   loading: {
     opacity: 0.4,
@@ -49,7 +50,6 @@ type ImageLoaderProps = {
   loading?: boolean;
   setLoading?: (loading: boolean) => void;
   progress?: number;
-  setProgress?: (progress: number) => void;
   loaded?: boolean;
   setLoaded?: (loaded: boolean) => void;
 } & TextFieldProps;
@@ -67,7 +67,6 @@ export default function ImageLoader({
   loading,
   setLoading = () => {},
   progress,
-  setProgress = () => {},
   loaded,
   setLoaded = () => {},
 }: ImageLoaderProps) {
@@ -142,7 +141,7 @@ export default function ImageLoader({
       const imgs = iframe.contentDocument.getElementsByTagName('img');
       if (imgs.length) {
         imgs[0].style.width = '100%';
-        imgs[0].style.height = '100%';
+        imgs[0].style.height = 'calc(100% - 52px)';
         imgs[0].style.objectFit = objectFit ? objectFit : 'contain';
         imgs[0].alt = alt ? alt : 'Default';
       }
@@ -180,7 +179,7 @@ export default function ImageLoader({
             ></iframe>
           )}
         </CardActionArea>
-
+         
         {loading ? (
           <LinearProgress variant="determinate" value={progress} />
         ) : (
