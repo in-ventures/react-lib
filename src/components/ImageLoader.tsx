@@ -97,7 +97,12 @@ export default function ImageLoader({
     if (iframe && iframe.contentDocument) {
       const imgs = iframe.contentDocument.getElementsByTagName('img');
       if (imgs.length) {
-        imgs[0].style.objectFit = objectFit ? objectFit : '';
+        imgs[0].style.objectFit = objectFit ? objectFit : 'contain';
+
+
+        imgs[0].style.width = '100%';
+        imgs[0].style.height = '100%';
+        imgs[0].alt = alt ? alt : 'Default';
       }
     }
   }, [objectFit, iframeRef, mediaRef]);
