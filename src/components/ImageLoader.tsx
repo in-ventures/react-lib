@@ -9,6 +9,7 @@ import CardActions from '@material-ui/core/CardActions';
 import Divider from '@material-ui/core/Divider';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import CardContent from '@material-ui/core/CardContent';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles({
@@ -41,7 +42,8 @@ type ImageLoaderProps = {
   alt?: string;
   objectFit?: string;
   maxFileSize?: number;
-  defaultImage?: string;
+
+  Placeholder?: React.ReactNode;
   onError?: () => void;
   compressImage?: (file: File) => void;
   file?: string;
@@ -49,7 +51,6 @@ type ImageLoaderProps = {
   loading?: boolean;
   setLoading?: (loading: boolean) => void;
   progress?: number;
-  setProgress?: (progress: number) => void;
   loaded?: boolean;
   setLoaded?: (loaded: boolean) => void;
 } & TextFieldProps;
@@ -59,7 +60,7 @@ export default function ImageLoader({
   alt,
   objectFit = 'contain',
   maxFileSize = 14,
-  defaultImage,
+  Placeholder = null,
   onError = () => {},
   compressImage = (file: File) => {},
   file,
@@ -67,21 +68,16 @@ export default function ImageLoader({
   loading,
   setLoading = () => {},
   progress,
-  setProgress = () => {},
   loaded,
   setLoaded = () => {},
 }: ImageLoaderProps) {
   const classes = useStyles();
   const iframeRef: React.RefObject<HTMLIFrameElement> = React.createRef();
-  const mediaRef: React.RefObject<HTMLImageElement> = React.createRef();
+
   const inputRef: React.RefObject<HTMLInputElement> = React.createRef();
 
   //Update object fit atr
   React.useEffect(() => {
-    //Reset default image's property
-    const media = mediaRef.current;
-    if (media) media.style.objectFit = objectFit;
-
     //Reset iframe's objectFit property
     const iframe = iframeRef.current;
     if (iframe && iframe.contentDocument) {
@@ -90,7 +86,7 @@ export default function ImageLoader({
         imgs[0].style.objectFit = objectFit ? objectFit : '';
       }
     }
-  }, [objectFit, iframeRef, mediaRef]);
+  }, [objectFit, iframeRef]);
 
   const loadFile = React.useCallback(
     (event: React.BaseSyntheticEvent) => {
@@ -162,14 +158,7 @@ export default function ImageLoader({
           onClick={onCardActionAreaClick}
         >
           {!loaded && !loading ? (
-            <CardMedia
-              className={classes.container}
-              ref={mediaRef}
-              component="img"
-              alt="Subir elemento"
-              title="Subir elemento"
-              image={defaultImage}
-            />
+            Placeholder
           ) : (
             <iframe
               title="Contenedor"
