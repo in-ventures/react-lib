@@ -86,26 +86,25 @@ export default function ImageLoader({
   const mediaRef: React.RefObject<HTMLImageElement> = React.createRef();
   const inputRef: React.RefObject<HTMLInputElement> = React.createRef();
 
-  //Update object fit atr
+  //Update objectfit
   React.useLayoutEffect(() => {
-    //Reset default image's property
     const media = mediaRef.current;
     if (media) media.style.objectFit = objectFit;
 
-    //Reset iframe's objectFit property
-    const iframe = iframeRef.current;
-    if (iframe && iframe.contentDocument) {
-      const imgs = iframe.contentDocument.getElementsByTagName('img');
-      if (imgs.length) {
-        imgs[0].style.objectFit = objectFit ? objectFit : 'contain';
-
-
-        imgs[0].style.width = '100%';
-        imgs[0].style.height = '100%';
-        imgs[0].alt = alt ? alt : 'Default';
+    //Waiting for iframe's content reendering
+    setTimeout(function () {
+      const iframe = iframeRef.current;
+      if (iframe && iframe.contentDocument) {
+        const imgs = iframe.contentDocument.getElementsByTagName('img');
+        if (imgs.length) {
+          imgs[0].style.objectFit = objectFit ? objectFit : 'contain';
+          imgs[0].alt = alt ? alt : 'Default';
+          imgs[0].style.width = '100%';
+          imgs[0].style.height = '100%';
+        }
       }
-    }
-  }, [objectFit, iframeRef, mediaRef]);
+    }, 100);
+  }, [objectFit, mediaRef, iframeRef, alt]);
 
   const loadFile = React.useCallback(
     (event: React.BaseSyntheticEvent) => {
@@ -150,21 +149,6 @@ export default function ImageLoader({
     if (input) input.value = '';
   }, [setFile, setLoaded, inputRef]);
 
-  //Set iframe's properties
-  const onIframeLoad = React.useCallback(() => {
-    const iframe = iframeRef.current;
-
-    if (iframe && iframe.contentDocument) {
-      const imgs = iframe.contentDocument.getElementsByTagName('img');
-      if (imgs.length) {
-        imgs[0].style.width = '100%';
-        imgs[0].style.height = '100%';
-        imgs[0].style.objectFit = objectFit ? objectFit : 'contain';
-        imgs[0].alt = alt ? alt : 'Default';
-      }
-    }
-  }, [iframeRef, alt, objectFit]);
-
   const onCardActionAreaClick = React.useCallback(() => {
     const input = inputRef.current;
     input?.click();
@@ -200,7 +184,6 @@ export default function ImageLoader({
                   ? clsx(classes.loading, classes.totallyFilled)
                   : clsx(classes.container, classes.totallyFilled)
               }
-              onLoad={onIframeLoad}
             ></iframe>
           )}
         </CardActionArea>
