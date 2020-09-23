@@ -4,7 +4,7 @@
  * File Created: Wednesday, 23rd September 2020 4:10:47 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Wednesday, 23rd September 2020 5:12:43 pm
+ * Last Modified: Wednesday, 23rd September 2020 5:19:42 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -16,10 +16,13 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import {
+  DialogActions,
+  makeStyles,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from '@material-ui/core';
 
 type ModalProps = {
   open: boolean;
@@ -34,20 +37,22 @@ type ActionType = {
   onActionClick: () => void;
 };
 
+const useStyles = makeStyles({
+  contentText: {
+    textAlign: 'center',
+  },
+});
+
 export function AlertModal(props: ModalProps) {
   const { title, open, content, actions, setOpen } = props;
+  const classes = useStyles();
 
   return (
     <div>
-      <Dialog
-        open={open}
-        onClose={() => setOpen(false)}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
+      <Dialog open={open} onClose={() => setOpen(false)}>
+        <DialogTitle>{title}</DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
+          <DialogContentText className={classes.contentText}>
             {content}
           </DialogContentText>
         </DialogContent>
