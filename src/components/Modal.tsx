@@ -4,7 +4,7 @@
  * File Created: Wednesday, 23rd September 2020 4:10:47 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Wednesday, 23rd September 2020 5:04:21 pm
+ * Last Modified: Wednesday, 23rd September 2020 5:12:43 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -13,8 +13,7 @@
  * Inventures - www.inventures.cl
  */
 
-import React, { useState } from 'react';
-import { createStyles, Theme } from '@material-ui/core/styles';
+import React from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -23,43 +22,43 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 type ModalProps = {
-    open: boolean;
-    title ?: string;
-    content: string;
-    setOpen: (open: boolean) => void;
-    actions ?: ActionType[];
+  open: boolean;
+  title?: string;
+  content: string;
+  setOpen: (open: boolean) => void;
+  actions?: ActionType[];
 };
 
 type ActionType = {
-    text: string;
-    onActionClick: () => void;
+  text: string;
+  onActionClick: () => void;
 };
 
 export function AlertModal(props: ModalProps) {
-    const { title, open, content, actions, setOpen } = props;
+  const { title, open, content, actions, setOpen } = props;
 
-    return (
-        <div>
-            <Dialog
-                open={open}
-                onClose={() => setOpen(false)}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-            >
-                <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
-                <DialogContent>
-                <DialogContentText id="alert-dialog-description">
-                    {content}
-                </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    {actions?.map((action: ActionType, index: number) => (
-                        <Button onClick={action.onActionClick} color="primary">
-                            {action.text}
-                        </Button>
-                    ))}
-                </DialogActions>
-            </Dialog>
-        </div>
-    );
+  return (
+    <div>
+      <Dialog
+        open={open}
+        onClose={() => setOpen(false)}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            {content}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          {actions?.map((action: ActionType, index: number) => (
+            <Button key={index} onClick={action.onActionClick} color="primary">
+              {action.text}
+            </Button>
+          ))}
+        </DialogActions>
+      </Dialog>
+    </div>
+  );
 }
