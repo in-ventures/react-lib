@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { TextFieldProps } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import Divider from '@material-ui/core/Divider';
@@ -53,7 +52,8 @@ type ImageLoaderProps = {
   alt?: string;
   objectFit?: string;
   maxFileSize?: number;
-  defaultImage?: string;
+
+  Placeholder?: React.ReactNode;
   onError?: () => void;
   compressImage?: (file: File) => void;
   file?: string;
@@ -70,7 +70,7 @@ export default function ImageLoader({
   alt,
   objectFit = 'contain',
   maxFileSize = 14,
-  defaultImage,
+  Placeholder = null,
   onError = () => {},
   compressImage = (file: File) => {},
   file,
@@ -83,14 +83,11 @@ export default function ImageLoader({
 }: ImageLoaderProps) {
   const classes = useStyles();
   const iframeRef: React.RefObject<HTMLIFrameElement> = React.createRef();
-  const mediaRef: React.RefObject<HTMLImageElement> = React.createRef();
+
   const inputRef: React.RefObject<HTMLInputElement> = React.createRef();
 
   //Update objectfit
   React.useLayoutEffect(() => {
-    const media = mediaRef.current;
-    if (media) media.style.objectFit = objectFit;
-
     //Waiting for iframe's content reendering
     setTimeout(function () {
       const iframe = iframeRef.current;
@@ -104,7 +101,7 @@ export default function ImageLoader({
         }
       }
     }, 100);
-  }, [objectFit, mediaRef, iframeRef, alt]);
+  }, [objectFit, iframeRef, alt]);
 
   const loadFile = React.useCallback(
     (event: React.BaseSyntheticEvent) => {
@@ -166,14 +163,7 @@ export default function ImageLoader({
           onClick={onCardActionAreaClick}
         >
           {!loaded && !loading ? (
-            <CardMedia
-              className={clsx(classes.container, classes.totallyFilled)}
-              ref={mediaRef}
-              component="img"
-              alt="Subir elemento"
-              title="Subir elemento"
-              image={defaultImage}
-            />
+            Placeholder
           ) : (
             <iframe
               title="Contenedor"

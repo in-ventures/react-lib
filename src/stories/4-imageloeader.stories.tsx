@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import ImageLoader from '../components/ImageLoader';
 import { text, number, boolean } from '@storybook/addon-knobs';
 import imageCompression from 'browser-image-compression';
+import {
+  CardContent,
+  CardMedia,
+  makeStyles,
+  Typography,
+} from '@material-ui/core';
 
 export default {
   title: 'Image Loader',
@@ -11,6 +17,52 @@ const onError = () => {
   alert('Ha ocurrido un error');
 };
 
+const useStyles = makeStyles({
+  media: {
+    backgroundSize: 'contain',
+    height: 140,
+  },
+  container: { display: 'flex', flexDirection: 'column' },
+  contentContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+});
+type PlaceholderProps = {
+  defaultImage: string;
+  title: string;
+  description: string;
+};
+const Placeholder = ({
+  defaultImage,
+  title,
+  description,
+}: PlaceholderProps) => {
+  const classes = useStyles();
+  return (
+    <div className={classes.container}>
+      <CardMedia
+        className={classes.media}
+        image={defaultImage}
+        title="Contemplative Reptile"
+      />
+      <CardContent className={classes.contentContainer}>
+        <Typography variant="caption" color="primary" align="center">
+          {title}
+        </Typography>
+        <Typography
+          variant="caption"
+          color="textSecondary"
+          align="center"
+          component="p"
+        >
+          {description}
+        </Typography>
+      </CardContent>
+    </div>
+  );
+};
 export const LandscapeEditable = () => {
   const types = ['application/pdf', 'text/plain', 'image/jpeg', 'image/png'];
   const objectFit = text('Object fit', 'contain');
@@ -18,16 +70,26 @@ export const LandscapeEditable = () => {
     'Default image',
     'https://previews.123rf.com/images/creativepriyanka/creativepriyanka1906/creativepriyanka190600379/124982633-prescription-icon.jpg',
   );
+  const defaultTitle = text('Default title', 'Adjunta tu receta aquí');
+  const defaultDescription = text(
+    'Default description',
+    'Puedes subir una imagen o PDF ',
+  );
   const [file, setFile] = useState('');
   const loading = boolean('Loading', false);
   const progress = number('Progress', 0);
-
   return (
     <div style={{ width: '400px', height: '300px' }}>
       <ImageLoader
         types={types}
         objectFit={objectFit}
-        defaultImage={defaultImage}
+        Placeholder={
+          <Placeholder
+            defaultImage={defaultImage}
+            title={defaultTitle}
+            description={defaultDescription}
+          />
+        }
         onError={onError}
         file={file}
         setFile={setFile}
@@ -46,6 +108,11 @@ export const PortraitEditable = () => {
     'Default image',
     'https://previews.123rf.com/images/creativepriyanka/creativepriyanka1906/creativepriyanka190600379/124982633-prescription-icon.jpg',
   );
+  const defaultTitle = text('Default title', 'Adjunta tu receta aquí');
+  const defaultDescription = text(
+    'Default description',
+    'Puedes subir una imagen o PDF ',
+  );
   const [file, setFile] = useState('');
   const loading = boolean('Loading', false);
   const progress = number('Progress', 0);
@@ -55,7 +122,13 @@ export const PortraitEditable = () => {
       <ImageLoader
         types={types}
         objectFit={objectFit}
-        defaultImage={defaultImage}
+        Placeholder={
+          <Placeholder
+            defaultImage={defaultImage}
+            title={defaultTitle}
+            description={defaultDescription}
+          />
+        }
         onError={onError}
         file={file}
         setFile={setFile}
@@ -80,6 +153,11 @@ export const Landscape = () => {
   const defaultImage = text(
     'Default image',
     'https://previews.123rf.com/images/creativepriyanka/creativepriyanka1906/creativepriyanka190600379/124982633-prescription-icon.jpg',
+  );
+  const defaultTitle = text('Default title', 'Adjunta tu receta aquí');
+  const defaultDescription = text(
+    'Default description',
+    'Puedes subir una imagen o PDF ',
   );
 
   const compressImage = async (file: File) => {
@@ -108,7 +186,13 @@ export const Landscape = () => {
         alt={alt}
         objectFit={objectFit}
         maxFileSize={maxFileSize}
-        defaultImage={defaultImage}
+        Placeholder={
+          <Placeholder
+            defaultImage={defaultImage}
+            title={defaultTitle}
+            description={defaultDescription}
+          />
+        }
         onError={onError}
         compressImage={compressImage}
         file={file}
@@ -138,6 +222,11 @@ export const Portrait = () => {
     'https://previews.123rf.com/images/creativepriyanka/creativepriyanka1906/creativepriyanka190600379/124982633-prescription-icon.jpg',
   );
 
+  const defaultTitle = text('Default title', 'Adjunta tu receta aquí');
+  const defaultDescription = text(
+    'Default description',
+    'Puedes subir una imagen o PDF ',
+  );
   const compressImage = async (file: File) => {
     const options = {
       maxSizeMB: maxFileSize,
@@ -164,7 +253,13 @@ export const Portrait = () => {
         alt={alt}
         objectFit={objectFit}
         maxFileSize={maxFileSize}
-        defaultImage={defaultImage}
+        Placeholder={
+          <Placeholder
+            defaultImage={defaultImage}
+            title={defaultTitle}
+            description={defaultDescription}
+          />
+        }
         onError={onError}
         compressImage={compressImage}
         file={file}
