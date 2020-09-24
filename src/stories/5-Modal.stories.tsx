@@ -4,7 +4,7 @@
  * File Created: Wednesday, 23rd September 2020 4:11:55 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Wednesday, 23rd September 2020 5:29:02 pm
+ * Last Modified: Thursday, 24th September 2020 2:16:31 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -44,10 +44,12 @@ export const CustomModal = () => {
           {
             text: 'OK',
             onActionClick: () => setOpen(false),
+            variant: 'contained',
           },
           {
             text: 'Aceptar',
             onActionClick: () => setOpen(false),
+            variant: 'outlined',
           },
           {
             text: 'Cerrar',

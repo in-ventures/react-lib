@@ -4,7 +4,7 @@
  * File Created: Wednesday, 23rd September 2020 4:10:47 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Wednesday, 23rd September 2020 5:19:42 pm
+ * Last Modified: Thursday, 24th September 2020 2:16:19 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -26,7 +26,7 @@ import {
 
 type ModalProps = {
   open: boolean;
-  title?: string;
+  title: string;
   content: string;
   setOpen: (open: boolean) => void;
   actions?: ActionType[];
@@ -35,6 +35,7 @@ type ModalProps = {
 type ActionType = {
   text: string;
   onActionClick: () => void;
+  variant?: 'text' | 'outlined' | 'contained' | undefined;
 };
 
 const useStyles = makeStyles({
@@ -58,7 +59,12 @@ export function AlertModal(props: ModalProps) {
         </DialogContent>
         <DialogActions>
           {actions?.map((action: ActionType, index: number) => (
-            <Button key={index} onClick={action.onActionClick} color="primary">
+            <Button
+              key={index}
+              onClick={action.onActionClick}
+              color="primary"
+              variant={action.variant}
+            >
               {action.text}
             </Button>
           ))}
