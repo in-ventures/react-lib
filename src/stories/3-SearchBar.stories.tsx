@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Thursday, 24th September 2020 6:14:32 pm
+ * Last Modified: Thursday, 24th September 2020 6:16:28 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -123,6 +123,7 @@ export const SearchBarResult = () => {
   const handleResultClick = (value: string) => {
     console.log('handle Results');
     console.log(value);
+    setSearchValue(value);
     setShowResults(false);
   };
 
