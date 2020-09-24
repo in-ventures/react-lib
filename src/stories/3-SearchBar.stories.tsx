@@ -4,8 +4,8 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Tuesday, 8th September 2020 4:38:09 pm
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Thursday, 24th September 2020 5:28:01 pm
+ * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -14,6 +14,7 @@
  */
 
 import React, { useCallback, useState } from 'react';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 import { SearchBar, SearchElementItem } from '../components/searchBar';
 import { useSearchBar } from '../hooks/useSearchBar.hooks';
 import { number, text } from '@storybook/addon-knobs';
@@ -93,6 +94,7 @@ export const ListResults = () => {
 
 export const SearchBarResult = () => {
   const debounceTime = number('Debounce time (ms)', 800);
+  const classes = useStyles();
 
   // To-Do Fix Fuse.js Options
   const filterOptions = {
@@ -116,12 +118,14 @@ export const SearchBarResult = () => {
   };
 
   return (
-    <div>
+    <div className={classes.root}>
       <SearchBar
         value={searchValue}
         onChange={handleWrite}
         clearSearch={handleClickClearSearch}
         size="small"
+        iconColor='#FFFFFF'
+        barColor="#FFFFFF"
       />
 
       {!!searchValue && (
@@ -143,3 +147,14 @@ export const SearchBarResult = () => {
     </div>
   );
 };
+
+
+const useStyles = makeStyles(() =>
+  createStyles({
+    root: {
+      backgroundColor: '#6384b8',
+      height: '100vh',
+      padding: '20px',
+    },
+  }),
+);

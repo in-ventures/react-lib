@@ -4,8 +4,8 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Thursday, 10th September 2020 4:47:55 pm
- * Modified By: Mario Merino (mario@inventures.cl)
+ * Last Modified: Thursday, 24th September 2020 5:28:09 pm
+ * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -54,7 +54,6 @@ const useStyles = makeStyles(() =>
     listIcon: {
       minWidth: 32,
     },
-
     searchInputBox: {
       justifyContent: 'flex-end',
     },
@@ -63,15 +62,21 @@ const useStyles = makeStyles(() =>
 
 type SearchBarProps = {
   clearSearch: (value: string) => void;
+  iconColor ?: string;
+  barColor ?: string;
 };
 
 export const SearchBar = ({
   clearSearch,
+  iconColor,
+  barColor,
   ...props
 }: SearchBarProps & TextFieldProps) => {
+  
   const classes = useStyles();
   const [showIcon, setShowIcon] = useState<boolean>(false);
   const [showInputField, setshowInputField] = useState<boolean>(false);
+  const [showResults, setShowResults] = useState<boolean>(false);
 
   const handleInputChange = useCallback(() => {
     setshowInputField((prev) => !prev);
@@ -83,19 +88,21 @@ export const SearchBar = ({
 
   const handleTextFieldOnFocus = useCallback(() => {
     !showIcon && handleIconChange();
-  }, [handleIconChange, showIcon]);
+    setShowResults(true);
+  }, [handleIconChange, showIcon, setShowResults]);
 
   const handleClearOnClick = useCallback(() => {
     handleInputChange();
     clearSearch('');
-  }, [clearSearch, handleInputChange]);
+    setShowResults(false);
+  }, [clearSearch, handleInputChange, setShowResults]);
 
   return (
     <Box display="flex" className={classes.searchInputBox}>
       {!showInputField && (
         <Fade in={!showInputField}>
           <IconButton size="small" onClick={handleInputChange}>
-            <SearchIcon />
+            <SearchIcon style={{fill: iconColor}}/>
           </IconButton>
         </Fade>
       )}
@@ -105,6 +112,7 @@ export const SearchBar = ({
             {...props}
             autoFocus
             className={classes.inputField}
+            style={{backgroundColor: barColor}}
             onFocus={handleTextFieldOnFocus}
             InputProps={{
               endAdornment: (
