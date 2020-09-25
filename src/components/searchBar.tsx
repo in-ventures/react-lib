@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Thursday, 24th September 2020 6:08:21 pm
+ * Last Modified: Friday, 25th September 2020 2:29:15 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -30,6 +30,17 @@ import Collapse from '@material-ui/core/Collapse';
 import Fade from '@material-ui/core/Fade';
 import Typography from '@material-ui/core/Typography';
 
+type SearchBarProps = {
+  clearSearch: (value: string) => void;
+  iconColor?: string;
+  barColor?: string;
+};
+
+type BarStyleProps = {
+  barColor?: string;
+  iconColor?: string;
+};
+
 const useStyles = makeStyles(() =>
   createStyles({
     box: {
@@ -44,6 +55,7 @@ const useStyles = makeStyles(() =>
       border: 'none',
       borderRadius: 4,
       width: '100%',
+      backgroundColor: (props: BarStyleProps) => props.barColor,
     },
     inputFieldCollapse: {
       width: '100%',
@@ -57,14 +69,11 @@ const useStyles = makeStyles(() =>
     searchInputBox: {
       justifyContent: 'flex-end',
     },
+    searchIcon: {
+      fill: (props: BarStyleProps) => props.iconColor,
+    },
   }),
 );
-
-type SearchBarProps = {
-  clearSearch: (value: string) => void;
-  iconColor?: string;
-  barColor?: string;
-};
 
 export const SearchBar = ({
   clearSearch,
@@ -72,7 +81,10 @@ export const SearchBar = ({
   barColor,
   ...props
 }: SearchBarProps & TextFieldProps) => {
-  const classes = useStyles();
+  const classes = useStyles({
+    iconColor: iconColor,
+    barColor: barColor,
+  });
   const [showIcon, setShowIcon] = useState<boolean>(false);
   const [showInputField, setshowInputField] = useState<boolean>(false);
 
@@ -98,7 +110,7 @@ export const SearchBar = ({
       {!showInputField && (
         <Fade in={!showInputField}>
           <IconButton size="small" onClick={handleInputChange}>
-            <SearchIcon style={{ fill: iconColor }} />
+            <SearchIcon className={classes.searchIcon} />
           </IconButton>
         </Fade>
       )}
@@ -108,7 +120,6 @@ export const SearchBar = ({
             {...props}
             autoFocus
             className={classes.inputField}
-            style={{ backgroundColor: barColor }}
             onFocus={handleTextFieldOnFocus}
             InputProps={{
               endAdornment: (
@@ -126,12 +137,6 @@ export const SearchBar = ({
   );
 };
 
-type SearchBoxProps = {
-  searchResults: string[];
-  onSuggestedClick: (value: string) => void;
-  onClick?: () => void;
-};
-
 type SearchElementItemProps = {
   value: string;
   onSuggestedClick?: (value: string) => void;
@@ -142,7 +147,7 @@ export const SearchElementItem = ({
   onSuggestedClick,
   onClick,
 }: SearchElementItemProps) => {
-  const classes = useStyles();
+  const classes = useStyles({}); //Must recieve empty object due to BarStyleProps
   const handleSuggestedOnClick = useCallback(() => {
     if (!onSuggestedClick) return;
     onSuggestedClick(String(value));
