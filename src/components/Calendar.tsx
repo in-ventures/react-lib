@@ -4,7 +4,7 @@
  * File Created: Friday, 25th September 2020 3:06:54 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Friday, 25th September 2020 4:18:12 pm
+ * Last Modified: Friday, 25th September 2020 4:21:43 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -25,10 +25,11 @@ type CustomCalendarProps = {
   variant?: 'dialog' | 'inline' | 'static' | undefined;
   selectedDate: Date | null;
   setSelectedDate: (date: Date | null) => void;
+  disablePast ?: boolean;
 };
 
 export function Calendar(props: CustomCalendarProps) {
-  const { variant, selectedDate, setSelectedDate } = props;
+  const { variant, selectedDate, setSelectedDate, disablePast } = props;
 
   const handleDateChange = (date: Date | null) => {
     setSelectedDate(date);
@@ -44,6 +45,7 @@ export function Calendar(props: CustomCalendarProps) {
         id="date-picker-inline"
         label="Date picker inline"
         value={selectedDate}
+        disablePast={disablePast}
         onChange={handleDateChange}
       />
     </MuiPickersUtilsProvider>

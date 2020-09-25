@@ -4,7 +4,7 @@
  * File Created: Friday, 25th September 2020 3:17:09 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Friday, 25th September 2020 4:06:42 pm
+ * Last Modified: Friday, 25th September 2020 4:22:00 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -28,6 +28,7 @@ export const CustomCalendar = () => {
       variant="static"
       selectedDate={selectedDate}
       setSelectedDate={setSelectedDate}
+      disablePast={true}
     />
   );
 };
