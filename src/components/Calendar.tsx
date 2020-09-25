@@ -4,7 +4,7 @@
  * File Created: Friday, 25th September 2020 3:06:54 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Friday, 25th September 2020 4:06:38 pm
+ * Last Modified: Friday, 25th September 2020 4:18:12 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -18,7 +18,7 @@ import React from 'react';
 import DateFnsUtils from '@date-io/date-fns';
 import {
   MuiPickersUtilsProvider,
-  KeyboardDatePicker,
+  DatePicker,
 } from '@material-ui/pickers';
 
 type CustomCalendarProps = {
@@ -36,7 +36,7 @@ export function Calendar(props: CustomCalendarProps) {
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <KeyboardDatePicker
+      <DatePicker
         disableToolbar
         variant={variant}
         format="dd/MM/yyyy"
