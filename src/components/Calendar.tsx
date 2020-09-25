@@ -22,9 +22,9 @@ import {
 } from '@material-ui/pickers';
 
 type CustomCalendarProps = {
-    variant ?: "dialog" | "inline" | "static" | undefined;
-    selectedDate: Date | null;
-    setSelectedDate: (date: Date | null) => void;
+  variant?: 'dialog' | 'inline' | 'static' | undefined;
+  selectedDate: Date | null;
+  setSelectedDate: (date: Date | null) => void;
 };
 
 export function Calendar(props: CustomCalendarProps) {
@@ -36,16 +36,16 @@ export function Calendar(props: CustomCalendarProps) {
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <KeyboardDatePicker
-          disableToolbar
-          variant={variant}
-          format="dd/MM/yyyy"
-          margin="normal"
-          id="date-picker-inline"
-          label="Date picker inline"
-          value={selectedDate}
-          onChange={handleDateChange}
-        />
+      <KeyboardDatePicker
+        disableToolbar
+        variant={variant}
+        format="dd/MM/yyyy"
+        margin="normal"
+        id="date-picker-inline"
+        label="Date picker inline"
+        value={selectedDate}
+        onChange={handleDateChange}
+      />
     </MuiPickersUtilsProvider>
   );
 }

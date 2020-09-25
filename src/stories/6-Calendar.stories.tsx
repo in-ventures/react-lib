@@ -21,15 +21,13 @@ export default {
 };
 
 export const CustomCalendar = () => {
-    const [selectedDate, setSelectedDate] = useState<Date | null>(
-        new Date(),
-    );
+  const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
 
-    return (
-        <Calendar
-        variant="static"
-        selectedDate={selectedDate}
-        setSelectedDate={setSelectedDate}
-        />
-    );
+  return (
+    <Calendar
+      variant="static"
+      selectedDate={selectedDate}
+      setSelectedDate={setSelectedDate}
+    />
+  );
 };
