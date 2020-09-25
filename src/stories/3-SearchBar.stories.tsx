@@ -4,8 +4,8 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Tuesday, 8th September 2020 4:38:09 pm
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Friday, 25th September 2020 2:33:31 pm
+ * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -14,6 +14,7 @@
  */
 
 import React, { useCallback, useState } from 'react';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 import { SearchBar, SearchElementItem } from '../components/searchBar';
 import { useSearchBar } from '../hooks/useSearchBar.hooks';
 import { number, text } from '@storybook/addon-knobs';
@@ -93,6 +94,8 @@ export const ListResults = () => {
 
 export const SearchBarResult = () => {
   const debounceTime = number('Debounce time (ms)', 800);
+  const classes = useStyles();
+  const [showResults, setShowResults] = useState<boolean>(false);
 
   // To-Do Fix Fuse.js Options
   const filterOptions = {
@@ -107,39 +110,59 @@ export const SearchBarResult = () => {
   const handleWrite = useCallback(
     (e) => {
       setSearchValue(String(e.target.value));
+      setShowResults(true);
     },
-    [setSearchValue],
+    [setSearchValue, setShowResults],
   );
 
   const handleClickClearSearch = (value: string) => {
     setSearchValue(String(value));
+    setShowResults(false);
+  };
+
+  const handleResultClick = (value: string) => {
+    setSearchValue(value);
+    setShowResults(false);
   };
 
   return (
-    <div>
+    <div className={classes.root}>
       <SearchBar
         value={searchValue}
         onChange={handleWrite}
         clearSearch={handleClickClearSearch}
         size="small"
+        iconColor="#FFFFFF"
+        barColor="#FFFFFF"
       />
 
-      {!!searchValue && (
+      {!!searchValue && showResults && (
         <SearchElementItem
           value={searchValue}
-          onClick={() => alert(searchValue)}
+          onClick={() => handleResultClick(searchValue)}
         />
       )}
-      {searchResults
-        .filter(({ item }) => item !== searchValue)
-        .map((result, i) => (
-          <SearchElementItem
-            key={result.item}
-            value={result.item}
-            onClick={() => alert(result.item)}
-            onSuggestedClick={(newValue) => setSearchValue(newValue)}
-          />
-        ))}
+      {showResults &&
+        searchResults
+          .filter(({ item }) => item !== searchValue)
+          .map((result, i) => (
+            <SearchElementItem
+              key={i}
+              value={result.item}
+              onClick={() => handleResultClick(result.item)}
+              onSuggestedClick={() => handleResultClick(result.item)}
+            />
+          ))}
     </div>
   );
 };
+
+const useStyles = makeStyles(() =>
+  createStyles({
+    root: {
+      backgroundColor: '#6384b8',
+      height: '100vh',
+      padding: '20px',
+    },
+  }),
+);
