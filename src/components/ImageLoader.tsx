@@ -9,28 +9,40 @@ import Divider from '@material-ui/core/Divider';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import DeleteIcon from '@material-ui/icons/Delete';
+import clsx from 'clsx';
 
 const useStyles = makeStyles({
-  container: {
+  totallyFilled: {
     width: '100%',
     height: '100%',
+  },
+  container: {
     border: 'none',
   },
   cardactionarea: {
-    height: '80%',
     display: 'flex',
+    padding: 0,
+  },
+  loadingHeight: {
+    height: 'calc(100% - 56px)',
+  },
+  notloadingHeight: {
+    height: 'calc(100% - 52px)',
   },
   loading: {
     opacity: 0.4,
-    width: '100%',
-    height: '100%',
     border: 'none',
   },
   actions: {
     justifyContent: 'center',
+    padding: 0,
   },
   input: {
     display: 'none',
+    padding: 0,
+  },
+  marginLeftZero: {
+    marginLeft: '0!important',
   },
 });
 
@@ -74,17 +86,22 @@ export default function ImageLoader({
 
   const inputRef: React.RefObject<HTMLInputElement> = React.createRef();
 
-  //Update object fit atr
-  React.useEffect(() => {
-    //Reset iframe's objectFit property
-    const iframe = iframeRef.current;
-    if (iframe && iframe.contentDocument) {
-      const imgs = iframe.contentDocument.getElementsByTagName('img');
-      if (imgs.length) {
-        imgs[0].style.objectFit = objectFit ? objectFit : '';
+  //Update objectfit
+  React.useLayoutEffect(() => {
+    //Waiting for iframe's content reendering
+    setTimeout(function () {
+      const iframe = iframeRef.current;
+      if (iframe && iframe.contentDocument) {
+        const imgs = iframe.contentDocument.getElementsByTagName('img');
+        if (imgs.length) {
+          imgs[0].style.objectFit = objectFit ? objectFit : 'contain';
+          imgs[0].alt = alt ? alt : 'Default';
+          imgs[0].style.width = '100%';
+          imgs[0].style.height = '100%';
+        }
       }
-    }
-  }, [objectFit, iframeRef]);
+    }, 100);
+  }, [objectFit, iframeRef, alt]);
 
   const loadFile = React.useCallback(
     (event: React.BaseSyntheticEvent) => {
@@ -98,6 +115,7 @@ export default function ImageLoader({
         if (isImage && !sizeIsPermitted) {
           setLoading(true);
           setLoaded(false);
+          setFile(URL.createObjectURL(file));
           //Compression
           compressImage(file);
         } else if (sizeIsPermitted) {
@@ -128,31 +146,20 @@ export default function ImageLoader({
     if (input) input.value = '';
   }, [setFile, setLoaded, inputRef]);
 
-  //Set iframe's properties
-  const onIframeLoad = React.useCallback(() => {
-    const iframe = iframeRef.current;
-
-    if (iframe && iframe.contentDocument) {
-      const imgs = iframe.contentDocument.getElementsByTagName('img');
-      if (imgs.length) {
-        imgs[0].style.width = '100%';
-        imgs[0].style.height = '100%';
-        imgs[0].style.objectFit = objectFit ? objectFit : 'contain';
-        imgs[0].alt = alt ? alt : 'Default';
-      }
-    }
-  }, [iframeRef, alt, objectFit]);
-
   const onCardActionAreaClick = React.useCallback(() => {
     const input = inputRef.current;
     input?.click();
   }, [inputRef]);
 
   return (
-    <div className={classes.container}>
-      <Card className={classes.container}>
+    <div className={clsx(classes.container, classes.totallyFilled)}>
+      <Card className={clsx(classes.container, classes.totallyFilled)}>
         <CardActionArea
-          className={classes.cardactionarea}
+          className={
+            loading
+              ? clsx(classes.cardactionarea, classes.loadingHeight)
+              : clsx(classes.cardactionarea, classes.notloadingHeight)
+          }
           onClick={onCardActionAreaClick}
         >
           {!loaded && !loading ? (
@@ -162,8 +169,11 @@ export default function ImageLoader({
               title="Contenedor"
               ref={iframeRef}
               src={file}
-              className={loading ? classes.loading : classes.container}
-              onLoad={onIframeLoad}
+              className={
+                loading
+                  ? clsx(classes.loading, classes.totallyFilled)
+                  : clsx(classes.container, classes.totallyFilled)
+              }
             ></iframe>
           )}
         </CardActionArea>
@@ -198,7 +208,7 @@ export default function ImageLoader({
             onChange={loadFile}
             disabled={loading}
           />
-          <label htmlFor="icon-button-file">
+          <label htmlFor="icon-button-file" className={classes.marginLeftZero}>
             <IconButton
               color="primary"
               aria-label="Subir elemento"
