@@ -16,16 +16,13 @@
 import 'date-fns';
 import React from 'react';
 import DateFnsUtils from '@date-io/date-fns';
-import {
-  MuiPickersUtilsProvider,
-  DatePicker,
-} from '@material-ui/pickers';
+import { MuiPickersUtilsProvider, DatePicker } from '@material-ui/pickers';
 
 type CustomCalendarProps = {
   variant?: 'dialog' | 'inline' | 'static' | undefined;
   selectedDate: Date | null;
   setSelectedDate: (date: Date | null) => void;
-  disablePast ?: boolean;
+  disablePast?: boolean;
 };
 
 export function Calendar(props: CustomCalendarProps) {
