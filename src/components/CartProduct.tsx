@@ -16,6 +16,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Icon from '@material-ui/core/Icon';
 
 import { useToast } from '../hooks/toast.hook';
+import { CurrencyFormatter } from '../formatters';
 
 const useStyles = makeStyles({
   root: {
@@ -98,8 +99,8 @@ export default function CartProduct({
   title3,
   title4,
   quantity,
-  unitPrice,
-  totalPrice,
+  unitPrice = 0,
+  totalPrice = 0,
   extraColor,
   extraText,
   extraIcon,
@@ -122,6 +123,10 @@ export default function CartProduct({
     },
     [onDefaultClick],
   );
+
+  const currFormat = new CurrencyFormatter();
+  const currUnitPrice = currFormat.format(unitPrice);
+  const currTotalPrice = currFormat.format(totalPrice);
 
   return (
     <Card>
@@ -155,13 +160,13 @@ export default function CartProduct({
 
               <Typography component="div" variant="body2">
                 <Box color="text.primary" alignItems="flex-start">
-                  Valor unitario: $ {unitPrice}
+                  Valor unitario: {currUnitPrice}
                 </Box>
               </Typography>
 
               <Typography component="div" variant="body1" color="primary">
                 <Box alignItems="flex-start" color="inherit">
-                  Total: $ {totalPrice}
+                  Total: $ {currTotalPrice}
                 </Box>
               </Typography>
             </CardContent>
