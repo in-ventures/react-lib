@@ -4,7 +4,7 @@
  * File Created: Friday, 11th September 2020 10:18:53 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Tuesday, 15th September 2020 4:30:08 pm
+ * Last Modified: Monday, 28th September 2020 6:36:41 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -48,7 +48,6 @@ const useStyles = makeStyles({
     padding: '0px',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    height: '118px',
     display: 'flex',
   },
   media: {
