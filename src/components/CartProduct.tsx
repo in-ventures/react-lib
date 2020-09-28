@@ -78,8 +78,8 @@ type CartProductProps = {
   title3?: string;
   title4?: string;
   quantity?: number;
-  unitPrice?: number;
-  totalPrice?: number;
+  unitPrice: number;
+  totalPrice: number;
   extraColor?: 'inherit' | 'primary' | 'secondary' | 'default' | undefined;
   extraText?: string;
   extraIcon?: string;
@@ -99,8 +99,8 @@ export default function CartProduct({
   title3,
   title4,
   quantity,
-  unitPrice = 0,
-  totalPrice = 0,
+  unitPrice,
+  totalPrice,
   extraColor,
   extraText,
   extraIcon,
