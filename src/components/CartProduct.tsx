@@ -166,7 +166,7 @@ export default function CartProduct({
 
               <Typography component="div" variant="body1" color="primary">
                 <Box alignItems="flex-start" color="inherit">
-                  Total: $ {currTotalPrice}
+                  Total: {currTotalPrice}
                 </Box>
               </Typography>
             </CardContent>
