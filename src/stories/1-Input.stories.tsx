@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Friday, 4th September 2020 4:44:12 pm
+ * Last Modified: Tuesday, 29th September 2020 2:54:15 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -43,6 +43,38 @@ export type CountryType = {
 };
 
 export const Base = () => <Input />;
+
+export const LengthValidatorTest = () => {
+  const validLength = text(
+    'RUT de largo inválido error',
+    'Recuerda incluir un largo válido',
+  );
+
+  const debounceTime = number('Debounce time (ms)', 800);
+  const [value, setValue, status, errors, handleBlur] = useInput('', {
+    validators: [
+      validLength && new LengthValidator(validLength, { max: 11 }),
+    ].filter(Boolean) as Validator<string>[],
+    debounceTime,
+  });
+  const handleWrite = useCallback(
+    (e) => {
+      setValue(String(e.target.value));
+    },
+    [setValue],
+  );
+  return (
+    <Input
+      value={value}
+      onChange={handleWrite}
+      onBlur={handleBlur}
+      error={status === InputStatus.ERROR}
+      helperText={errors[0]}
+      label="Enter your text"
+    />
+  );
+};
+
 export const InputForRut = () => {
   const required = text('RUT requerido error', 'RUT Requerido');
   const incomplete = text(

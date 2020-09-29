@@ -4,8 +4,8 @@
  * File Created: Friday, 14th August 2020 3:09:48 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Wednesday, 9th September 2020 11:37:58 am
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Tuesday, 29th September 2020 2:39:09 pm
+ * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -17,8 +17,12 @@ import { Validator } from './Validator';
 
 type LengthType =
   | {
-      min: number;
+      min?: number;
       max: number;
+    }
+  | {
+      min: number;
+      max?: number;
     }
   | number;
 
@@ -32,8 +36,10 @@ export class LengthValidator extends Validator {
       this.requiredLength = length;
       return;
     }
-    this.minLength = length.min;
-    this.maxLength = length.max;
+    this.minLength = length.min ? length.min : -Infinity;
+    this.maxLength = length.max ? length.max : Infinity;
+    //this.minLength = length.min;
+    //this.maxLength = length.max;
   }
 
   validate(input: string) {
