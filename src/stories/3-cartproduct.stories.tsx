@@ -1,6 +1,10 @@
 import React, { useState, useCallback } from 'react';
 import CartProduct from '../components/CartProduct';
 import { text, number, select } from '@storybook/addon-knobs';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
+import Box from '@material-ui/core/Box';
 
 export default {
   title: 'Cart',
@@ -57,12 +61,18 @@ export const EditableCartProduct = () => {
       quantity={quantity}
       unitPrice={unitPrice}
       totalPrice={totalPrice}
-      extraColor={extraColor}
-      extraText={extraText}
-      extraIcon={extraIcon}
-      onExtraClick={() => {
-        alert('Ha presionado extra');
-      }}
+      ExtraTag={
+        <Button
+          variant="contained"
+          color={extraColor}
+          style={{ borderRadius: 4 }}
+          startIcon={<Icon>{extraIcon}</Icon>}
+        >
+          <Typography component="div" style={{ fontSize: 13 }}>
+            <Box>{extraText}</Box>
+          </Typography>
+        </Button>
+      }
       onDefaultClick={() => {
         alert('Ha presionado evento por defecto');
       }}

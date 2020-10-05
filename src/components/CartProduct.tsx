@@ -1,9 +1,7 @@
 import React, { useCallback } from 'react';
-
 import { makeStyles } from '@material-ui/core/styles';
 import { TextFieldProps } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -49,9 +47,6 @@ const useStyles = makeStyles({
   underline: {
     textDecoration: 'underline',
   },
-  smalltext: {
-    fontSize: 13,
-  },
   bigtext: {
     fontSize: 15,
   },
@@ -60,9 +55,6 @@ const useStyles = makeStyles({
   },
   subbutton: {
     marginRight: 10,
-  },
-  extrabutton: {
-    borderRadius: 4,
   },
   rightbuttons: {
     display: 'flex',
@@ -80,10 +72,7 @@ type CartProductProps = {
   quantity?: number;
   unitPrice: number;
   totalPrice: number;
-  extraColor?: 'inherit' | 'primary' | 'secondary' | 'default' | undefined;
-  extraText?: string;
-  extraIcon?: string;
-  onExtraClick?: () => void;
+  ExtraTag: React.ReactNode;
   onDefaultClick?: () => void;
   onAddClick?: () => void;
   onSubClick?: () => void;
@@ -101,10 +90,7 @@ export default function CartProduct({
   quantity,
   unitPrice,
   totalPrice,
-  extraColor,
-  extraText,
-  extraIcon,
-  onExtraClick = () => {},
+  ExtraTag,
   onDefaultClick = () => {},
   onAddClick = () => {},
   onSubClick = () => {},
@@ -129,7 +115,7 @@ export default function CartProduct({
   const currTotalPrice = currFormat.format(totalPrice);
 
   return (
-    <Card>
+    <Card square elevation={0}>
       <CardActionArea onClick={onDetailsClick}>
         <div className={classes.root}>
           <CardMedia className={classes.cover} image={urlImage} title="" />
@@ -175,23 +161,7 @@ export default function CartProduct({
       </CardActionArea>
 
       <CardActions className={classes.actions}>
-        <Box>
-          {extraColor && extraText && extraIcon ? (
-            <Button
-              variant="contained"
-              color={extraColor}
-              className={classes.extrabutton}
-              startIcon={<Icon>{extraIcon}</Icon>}
-              onClick={onExtraClick}
-            >
-              <Typography component="div" className={classes.smalltext}>
-                <Box>{extraText}</Box>
-              </Typography>
-            </Button>
-          ) : (
-            ''
-          )}
-        </Box>
+        <Box>{ExtraTag}</Box>
 
         <Box className={classes.rightbuttons}>
           <IconButton
