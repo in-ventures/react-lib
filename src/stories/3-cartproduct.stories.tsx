@@ -61,7 +61,7 @@ export const EditableCartProduct = () => {
       quantity={quantity}
       unitPrice={unitPrice}
       totalPrice={totalPrice}
-      Button={
+      ExtraTag={
         <Button
           variant="contained"
           color={extraColor}
