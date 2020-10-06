@@ -17,11 +17,13 @@ import { Formatter } from './Formatter';
 
 export class CurrencyFormatter extends Formatter {
   format(input: number) {
-    const formatter = new Intl.NumberFormat('es-CL', {
+    const formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: 'CLP',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
     });
     const formattedText = formatter.format(input);
-    return formattedText;
+    return formattedText.replace(',', '.');
   }
 }
