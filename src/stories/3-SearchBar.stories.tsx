@@ -4,8 +4,8 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Friday, 25th September 2020 2:33:31 pm
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Wednesday, 7th October 2020 12:14:59 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -92,7 +92,7 @@ export const ListResults = () => {
   );
 };
 
-export const SearchBarResult = () => {
+export const SearchBarResultArray = () => {
   const debounceTime = number('Debounce time (ms)', 800);
   const classes = useStyles();
   const [showResults, setShowResults] = useState<boolean>(false);
@@ -106,6 +106,76 @@ export const SearchBarResult = () => {
   const [searchValue, setSearchValue, searchResults] = useSearchBar<{
     item: string;
   }>('', query, filterOptions);
+
+  const handleWrite = useCallback(
+    (e) => {
+      setSearchValue(String(e.target.value));
+      setShowResults(true);
+    },
+    [setSearchValue, setShowResults],
+  );
+
+  const handleClickClearSearch = (value: string) => {
+    setSearchValue(String(value));
+    setShowResults(false);
+  };
+
+  const handleResultClick = (value: string) => {
+    setSearchValue(value);
+    setShowResults(false);
+  };
+
+  return (
+    <div className={classes.root}>
+      <SearchBar
+        value={searchValue}
+        onChange={handleWrite}
+        clearSearch={handleClickClearSearch}
+        size="small"
+        iconColor="#FFFFFF"
+        barColor="#FFFFFF"
+      />
+
+      {!!searchValue && showResults && (
+        <SearchElementItem
+          value={searchValue}
+          onClick={() => handleResultClick(searchValue)}
+        />
+      )}
+      {showResults &&
+        searchResults
+          .filter(({ item }) => item !== searchValue)
+          .map((result, i) => (
+            <SearchElementItem
+              key={i}
+              value={result.item}
+              onClick={() => handleResultClick(result.item)}
+              onSuggestedClick={() => handleResultClick(result.item)}
+            />
+          ))}
+    </div>
+  );
+};
+
+export const SearchBarResultFunction = () => {
+  const debounceTime = number('Debounce time (ms)', 800);
+  const classes = useStyles();
+  const [showResults, setShowResults] = useState<boolean>(false);
+
+  const filterOptions = {
+    keys: ['item'],
+    debounceTime,
+  };
+
+  const [searchValue, setSearchValue, searchResults] = useSearchBar<{
+    item: string;
+  }>(
+    '',
+    async (input) => {
+      return query.filter((q) => q.item.match(new RegExp(input, 'i')));
+    },
+    filterOptions,
+  );
 
   const handleWrite = useCallback(
     (e) => {
