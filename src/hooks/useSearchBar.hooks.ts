@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Wednesday, 7th October 2020 11:57:40 am
+ * Last Modified: Wednesday, 7th October 2020 12:10:13 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -17,6 +17,7 @@ import { useState, useCallback, useRef, useEffect } from 'react';
 import debounce from 'lodash/debounce';
 import Fuse from 'fuse.js';
 import { useDeepCallback } from './useDeepCallback';
+import { useDebouncedCallback } from './useDebouncedCallback';
 
 type useSearchBarOptions = {
   isCaseSensitive?: boolean;
@@ -55,19 +56,15 @@ export const useSearchBar = <T = Record<string, unknown>>(
       const data = await queryRef.current(newValue);
       setSearchResult(data);
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [options, setSearchResult],
   );
 
   //Setting debounce for searching elements
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const stopTyping = useCallback(
-    debounce(
-      (newValue: string) => {
-        search(newValue);
-      },
-      options.debounceTime ? options.debounceTime : 1600,
-    ),
+  const stopTyping = useDebouncedCallback(
+    (newValue: string) => {
+      search(newValue);
+    },
+    options.debounceTime ? options.debounceTime : 800,
     [options.debounceTime, search],
   );
 

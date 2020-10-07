@@ -4,7 +4,7 @@
  * File Created: Friday, 31st July 2020 3:19:47 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Wednesday, 7th October 2020 11:25:13 am
+ * Last Modified: Wednesday, 7th October 2020 12:00:40 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -19,3 +19,4 @@ export * from './useDebugStateChange';
 export * from './useDeepCallback';
 export * from './useDeepDependencies';
 export * from './useDeepEffect';
+export * from './useDebouncedCallback';
