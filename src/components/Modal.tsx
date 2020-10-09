@@ -4,8 +4,8 @@
  * File Created: Wednesday, 23rd September 2020 4:10:47 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 24th September 2020 2:16:19 pm
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Friday, 9th October 2020 10:41:16 am
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -41,13 +41,14 @@ type ActionType = {
 const useStyles = makeStyles({
   contentText: {
     textAlign: 'center',
+    whiteSpace: 'pre-line',
   },
 });
 
 export function AlertModal(props: ModalProps) {
   const { title, open, content, actions, setOpen } = props;
   const classes = useStyles();
-
+  console.log({ content });
   return (
     <div>
       <Dialog open={open} onClose={() => setOpen(false)}>
