@@ -72,7 +72,7 @@ type CartProductProps = {
   quantity?: number;
   unitPrice: number;
   totalPrice: number;
-  ExtraTag: React.ReactNode;
+  ExtraTag?: React.ReactNode;
   onDefaultClick?: () => void;
   onAddClick?: () => void;
   onSubClick?: () => void;
@@ -90,7 +90,7 @@ export default function CartProduct({
   quantity,
   unitPrice,
   totalPrice,
-  ExtraTag,
+  ExtraTag = null,
   onDefaultClick = () => {},
   onAddClick = () => {},
   onSubClick = () => {},
