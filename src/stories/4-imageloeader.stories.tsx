@@ -65,7 +65,7 @@ const Placeholder = ({
 };
 export const LandscapeEditable = () => {
   const types = ['application/pdf', 'text/plain', 'image/jpeg', 'image/png'];
-  const objectFit = text('Object fit', 'contain');
+
   const defaultImage = text(
     'Default image',
     'https://previews.123rf.com/images/creativepriyanka/creativepriyanka1906/creativepriyanka190600379/124982633-prescription-icon.jpg',
@@ -82,7 +82,6 @@ export const LandscapeEditable = () => {
     <div style={{ width: '400px', height: '300px' }}>
       <ImageLoader
         types={types}
-        objectFit={objectFit}
         Placeholder={
           <Placeholder
             defaultImage={defaultImage}
@@ -103,7 +102,7 @@ export const LandscapeEditable = () => {
 
 export const PortraitEditable = () => {
   const types = ['application/pdf', 'text/plain', 'image/jpeg', 'image/png'];
-  const objectFit = text('Object fit', 'contain');
+
   const defaultImage = text(
     'Default image',
     'https://previews.123rf.com/images/creativepriyanka/creativepriyanka1906/creativepriyanka190600379/124982633-prescription-icon.jpg',
@@ -121,7 +120,6 @@ export const PortraitEditable = () => {
     <div style={{ width: '300px', height: '400px' }}>
       <ImageLoader
         types={types}
-        objectFit={objectFit}
         Placeholder={
           <Placeholder
             defaultImage={defaultImage}
@@ -147,8 +145,7 @@ export const Landscape = () => {
   const [progress, setProgress] = useState(0);
 
   const types = ['application/pdf', 'text/plain', 'image/jpeg', 'image/png'];
-  const alt = text('Name', 'Medicamento');
-  const objectFit = text('Object fit', 'contain');
+
   const maxFileSize = number('Max size', 14);
   const defaultImage = text(
     'Default image',
@@ -183,8 +180,6 @@ export const Landscape = () => {
     <div style={{ width: '400px', height: '300px' }}>
       <ImageLoader
         types={types}
-        alt={alt}
-        objectFit={objectFit}
         maxFileSize={maxFileSize}
         Placeholder={
           <Placeholder
@@ -214,8 +209,7 @@ export const Portrait = () => {
   const [progress, setProgress] = useState(0);
 
   const types = ['application/pdf', 'text/plain', 'image/jpeg', 'image/png'];
-  const alt = text('Name', 'Medicamento');
-  const objectFit = text('Object fit', 'contain');
+
   const maxFileSize = number('Max size', 14);
   const defaultImage = text(
     'Default image',
@@ -250,8 +244,72 @@ export const Portrait = () => {
     <div style={{ width: '300px', height: '400px' }}>
       <ImageLoader
         types={types}
-        alt={alt}
-        objectFit={objectFit}
+        maxFileSize={maxFileSize}
+        Placeholder={
+          <Placeholder
+            defaultImage={defaultImage}
+            title={defaultTitle}
+            description={defaultDescription}
+          />
+        }
+        onError={onError}
+        compressImage={compressImage}
+        file={file}
+        setFile={setFile}
+        loading={loading}
+        setLoading={setLoading}
+        progress={progress}
+        loaded={loaded}
+        setLoaded={setLoaded}
+      ></ImageLoader>
+    </div>
+  );
+};
+
+export const DefaultImageUploaded = () => {
+  const [file, setFile] = useState(
+    'https://meki-public.s3.us-east-2.amazonaws.com/images/1-paleta-desechable-0a9ea08b-088c-49c1-900a-84946978ad35',
+  );
+  const [loading, setLoading] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  const types = ['application/pdf', 'text/plain', 'image/jpeg', 'image/png'];
+
+  const maxFileSize = number('Max size', 14);
+  const defaultImage = text(
+    'Default image',
+    'https://previews.123rf.com/images/creativepriyanka/creativepriyanka1906/creativepriyanka190600379/124982633-prescription-icon.jpg',
+  );
+
+  const defaultTitle = text('Default title', 'Adjunta tu receta aquí');
+  const defaultDescription = text(
+    'Default description',
+    'Puedes subir una imagen o PDF ',
+  );
+  const compressImage = async (file: File) => {
+    const options = {
+      maxSizeMB: maxFileSize,
+      useWebWorker: true,
+      onProgress: (progress: number) => {
+        setProgress(progress);
+      },
+    };
+
+    try {
+      //Compression
+      const compressedFile = await imageCompression(file, options);
+      setLoaded(true);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div style={{ width: '300px', height: '400px' }}>
+      <ImageLoader
+        types={types}
         maxFileSize={maxFileSize}
         Placeholder={
           <Placeholder
