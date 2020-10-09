@@ -44,13 +44,14 @@ const useStyles = makeStyles({
   marginLeftZero: {
     marginLeft: '0!important',
   },
+  preview: {
+    objectFit: 'contain',
+  },
 });
 
 //Type
 type ImageLoaderProps = {
   types?: string[];
-  alt?: string;
-  objectFit?: string;
   maxFileSize?: number;
 
   Placeholder?: React.ReactNode;
@@ -67,8 +68,6 @@ type ImageLoaderProps = {
 
 export default function ImageLoader({
   types = [],
-  alt,
-  objectFit = 'contain',
   maxFileSize = 14,
   Placeholder = null,
   onError = () => {},
@@ -83,25 +82,7 @@ export default function ImageLoader({
 }: ImageLoaderProps) {
   const classes = useStyles();
   const iframeRef: React.RefObject<HTMLIFrameElement> = React.createRef();
-
   const inputRef: React.RefObject<HTMLInputElement> = React.createRef();
-
-  //Update objectfit
-  React.useLayoutEffect(() => {
-    //Waiting for iframe's content reendering
-    setTimeout(function () {
-      const iframe = iframeRef.current;
-      if (iframe && iframe.contentDocument) {
-        const imgs = iframe.contentDocument.getElementsByTagName('img');
-        if (imgs.length) {
-          imgs[0].style.objectFit = objectFit ? objectFit : 'contain';
-          imgs[0].alt = alt ? alt : 'Default';
-          imgs[0].style.width = '100%';
-          imgs[0].style.height = '100%';
-        }
-      }
-    }, 100);
-  }, [objectFit, iframeRef, alt]);
 
   const loadFile = React.useCallback(
     (event: React.BaseSyntheticEvent) => {
@@ -147,9 +128,8 @@ export default function ImageLoader({
   }, [setFile, setLoaded, inputRef]);
 
   const onCardActionAreaClick = React.useCallback(() => {
-    const input = inputRef.current;
-    input?.click();
-  }, [inputRef]);
+    inputRef.current?.click();
+  }, []);
 
   return (
     <div className={clsx(classes.container, classes.totallyFilled)}>
@@ -162,31 +142,37 @@ export default function ImageLoader({
           }
           onClick={onCardActionAreaClick}
         >
-          {!loaded && !loading ? (
+          {!file && !loading ? (
             Placeholder
           ) : (
-            <iframe
-              title="Contenedor"
-              ref={iframeRef}
-              src={file}
-              className={
-                loading
-                  ? clsx(classes.loading, classes.totallyFilled)
-                  : clsx(classes.container, classes.totallyFilled)
-              }
-            ></iframe>
+            <>
+              <object
+                data={file}
+                type="image/png"
+                className={clsx(
+                  classes.totallyFilled,
+                  { [classes.loading]: loading, [classes.container]: !loading },
+                  classes.preview,
+                )}
+                title="Contenedor"
+                ref={iframeRef}
+                src={file}
+              >
+                <embed src={file} type="image/png" />
+              </object>
+
+              {/* <iframe
+                
+              ></iframe> */}
+            </>
           )}
         </CardActionArea>
 
-        {loading ? (
-          <LinearProgress variant="determinate" value={progress} />
-        ) : (
-          ''
-        )}
+        {loading && <LinearProgress variant="determinate" value={progress} />}
         <Divider />
 
         <CardActions className={classes.actions}>
-          {loaded ? (
+          {loaded && (
             <IconButton
               color="primary"
               aria-label="Eliminar elemento"
@@ -196,8 +182,6 @@ export default function ImageLoader({
             >
               <DeleteIcon />
             </IconButton>
-          ) : (
-            ''
           )}
           <input
             ref={inputRef}
