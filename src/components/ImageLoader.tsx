@@ -155,8 +155,6 @@ export default function ImageLoader({
                   classes.preview,
                 )}
                 title="Contenedor"
-                ref={iframeRef}
-                src={file}
               >
                 <embed src={file} type="image/png" />
               </object>

@@ -82,7 +82,6 @@ export const LandscapeEditable = () => {
     <div style={{ width: '400px', height: '300px' }}>
       <ImageLoader
         types={types}
-        objectFit={objectFit}
         Placeholder={
           <Placeholder
             defaultImage={defaultImage}
@@ -121,7 +120,6 @@ export const PortraitEditable = () => {
     <div style={{ width: '300px', height: '400px' }}>
       <ImageLoader
         types={types}
-        objectFit={objectFit}
         Placeholder={
           <Placeholder
             defaultImage={defaultImage}
@@ -182,8 +180,6 @@ export const Landscape = () => {
     <div style={{ width: '400px', height: '300px' }}>
       <ImageLoader
         types={types}
-        alt={alt}
-        objectFit={objectFit}
         maxFileSize={maxFileSize}
         Placeholder={
           <Placeholder
@@ -248,8 +244,6 @@ export const Portrait = () => {
     <div style={{ width: '300px', height: '400px' }}>
       <ImageLoader
         types={types}
-        alt={alt}
-        objectFit={objectFit}
         maxFileSize={maxFileSize}
         Placeholder={
           <Placeholder
@@ -316,8 +310,6 @@ export const DefaultImageUploaded = () => {
     <div style={{ width: '300px', height: '400px' }}>
       <ImageLoader
         types={types}
-        alt={alt}
-        objectFit={objectFit}
         maxFileSize={maxFileSize}
         Placeholder={
           <Placeholder
@@ -336,7 +328,6 @@ export const DefaultImageUploaded = () => {
         loaded={loaded}
         setLoaded={setLoaded}
       ></ImageLoader>
-      <img src="https://meki-public.s3.us-east-2.amazonaws.com/images/accessories-by-lima-safiro-e0e10d66-37b2-4eda-9f07-11787ddb8c88" />
     </div>
   );
 };
