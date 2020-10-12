@@ -3701,10 +3701,10 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
-"@zeplin/cli-connect-react-plugin@^0.2.5":
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/@zeplin/cli-connect-react-plugin/-/cli-connect-react-plugin-0.2.5.tgz#8ea7492939be77fbc0e66810bf9b438a21d01722"
-  integrity sha512-xASzaMaw7TBGk1Us4G+4wfam8QaE8dc99q6CHfWmfR1kehrAcsb1zy1uxlE0lLGQ7RnX/0gw7XRepkt5nBF9+Q==
+"@zeplin/cli-connect-react-plugin@^0.2.7":
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/@zeplin/cli-connect-react-plugin/-/cli-connect-react-plugin-0.2.7.tgz#a1cb044a602aa7051fbd52fbb0b2ca93c640e48a"
+  integrity sha512-/m+YhxRnOsIB2rGo0RPT7fyg1wX9HoHtCKjMvOXX1RhAVFd7I1syx09q+rZQeLOzRYNHIaOD6w93ZrhFLxJyZQ==
   dependencies:
     fs-extra "^9.0.0"
     pug "^2.0.4"
