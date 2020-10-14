@@ -46,6 +46,7 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "npx build-storybook -s public",
     "publish:gh": "yarn build-storybook && gh-pages -d storybook-static",
+    "publish": "yarn build:lib && yarn publish:npm",
     "prepublish:npm": "cp ./package.json ./dist && touch ./dist/.npmignore && tar -czvf dist.tar.gz dist",
     "publish:npm": "npm publish dist.tar.gz",
     "postpublish:npm": "cp ./dist/package.json . && rimraf dist.tar.gz",
