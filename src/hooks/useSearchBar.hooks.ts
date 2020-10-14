@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Wednesday, 7th October 2020 12:10:13 pm
+ * Last Modified: Wednesday, 14th October 2020 3:13:01 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -14,7 +14,6 @@
  */
 
 import { useState, useCallback, useRef, useEffect } from 'react';
-import debounce from 'lodash/debounce';
 import Fuse from 'fuse.js';
 import { useDeepCallback } from './useDeepCallback';
 import { useDebouncedCallback } from './useDebouncedCallback';
@@ -65,7 +64,6 @@ export const useSearchBar = <T = Record<string, unknown>>(
       search(newValue);
     },
     options.debounceTime ? options.debounceTime : 800,
-    [options.debounceTime, search],
   );
 
   //Updating stopTyping when searching values change
