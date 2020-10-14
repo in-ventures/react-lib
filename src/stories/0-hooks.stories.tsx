@@ -4,7 +4,7 @@
  * File Created: Friday, 9th October 2020 4:50:42 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Wednesday, 14th October 2020 1:20:47 pm
+ * Last Modified: Wednesday, 14th October 2020 1:22:14 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -14,9 +14,7 @@
  */
 
 import React, { useState } from 'react';
-
-import { text, number } from '@storybook/addon-knobs';
-import { useDebouncedCallback, useDebugStateChange } from '../hooks';
+import { useDebouncedCallback } from '../hooks';
 
 export default {
   title: 'Helpful Hooks',
@@ -28,7 +26,6 @@ export const useDebouncedCallbackExample = () => {
     console.log('debounced count', { count });
     setDebouncedCount(count);
   }, 600);
-  useDebugStateChange('debouncedIncrement', debouncedIncrement);
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <button
