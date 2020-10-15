@@ -4,8 +4,8 @@
  * File Created: Friday, 25th September 2020 3:06:54 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Friday, 25th September 2020 4:21:43 pm
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Thursday, 15th October 2020 6:09:58 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -16,17 +16,19 @@
 import 'date-fns';
 import React from 'react';
 import DateFnsUtils from '@date-io/date-fns';
-import { MuiPickersUtilsProvider, DatePicker } from '@material-ui/pickers';
+import {
+  MuiPickersUtilsProvider,
+  DatePicker,
+  DatePickerProps,
+} from '@material-ui/pickers';
 
 type CustomCalendarProps = {
-  variant?: 'dialog' | 'inline' | 'static' | undefined;
   selectedDate: Date | null;
   setSelectedDate: (date: Date | null) => void;
-  disablePast?: boolean;
-};
+} & Omit<DatePickerProps, 'value' | 'onChange'>;
 
 export function Calendar(props: CustomCalendarProps) {
-  const { variant, selectedDate, setSelectedDate, disablePast } = props;
+  const { selectedDate, setSelectedDate, ...datePickerprops } = props;
 
   const handleDateChange = (date: Date | null) => {
     setSelectedDate(date);
@@ -36,13 +38,12 @@ export function Calendar(props: CustomCalendarProps) {
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <DatePicker
         disableToolbar
-        variant={variant}
         format="dd/MM/yyyy"
         margin="normal"
         id="date-picker-inline"
-        label="Date picker inline"
         value={selectedDate}
-        disablePast={disablePast}
+        minDateMessage="La fecha es anterior al minimo"
+        {...datePickerprops}
         onChange={handleDateChange}
       />
     </MuiPickersUtilsProvider>
