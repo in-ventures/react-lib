@@ -43,6 +43,9 @@ const useStyles = makeStyles({
     textAlign: 'center',
     whiteSpace: 'pre-line',
   },
+  margin: {
+    margin: 16,
+  },
 });
 
 export function AlertModal(props: ModalProps) {
@@ -51,7 +54,11 @@ export function AlertModal(props: ModalProps) {
   console.log({ content });
   return (
     <div>
-      <Dialog open={open} onClose={() => setOpen(false)}>
+      <Dialog
+        open={open}
+        onClose={() => setOpen(false)}
+        PaperProps={{ className: classes.margin }}
+      >
         <DialogTitle>{title}</DialogTitle>
         <DialogContent>
           <DialogContentText className={classes.contentText}>
