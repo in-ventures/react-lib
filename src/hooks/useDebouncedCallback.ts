@@ -4,7 +4,7 @@
  * File Created: Wednesday, 7th October 2020 11:59:01 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Wednesday, 14th October 2020 1:20:41 pm
+ * Last Modified: Monday, 19th October 2020 5:45:31 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -22,12 +22,10 @@ export function useDebouncedCallback(
 ) {
   const executableCallback = useRef(callback);
   useEffect(() => {
-    console.log('change');
     executableCallback.current = callback;
   }, [callback]);
   const debounceRef = useRef(
     debounce((...args) => {
-      console.log('execute debounce');
       executableCallback.current(...args);
     }, debounceTime),
   );

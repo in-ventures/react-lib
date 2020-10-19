@@ -100,7 +100,6 @@ export default function CartProduct({
   const classes = useStyles();
 
   const toast = useToast();
-  console.log({ toast });
 
   const handleDefaultClick = useCallback(
     (e) => {

@@ -4,8 +4,8 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 29th September 2020 2:54:15 pm
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Monday, 19th October 2020 5:45:49 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -284,7 +284,6 @@ export const InputWithMask = () => {
   const [value, setValue, status, errors, handleBlur] = useInput('', {
     formatter: new MaskFormatter(rutMask),
   });
-  console.log(birthStatus);
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <Input

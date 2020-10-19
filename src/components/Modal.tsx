@@ -4,7 +4,7 @@
  * File Created: Wednesday, 23rd September 2020 4:10:47 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Friday, 9th October 2020 10:41:16 am
+ * Last Modified: Monday, 19th October 2020 5:45:23 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -51,7 +51,7 @@ const useStyles = makeStyles({
 export function AlertModal(props: ModalProps) {
   const { title, open, content, actions, setOpen } = props;
   const classes = useStyles();
-  console.log({ content });
+
   return (
     <div>
       <Dialog

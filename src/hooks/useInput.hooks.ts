@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 11:51:01 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 1st September 2020 2:41:31 pm
+ * Last Modified: Monday, 19th October 2020 5:45:40 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -63,7 +63,6 @@ export const useInput = (
         }));
       }
       if (options.asyncValidators) {
-        console.log('validating async');
         setAsyncValidatorLoading(true);
         const asyncErrors = await Promise.all(
           options.asyncValidators.map(async (validator) =>
