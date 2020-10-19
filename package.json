@@ -116,7 +116,7 @@
     "prettier": "^2.1.2",
     "react-test-renderer": "16.13.1",
     "storybook-addon-paddings": "^3.0.0",
-    "ts-loader": "^8.0.4"
+    "ts-loader": "^8.0.5"
   },
   "bit": {
     "env": {
