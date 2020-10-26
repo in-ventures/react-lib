@@ -97,7 +97,7 @@
     "@testing-library/react-hooks": "^3.4.2",
     "@types/is": "^0.0.21",
     "@types/lodash": "^4.14.162",
-    "@typescript-eslint/eslint-plugin": "^4.4.1",
+    "@typescript-eslint/eslint-plugin": "^4.5.0",
     "@typescript-eslint/parser": "^4.3.0",
     "@zeplin/cli": "^1.0.4",
     "@zeplin/cli-connect-react-plugin": "^0.2.7",
