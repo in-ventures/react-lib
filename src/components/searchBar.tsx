@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Friday, 25th September 2020 2:29:15 pm
+ * Last Modified: Thursday, 29th October 2020 2:13:56 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -86,7 +86,7 @@ export const SearchBar = ({
     barColor: barColor,
   });
   const [showIcon, setShowIcon] = useState<boolean>(false);
-  const [showInputField, setshowInputField] = useState<boolean>(false);
+  const [showInputField, setshowInputField] = useState<boolean>(true);
 
   const handleInputChange = useCallback(() => {
     setshowInputField((prev) => !prev);
