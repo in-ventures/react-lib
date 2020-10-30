@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Monday, 19th October 2020 5:45:49 pm
+ * Last Modified: Wednesday, 28th October 2020 12:03:21 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -303,6 +303,35 @@ export const InputWithMask = () => {
         error={status === InputStatus.ERROR}
         helperText={errors[0]}
         label={`Ingrese RUT (${debounceTime}ms)`}
+      />
+    </div>
+  );
+};
+
+export const InputWithAsyncValidator = () => {
+  const debounceTime = number('Debounce time (ms)', 800);
+
+  const [text, setText, status, errors] = useInput('', {
+    debounceTime,
+    asyncValidators: [
+      {
+        errorMsg: 'Tiene más de 4 caracteres',
+        validate: async (input) => {
+          await new Promise((res) => setTimeout(res, 2000));
+          console.log('after timeout', { input, valid: input.length <= 4 });
+          return input.length <= 4;
+        },
+      },
+    ],
+  });
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <Input
+        value={text}
+        onChange={(e) => setText(String(e.target.value))}
+        label={`Maximo 4`}
+        error={status === InputStatus.ERROR}
+        helperText={errors[0]}
       />
     </div>
   );
