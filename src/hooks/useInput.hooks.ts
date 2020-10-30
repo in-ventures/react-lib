@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 11:51:01 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Monday, 19th October 2020 5:45:40 pm
+ * Last Modified: Friday, 30th October 2020 1:30:45 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -17,6 +17,7 @@ import { useState, useCallback, useMemo, useEffect, useRef } from 'react';
 import debounce from 'lodash/debounce';
 import { Validator } from '../validators';
 import { Formatter } from '../formatters';
+import { useDeepCallback } from './useDeepCallback';
 
 interface AsyncValidator<T = string> {
   validate: (input: T) => Promise<boolean>;
@@ -96,7 +97,7 @@ export const useInput = (
   const [asyncValidatorLoading, setAsyncValidatorLoading] = useState<boolean>(
     false,
   );
-  const handleSetValue = useCallback(
+  const handleSetValue = useDeepCallback(
     async (data: string) => {
       const newValue =
         options && options.formatter ? options.formatter.format(data) : data;
