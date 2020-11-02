@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 import { TextFieldProps } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
@@ -16,7 +16,7 @@ import Icon from '@material-ui/core/Icon';
 import { useToast } from '../hooks/toast.hook';
 import { CurrencyFormatter } from '../formatters';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     display: 'flex',
   },
@@ -60,7 +60,10 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
   },
-});
+  activeIcon: {
+    color: theme.palette.text.primary,
+  },
+}));
 
 //Type
 type CartProductProps = {
@@ -72,6 +75,7 @@ type CartProductProps = {
   quantity?: number;
   unitPrice: number;
   totalPrice: number;
+  disabled?: boolean;
   ExtraTag?: React.ReactNode;
   onDefaultClick?: () => void;
   onAddClick?: () => void;
@@ -91,6 +95,7 @@ export default function CartProduct({
   unitPrice,
   totalPrice,
   ExtraTag = null,
+  disabled,
   onDefaultClick = () => {},
   onAddClick = () => {},
   onSubClick = () => {},
@@ -166,9 +171,14 @@ export default function CartProduct({
           <IconButton
             aria-label="sub"
             onClick={onSubClick}
+            disabled={disabled}
             className={classes.subbutton}
           >
-            <Icon color="primary" fontSize="small">
+            <Icon
+              className={disabled ? '' : classes.activeIcon}
+              color={disabled ? 'disabled' : 'inherit'}
+              fontSize="small"
+            >
               remove
             </Icon>
           </IconButton>
@@ -180,9 +190,14 @@ export default function CartProduct({
           <IconButton
             aria-label="add"
             onClick={onAddClick}
+            disabled={disabled}
             className={classes.addbutton}
           >
-            <Icon color="primary" fontSize="small">
+            <Icon
+              className={disabled ? '' : classes.activeIcon}
+              color={disabled ? 'disabled' : 'inherit'}
+              fontSize="small"
+            >
               add
             </Icon>
           </IconButton>
@@ -191,9 +206,14 @@ export default function CartProduct({
             className={classes.trashicon}
             aria-label="delete"
             onClick={onTrashClick}
+            disabled={disabled}
             size="small"
           >
-            <DeleteIcon fontSize="small" />
+            <DeleteIcon
+              fontSize="small"
+              className={disabled ? '' : classes.activeIcon}
+              color={disabled ? 'disabled' : 'inherit'}
+            />
           </IconButton>
         </Box>
       </CardActions>
