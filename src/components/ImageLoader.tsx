@@ -66,24 +66,30 @@ type ImageLoaderProps = {
   setLoaded?: (loaded: boolean) => void;
 } & TextFieldProps;
 
-export default function ImageLoader({
-  types = [],
-  maxFileSize = 14,
-  Placeholder = null,
-  onError = () => {},
-  compressImage = (file: File) => {},
-  file,
-  setFile = () => {},
-  loading,
-  setLoading = () => {},
-  progress,
-  loaded,
-  setLoaded = () => {},
-}: ImageLoaderProps) {
+function ImageLoaderComponent(
+  {
+    types = [],
+    maxFileSize = 14,
+    Placeholder = null,
+    onError = () => {},
+    compressImage = (file: File) => {},
+    file,
+    setFile = () => {},
+    loading,
+    setLoading = () => {},
+    progress,
+    loaded,
+    setLoaded = () => {},
+  }: ImageLoaderProps,
+  ref: any,
+) {
   const classes = useStyles();
-  const iframeRef: React.RefObject<HTMLIFrameElement> = React.createRef();
-  const inputRef: React.RefObject<HTMLInputElement> = React.createRef();
-
+  const inputRef = React.useRef(ref);
+  React.useImperativeHandle(ref, () => ({
+    click: () => {
+      inputRef.current?.click();
+    },
+  }));
   const loadFile = React.useCallback(
     (event: React.BaseSyntheticEvent) => {
       const divisor = 1024 * 1024;
@@ -119,14 +125,12 @@ export default function ImageLoader({
       types,
     ],
   );
-
   const deleteFile = React.useCallback(() => {
     setFile('');
     setLoaded(false);
     const input = inputRef.current;
     if (input) input.value = '';
   }, [setFile, setLoaded, inputRef]);
-
   const onCardActionAreaClick = React.useCallback(() => {
     inputRef.current?.click();
   }, []);
@@ -158,10 +162,6 @@ export default function ImageLoader({
               >
                 <embed src={file} type="image/png" />
               </object>
-
-              {/* <iframe
-                
-              ></iframe> */}
             </>
           )}
         </CardActionArea>
@@ -205,3 +205,6 @@ export default function ImageLoader({
     </div>
   );
 }
+
+const ImageLoader = React.forwardRef(ImageLoaderComponent);
+export default ImageLoader;

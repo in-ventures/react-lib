@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import ImageLoader from '../components/ImageLoader';
 import { text, number, boolean } from '@storybook/addon-knobs';
 import imageCompression from 'browser-image-compression';
+import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
+
 import {
   CardContent,
   CardMedia,
@@ -305,7 +308,10 @@ export const DefaultImageUploaded = () => {
       setLoading(false);
     }
   };
-
+  const inputRef = React.createRef<HTMLInputElement | undefined>();
+  const openFileLoader = React.useCallback(() => {
+    inputRef.current?.click();
+  }, [inputRef]);
   return (
     <div style={{ width: '300px', height: '400px' }}>
       <ImageLoader
@@ -327,7 +333,13 @@ export const DefaultImageUploaded = () => {
         progress={progress}
         loaded={loaded}
         setLoaded={setLoaded}
+        ref={inputRef}
       ></ImageLoader>
+      <Box paddingTop={2}>
+        <Button variant="contained" onClick={openFileLoader}>
+          Activar cargar archivo
+        </Button>
+      </Box>
     </div>
   );
 };
