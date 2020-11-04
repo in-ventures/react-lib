@@ -4,8 +4,8 @@
  * File Created: Monday, 31st August 2020 6:08:15 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 3rd September 2020 4:56:48 pm
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Wednesday, 4th November 2020 1:00:07 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -24,6 +24,6 @@ export class CurrencyFormatter extends Formatter {
       maximumFractionDigits: 0,
     });
     const formattedText = formatter.format(input);
-    return formattedText.replace(',', '.');
+    return formattedText.replace(/,/g, '.');
   }
 }
