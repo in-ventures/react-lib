@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Friday, 11th September 2020 11:26:34 am
+ * Last Modified: Monday, 9th November 2020 6:29:07 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -22,6 +22,7 @@ import {
   CardContent,
   Typography,
   Chip,
+  Badge,
 } from '@material-ui/core';
 import { CurrencyFormatter } from '../formatters';
 import clsx from 'clsx';
@@ -34,6 +35,8 @@ export type ProductPropTypes = {
   tagIcon?: React.ReactElement;
   description?: string;
   details?: string;
+  badgeContent?: number;
+  badgeColor?: string;
   price: number;
   onClickCard: () => void;
 };
@@ -61,12 +64,19 @@ const useStyles = makeStyles({
   tag: {
     marginTop: '-14px',
     maxWidth: '100%',
+    zIndex: 999,
   },
   disabledTag: {
     backgroundColor: '#FFFFFF',
   },
   price: {
     marginTop: '8px',
+  },
+  badge: {
+    //top: '16px',
+    //right: '-168px',
+    //position: 'relative',
+    zIndex: 0,
   },
 });
 
@@ -88,6 +98,7 @@ export function ProductCard(props: ProductPropTypes) {
     price,
     description,
     details,
+    badgeContent,
     onClickCard,
   } = props;
 
@@ -96,14 +107,37 @@ export function ProductCard(props: ProductPropTypes) {
   const classes = useStyles();
 
   return (
+    <>
     <Card className={classes.root}>
       <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={imageUrl}
-          onClick={onClickCard}
-          component="img"
-        />
+          {badgeContent? (
+          <Badge 
+            badgeContent={badgeContent} 
+            color="secondary" 
+            className={classes.badge} 
+            max={9}
+            overlap="circle"
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+          >
+            <CardMedia
+              className={classes.media}
+              image={imageUrl}
+              onClick={onClickCard}
+              component="img"
+            />
+          </Badge>
+        ) : (
+          <CardMedia
+            className={classes.media}
+            image={imageUrl}
+            onClick={onClickCard}
+            component="img"
+          />
+        )}
+        
         <Chip
           color="primary"
           size="small"
@@ -147,5 +181,6 @@ export function ProductCard(props: ProductPropTypes) {
         </CardContent>
       </CardActionArea>
     </Card>
+    </>
   );
 }
