@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Friday, 11th September 2020 11:26:34 am
+ * Last Modified: Tuesday, 10th November 2020 4:17:16 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -22,6 +22,7 @@ import {
   CardContent,
   Typography,
   Chip,
+  Badge,
 } from '@material-ui/core';
 import { CurrencyFormatter } from '../formatters';
 import clsx from 'clsx';
@@ -34,8 +35,16 @@ export type ProductPropTypes = {
   tagIcon?: React.ReactElement;
   description?: string;
   details?: string;
+  badgeContent?: number;
+  badgeColor?: string;
+  badgeTextColor?: string;
   price: number;
   onClickCard: () => void;
+};
+
+type BadgeStyleProps = {
+  badgeColor: string;
+  badgeTextColor: string;
 };
 
 const useStyles = makeStyles({
@@ -59,14 +68,22 @@ const useStyles = makeStyles({
     objectFit: 'contain',
   },
   tag: {
-    marginTop: '-14px',
+    //marginTop: '-14px',
     maxWidth: '100%',
+    zIndex: 999,
   },
   disabledTag: {
     backgroundColor: '#FFFFFF',
   },
   price: {
     marginTop: '8px',
+  },
+  badge: {
+    backgroundColor: (props: BadgeStyleProps) => props.badgeColor,
+    right: 16,
+    top: 16,
+    color: (props: BadgeStyleProps) => props.badgeTextColor,
+    padding: '0px 4px',
   },
 });
 
@@ -88,64 +105,90 @@ export function ProductCard(props: ProductPropTypes) {
     price,
     description,
     details,
+    badgeContent,
+    badgeColor,
+    badgeTextColor,
     onClickCard,
   } = props;
 
   const currFormat = new CurrencyFormatter();
   const currencyPrice = currFormat.format(price);
-  const classes = useStyles();
+  const classes = useStyles({
+    badgeColor: badgeColor ? badgeColor : '#000000',
+    badgeTextColor: badgeTextColor ? badgeTextColor : '#FFFFFF',
+  });
 
   return (
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={imageUrl}
-          onClick={onClickCard}
-          component="img"
-        />
-        <Chip
-          color="primary"
-          size="small"
-          icon={tagIcon}
-          label={tagText}
-          className={clsx(classes.tag, !tagText && classes.disabledTag)}
-        />
+    <>
+      <Card className={classes.root}>
+        <CardActionArea>
+          {badgeContent ? (
+            <Badge
+              badgeContent={badgeContent}
+              max={9}
+              classes={{
+                badge: classes.badge,
+              }}
+            >
+              <CardMedia
+                className={classes.media}
+                image={imageUrl}
+                onClick={onClickCard}
+                component="img"
+              />
+            </Badge>
+          ) : (
+            <CardMedia
+              className={classes.media}
+              image={imageUrl}
+              onClick={onClickCard}
+              component="img"
+            />
+          )}
 
-        <CardContent className={classes.content} onClick={onClickCard}>
-          <Typography
-            variant="subtitle1"
-            color="textPrimary"
-            className={classes.title}
-            noWrap
-          >
-            {title}
-          </Typography>
-          {subtitle && (
-            <Typography variant="body2" color="textSecondary" noWrap>
-              {subtitle}
-            </Typography>
-          )}
-          {description && (
-            <Typography variant="body2" color="textPrimary" noWrap>
-              {description}
-            </Typography>
-          )}
-          {details && (
-            <Typography variant="body2" color="textSecondary" noWrap>
-              {details}
-            </Typography>
-          )}
-          <Typography
-            variant="h6"
+          <Chip
             color="primary"
-            className={classes.price}
-            noWrap
-          >
-            {currencyPrice}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
+            size="small"
+            icon={tagIcon}
+            label={tagText}
+            className={clsx(classes.tag, !tagText && classes.disabledTag)}
+          />
+
+          <CardContent className={classes.content} onClick={onClickCard}>
+            <Typography
+              variant="subtitle1"
+              color="textPrimary"
+              className={classes.title}
+              noWrap
+            >
+              {title}
+            </Typography>
+            {subtitle && (
+              <Typography variant="body2" color="textSecondary" noWrap>
+                {subtitle}
+              </Typography>
+            )}
+            {description && (
+              <Typography variant="body2" color="textPrimary" noWrap>
+                {description}
+              </Typography>
+            )}
+            {details && (
+              <Typography variant="body2" color="textSecondary" noWrap>
+                {details}
+              </Typography>
+            )}
+            <Typography
+              variant="h6"
+              color="primary"
+              className={classes.price}
+              noWrap
+            >
+              {currencyPrice}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Card>
+    </>
   );
 }
