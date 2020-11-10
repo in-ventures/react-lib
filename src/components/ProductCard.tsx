@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Monday, 9th November 2020 6:29:07 pm
+ * Last Modified: Tuesday, 10th November 2020 4:09:20 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -37,8 +37,14 @@ export type ProductPropTypes = {
   details?: string;
   badgeContent?: number;
   badgeColor?: string;
+  badgeTextColor?: string;
   price: number;
   onClickCard: () => void;
+};
+
+type BadgeStyleProps = {
+  badgeColor: string;
+  badgeTextColor: string;
 };
 
 const useStyles = makeStyles({
@@ -62,7 +68,7 @@ const useStyles = makeStyles({
     objectFit: 'contain',
   },
   tag: {
-    marginTop: '-14px',
+    //marginTop: '-14px',
     maxWidth: '100%',
     zIndex: 999,
   },
@@ -73,10 +79,11 @@ const useStyles = makeStyles({
     marginTop: '8px',
   },
   badge: {
-    //top: '16px',
-    //right: '-168px',
-    //position: 'relative',
-    zIndex: 0,
+    backgroundColor: (props: BadgeStyleProps) => props.badgeColor,
+    right: 16,
+    top: 16,
+    color: (props: BadgeStyleProps) => props.badgeTextColor,
+    padding: '0px 4px',
   },
 });
 
@@ -99,88 +106,91 @@ export function ProductCard(props: ProductPropTypes) {
     description,
     details,
     badgeContent,
+    badgeColor,
+    badgeTextColor,
     onClickCard,
   } = props;
 
+  console.log(props);
+
   const currFormat = new CurrencyFormatter();
   const currencyPrice = currFormat.format(price);
-  const classes = useStyles();
+  const classes = useStyles({
+    badgeColor: badgeColor ? badgeColor : '#000000',
+    badgeTextColor: badgeTextColor ? badgeTextColor : '#FFFFFF',
+  });
 
   return (
     <>
-    <Card className={classes.root}>
-      <CardActionArea>
-          {badgeContent? (
-          <Badge 
-            badgeContent={badgeContent} 
-            color="secondary" 
-            className={classes.badge} 
-            max={9}
-            overlap="circle"
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-          >
+      <Card className={classes.root}>
+        <CardActionArea>
+          {badgeContent ? (
+            <Badge
+              badgeContent={badgeContent}
+              max={9}
+              classes={{
+                badge: classes.badge,
+              }}
+            >
+              <CardMedia
+                className={classes.media}
+                image={imageUrl}
+                onClick={onClickCard}
+                component="img"
+              />
+            </Badge>
+          ) : (
             <CardMedia
               className={classes.media}
               image={imageUrl}
               onClick={onClickCard}
               component="img"
             />
-          </Badge>
-        ) : (
-          <CardMedia
-            className={classes.media}
-            image={imageUrl}
-            onClick={onClickCard}
-            component="img"
-          />
-        )}
-        
-        <Chip
-          color="primary"
-          size="small"
-          icon={tagIcon}
-          label={tagText}
-          className={clsx(classes.tag, !tagText && classes.disabledTag)}
-        />
+          )}
 
-        <CardContent className={classes.content} onClick={onClickCard}>
-          <Typography
-            variant="subtitle1"
-            color="textPrimary"
-            className={classes.title}
-            noWrap
-          >
-            {title}
-          </Typography>
-          {subtitle && (
-            <Typography variant="body2" color="textSecondary" noWrap>
-              {subtitle}
-            </Typography>
-          )}
-          {description && (
-            <Typography variant="body2" color="textPrimary" noWrap>
-              {description}
-            </Typography>
-          )}
-          {details && (
-            <Typography variant="body2" color="textSecondary" noWrap>
-              {details}
-            </Typography>
-          )}
-          <Typography
-            variant="h6"
+          <Chip
             color="primary"
-            className={classes.price}
-            noWrap
-          >
-            {currencyPrice}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
+            size="small"
+            icon={tagIcon}
+            label={tagText}
+            className={clsx(classes.tag, !tagText && classes.disabledTag)}
+          />
+
+          <CardContent className={classes.content} onClick={onClickCard}>
+            <Typography
+              variant="subtitle1"
+              color="textPrimary"
+              className={classes.title}
+              noWrap
+            >
+              {title}
+            </Typography>
+            {subtitle && (
+              <Typography variant="body2" color="textSecondary" noWrap>
+                {subtitle}
+              </Typography>
+            )}
+            {description && (
+              <Typography variant="body2" color="textPrimary" noWrap>
+                {description}
+              </Typography>
+            )}
+            {details && (
+              <Typography variant="body2" color="textSecondary" noWrap>
+                {details}
+              </Typography>
+            )}
+            <Typography
+              variant="h6"
+              color="primary"
+              className={classes.price}
+              noWrap
+            >
+              {currencyPrice}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Card>
     </>
   );
 }
