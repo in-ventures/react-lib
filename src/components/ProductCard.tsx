@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Tuesday, 10th November 2020 4:09:20 pm
+ * Last Modified: Tuesday, 10th November 2020 4:17:16 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -110,8 +110,6 @@ export function ProductCard(props: ProductPropTypes) {
     badgeTextColor,
     onClickCard,
   } = props;
-
-  console.log(props);
 
   const currFormat = new CurrencyFormatter();
   const currencyPrice = currFormat.format(price);
