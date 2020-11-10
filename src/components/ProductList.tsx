@@ -4,7 +4,7 @@
  * File Created: Friday, 11th September 2020 10:18:24 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Monday, 9th November 2020 6:03:28 pm
+ * Last Modified: Tuesday, 10th November 2020 4:15:42 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -133,6 +133,7 @@ export function ProductList(props: ProductList) {
             onClickCard={cardInfo.onClickCard}
             badgeContent={cardInfo.badgeContent}
             badgeColor={cardInfo.badgeColor}
+            badgeTextColor={cardInfo.badgeTextColor}
           />
         </Grid>
       ))}
