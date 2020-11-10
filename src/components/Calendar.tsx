@@ -4,8 +4,8 @@
  * File Created: Friday, 25th September 2020 3:06:54 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 15th October 2020 6:09:58 pm
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Thursday, 10th November 2020 3:02:58 pm
+ * Modified By: Vicente Melin (vicente@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -14,6 +14,7 @@
  */
 
 import 'date-fns';
+import esLocale from 'date-fns/locale/es';
 import React from 'react';
 import DateFnsUtils from '@date-io/date-fns';
 import {
@@ -35,7 +36,7 @@ export function Calendar(props: CustomCalendarProps) {
   };
 
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+    <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale}>
       <DatePicker
         disableToolbar
         format="dd/MM/yyyy"
@@ -43,6 +44,7 @@ export function Calendar(props: CustomCalendarProps) {
         id="date-picker-inline"
         value={selectedDate}
         minDateMessage="La fecha es anterior al minimo"
+        cancelLabel="Cancelar"
         {...datePickerprops}
         onChange={handleDateChange}
       />
