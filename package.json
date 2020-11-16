@@ -100,7 +100,7 @@
     "@typescript-eslint/eslint-plugin": "^4.6.1",
     "@typescript-eslint/parser": "^4.3.0",
     "@zeplin/cli": "^1.0.4",
-    "@zeplin/cli-connect-react-plugin": "^0.2.7",
+    "@zeplin/cli-connect-react-plugin": "^0.2.8",
     "@zeplin/cli-connect-storybook-plugin": "^0.4.1",
     "auto-changelog": "^2.2.1",
     "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
