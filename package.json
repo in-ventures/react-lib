@@ -98,7 +98,7 @@
     "@types/is": "^0.0.21",
     "@types/lodash": "^4.14.165",
     "@typescript-eslint/eslint-plugin": "^4.7.0",
-    "@typescript-eslint/parser": "^4.3.0",
+    "@typescript-eslint/parser": "^4.8.1",
     "@zeplin/cli": "^1.0.4",
     "@zeplin/cli-connect-react-plugin": "^0.2.8",
     "@zeplin/cli-connect-storybook-plugin": "^0.4.1",
