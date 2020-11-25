@@ -4,8 +4,8 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Tuesday, 10th November 2020 4:17:16 pm
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Wednesday, 25th November 2020 3:23:41 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -68,7 +68,7 @@ const useStyles = makeStyles({
     objectFit: 'contain',
   },
   tag: {
-    //marginTop: '-14px',
+    cursor: 'pointer',
     maxWidth: '100%',
     zIndex: 999,
   },
@@ -121,7 +121,7 @@ export function ProductCard(props: ProductPropTypes) {
   return (
     <>
       <Card className={classes.root}>
-        <CardActionArea>
+        <CardActionArea onClick={onClickCard}>
           {badgeContent ? (
             <Badge
               badgeContent={badgeContent}
@@ -133,7 +133,6 @@ export function ProductCard(props: ProductPropTypes) {
               <CardMedia
                 className={classes.media}
                 image={imageUrl}
-                onClick={onClickCard}
                 component="img"
               />
             </Badge>
@@ -141,18 +140,19 @@ export function ProductCard(props: ProductPropTypes) {
             <CardMedia
               className={classes.media}
               image={imageUrl}
-              onClick={onClickCard}
               component="img"
             />
           )}
 
-          <Chip
-            color="primary"
-            size="small"
-            icon={tagIcon}
-            label={tagText}
-            className={clsx(classes.tag, !tagText && classes.disabledTag)}
-          />
+          {tagIcon && tagText && (
+            <Chip
+              color="primary"
+              size="small"
+              icon={tagIcon}
+              label={tagText}
+              className={clsx(classes.tag, !tagText && classes.disabledTag)}
+            />
+          )}
 
           <CardContent className={classes.content} onClick={onClickCard}>
             <Typography

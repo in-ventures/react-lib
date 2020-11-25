@@ -4,7 +4,7 @@
  * File Created: Thursday, 9th July 2020 12:56:32 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Monday, 14th September 2020 11:23:45 am
+ * Last Modified: Monday, 9th November 2020 9:45:22 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -23,7 +23,7 @@ export const parameters = {
   backgrounds: {
     default: 'white',
     values: [
-      { name: 'white', value: '#fff'},
+      { name: 'white', value: '#fff' },
       {
         name: 'twitter',
         value: '#00aced',
@@ -32,12 +32,12 @@ export const parameters = {
         name: 'facebook',
         value: '#3b5998',
       },
-      { name: 'Meki Main', value: '#1C3E71' },
+      { name: 'Meki Main', value: '#0277BD' },
       { name: 'DercocenterX Main', value: '#1F2183' },
     ],
   },
   paddings: [
-    { name: 'None', value: '0', default: true},
+    { name: 'None', value: '0', default: true },
     { name: 'Small', value: '16px' },
     { name: 'Medium', value: '32px' },
     { name: 'Large', value: '64px' },

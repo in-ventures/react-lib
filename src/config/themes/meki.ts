@@ -4,8 +4,8 @@
  * File Created: Thursday, 9th July 2020 8:05:19 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Thursday, 3rd September 2020 6:18:24 pm
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Monday, 9th November 2020 9:45:09 am
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -18,14 +18,36 @@ import { themeGenerator } from './themeGenerator';
 export const mekiTheme = themeGenerator({
   palette: {
     primary: {
-      main: '#1C3E71',
-      light: '#4F68A0',
-      dark: '#001945',
+      main: '#0277BD',
+      light: '#58A5F0',
+      dark: '#004C8C',
+      contrastText: '#fff',
     },
     secondary: {
-      main: '#F2D200',
-      light: '#FFFF51',
-      dark: '#BBA100',
+      main: '#00848F',
+      light: '#4FB3BF',
+      dark: '#005662',
+      contrastText: '#fff',
+    },
+    success: {
+      main: '#4CAF50',
+      light: '#81C784',
+      dark: '#388E3C',
+    },
+    info: {
+      main: '#2196F3',
+      light: '#BBDEFB',
+      dark: '#0B79D0',
+    },
+    warning: {
+      main: '#FF9800',
+      light: '#FFB74D',
+      dark: '#F57C00',
+    },
+    error: {
+      main: '#F44336',
+      light: '#E57373',
+      dark: '#D32F2F',
     },
   },
   typography: {
