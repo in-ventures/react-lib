@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Wednesday, 25th November 2020 3:23:41 pm
+ * Last Modified: Thursday, 26th November 2020 9:51:07 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -144,15 +144,13 @@ export function ProductCard(props: ProductPropTypes) {
             />
           )}
 
-          {tagIcon && tagText && (
-            <Chip
-              color="primary"
-              size="small"
-              icon={tagIcon}
-              label={tagText}
-              className={clsx(classes.tag, !tagText && classes.disabledTag)}
-            />
-          )}
+          <Chip
+            color="primary"
+            size="small"
+            icon={tagIcon}
+            label={tagText}
+            className={clsx(classes.tag, !tagText && classes.disabledTag)}
+          />
 
           <CardContent className={classes.content} onClick={onClickCard}>
             <Typography
