@@ -4,8 +4,8 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Friday, 25th September 2020 2:29:15 pm
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Monday, 30th November 2020 11:52:39 am
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -34,6 +34,7 @@ type SearchBarProps = {
   clearSearch: (value: string) => void;
   iconColor?: string;
   barColor?: string;
+  showInputField?: boolean;
 };
 
 type BarStyleProps = {
@@ -79,6 +80,7 @@ export const SearchBar = ({
   clearSearch,
   iconColor,
   barColor,
+  showInput,
   ...props
 }: SearchBarProps & TextFieldProps) => {
   const classes = useStyles({
@@ -101,20 +103,19 @@ export const SearchBar = ({
   }, [handleIconChange, showIcon]);
 
   const handleClearOnClick = useCallback(() => {
-    handleInputChange();
     clearSearch('');
-  }, [clearSearch, handleInputChange]);
+  }, [clearSearch]);
 
   return (
     <Box display="flex" className={classes.searchInputBox}>
-      {!showInputField && (
+      {!(showInputField || showInput) && (
         <Fade in={!showInputField}>
           <IconButton size="small" onClick={handleInputChange}>
             <SearchIcon className={classes.searchIcon} />
           </IconButton>
         </Fade>
       )}
-      {showInputField && (
+      {(showInputField || showInput) && (
         <Collapse in={showInputField} className={classes.inputFieldCollapse}>
           <TextField
             {...props}
