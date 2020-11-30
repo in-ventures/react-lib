@@ -46,6 +46,7 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "npx build-storybook -s public",
     "publish:gh": "yarn build-storybook && gh-pages -d storybook-static",
+    "preversion": "yarn build:lib",
     "postversion": "yarn changelog",
     "changelog": "auto-changelog -p && git add CHANGELOG.md && git commit -m \"docs: update changelog\"",
     "publish": "yarn build:lib && yarn publish:npm",

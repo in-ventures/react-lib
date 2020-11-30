@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Monday, 30th November 2020 11:52:39 am
+ * Last Modified: Monday, 30th November 2020 11:55:17 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -34,7 +34,7 @@ type SearchBarProps = {
   clearSearch: (value: string) => void;
   iconColor?: string;
   barColor?: string;
-  showInputField?: boolean;
+  showInput?: boolean;
 };
 
 type BarStyleProps = {
