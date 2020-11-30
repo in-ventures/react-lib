@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Monday, 30th November 2020 11:55:17 am
+ * Last Modified: Monday, 30th November 2020 12:14:55 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -105,18 +105,19 @@ export const SearchBar = ({
   const handleClearOnClick = useCallback(() => {
     clearSearch('');
   }, [clearSearch]);
+  const show = showInputField || showInput;
 
   return (
     <Box display="flex" className={classes.searchInputBox}>
-      {!(showInputField || showInput) && (
-        <Fade in={!showInputField}>
+      {!show && (
+        <Fade in={!show}>
           <IconButton size="small" onClick={handleInputChange}>
             <SearchIcon className={classes.searchIcon} />
           </IconButton>
         </Fade>
       )}
-      {(showInputField || showInput) && (
-        <Collapse in={showInputField} className={classes.inputFieldCollapse}>
+      {show && (
+        <Collapse in={show} className={classes.inputFieldCollapse}>
           <TextField
             {...props}
             autoFocus
