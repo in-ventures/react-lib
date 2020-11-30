@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Monday, 30th November 2020 12:14:55 pm
+ * Last Modified: Monday, 30th November 2020 12:34:26 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -106,7 +106,9 @@ export const SearchBar = ({
     clearSearch('');
   }, [clearSearch]);
   const show = showInputField || showInput;
-
+  const handleMouseDownAdornment = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+  }, []);
   return (
     <Box display="flex" className={classes.searchInputBox}>
       {!show && (
@@ -125,7 +127,10 @@ export const SearchBar = ({
             onFocus={handleTextFieldOnFocus}
             InputProps={{
               endAdornment: (
-                <InputAdornment position="end">
+                <InputAdornment
+                  position="end"
+                  onMouseDown={handleMouseDownAdornment}
+                >
                   <IconButton size="small" onClick={handleClearOnClick}>
                     <ClearIcon fontSize="small" />
                   </IconButton>
