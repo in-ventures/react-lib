@@ -4,8 +4,8 @@
  * File Created: Tuesday, 4th August 2020 5:47:50 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 10th November 2020 4:17:10 pm
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Monday, 30th November 2020 4:51:07 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -175,13 +175,17 @@ export const ProductDetailsCard = () => {
     'ImageUrl',
     'https://compra.ligaepilepsia.cl/wp-content/uploads/2020/01/00234-300x300.jpg',
   );
+  const text1 = text('Primer texto', 'Sertac');
+  const text2 = text('Segundo texto', 'Sertralina • 100mg');
+  const text3 = text('Tercero texto', '30 comprimidos • Andrómaco');
+
   return (
     <>
       <ProductDetails
         imageUrl={image}
-        title="Sertac"
-        subtitle="Sertralina • 100mg"
-        description="30 comprimidos • Andrómaco"
+        title={text1}
+        subtitle={text2}
+        description={text3}
         price={15813}
         tagText={'Receta simple'}
         tagIcon={<InsertDriveFileOutlinedIcon />}
