@@ -4,7 +4,7 @@
  * File Created: Friday, 31st July 2020 3:19:47 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Wednesday, 7th October 2020 12:00:40 pm
+ * Last Modified: Monday, 21st December 2020 10:14:46 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -12,6 +12,8 @@
  * -----
  * Inventures - www.inventures.cl
  */
+
+import 'regenerator-runtime/runtime.js';
 export * from './useInput.hooks';
 export * from './useSearchBar.hooks';
 export * from './toast.hook';

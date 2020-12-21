@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Wednesday, 14th October 2020 3:13:01 pm
+ * Last Modified: Monday, 21st December 2020 10:14:21 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -13,6 +13,7 @@
  * Inventures - www.inventures.cl
  */
 
+import 'regenerator-runtime/runtime.js';
 import { useState, useCallback, useRef, useEffect } from 'react';
 import Fuse from 'fuse.js';
 import { useDeepCallback } from './useDeepCallback';
