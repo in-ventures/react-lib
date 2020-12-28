@@ -2085,7 +2085,7 @@
     global "^4.3.2"
     regenerator-runtime "^0.13.3"
 
-"@storybook/addons@6.1.11", "@storybook/addons@^6.0.21":
+"@storybook/addons@6.1.11", "@storybook/addons@^6.0.21", "@storybook/addons@^6.1.10":
   version "6.1.11"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-6.1.11.tgz#cb4578411ca00ccb206b484df5a171ccaca34719"
   integrity sha512-OZXsdmn60dVe482l9zWxzOqqJApD2jggk/8QJKn3/Ub9posmqdqg712bW6v71BBe0UXXG/QfkZA7gcyiyEENbw==
@@ -2167,7 +2167,7 @@
     ts-dedent "^1.1.1"
     util-deprecate "^1.0.2"
 
-"@storybook/api@6.1.11", "@storybook/api@^6.0.21":
+"@storybook/api@6.1.11", "@storybook/api@^6.1.10":
   version "6.1.11"
   resolved "https://registry.yarnpkg.com/@storybook/api/-/api-6.1.11.tgz#1e0b798203df823ac21184386258cf8b5f17f440"
   integrity sha512-/p4QW/p3uWO0AKVveNezX3I/CotyBKaJ5ui8PuvSPsl7yvqcsK41qI4evKOw7GMQn6oP+2enRbzHpGuCUgQSjA==
@@ -2414,7 +2414,7 @@
     react-textarea-autosize "^8.1.1"
     ts-dedent "^1.1.1"
 
-"@storybook/components@6.1.11", "@storybook/components@^6.0.21":
+"@storybook/components@6.1.11", "@storybook/components@^6.1.10":
   version "6.1.11"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-6.1.11.tgz#edd5db7fe43f47b5a7ab515840795a89d931512e"
   integrity sha512-DGDl76uONTkg0rpsa36TpVuXv4K7rFYe8GnQ/Q8n4By5tvldC4s9YXwcDRYHVrfnYybKzuZ/+jv2ZAp4/8ZaeA==
@@ -2761,7 +2761,7 @@
     resolve-from "^5.0.0"
     ts-dedent "^1.1.1"
 
-"@storybook/theming@6.1.11", "@storybook/theming@^6.0.21":
+"@storybook/theming@6.1.11", "@storybook/theming@^6.1.10":
   version "6.1.11"
   resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-6.1.11.tgz#0e757e0562aedefc96bd1d12714d4c8e92823467"
   integrity sha512-zRChacVgKoU2BmpvwK1ntiF3KIpc8QblJT7IGiKfP/BNpy9gNeXbLPLk3g/tkHszOvVYtkaZhEXni4Od8tqy1A==
@@ -13845,7 +13845,7 @@ react-transition-group@^4.0.0, react-transition-group@^4.3.0, react-transition-g
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react@^16.13.1, react@^16.8.3, react@^16.9.17:
+react@^16.8.3, react@^16.9.17:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
   integrity sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w==
@@ -15047,18 +15047,17 @@ store2@^2.7.1:
   resolved "https://registry.yarnpkg.com/store2/-/store2-2.12.0.tgz#e1f1b7e1a59b6083b2596a8d067f6ee88fd4d3cf"
   integrity sha512-7t+/wpKLanLzSnQPX8WAcuLCCeuSHoWdQuh9SB3xD0kNOM38DNf+0Oa+wmvxmYueRzkmh6IcdKFtvTa+ecgPDw==
 
-storybook-addon-paddings@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/storybook-addon-paddings/-/storybook-addon-paddings-3.0.0.tgz#3a71763226296ab085cb8f9eaa1595fec54addc3"
-  integrity sha512-vXXsTUixCkRkSU1RiWwSBHLuRue7RLQ1wtAReejf2B3ghfD/SOrR9hrxfd6Xe8oZ1EbC0m2sWoq66R8wOhK/IA==
+storybook-addon-paddings@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/storybook-addon-paddings/-/storybook-addon-paddings-4.0.0.tgz#212ae2fbf2b801179b243c15cd6ec8832a7e3aaf"
+  integrity sha512-uksrrjGkrQE2sA047SXTymAefOOzsqAeQ0PPKV00pQGVZJdNREqlnHyHg6Xki0nuN+mP/rQ2hHCDADSyBYK14w==
   dependencies:
-    "@storybook/addons" "^6.0.21"
-    "@storybook/api" "^6.0.21"
-    "@storybook/components" "^6.0.21"
-    "@storybook/theming" "^6.0.21"
+    "@storybook/addons" "^6.1.10"
+    "@storybook/api" "^6.1.10"
+    "@storybook/components" "^6.1.10"
+    "@storybook/theming" "^6.1.10"
     core-js "^3.6.5"
     memoizerific "^1.11.3"
-    react "^16.13.1"
 
 stream-browserify@^2.0.1:
   version "2.0.2"
