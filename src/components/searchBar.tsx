@@ -14,6 +14,7 @@
  */
 
 import React, { useState, useCallback } from 'react';
+import clsx from 'clsx';
 import TextField, { TextFieldProps } from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
@@ -31,10 +32,13 @@ import Fade from '@material-ui/core/Fade';
 import Typography from '@material-ui/core/Typography';
 
 type SearchBarProps = {
+  className?: string;
+  showInput: boolean;
+  autoFocus?: boolean;
   clearSearch: (value: string) => void;
+  onSearchIconClick?: () => void;
   iconColor?: string;
   barColor?: string;
-  showInput?: boolean;
 };
 
 type BarStyleProps = {
@@ -46,6 +50,7 @@ const useStyles = makeStyles(() =>
   createStyles({
     box: {
       backgroundColor: 'white',
+      height: '100%',
     },
     textField: {
       overflow: 'hidden',
@@ -55,11 +60,19 @@ const useStyles = makeStyles(() =>
     inputField: {
       border: 'none',
       borderRadius: 4,
+      height: '100%',
       width: '100%',
       backgroundColor: (props: BarStyleProps) => props.barColor,
     },
+    inputFieldInnerInput: {
+      height: '100%',
+    },
     inputFieldCollapse: {
+      height: '100%',
       width: '100%',
+      '& >.MuiCollapse-wrapper': {
+        height: '100%',
+      },
     },
     searchButtonHide: {
       display: 'none',
@@ -70,6 +83,10 @@ const useStyles = makeStyles(() =>
     searchInputBox: {
       justifyContent: 'flex-end',
     },
+    searchIconButton: {
+      height: 26,
+      width: 26,
+    },
     searchIcon: {
       fill: (props: BarStyleProps) => props.iconColor,
     },
@@ -77,10 +94,13 @@ const useStyles = makeStyles(() =>
 );
 
 export const SearchBar = ({
+  className,
+  showInput,
+  autoFocus,
   clearSearch,
+  onSearchIconClick,
   iconColor,
   barColor,
-  showInput,
   ...props
 }: SearchBarProps & TextFieldProps) => {
   const classes = useStyles({
@@ -88,11 +108,6 @@ export const SearchBar = ({
     barColor: barColor,
   });
   const [showIcon, setShowIcon] = useState<boolean>(false);
-  const [showInputField, setshowInputField] = useState<boolean>(false);
-
-  const handleInputChange = useCallback(() => {
-    setshowInputField((prev) => !prev);
-  }, [setshowInputField]);
 
   const handleIconChange = useCallback(() => {
     setShowIcon((prev) => !prev);
@@ -105,27 +120,32 @@ export const SearchBar = ({
   const handleClearOnClick = useCallback(() => {
     clearSearch('');
   }, [clearSearch]);
-  const show = showInputField || showInput;
+
   const handleMouseDownAdornment = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
   }, []);
   return (
-    <Box display="flex" className={classes.searchInputBox}>
-      {!show && (
-        <Fade in={!show}>
-          <IconButton size="small" onClick={handleInputChange}>
+    <Box display="flex" className={clsx(classes.searchInputBox, className)}>
+      {!showInput && (
+        <Fade in={!showInput}>
+          <IconButton
+            className={classes.searchIconButton}
+            size="small"
+            onClick={onSearchIconClick}
+          >
             <SearchIcon className={classes.searchIcon} />
           </IconButton>
         </Fade>
       )}
-      {show && (
-        <Collapse in={show} className={classes.inputFieldCollapse}>
+      {showInput && (
+        <Collapse in={showInput} className={classes.inputFieldCollapse}>
           <TextField
             {...props}
-            autoFocus
+            autoFocus={autoFocus}
             className={classes.inputField}
             onFocus={handleTextFieldOnFocus}
             InputProps={{
+              className: classes.inputFieldInnerInput,
               endAdornment: (
                 <InputAdornment
                   position="end"
