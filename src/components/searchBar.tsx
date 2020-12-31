@@ -13,7 +13,7 @@
  * Inventures - www.inventures.cl
  */
 
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import clsx from 'clsx';
 import TextField, { TextFieldProps } from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
@@ -35,7 +35,7 @@ import { SvgIconComponent } from '@material-ui/icons';
 type SearchBarProps = {
   className?: string;
   showInput: boolean;
-  onCollapsedIconClick?: () => void;
+  onCollapsedIconClick: () => void;
   onExpandedIconClick: (value: string) => void;
   CollapsedIcon?: SvgIconComponent;
   ExpandedIcon?: SvgIconComponent;
@@ -111,19 +111,10 @@ export const SearchBar = ({
     iconColor: iconColor,
     barColor: barColor,
   });
-  const [showIcon, setShowIcon] = useState<boolean>(false);
   const IconCollapsed = CollapsedIcon || SearchIcon;
   const IconExpanded = ExpandedIcon || ClearIcon;
 
-  const handleIconChange = useCallback(() => {
-    setShowIcon((prev) => !prev);
-  }, [setShowIcon]);
-
-  const handleTextFieldOnFocus = useCallback(() => {
-    !showIcon && handleIconChange();
-  }, [handleIconChange, showIcon]);
-
-  const handleClearOnClick = useCallback(() => {
+  const handleClickOnExpandedIcon = useCallback(() => {
     onExpandedIconClick('');
   }, [onExpandedIconClick]);
 
@@ -150,7 +141,6 @@ export const SearchBar = ({
             autoFocus
             {...props}
             className={classes.inputField}
-            onFocus={handleTextFieldOnFocus}
             InputProps={{
               className: classes.inputFieldInnerInput,
               endAdornment: (
@@ -158,7 +148,7 @@ export const SearchBar = ({
                   position="end"
                   onMouseDown={handleMouseDownAdornment}
                 >
-                  <IconButton size="small" onClick={handleClearOnClick}>
+                  <IconButton size="small" onClick={handleClickOnExpandedIcon}>
                     <IconExpanded fontSize="small" />
                   </IconButton>
                 </InputAdornment>
