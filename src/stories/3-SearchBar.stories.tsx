@@ -17,7 +17,7 @@ import React, { useCallback, useState } from 'react';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import { SearchBar, SearchElementItem } from '../components/searchBar';
 import { useSearchBar } from '../hooks/useSearchBar.hooks';
-import { number, text } from '@storybook/addon-knobs';
+import { number, text, boolean } from '@storybook/addon-knobs';
 
 export default {
   title: 'SearchBar',
@@ -51,7 +51,9 @@ const query = [
 ];
 
 export const Base = () => {
-  const classes = useStyles();
+  const height = number('Height (px)', 40);
+  const autoFocus = boolean('AutoFocus', true);
+  const classes = useStyles({ height });
   const [searchValue, setSearchValue] = useState<string>('');
   const [showInput, setShowInput] = useState<boolean>(false);
 
@@ -77,7 +79,7 @@ export const Base = () => {
         className={classes.searchBar}
         value={searchValue}
         showInput={showInput}
-        autoFocus
+        autoFocus={autoFocus}
         clearSearch={handleClickClearSearch}
         onSearchIconClick={handleClickSearchIcon}
         onChange={handleWrite}
@@ -105,7 +107,9 @@ export const ListResults = () => {
 
 export const SearchBarResultArray = () => {
   const debounceTime = number('Debounce time (ms)', 800);
-  const classes = useStyles();
+  const height = number('Height (px)', 40);
+  const autoFocus = boolean('AutoFocus', true);
+  const classes = useStyles({ height });
   const [showInput, setShowInput] = useState<boolean>(false);
   const [showResults, setShowResults] = useState<boolean>(false);
 
@@ -148,7 +152,7 @@ export const SearchBarResultArray = () => {
         className={classes.searchBar}
         showInput={showInput}
         value={searchValue}
-        autoFocus
+        autoFocus={autoFocus}
         clearSearch={handleClickClearSearch}
         onSearchIconClick={handleClickSearchIcon}
         onChange={handleWrite}
@@ -180,7 +184,9 @@ export const SearchBarResultArray = () => {
 
 export const SearchBarResultFunction = () => {
   const debounceTime = number('Debounce time (ms)', 800);
-  const classes = useStyles();
+  const height = number('Height (px)', 40);
+  const autoFocus = boolean('AutoFocus', true);
+  const classes = useStyles({ height });
   const [showInput, setShowInput] = useState<boolean>(false);
   const [showResults, setShowResults] = useState<boolean>(false);
 
@@ -228,7 +234,7 @@ export const SearchBarResultFunction = () => {
         className={classes.searchBar}
         showInput={showInput}
         value={searchValue}
-        autoFocus
+        autoFocus={autoFocus}
         clearSearch={handleClickClearSearch}
         onSearchIconClick={handleClickSearchIcon}
         onChange={handleWrite}
@@ -265,8 +271,8 @@ const useStyles = makeStyles(() =>
       height: '100vh',
       padding: '20px',
     },
-    searchBar: {
-      height: 70,
-    },
+    searchBar: (props: { height: number }) => ({
+      height: props.height,
+    }),
   }),
 );
