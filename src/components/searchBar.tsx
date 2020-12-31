@@ -30,12 +30,15 @@ import { NorthWestIcon } from '../icons/NorthWest';
 import Collapse from '@material-ui/core/Collapse';
 import Fade from '@material-ui/core/Fade';
 import Typography from '@material-ui/core/Typography';
+import { SvgIconComponent } from '@material-ui/icons';
 
 type SearchBarProps = {
   className?: string;
   showInput: boolean;
-  clearSearch: (value: string) => void;
-  onSearchIconClick?: () => void;
+  onCollapsedIconClick?: () => void;
+  onExpandedIconClick: (value: string) => void;
+  CollapsedIcon?: SvgIconComponent;
+  ExpandedIcon?: SvgIconComponent;
   iconColor?: string;
   barColor?: string;
 };
@@ -81,6 +84,7 @@ const useStyles = makeStyles(() =>
     },
     searchInputBox: {
       justifyContent: 'flex-end',
+      alignItems: 'center',
     },
     searchIconButton: {
       height: 26,
@@ -95,8 +99,10 @@ const useStyles = makeStyles(() =>
 export const SearchBar = ({
   className,
   showInput,
-  clearSearch,
-  onSearchIconClick,
+  onExpandedIconClick,
+  onCollapsedIconClick,
+  ExpandedIcon,
+  CollapsedIcon,
   iconColor,
   barColor,
   ...props
@@ -106,6 +112,8 @@ export const SearchBar = ({
     barColor: barColor,
   });
   const [showIcon, setShowIcon] = useState<boolean>(false);
+  const IconCollapsed = CollapsedIcon || SearchIcon;
+  const IconExpanded = ExpandedIcon || ClearIcon;
 
   const handleIconChange = useCallback(() => {
     setShowIcon((prev) => !prev);
@@ -116,12 +124,13 @@ export const SearchBar = ({
   }, [handleIconChange, showIcon]);
 
   const handleClearOnClick = useCallback(() => {
-    clearSearch('');
-  }, [clearSearch]);
+    onExpandedIconClick('');
+  }, [onExpandedIconClick]);
 
   const handleMouseDownAdornment = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
   }, []);
+
   return (
     <Box display="flex" className={clsx(classes.searchInputBox, className)}>
       {!showInput && (
@@ -129,9 +138,9 @@ export const SearchBar = ({
           <IconButton
             className={classes.searchIconButton}
             size="small"
-            onClick={onSearchIconClick}
+            onClick={onCollapsedIconClick}
           >
-            <SearchIcon className={classes.searchIcon} />
+            <IconCollapsed className={classes.searchIcon} />
           </IconButton>
         </Fade>
       )}
@@ -150,7 +159,7 @@ export const SearchBar = ({
                   onMouseDown={handleMouseDownAdornment}
                 >
                   <IconButton size="small" onClick={handleClearOnClick}>
-                    <ClearIcon fontSize="small" />
+                    <IconExpanded fontSize="small" />
                   </IconButton>
                 </InputAdornment>
               ),

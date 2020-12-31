@@ -18,6 +18,8 @@ import { createStyles, makeStyles } from '@material-ui/core/styles';
 import { SearchBar, SearchElementItem } from '../components/searchBar';
 import { useSearchBar } from '../hooks/useSearchBar.hooks';
 import { number, text, boolean } from '@storybook/addon-knobs';
+import YoutubeSearchedForIcon from '@material-ui/icons/YoutubeSearchedFor';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 export default {
   title: 'SearchBar',
@@ -80,8 +82,8 @@ export const Base = () => {
         value={searchValue}
         showInput={showInput}
         autoFocus={autoFocus}
-        clearSearch={handleClickClearSearch}
-        onSearchIconClick={handleClickSearchIcon}
+        onExpandedIconClick={handleClickClearSearch}
+        onCollapsedIconClick={handleClickSearchIcon}
         onChange={handleWrite}
         size="small"
       />
@@ -107,9 +109,7 @@ export const ListResults = () => {
 
 export const SearchBarResultArray = () => {
   const debounceTime = number('Debounce time (ms)', 800);
-  const height = number('Height (px)', 40);
-  const autoFocus = boolean('AutoFocus', true);
-  const classes = useStyles({ height });
+  const classes = useStyles({ height: 40 });
   const [showInput, setShowInput] = useState<boolean>(false);
   const [showResults, setShowResults] = useState<boolean>(false);
 
@@ -152,9 +152,9 @@ export const SearchBarResultArray = () => {
         className={classes.searchBar}
         showInput={showInput}
         value={searchValue}
-        autoFocus={autoFocus}
-        clearSearch={handleClickClearSearch}
-        onSearchIconClick={handleClickSearchIcon}
+        autoFocus
+        onExpandedIconClick={handleClickClearSearch}
+        onCollapsedIconClick={handleClickSearchIcon}
         onChange={handleWrite}
         size="small"
         iconColor="#FFFFFF"
@@ -184,9 +184,7 @@ export const SearchBarResultArray = () => {
 
 export const SearchBarResultFunction = () => {
   const debounceTime = number('Debounce time (ms)', 800);
-  const height = number('Height (px)', 40);
-  const autoFocus = boolean('AutoFocus', true);
-  const classes = useStyles({ height });
+  const classes = useStyles({ height: 40 });
   const [showInput, setShowInput] = useState<boolean>(false);
   const [showResults, setShowResults] = useState<boolean>(false);
 
@@ -234,9 +232,9 @@ export const SearchBarResultFunction = () => {
         className={classes.searchBar}
         showInput={showInput}
         value={searchValue}
-        autoFocus={autoFocus}
-        clearSearch={handleClickClearSearch}
-        onSearchIconClick={handleClickSearchIcon}
+        autoFocus
+        onExpandedIconClick={handleClickClearSearch}
+        onCollapsedIconClick={handleClickSearchIcon}
         onChange={handleWrite}
         size="small"
         iconColor="#FFFFFF"
@@ -260,6 +258,45 @@ export const SearchBarResultFunction = () => {
               onSuggestedClick={() => handleResultClick(result.item)}
             />
           ))}
+    </div>
+  );
+};
+
+export const SearchBarIconsModified = () => {
+  const classes = useStyles({ height: 40 });
+  const [searchValue, setSearchValue] = useState<string>('');
+  const [showInput, setShowInput] = useState<boolean>(false);
+
+  const handleWrite = useCallback(
+    (e) => {
+      setSearchValue(String(e.target.value));
+    },
+    [setSearchValue],
+  );
+
+  const handleClickSearchIcon = useCallback(() => {
+    setShowInput((prev) => !prev);
+  }, [setShowInput]);
+
+  const handleClickClearSearch = (value: string) => {
+    setSearchValue(String(value));
+    setShowInput((prev) => !prev);
+  };
+
+  return (
+    <div>
+      <SearchBar
+        className={classes.searchBar}
+        value={searchValue}
+        showInput={showInput}
+        autoFocus
+        onExpandedIconClick={handleClickClearSearch}
+        onCollapsedIconClick={handleClickSearchIcon}
+        ExpandedIcon={DeleteIcon}
+        CollapsedIcon={YoutubeSearchedForIcon}
+        onChange={handleWrite}
+        size="small"
+      />
     </div>
   );
 };
