@@ -34,7 +34,6 @@ import Typography from '@material-ui/core/Typography';
 type SearchBarProps = {
   className?: string;
   showInput: boolean;
-  autoFocus?: boolean;
   clearSearch: (value: string) => void;
   onSearchIconClick?: () => void;
   iconColor?: string;
@@ -96,7 +95,6 @@ const useStyles = makeStyles(() =>
 export const SearchBar = ({
   className,
   showInput,
-  autoFocus,
   clearSearch,
   onSearchIconClick,
   iconColor,
@@ -140,8 +138,8 @@ export const SearchBar = ({
       {showInput && (
         <Collapse in={showInput} className={classes.inputFieldCollapse}>
           <TextField
+            autoFocus
             {...props}
-            autoFocus={autoFocus}
             className={classes.inputField}
             onFocus={handleTextFieldOnFocus}
             InputProps={{
