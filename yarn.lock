@@ -3854,10 +3854,10 @@
     pug "^2.0.4"
     react-docgen "^5.3.1"
 
-"@zeplin/cli-connect-storybook-plugin@^0.4.1":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@zeplin/cli-connect-storybook-plugin/-/cli-connect-storybook-plugin-0.4.2.tgz#502ae8dd8ebd12e57349a79255e7b3834f6bbdb4"
-  integrity sha512-i43s/R5bnp+chNU6/E7UqEGQu4smZ2yMzmpGBc39Fs3KLeX4WAgpmvna/QBWUYqefPKxcOe5dAaEoyAAB0O/Nw==
+"@zeplin/cli-connect-storybook-plugin@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@zeplin/cli-connect-storybook-plugin/-/cli-connect-storybook-plugin-0.5.0.tgz#fe2c855dbee7365817f033e94f3ad026ca5d532c"
+  integrity sha512-Tnysz7zKX6iDG7QBICdPFqyAiho/kcP77Syn/LUjSxd+Rif0hWe5+z9vp7BG8n3NncH1pZ+WrrDBBvrFI+I0OA==
   dependencies:
     "@storybook/csf" "0.0.1"
     cross-spawn "^7.0.1"
