@@ -53,7 +53,6 @@ const useStyles = makeStyles({
 type ImageLoaderProps = {
   types?: string[];
   maxFileSize?: number;
-
   Placeholder?: React.ReactNode;
   onError?: () => void;
   compressImage?: (file: File) => void;
@@ -64,6 +63,7 @@ type ImageLoaderProps = {
   progress?: number;
   loaded?: boolean;
   setLoaded?: (loaded: boolean) => void;
+  setOpenModal?: (open: boolean) => void;
 } & TextFieldProps;
 
 function ImageLoaderComponent(
@@ -80,16 +80,19 @@ function ImageLoaderComponent(
     progress,
     loaded,
     setLoaded = () => {},
+    setOpenModal,
   }: ImageLoaderProps,
   ref: any,
 ) {
   const classes = useStyles();
   const inputRef = React.useRef(ref);
+
   React.useImperativeHandle(ref, () => ({
     click: () => {
       inputRef.current?.click();
     },
   }));
+
   const loadFile = React.useCallback(
     (event: React.BaseSyntheticEvent) => {
       const divisor = 1024 * 1024;
@@ -125,15 +128,35 @@ function ImageLoaderComponent(
       types,
     ],
   );
+
   const deleteFile = React.useCallback(() => {
     setFile('');
     setLoaded(false);
     const input = inputRef.current;
     if (input) input.value = '';
   }, [setFile, setLoaded, inputRef]);
+
   const onCardActionAreaClick = React.useCallback(() => {
-    inputRef.current?.click();
-  }, []);
+    if (loaded && setOpenModal) {
+      console.log('OPEN MODAL!!');
+      setOpenModal(true);
+      return;
+    } else {
+      inputRef.current?.click();
+    }
+  }, [setOpenModal, loaded]);
+
+  const onClickCamera = React.useCallback(() => {
+    if (loaded && setOpenModal) {
+      console.log('OPEN MODAL!!');
+      setOpenModal(true);
+      return;
+    } else {
+      inputRef.current?.click();
+    }
+  }, [setOpenModal, loaded]);
+
+  console.log('loaded: ', loaded);
 
   return (
     <div className={clsx(classes.container, classes.totallyFilled)}>
@@ -160,7 +183,19 @@ function ImageLoaderComponent(
                 )}
                 title="Contenedor"
               >
-                <embed src={file} type="image/png" />
+                <object
+                  data={file}
+                  type="application/pdf"
+                  className={clsx(
+                    classes.totallyFilled,
+                    {
+                      [classes.loading]: loading,
+                      [classes.container]: !loading,
+                    },
+                    classes.preview,
+                  )}
+                  title="Contenedor"
+                ></object>
               </object>
             </>
           )}
@@ -182,13 +217,14 @@ function ImageLoaderComponent(
             </IconButton>
           )}
           <input
-            ref={inputRef}
+            ref={loaded && setOpenModal ? null : inputRef}
             id="icon-button-file"
             type="file"
             accept="image/*;capture=camera"
             className={classes.input}
             onChange={loadFile}
             disabled={loading}
+            onClick={onClickCamera}
           />
           <label htmlFor="icon-button-file" className={classes.marginLeftZero}>
             <IconButton
@@ -206,5 +242,9 @@ function ImageLoaderComponent(
   );
 }
 
+// Replace this line with the code below:
 const ImageLoader = React.forwardRef(ImageLoaderComponent);
+/* const ImageLoader = React.forwardRef((props, ref) => {
+  return <ImageLoaderComponent {...props} ref={ref}/>;
+}); */
 export default ImageLoader;

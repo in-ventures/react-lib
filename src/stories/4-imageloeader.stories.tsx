@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ImageLoader from '../components/ImageLoader';
+import { AlertModal } from '../components/Modal';
 import { text, number, boolean } from '@storybook/addon-knobs';
 import imageCompression from 'browser-image-compression';
 import Button from '@material-ui/core/Button';
@@ -236,6 +237,7 @@ export const Portrait = () => {
     try {
       //Compression
       const compressedFile = await imageCompression(file, options);
+      console.log(compressedFile);
       setLoaded(true);
       setLoading(false);
     } catch (error) {
@@ -341,5 +343,106 @@ export const DefaultImageUploaded = () => {
         </Button>
       </Box>
     </div>
+  );
+};
+
+export const UploaderWithModal = () => {
+  const [file, setFile] = useState(
+    'https://meki-public.s3.us-east-2.amazonaws.com/images/1-paleta-desechable-0a9ea08b-088c-49c1-900a-84946978ad35',
+  );
+  const [loading, setLoading] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [open, setOpen] = useState(false);
+
+  const types = ['application/pdf', 'text/plain', 'image/jpeg', 'image/png'];
+
+  const maxFileSize = number('Max size', 14);
+  const defaultImage = text(
+    'Default image',
+    'https://previews.123rf.com/images/creativepriyanka/creativepriyanka1906/creativepriyanka190600379/124982633-prescription-icon.jpg',
+  );
+
+  const defaultTitle = text('Default title', 'Adjunta tu receta aquí');
+  const defaultDescription = text(
+    'Default description',
+    'Puedes subir una imagen o PDF ',
+  );
+  const compressImage = async (file: File) => {
+    const options = {
+      maxSizeMB: maxFileSize,
+      useWebWorker: true,
+      onProgress: (progress: number) => {
+        setProgress(progress);
+      },
+    };
+
+    try {
+      //Compression
+      const compressedFile = await imageCompression(file, options);
+      setLoaded(true);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
+  };
+
+  const inputRef = React.createRef<HTMLInputElement | undefined>();
+
+  const openFileLoader = React.useCallback(() => {
+    inputRef.current?.click();
+  }, [inputRef]);
+
+  const clickYesModal = React.useCallback(() => {
+    console.log('You clicked YES');
+    openFileLoader();
+    setOpen(false);
+  }, [openFileLoader, setOpen]);
+
+  console.log('open: ', open);
+  return (
+    <>
+      <div style={{ width: '300px', height: '400px' }}>
+        <ImageLoader
+          types={types}
+          maxFileSize={maxFileSize}
+          Placeholder={
+            <Placeholder
+              defaultImage={defaultImage}
+              title={defaultTitle}
+              description={defaultDescription}
+            />
+          }
+          onError={onError}
+          compressImage={compressImage}
+          file={file}
+          setFile={setFile}
+          loading={loading}
+          setLoading={setLoading}
+          progress={progress}
+          loaded={loaded}
+          setLoaded={setLoaded}
+          ref={inputRef}
+          setOpenModal={setOpen}
+        />
+      </div>
+      <AlertModal
+        title="Reemplazo imagen 📷"
+        content={'¿Estás seguro que quieres reemplazar la imagen cargada?'}
+        open={open}
+        setOpen={setOpen}
+        actions={[
+          {
+            text: 'NO',
+            onActionClick: () => setOpen(false),
+          },
+          {
+            text: 'SÍ',
+            onActionClick: clickYesModal,
+            variant: 'contained',
+          },
+        ]}
+      />
+    </>
   );
 };
