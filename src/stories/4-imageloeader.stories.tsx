@@ -399,6 +399,15 @@ export const UploaderWithModal = () => {
     setOpen(false);
   }, [openFileLoader, setOpen]);
 
+  const handleCustomClick = React.useCallback(() => {
+    if (loaded) {
+      console.log('OPEN MODAL!!');
+      setOpen(true);
+    } else {
+      inputRef.current?.click();
+    }
+  }, [loaded, setOpen]);
+
   console.log('open: ', open);
   return (
     <>
@@ -423,7 +432,7 @@ export const UploaderWithModal = () => {
           loaded={loaded}
           setLoaded={setLoaded}
           ref={inputRef}
-          setOpenModal={setOpen}
+          handleCustomClick={handleCustomClick}
         />
       </div>
       <AlertModal

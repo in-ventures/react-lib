@@ -63,7 +63,7 @@ type ImageLoaderProps = {
   progress?: number;
   loaded?: boolean;
   setLoaded?: (loaded: boolean) => void;
-  setOpenModal?: (open: boolean) => void;
+  handleCustomClick?: () => void;
 } & TextFieldProps;
 
 function ImageLoaderComponent(
@@ -80,7 +80,7 @@ function ImageLoaderComponent(
     progress,
     loaded,
     setLoaded = () => {},
-    setOpenModal,
+    handleCustomClick,
   }: ImageLoaderProps,
   ref: any,
 ) {
@@ -136,25 +136,9 @@ function ImageLoaderComponent(
     if (input) input.value = '';
   }, [setFile, setLoaded, inputRef]);
 
-  const onCardActionAreaClick = React.useCallback(() => {
-    if (loaded && setOpenModal) {
-      console.log('OPEN MODAL!!');
-      setOpenModal(true);
-      return;
-    } else {
-      inputRef.current?.click();
-    }
-  }, [setOpenModal, loaded]);
-
-  const onClickCamera = React.useCallback(() => {
-    if (loaded && setOpenModal) {
-      console.log('OPEN MODAL!!');
-      setOpenModal(true);
-      return;
-    } else {
-      inputRef.current?.click();
-    }
-  }, [setOpenModal, loaded]);
+  const onClick = React.useCallback(() => {
+    inputRef.current?.click();
+  }, []);
 
   console.log('loaded: ', loaded);
 
@@ -167,7 +151,7 @@ function ImageLoaderComponent(
               ? clsx(classes.cardactionarea, classes.loadingHeight)
               : clsx(classes.cardactionarea, classes.notloadingHeight)
           }
-          onClick={onCardActionAreaClick}
+          onClick={handleCustomClick ? handleCustomClick : onClick}
         >
           {!file && !loading ? (
             Placeholder
@@ -203,7 +187,16 @@ function ImageLoaderComponent(
 
         {loading && <LinearProgress variant="determinate" value={progress} />}
         <Divider />
-
+        <input
+          ref={inputRef}
+          id="icon-button-file"
+          type="file"
+          accept="image/*;capture=camera"
+          className={classes.input}
+          onChange={loadFile}
+          disabled={loading}
+          //onClick={onClick}
+        />
         <CardActions className={classes.actions}>
           {loaded && (
             <IconButton
@@ -216,26 +209,15 @@ function ImageLoaderComponent(
               <DeleteIcon />
             </IconButton>
           )}
-          <input
-            ref={loaded && setOpenModal ? null : inputRef}
-            id="icon-button-file"
-            type="file"
-            accept="image/*;capture=camera"
-            className={classes.input}
-            onChange={loadFile}
+          <IconButton
+            color="primary"
+            aria-label="Subir elemento"
+            component="span"
             disabled={loading}
-            onClick={onClickCamera}
-          />
-          <label htmlFor="icon-button-file" className={classes.marginLeftZero}>
-            <IconButton
-              color="primary"
-              aria-label="Subir elemento"
-              component="span"
-              disabled={loading}
-            >
-              <PhotoCamera />
-            </IconButton>
-          </label>
+            onClick={handleCustomClick ? handleCustomClick : onClick}
+          >
+            <PhotoCamera />
+          </IconButton>
         </CardActions>
       </Card>
     </div>
