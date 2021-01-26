@@ -237,7 +237,6 @@ export const Portrait = () => {
     try {
       //Compression
       const compressedFile = await imageCompression(file, options);
-      console.log(compressedFile);
       setLoaded(true);
       setLoading(false);
     } catch (error) {
@@ -394,21 +393,18 @@ export const UploaderWithModal = () => {
   }, [inputRef]);
 
   const clickYesModal = React.useCallback(() => {
-    console.log('You clicked YES');
     openFileLoader();
     setOpen(false);
   }, [openFileLoader, setOpen]);
 
   const handleCustomClick = React.useCallback(() => {
     if (loaded) {
-      console.log('OPEN MODAL!!');
       setOpen(true);
     } else {
       inputRef.current?.click();
     }
   }, [loaded, setOpen]);
 
-  console.log('open: ', open);
   return (
     <>
       <div style={{ width: '300px', height: '400px' }}>

@@ -140,8 +140,6 @@ function ImageLoaderComponent(
     inputRef.current?.click();
   }, []);
 
-  console.log('loaded: ', loaded);
-
   return (
     <div className={clsx(classes.container, classes.totallyFilled)}>
       <Card className={clsx(classes.container, classes.totallyFilled)}>
