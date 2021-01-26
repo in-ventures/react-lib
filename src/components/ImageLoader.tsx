@@ -195,7 +195,6 @@ function ImageLoaderComponent(
           className={classes.input}
           onChange={loadFile}
           disabled={loading}
-          //onClick={onClick}
         />
         <CardActions className={classes.actions}>
           {loaded && (
@@ -224,9 +223,6 @@ function ImageLoaderComponent(
   );
 }
 
-// Replace this line with the code below:
+// Forward Ref:
 const ImageLoader = React.forwardRef(ImageLoaderComponent);
-/* const ImageLoader = React.forwardRef((props, ref) => {
-  return <ImageLoaderComponent {...props} ref={ref}/>;
-}); */
 export default ImageLoader;
