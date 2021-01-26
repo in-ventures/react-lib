@@ -53,7 +53,6 @@ const useStyles = makeStyles({
 type ImageLoaderProps = {
   types?: string[];
   maxFileSize?: number;
-
   Placeholder?: React.ReactNode;
   onError?: () => void;
   compressImage?: (file: File) => void;
@@ -64,6 +63,7 @@ type ImageLoaderProps = {
   progress?: number;
   loaded?: boolean;
   setLoaded?: (loaded: boolean) => void;
+  handleCustomClick?: () => void;
 } & TextFieldProps;
 
 function ImageLoaderComponent(
@@ -80,16 +80,19 @@ function ImageLoaderComponent(
     progress,
     loaded,
     setLoaded = () => {},
+    handleCustomClick,
   }: ImageLoaderProps,
   ref: any,
 ) {
   const classes = useStyles();
   const inputRef = React.useRef(ref);
+
   React.useImperativeHandle(ref, () => ({
     click: () => {
       inputRef.current?.click();
     },
   }));
+
   const loadFile = React.useCallback(
     (event: React.BaseSyntheticEvent) => {
       const divisor = 1024 * 1024;
@@ -125,13 +128,15 @@ function ImageLoaderComponent(
       types,
     ],
   );
+
   const deleteFile = React.useCallback(() => {
     setFile('');
     setLoaded(false);
     const input = inputRef.current;
     if (input) input.value = '';
   }, [setFile, setLoaded, inputRef]);
-  const onCardActionAreaClick = React.useCallback(() => {
+
+  const onClick = React.useCallback(() => {
     inputRef.current?.click();
   }, []);
 
@@ -144,7 +149,7 @@ function ImageLoaderComponent(
               ? clsx(classes.cardactionarea, classes.loadingHeight)
               : clsx(classes.cardactionarea, classes.notloadingHeight)
           }
-          onClick={onCardActionAreaClick}
+          onClick={handleCustomClick ? handleCustomClick : onClick}
         >
           {!file && !loading ? (
             Placeholder
@@ -160,7 +165,19 @@ function ImageLoaderComponent(
                 )}
                 title="Contenedor"
               >
-                <embed src={file} type="image/png" />
+                <object
+                  data={file}
+                  type="application/pdf"
+                  className={clsx(
+                    classes.totallyFilled,
+                    {
+                      [classes.loading]: loading,
+                      [classes.container]: !loading,
+                    },
+                    classes.preview,
+                  )}
+                  title="Contenedor"
+                ></object>
               </object>
             </>
           )}
@@ -168,7 +185,15 @@ function ImageLoaderComponent(
 
         {loading && <LinearProgress variant="determinate" value={progress} />}
         <Divider />
-
+        <input
+          ref={inputRef}
+          id="icon-button-file"
+          type="file"
+          accept="image/*;capture=camera"
+          className={classes.input}
+          onChange={loadFile}
+          disabled={loading}
+        />
         <CardActions className={classes.actions}>
           {loaded && (
             <IconButton
@@ -181,30 +206,21 @@ function ImageLoaderComponent(
               <DeleteIcon />
             </IconButton>
           )}
-          <input
-            ref={inputRef}
-            id="icon-button-file"
-            type="file"
-            accept="image/*;capture=camera"
-            className={classes.input}
-            onChange={loadFile}
+          <IconButton
+            color="primary"
+            aria-label="Subir elemento"
+            component="span"
             disabled={loading}
-          />
-          <label htmlFor="icon-button-file" className={classes.marginLeftZero}>
-            <IconButton
-              color="primary"
-              aria-label="Subir elemento"
-              component="span"
-              disabled={loading}
-            >
-              <PhotoCamera />
-            </IconButton>
-          </label>
+            onClick={handleCustomClick ? handleCustomClick : onClick}
+          >
+            <PhotoCamera />
+          </IconButton>
         </CardActions>
       </Card>
     </div>
   );
 }
 
+// Forward Ref:
 const ImageLoader = React.forwardRef(ImageLoaderComponent);
 export default ImageLoader;
