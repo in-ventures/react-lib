@@ -4,8 +4,8 @@
  * File Created: Friday, 11th September 2020 10:18:24 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Tuesday, 10th November 2020 4:15:42 pm
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Friday, 29th January 2021 10:07:17 am
+ * Modified By: Vicente Melin (vicente@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -15,10 +15,12 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
 import { ProductPropTypes, ProductCard } from './ProductCard';
+import { ProductCardSkeleton } from './ProductCardSkeleton';
 
 type ProductList = {
   products: ProductPropTypes[];
   gridBreakpoints: GridBreakpoints;
+  loading?: boolean;
 };
 type GridBreakpoints = {
   xs:
@@ -116,25 +118,30 @@ export function ProductList(props: ProductList) {
   const {
     products,
     gridBreakpoints: { xs = 6, sm = 4, md = 3, lg = 2, xl = 1 } = {},
+    loading,
   } = props;
   return (
     <Grid container spacing={1}>
       {products.map((cardInfo: ProductPropTypes, index: number) => (
         <Grid key={index} item xs={xs} sm={sm} md={md} lg={lg} xl={xl}>
-          <ProductCard
-            imageUrl={cardInfo.imageUrl}
-            title={cardInfo.title}
-            subtitle={cardInfo.subtitle}
-            details={cardInfo.details}
-            description={cardInfo.description}
-            price={cardInfo.price}
-            tagText={cardInfo.tagText}
-            tagIcon={cardInfo.tagIcon}
-            onClickCard={cardInfo.onClickCard}
-            badgeContent={cardInfo.badgeContent}
-            badgeColor={cardInfo.badgeColor}
-            badgeTextColor={cardInfo.badgeTextColor}
-          />
+          {loading ? (
+            <ProductCardSkeleton />
+          ) : (
+            <ProductCard
+              imageUrl={cardInfo.imageUrl}
+              title={cardInfo.title}
+              subtitle={cardInfo.subtitle}
+              details={cardInfo.details}
+              description={cardInfo.description}
+              price={cardInfo.price}
+              tagText={cardInfo.tagText}
+              tagIcon={cardInfo.tagIcon}
+              onClickCard={cardInfo.onClickCard}
+              badgeContent={cardInfo.badgeContent}
+              badgeColor={cardInfo.badgeColor}
+              badgeTextColor={cardInfo.badgeTextColor}
+            />
+          )}
         </Grid>
       ))}
     </Grid>
