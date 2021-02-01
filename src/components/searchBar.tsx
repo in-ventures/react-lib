@@ -4,8 +4,8 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Monday, 30th November 2020 12:34:26 pm
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Monday, 1st February 2021 10:51:59 am
+ * Modified By: Vicente Melin (vicente@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -31,6 +31,7 @@ import Collapse from '@material-ui/core/Collapse';
 import Fade from '@material-ui/core/Fade';
 import Typography from '@material-ui/core/Typography';
 import { SvgIconComponent } from '@material-ui/icons';
+import { Skeleton } from '@material-ui/lab';
 
 type SearchBarProps = {
   className?: string;
@@ -92,6 +93,10 @@ const useStyles = makeStyles(() =>
     },
     searchIcon: {
       fill: (props: BarStyleProps) => props.iconColor,
+    },
+    listitemSkeleton: {
+      maxWidth: 200,
+      minWidth: 100,
     },
   }),
 );
@@ -164,12 +169,14 @@ export const SearchBar = ({
 type SearchElementItemProps = {
   value: string;
   onSuggestedClick?: (value: string) => void;
-  onClick: () => void;
+  onClick?: () => void;
+  loading?: boolean;
 };
 export const SearchElementItem = ({
   value,
   onSuggestedClick,
   onClick,
+  loading,
 }: SearchElementItemProps) => {
   const classes = useStyles({}); //Must recieve empty object due to BarStyleProps
   const handleSuggestedOnClick = useCallback(() => {
@@ -187,7 +194,15 @@ export const SearchElementItem = ({
           color="textSecondary"
           component="p"
         >
-          {value}
+          {loading ? (
+            <Skeleton
+              variant="text"
+              width={'30vw'}
+              className={classes.listitemSkeleton}
+            />
+          ) : (
+            value
+          )}
         </Typography>
         {!!onSuggestedClick && (
           <ListItemSecondaryAction>
