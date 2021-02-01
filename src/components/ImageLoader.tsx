@@ -54,6 +54,7 @@ type ImageLoaderProps = {
   types?: string[];
   maxFileSize?: number;
   Placeholder?: React.ReactNode;
+  PreviewFallback?: React.ReactNode;
   onError?: () => void;
   compressImage?: (file: File) => void;
   file?: string;
@@ -81,6 +82,7 @@ function ImageLoaderComponent(
     loaded,
     setLoaded = () => {},
     handleCustomClick,
+    PreviewFallback,
   }: ImageLoaderProps,
   ref: any,
 ) {
@@ -177,7 +179,9 @@ function ImageLoaderComponent(
                     classes.preview,
                   )}
                   title="Contenedor"
-                ></object>
+                >
+                  {PreviewFallback ? PreviewFallback : <p>Preview error</p>}
+                </object>
               </object>
             </>
           )}

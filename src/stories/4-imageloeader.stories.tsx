@@ -67,6 +67,27 @@ const Placeholder = ({
     </div>
   );
 };
+type PreviewFallbackProps = {
+  defaultImage: string;
+  onClick?: () => void;
+};
+
+const PreviewFallback = ({ onClick }: PreviewFallbackProps) => {
+  return (
+    <div
+      style={{ width: '100%', height: '100%' }}
+      onClick={(e: React.MouseEvent) => {
+        e.stopPropagation();
+        onClick?.();
+      }}
+    >
+      <Typography variant="caption" color="primary" align="center">
+        No se puede
+      </Typography>
+    </div>
+  );
+};
+
 export const LandscapeEditable = () => {
   const types = ['application/pdf', 'text/plain', 'image/jpeg', 'image/png'];
 
@@ -92,6 +113,14 @@ export const LandscapeEditable = () => {
             title={defaultTitle}
             description={defaultDescription}
           />
+        }
+        PreviewFallback={
+          <PreviewFallback
+            defaultImage={defaultImage}
+            onClick={() => {
+              window.open(file);
+            }}
+          ></PreviewFallback>
         }
         onError={onError}
         file={file}
