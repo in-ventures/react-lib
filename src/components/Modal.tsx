@@ -4,8 +4,8 @@
  * File Created: Wednesday, 23rd September 2020 4:10:47 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Monday, 19th October 2020 5:45:23 pm
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Monday, 1st February 2021 10:51:19 am
+ * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -29,6 +29,7 @@ type ModalProps = {
   title: string;
   content: string;
   setOpen: (open: boolean) => void;
+  onClose?: () => void;
   actions?: ActionType[];
 };
 
@@ -49,14 +50,17 @@ const useStyles = makeStyles({
 });
 
 export function AlertModal(props: ModalProps) {
-  const { title, open, content, actions, setOpen } = props;
+  const { title, open, content, actions, setOpen, onClose } = props;
   const classes = useStyles();
 
   return (
     <div>
       <Dialog
         open={open}
-        onClose={() => setOpen(false)}
+        onClose={() => {
+          onClose?.();
+          setOpen(false);
+        }}
         PaperProps={{ className: classes.margin }}
       >
         <DialogTitle>{title}</DialogTitle>
