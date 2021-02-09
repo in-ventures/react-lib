@@ -4,8 +4,8 @@
  * File Created: Tuesday, 4th August 2020 5:47:50 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Friday, 29th January 2021 10:12:45 am
- * Modified By: Vicente Melin (vicente@inventures.cl)
+ * Last Modified: Tuesday, 9th February 2021 11:21:48 am
+ * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -293,6 +293,9 @@ export const ProductDetailsCard = () => {
         price={15813}
         tagText={'Receta simple'}
         tagIcon={<InsertDriveFileOutlinedIcon />}
+        onClickImage={() =>
+          console.log('You clicked the product details image!')
+        }
         pricePerUnit="$527 /comprimido"
       />
     </>

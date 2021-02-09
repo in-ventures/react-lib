@@ -4,7 +4,7 @@
  * File Created: Friday, 11th September 2020 10:18:53 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Monday, 28th September 2020 6:36:41 pm
+ * Last Modified: Tuesday, 9th February 2021 10:58:40 am
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -33,6 +33,7 @@ type ProductDetailsProps = {
   tagIcon?: React.ReactElement;
   description?: string;
   pricePerUnit?: string;
+  onClickImage?: () => void;
   price: number;
 };
 
@@ -53,6 +54,7 @@ const useStyles = makeStyles({
   media: {
     height: '144px',
     objectFit: 'contain',
+    cursor: 'pointer',
   },
   tag: {
     marginTop: '-14px',
@@ -83,6 +85,7 @@ export function ProductDetails(props: ProductDetailsProps) {
     tagIcon,
     price,
     description,
+    onClickImage,
     pricePerUnit,
   } = props;
 
@@ -92,7 +95,12 @@ export function ProductDetails(props: ProductDetailsProps) {
 
   return (
     <Box className={classes.root}>
-      <CardMedia className={classes.media} image={imageUrl} component="img" />
+      <CardMedia
+        className={classes.media}
+        image={imageUrl}
+        component="img"
+        onClick={onClickImage}
+      />
       <Chip
         color="primary"
         size="small"
