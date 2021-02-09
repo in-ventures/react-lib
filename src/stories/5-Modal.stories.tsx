@@ -4,8 +4,8 @@
  * File Created: Wednesday, 23rd September 2020 4:11:55 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Monday, 1st February 2021 11:23:06 am
- * Modified By: Luis Aparicio (luis@inventures.cl)
+ * Last Modified: Tuesday, 9th February 2021 11:11:09 am
+ * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -13,7 +13,7 @@
  * Inventures - www.inventures.cl
  */
 
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { AlertModal } from '../components';
 import Button from '@material-ui/core/Button';
 import { text } from '@storybook/addon-knobs';
@@ -87,6 +87,8 @@ export const CustomModalWithOnCloseBehavior = () => {
         open={open}
         setOpen={setOpen}
         onClose={handleOnClose}
+        disableBackdropClick={true}
+        disableEscapeKeyDown={true}
         actions={[
           {
             text: 'OK',

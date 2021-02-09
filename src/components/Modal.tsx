@@ -4,8 +4,8 @@
  * File Created: Wednesday, 23rd September 2020 4:10:47 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Monday, 1st February 2021 10:51:19 am
- * Modified By: Luis Aparicio (luis@inventures.cl)
+ * Last Modified: Tuesday, 9th February 2021 11:07:28 am
+ * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -31,6 +31,9 @@ type ModalProps = {
   setOpen: (open: boolean) => void;
   onClose?: () => void;
   actions?: ActionType[];
+  disableBackdropClick?: boolean;
+  disableEscapeKeyDown?: boolean;
+  onBackdropClick?: () => void;
 };
 
 type ActionType = {
@@ -50,7 +53,17 @@ const useStyles = makeStyles({
 });
 
 export function AlertModal(props: ModalProps) {
-  const { title, open, content, actions, setOpen, onClose } = props;
+  const {
+    title,
+    open,
+    content,
+    actions,
+    setOpen,
+    onClose,
+    disableBackdropClick,
+    disableEscapeKeyDown,
+    onBackdropClick, 
+  } = props;
   const classes = useStyles();
 
   return (
@@ -62,6 +75,9 @@ export function AlertModal(props: ModalProps) {
           setOpen(false);
         }}
         PaperProps={{ className: classes.margin }}
+        disableBackdropClick={disableBackdropClick}
+        disableEscapeKeyDown={disableEscapeKeyDown}
+        onBackdropClick={onBackdropClick}
       >
         <DialogTitle>{title}</DialogTitle>
         <DialogContent>
