@@ -95,7 +95,12 @@ export function ProductDetails(props: ProductDetailsProps) {
 
   return (
     <Box className={classes.root}>
-      <CardMedia className={classes.media} image={imageUrl} component="img" onClick={onClickImage}/>
+      <CardMedia
+        className={classes.media}
+        image={imageUrl}
+        component="img"
+        onClick={onClickImage}
+      />
       <Chip
         color="primary"
         size="small"

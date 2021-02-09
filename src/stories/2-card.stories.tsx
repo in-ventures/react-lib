@@ -4,7 +4,7 @@
  * File Created: Tuesday, 4th August 2020 5:47:50 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 9th February 2021 10:57:08 am
+ * Last Modified: Tuesday, 9th February 2021 11:21:48 am
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -21,9 +21,8 @@ import {
   ProductDetails,
 } from '../components';
 import InsertDriveFileOutlinedIcon from '@material-ui/icons/InsertDriveFileOutlined';
-import { Alert, Skeleton } from '@material-ui/lab';
+import { Skeleton } from '@material-ui/lab';
 import { text, number } from '@storybook/addon-knobs';
-import { Console } from 'console';
 
 export default {
   title: 'Card',
@@ -294,7 +293,9 @@ export const ProductDetailsCard = () => {
         price={15813}
         tagText={'Receta simple'}
         tagIcon={<InsertDriveFileOutlinedIcon />}
-        onClickImage={()=> console.log('You clicked the product details image!')}
+        onClickImage={() =>
+          console.log('You clicked the product details image!')
+        }
         pricePerUnit="$527 /comprimido"
       />
     </>

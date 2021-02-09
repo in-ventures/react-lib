@@ -62,7 +62,7 @@ export function AlertModal(props: ModalProps) {
     onClose,
     disableBackdropClick,
     disableEscapeKeyDown,
-    onBackdropClick, 
+    onBackdropClick,
   } = props;
   const classes = useStyles();
 
