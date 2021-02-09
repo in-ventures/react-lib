@@ -4,7 +4,7 @@
  * File Created: Tuesday, 4th August 2020 5:47:50 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 9th February 2021 11:21:48 am
+ * Last Modified: Tuesday, 9th February 2021 4:20:28 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -291,7 +291,7 @@ export const ProductDetailsCard = () => {
         subtitle={text2}
         description={text3}
         price={15813}
-        tagText={'Receta simple'}
+        //tagText={'Receta simple'}
         tagIcon={<InsertDriveFileOutlinedIcon />}
         onClickImage={() =>
           console.log('You clicked the product details image!')
