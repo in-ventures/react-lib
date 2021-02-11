@@ -4,7 +4,7 @@
  * File Created: Wednesday, 23rd September 2020 4:10:47 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Tuesday, 9th February 2021 11:07:28 am
+ * Last Modified: Tuesday, 9th February 2021 4:14:29 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -69,6 +69,7 @@ export function AlertModal(props: ModalProps) {
   return (
     <div>
       <Dialog
+        {...props}
         open={open}
         onClose={() => {
           onClose?.();
