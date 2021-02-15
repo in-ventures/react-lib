@@ -103,10 +103,12 @@ export const LandscapeEditable = () => {
   const [file, setFile] = useState('');
   const loading = boolean('Loading', false);
   const progress = number('Progress', 0);
+  const onStatusChange = (newStatus: string) => console.log({ newStatus });
   return (
     <div style={{ width: '400px', height: '300px' }}>
       <ImageLoader
         types={types}
+        loading={loading}
         Placeholder={
           <Placeholder
             defaultImage={defaultImage}
@@ -125,9 +127,8 @@ export const LandscapeEditable = () => {
         onError={onError}
         file={file}
         setFile={setFile}
-        loading={loading}
         progress={progress}
-        loaded={file ? true : false}
+        onStatusChange={onStatusChange}
       ></ImageLoader>
     </div>
   );
@@ -148,6 +149,7 @@ export const PortraitEditable = () => {
   const [file, setFile] = useState('');
   const loading = boolean('Loading', false);
   const progress = number('Progress', 0);
+  const onStatusChange = (newStatus: string) => console.log({ newStatus });
 
   return (
     <div style={{ width: '300px', height: '400px' }}>
@@ -164,8 +166,8 @@ export const PortraitEditable = () => {
         file={file}
         setFile={setFile}
         loading={loading}
+        onStatusChange={onStatusChange}
         progress={progress}
-        loaded={file ? true : false}
       ></ImageLoader>
     </div>
   );
@@ -173,13 +175,11 @@ export const PortraitEditable = () => {
 
 export const Landscape = () => {
   const [file, setFile] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [loaded, setLoaded] = useState(false);
   const [progress, setProgress] = useState(0);
 
   const types = ['application/pdf', 'text/plain', 'image/jpeg', 'image/png'];
 
-  const maxFileSize = number('Max size', 14);
+  const maxFileSize = number('Max size', 1);
   const defaultImage = text(
     'Default image',
     'https://previews.123rf.com/images/creativepriyanka/creativepriyanka1906/creativepriyanka190600379/124982633-prescription-icon.jpg',
@@ -202,12 +202,11 @@ export const Landscape = () => {
     try {
       //Compression
       const compressedFile = await imageCompression(file, options);
-      setLoaded(true);
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-    }
+    } catch (error) {}
   };
+  const loading = boolean('Loading', false);
+
+  const onStatusChange = (newStatus: string) => console.log({ newStatus });
 
   return (
     <div style={{ width: '400px', height: '300px' }}>
@@ -226,10 +225,8 @@ export const Landscape = () => {
         file={file}
         setFile={setFile}
         loading={loading}
-        setLoading={setLoading}
+        onStatusChange={onStatusChange}
         progress={progress}
-        loaded={loaded}
-        setLoaded={setLoaded}
       ></ImageLoader>
     </div>
   );
@@ -237,8 +234,6 @@ export const Landscape = () => {
 
 export const Portrait = () => {
   const [file, setFile] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [loaded, setLoaded] = useState(false);
   const [progress, setProgress] = useState(0);
 
   const types = ['application/pdf', 'text/plain', 'image/jpeg', 'image/png'];
@@ -266,11 +261,7 @@ export const Portrait = () => {
     try {
       //Compression
       const compressedFile = await imageCompression(file, options);
-      setLoaded(true);
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-    }
+    } catch (error) {}
   };
 
   return (
@@ -289,11 +280,7 @@ export const Portrait = () => {
         compressImage={compressImage}
         file={file}
         setFile={setFile}
-        loading={loading}
-        setLoading={setLoading}
         progress={progress}
-        loaded={loaded}
-        setLoaded={setLoaded}
       ></ImageLoader>
     </div>
   );
@@ -301,15 +288,13 @@ export const Portrait = () => {
 
 export const DefaultImageUploaded = () => {
   const [file, setFile] = useState(
-    'https://meki-public.s3.us-east-2.amazonaws.com/images/1-paleta-desechable-0a9ea08b-088c-49c1-900a-84946978ad35',
+    'https://meki-public.s3.us-east-2.amazonaws.com/images/00017008-1309-4c4c-8568-8f8afbaebf09.jpeg',
   );
-  const [loading, setLoading] = useState(false);
-  const [loaded, setLoaded] = useState(false);
   const [progress, setProgress] = useState(0);
 
   const types = ['application/pdf', 'text/plain', 'image/jpeg', 'image/png'];
 
-  const maxFileSize = number('Max size', 14);
+  const maxFileSize = number('Max size', 1);
   const defaultImage = text(
     'Default image',
     'https://previews.123rf.com/images/creativepriyanka/creativepriyanka1906/creativepriyanka190600379/124982633-prescription-icon.jpg',
@@ -332,11 +317,7 @@ export const DefaultImageUploaded = () => {
     try {
       //Compression
       const compressedFile = await imageCompression(file, options);
-      setLoaded(true);
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-    }
+    } catch (error) {}
   };
   const inputRef = React.createRef<HTMLInputElement | undefined>();
   const openFileLoader = React.useCallback(() => {
@@ -358,11 +339,7 @@ export const DefaultImageUploaded = () => {
         compressImage={compressImage}
         file={file}
         setFile={setFile}
-        loading={loading}
-        setLoading={setLoading}
         progress={progress}
-        loaded={loaded}
-        setLoaded={setLoaded}
         ref={inputRef}
       ></ImageLoader>
       <Box paddingTop={2}>
@@ -376,10 +353,8 @@ export const DefaultImageUploaded = () => {
 
 export const UploaderWithModal = () => {
   const [file, setFile] = useState(
-    'https://meki-public.s3.us-east-2.amazonaws.com/images/1-paleta-desechable-0a9ea08b-088c-49c1-900a-84946978ad35',
+    'https://meki-public.s3.us-east-2.amazonaws.com/images/00017008-1309-4c4c-8568-8f8afbaebf09.jpeg',
   );
-  const [loading, setLoading] = useState(false);
-  const [loaded, setLoaded] = useState(false);
   const [progress, setProgress] = useState(0);
   const [open, setOpen] = useState(false);
 
@@ -408,11 +383,7 @@ export const UploaderWithModal = () => {
     try {
       //Compression
       const compressedFile = await imageCompression(file, options);
-      setLoaded(true);
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-    }
+    } catch (error) {}
   };
 
   const inputRef = React.createRef<HTMLInputElement | undefined>();
@@ -427,12 +398,12 @@ export const UploaderWithModal = () => {
   }, [openFileLoader, setOpen]);
 
   const handleCustomClick = React.useCallback(() => {
-    if (loaded) {
+    if (file) {
       setOpen(true);
     } else {
       inputRef.current?.click();
     }
-  }, [loaded, setOpen]);
+  }, [file, inputRef]);
 
   return (
     <>
@@ -451,11 +422,7 @@ export const UploaderWithModal = () => {
           compressImage={compressImage}
           file={file}
           setFile={setFile}
-          loading={loading}
-          setLoading={setLoading}
           progress={progress}
-          loaded={loaded}
-          setLoaded={setLoaded}
           ref={inputRef}
           handleCustomClick={handleCustomClick}
         />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { TextFieldProps } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
@@ -56,15 +56,13 @@ type ImageLoaderProps = {
   Placeholder?: React.ReactNode;
   PreviewFallback?: React.ReactNode;
   onError?: () => void;
-  compressImage?: (file: File) => void;
+  compressImage?: (file: File) => Promise<void>;
   file?: string;
   setFile?: (url: string) => void;
-  loading?: boolean;
-  setLoading?: (loading: boolean) => void;
   progress?: number;
-  loaded?: boolean;
-  setLoaded?: (loaded: boolean) => void;
   handleCustomClick?: () => void;
+  loading?: boolean;
+  onStatusChange?: (newStatus: string) => void;
 } & TextFieldProps;
 
 function ImageLoaderComponent(
@@ -73,22 +71,30 @@ function ImageLoaderComponent(
     maxFileSize = 14,
     Placeholder = null,
     onError = () => {},
-    compressImage = (file: File) => {},
+    compressImage = async (file: File) => {},
     file,
     setFile = () => {},
-    loading,
-    setLoading = () => {},
     progress,
-    loaded,
-    setLoaded = () => {},
     handleCustomClick,
     PreviewFallback,
+    loading,
+    onStatusChange,
   }: ImageLoaderProps,
   ref: any,
 ) {
   const classes = useStyles();
   const inputRef = React.useRef(ref);
 
+  const [status, setStatus] = useState<
+    'WAITING' | 'COMPRESSING' | 'LOADED' | 'ERROR'
+  >('WAITING');
+
+  useEffect(() => {
+    onStatusChange?.(status);
+  }, [status, onStatusChange]);
+  useEffect(() => {
+    if (file && status === 'WAITING') setStatus('LOADED');
+  }, [file, status]);
   React.useImperativeHandle(ref, () => ({
     click: () => {
       inputRef.current?.click();
@@ -96,64 +102,58 @@ function ImageLoaderComponent(
   }));
 
   const loadFile = React.useCallback(
-    (event: React.BaseSyntheticEvent) => {
+    async (event: React.BaseSyntheticEvent) => {
       const divisor = 1024 * 1024;
       const file = event.target.files[0];
+      if (!file) {
+        return;
+      }
       if (file && types.includes(file.type)) {
         const sizeIsPermitted = file.size / divisor <= maxFileSize;
         const isImage = file.type === 'image/jpeg' || file.type === 'image/png';
-
-        //Compression
-        if (isImage && !sizeIsPermitted) {
-          setLoading(true);
-          setLoaded(false);
-          setFile(URL.createObjectURL(file));
-          //Compression
-          compressImage(file);
-        } else if (sizeIsPermitted) {
-          setFile(URL.createObjectURL(file));
-          setLoaded(true);
-        } else {
+        if (!sizeIsPermitted && !isImage) {
+          setStatus('ERROR');
           onError();
+          return;
         }
+        setFile(URL.createObjectURL(file));
+        if (isImage && !sizeIsPermitted) {
+          setStatus('COMPRESSING');
+          await compressImage(file);
+        }
+        setStatus('LOADED');
       } else {
+        setStatus('ERROR');
         onError();
       }
     },
-    [
-      setFile,
-      setLoaded,
-      setLoading,
-      maxFileSize,
-      onError,
-      compressImage,
-      types,
-    ],
+    [setFile, maxFileSize, onError, compressImage, types],
   );
 
   const deleteFile = React.useCallback(() => {
     setFile('');
-    setLoaded(false);
+    setStatus('WAITING');
     const input = inputRef.current;
     if (input) input.value = '';
-  }, [setFile, setLoaded, inputRef]);
+  }, [setFile, setStatus, inputRef]);
 
   const onClick = React.useCallback(() => {
     inputRef.current?.click();
   }, []);
+  const loadingStatus = loading || status === 'COMPRESSING';
 
   return (
     <div className={clsx(classes.container, classes.totallyFilled)}>
       <Card className={clsx(classes.container, classes.totallyFilled)}>
         <CardActionArea
-          className={
-            loading
-              ? clsx(classes.cardactionarea, classes.loadingHeight)
-              : clsx(classes.cardactionarea, classes.notloadingHeight)
-          }
+          className={clsx(
+            classes.cardactionarea,
+            loadingStatus && classes.loadingHeight,
+            !loadingStatus && classes.notloadingHeight,
+          )}
           onClick={handleCustomClick ? handleCustomClick : onClick}
         >
-          {!file && !loading ? (
+          {!file && status === 'WAITING' ? (
             Placeholder
           ) : (
             <>
@@ -162,7 +162,10 @@ function ImageLoaderComponent(
                 type="image/png"
                 className={clsx(
                   classes.totallyFilled,
-                  { [classes.loading]: loading, [classes.container]: !loading },
+                  {
+                    [classes.loading]: loadingStatus,
+                    [classes.container]: !loadingStatus,
+                  },
                   classes.preview,
                 )}
                 title="Contenedor"
@@ -173,8 +176,8 @@ function ImageLoaderComponent(
                   className={clsx(
                     classes.totallyFilled,
                     {
-                      [classes.loading]: loading,
-                      [classes.container]: !loading,
+                      [classes.loading]: loadingStatus,
+                      [classes.container]: !loadingStatus,
                     },
                     classes.preview,
                   )}
@@ -187,7 +190,9 @@ function ImageLoaderComponent(
           )}
         </CardActionArea>
 
-        {loading && <LinearProgress variant="determinate" value={progress} />}
+        {loadingStatus && (
+          <LinearProgress variant="determinate" value={progress} />
+        )}
         <Divider />
         <input
           ref={inputRef}
@@ -199,12 +204,11 @@ function ImageLoaderComponent(
           disabled={loading}
         />
         <CardActions className={classes.actions}>
-          {loaded && (
+          {status === 'LOADED' && !loading && (
             <IconButton
               color="primary"
               aria-label="Eliminar elemento"
               component="span"
-              disabled={loading}
               onClick={deleteFile}
             >
               <DeleteIcon />
