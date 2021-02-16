@@ -94,6 +94,7 @@ function ImageLoaderComponent(
   }, [status, onStatusChange]);
   useEffect(() => {
     if (file && status === 'WAITING') setStatus('LOADED');
+    if (!file) setStatus('WAITING');
   }, [file, status]);
   React.useImperativeHandle(ref, () => ({
     click: () => {
