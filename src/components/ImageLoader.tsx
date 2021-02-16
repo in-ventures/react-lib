@@ -83,19 +83,24 @@ function ImageLoaderComponent(
   ref: any,
 ) {
   const classes = useStyles();
-  const inputRef = React.useRef(ref);
 
   const [status, setStatus] = useState<
     'WAITING' | 'COMPRESSING' | 'LOADED' | 'ERROR'
   >('WAITING');
+  const inputRef = React.useRef(ref);
 
-  useEffect(() => {
-    onStatusChange?.(status);
-  }, [status, onStatusChange]);
-  useEffect(() => {
-    if (file && status === 'WAITING') setStatus('LOADED');
-    if (!file) setStatus('WAITING');
-  }, [file, status]);
+  useEffect(
+    function handleStatusChange() {
+      onStatusChange?.(status);
+    },
+    [status, onStatusChange],
+  );
+  useEffect(
+    function handleFileChange() {
+      if (!file) setStatus('WAITING');
+    },
+    [file],
+  );
   React.useImperativeHandle(ref, () => ({
     click: () => {
       inputRef.current?.click();
@@ -205,7 +210,7 @@ function ImageLoaderComponent(
           disabled={loading}
         />
         <CardActions className={classes.actions}>
-          {status === 'LOADED' && !loading && (
+          {!loading && (status === 'LOADED' || (status === 'WAITING' && file)) && (
             <IconButton
               color="primary"
               aria-label="Eliminar elemento"
