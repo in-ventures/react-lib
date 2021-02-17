@@ -50,6 +50,10 @@ const useStyles = makeStyles({
 });
 
 export type LoadFileError = 'DOCUMENT_SIZE' | 'UNSUPPORTED_FILE';
+export const isLoadFileError = (error: string): error is LoadFileError => {
+  if (['DOCUMENT_SIZE', 'UNSUPPORTED_FILE'].includes(error)) return true;
+  return false;
+};
 
 //Type
 type ImageLoaderProps = {
