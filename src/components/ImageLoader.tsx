@@ -49,13 +49,15 @@ const useStyles = makeStyles({
   },
 });
 
+export type LoadFileError = 'DOCUMENT_SIZE' | 'UNSUPPORTED_FILE';
+
 //Type
 type ImageLoaderProps = {
   types?: string[];
   maxFileSize?: number;
   Placeholder?: React.ReactNode;
   PreviewFallback?: React.ReactNode;
-  onError?: () => void;
+  onError?: (code: LoadFileError) => void;
   compressImage?: (file: File) => Promise<void>;
   file?: string;
   setFile?: (url: string) => void;
@@ -119,7 +121,7 @@ function ImageLoaderComponent(
         const isImage = file.type === 'image/jpeg' || file.type === 'image/png';
         if (!sizeIsPermitted && !isImage) {
           setStatus('ERROR');
-          onError();
+          onError('DOCUMENT_SIZE');
           return;
         }
         setFile(URL.createObjectURL(file));
@@ -130,7 +132,7 @@ function ImageLoaderComponent(
         setStatus('LOADED');
       } else {
         setStatus('ERROR');
-        onError();
+        onError('UNSUPPORTED_FILE');
       }
     },
     [setFile, maxFileSize, onError, compressImage, types],
