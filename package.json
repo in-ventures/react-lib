@@ -50,7 +50,7 @@
     "postversion": "yarn changelog",
     "changelog": "auto-changelog -p && git add CHANGELOG.md && git commit -m \"docs: update changelog\"",
     "publish": "yarn build:lib && yarn publish:npm",
-    "prepublish:npm": "tar -czvf dist.tar.gz dist",
+    "prepublish:npm": "cp package.json dist/ && tar -czvf dist.tar.gz dist",
     "publish:npm": "npm publish dist.tar.gz",
     "postpublish:npm": "cp ./dist/package.json . && rimraf dist.tar.gz",
     "lint": "tsc --noEmit && eslint ./src/ --ext .js,.ts,.tsx",
