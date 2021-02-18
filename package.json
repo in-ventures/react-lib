@@ -97,7 +97,7 @@
     "@storybook/react": "^6.0.21",
     "@testing-library/react-hooks": "^3.7.0",
     "@types/is": "^0.0.21",
-    "@types/lodash": "^4.14.167",
+    "@types/lodash": "^4.14.168",
     "@typescript-eslint/eslint-plugin": "^4.15.1",
     "@typescript-eslint/parser": "^4.14.1",
     "@zeplin/cli": "^1.1.5",
