@@ -82,7 +82,7 @@
   "devDependencies": {
     "@babel/cli": "^7.12.10",
     "@babel/plugin-proposal-export-default-from": "^7.12.1",
-    "@babel/plugin-transform-typescript": "^7.12.1",
+    "@babel/plugin-transform-typescript": "^7.13.0",
     "@material-ui/system": "^4.11.3",
     "@storybook/addon-a11y": "^6.0.21",
     "@storybook/addon-actions": "^6.0.21",
