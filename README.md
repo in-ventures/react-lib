@@ -45,6 +45,33 @@ yarn test
 
 For components only create the story for storybook.
 
+## Using local package
+
+To use `@inventures/react-lib` in development, is recommended to use it as local package, to avoid waiting until publish new versions. For this, you need to link the react, react-dom and material-ui version of your project inside react-lib (to use the same packages instances), and then link react-lib in your project:
+
+```bash
+# Link project dependencies into react-lib
+cd <PROJECT_DIR>/node_modules
+cd react
+yarn link
+cd ../react-dom
+yarn link
+cd ../@material-ui/core
+yarn link
+
+cd <@inventures/react-lib dir>
+yarn link react react-dom @material-ui/core
+
+# Build react-lib and link it
+yarn build:lib
+cd dist
+yarn link
+
+# Link react-lib in your project
+cd <PROJECT_DIR>
+yarn link "@inventures/react-lib"
+```
+
 ## Publish to Github pages
 
 Run the following command
@@ -62,16 +89,7 @@ yarn build:lib
 yarn publish:npm
 ```
 
-## Publish component to Bit
 
-To add components to Bit, you must have installed [bit](https://github.com/teambit/bit) globally. Then , run the following commands
-
-```bash
-bit add src/components/<component-file> -i <componentId>
-bit build
-bit tag --all <version>
-bit export inventures.react-lib
-```
 
 Changing all tags with respective names.
 
