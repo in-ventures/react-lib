@@ -35,6 +35,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     paddingBottom: '0!important',
   },
   cover: {
+    minWidth: 88,
+    maxWidth: 88,
     width: 88,
     height: 88,
     backgroundSize: 'contain',
