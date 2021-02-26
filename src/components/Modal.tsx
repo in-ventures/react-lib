@@ -4,7 +4,7 @@
  * File Created: Wednesday, 23rd September 2020 4:10:47 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Tuesday, 9th February 2021 4:14:29 pm
+ * Last Modified: Thursday, 25th February 2021 6:20:06 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -63,13 +63,14 @@ export function AlertModal(props: ModalProps) {
     disableBackdropClick,
     disableEscapeKeyDown,
     onBackdropClick,
+    ...otherProps
   } = props;
   const classes = useStyles();
 
   return (
     <div>
       <Dialog
-        {...props}
+        {...otherProps}
         open={open}
         onClose={() => {
           onClose?.();
