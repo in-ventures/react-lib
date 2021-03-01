@@ -80,7 +80,7 @@
     ]
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.10",
+    "@babel/cli": "^7.13.0",
     "@babel/plugin-proposal-export-default-from": "^7.12.13",
     "@babel/plugin-transform-typescript": "^7.13.0",
     "@material-ui/system": "^4.11.3",
