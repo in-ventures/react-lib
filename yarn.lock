@@ -3911,10 +3911,10 @@
     ts-dedent "^1.1.0"
     update-notifier "^4.1.0"
 
-"@zeplin/cli@^1.1.5":
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/@zeplin/cli/-/cli-1.1.5.tgz#dd631f9e8eba206082bdb0907091fa9c309ca11e"
-  integrity sha512-uMMTvGsU7NPuLYMvjRt0YY1+32vUQkr/rORJFsJA4vZo7p5feCmwVi4zBgdERapp4UVt5jGX+Ccb3/9jW4iL6Q==
+"@zeplin/cli@^1.1.6":
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/@zeplin/cli/-/cli-1.1.6.tgz#e45992bda2d67e127f5a3ff3b6f4351aff38a87b"
+  integrity sha512-4eoK46wNpQ7bzpUalEbqSaKn+7BGSspKekmcP732hWz1R+5Df3KICrVMm5Vs/J4Xp0qsDnJ5r33EJONuXeA6/w==
   dependencies:
     "@hapi/joi" "^17.1.1"
     axios "^0.21.1"
