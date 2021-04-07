@@ -4,8 +4,8 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Monday, 1st February 2021 10:42:33 am
- * Modified By: Vicente Melin (vicente@inventures.cl)
+ * Last Modified: Wednesday, 7th April 2021 1:54:09 pm
+ * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -20,6 +20,8 @@ import { useSearchBar } from '../hooks/useSearchBar.hooks';
 import { number, text, boolean } from '@storybook/addon-knobs';
 import YoutubeSearchedForIcon from '@material-ui/icons/YoutubeSearchedFor';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { InputAdornment } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
 
 export default {
   title: 'SearchBar',
@@ -304,12 +306,56 @@ export const SearchBarIconsModified = () => {
   );
 };
 
+export const SearchBarInputPropsModified = () => {
+  const classes = useStyles({ height: 40 });
+  const [searchValue, setSearchValue] = useState<string>('');
+
+  const handleWrite = useCallback(
+    (e) => {
+      setSearchValue(String(e.target.value));
+    },
+    [setSearchValue],
+  );
+
+  return (
+    <div className={classes.root}>
+      <SearchBar
+        className={classes.searchBar}
+        value={searchValue}
+        showInput
+        autoFocus={false}
+        onExpandedIconClick={() => {}}
+        onCollapsedIconClick={() => {}}
+        ExpandedIcon={DeleteIcon}
+        onChange={handleWrite}
+        size="small"
+        iconColor="#FFFFFF"
+        barColor="#FFFFFF26"
+        InputProps={{
+          className: classes.inputFieldInnerInput,
+          startAdornment: (
+            <InputAdornment position="start">
+              <SearchIcon fontSize="small" />
+            </InputAdornment>
+          ),
+          endAdornment: <></>,
+          placeholder: 'Buscar',
+        }}
+      />
+    </div>
+  );
+};
+
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
       backgroundColor: '#6384b8',
       height: '100vh',
       padding: '20px',
+    },
+    inputFieldInnerInput: {
+      color: 'white',
+      height: '100%',
     },
     searchBar: (props: { height: number }) => ({
       height: props.height,
