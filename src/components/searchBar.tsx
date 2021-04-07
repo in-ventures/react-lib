@@ -4,8 +4,8 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Monday, 1st February 2021 10:51:59 am
- * Modified By: Vicente Melin (vicente@inventures.cl)
+ * Last Modified: Wednesday, 7th April 2021 1:10:25 pm
+ * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -158,6 +158,7 @@ export const SearchBar = ({
                   </IconButton>
                 </InputAdornment>
               ),
+              ...(props.InputProps ?? {}),
             }}
           ></TextField>
         </Collapse>
