@@ -1,6 +1,6 @@
 {
   "name": "@inventures/react-lib",
-  "version": "0.2.38",
+  "version": "0.2.40",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "private": false,
@@ -43,7 +43,7 @@
     "react-dom": "^17.0.2"
   },
   "scripts": {
-    "postinstall": "install-peers",
+    "prepare": "install-peers",
     "test": "react-scripts test",
     "storybook": "start-storybook -p 9009",
     "build-storybook": "npx build-storybook",
@@ -93,7 +93,7 @@
     "@storybook/addon-links": "^6.2.5",
     "@storybook/addon-storyshots": "^6.2.5",
     "@storybook/addon-storysource": "^6.2.5",
-    "@storybook/addon-viewport": "^6.2.5",
+    "@storybook/addon-viewport": "^6.2.8",
     "@storybook/addons": "^6.2.5",
     "@storybook/preset-create-react-app": "^3.1.5",
     "@storybook/react": "^6.2.5",
