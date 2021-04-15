@@ -4,8 +4,8 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Friday, 29th January 2021 10:05:26 am
- * Modified By: Vicente Melin (vicente@inventures.cl)
+ * Last Modified: Wednesday, 14th April 2021 9:22:52 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -17,6 +17,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardContent, Typography } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
+import clsx from 'clsx';
 
 const useStyles = makeStyles({
   root: {
@@ -39,6 +40,9 @@ const useStyles = makeStyles({
   },
   badge: {
     borderRadius: '13px',
+  },
+  marginBottom: {
+    marginBottom: 6,
   },
 });
 
@@ -76,11 +80,10 @@ export function ProductCardSkeleton() {
           </Typography>
 
           <Typography variant="body2">
-            <Skeleton variant="text" className={classes.center} />
-          </Typography>
-
-          <Typography variant="h4" color="primary" className={classes.price}>
-            <Skeleton variant="text" width={'50%'} className={classes.center} />
+            <Skeleton
+              variant="text"
+              className={clsx(classes.center, classes.marginBottom)}
+            />
           </Typography>
         </CardContent>
       </Card>
