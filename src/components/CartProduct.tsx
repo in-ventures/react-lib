@@ -15,6 +15,7 @@ import Icon from '@material-ui/core/Icon';
 
 import { useToast } from '../hooks/toast.hook';
 import { CurrencyFormatter } from '../formatters';
+import clsx from 'clsx';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -68,7 +69,18 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 //Type
+type PropClasses = {
+  title1?: string;
+  title2?: string;
+  title3?: string;
+  title4?: string;
+  currUnitPrice?: string;
+  currTotalPrice?: string;
+};
+
+//Type
 type CartProductProps = {
+  propClasses?: PropClasses;
   urlImage?: string;
   title1?: string;
   title2?: string;
@@ -103,6 +115,7 @@ export default function CartProduct({
   onSubClick = () => {},
   onTrashClick = () => {},
   onDetailsClick = () => {},
+  propClasses,
 }: CartProductProps) {
   const classes = useStyles();
 
@@ -129,16 +142,28 @@ export default function CartProduct({
           <div className={classes.details}>
             <CardContent className={classes.content}>
               <Typography component="div" variant="subtitle1" gutterBottom>
-                <Box color="text.primary" alignItems="flex-start">
+                <Box
+                  className={clsx(propClasses?.title1)}
+                  color="text.primary"
+                  alignItems="flex-start"
+                >
                   {title1}
                 </Box>
               </Typography>
 
               <Typography component="div" variant="body2" gutterBottom>
-                <Box color="text.secondary" alignItems="flex-start">
+                <Box
+                  className={clsx(propClasses?.title2)}
+                  color="text.secondary"
+                  alignItems="flex-start"
+                >
                   {title2}
                 </Box>
-                <Box color="text.secondary" alignItems="flex-start">
+                <Box
+                  className={clsx(propClasses?.title3)}
+                  color="text.secondary"
+                  alignItems="flex-start"
+                >
                   {title3}
                 </Box>
                 <Link
@@ -151,13 +176,21 @@ export default function CartProduct({
               </Typography>
 
               <Typography component="div" variant="body2">
-                <Box color="text.primary" alignItems="flex-start">
+                <Box
+                  className={clsx(propClasses?.currUnitPrice)}
+                  color="text.primary"
+                  alignItems="flex-start"
+                >
                   Valor unitario: {currUnitPrice}
                 </Box>
               </Typography>
 
               <Typography component="div" variant="body1" color="primary">
-                <Box alignItems="flex-start" color="inherit">
+                <Box
+                  className={clsx(propClasses?.currTotalPrice)}
+                  alignItems="flex-start"
+                  color="inherit"
+                >
                   Total: {currTotalPrice}
                 </Box>
               </Typography>
