@@ -56,7 +56,7 @@ export const EditableCartProduct = () => {
 
   return (
     <CartProduct
-      propClasses={{ title1: classes.title1 }}
+      classes={{ title1: classes.title1 }}
       urlImage={urlImage}
       title1={title1}
       title2={title2}

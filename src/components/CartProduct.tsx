@@ -80,7 +80,7 @@ type PropClasses = {
 
 //Type
 type CartProductProps = {
-  propClasses?: PropClasses;
+  classes?: PropClasses;
   urlImage?: string;
   title1?: string;
   title2?: string;
@@ -115,7 +115,7 @@ export default function CartProduct({
   onSubClick = () => {},
   onTrashClick = () => {},
   onDetailsClick = () => {},
-  propClasses,
+  classes: propClasses,
 }: CartProductProps) {
   const classes = useStyles();
 
