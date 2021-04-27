@@ -5,12 +5,15 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import Box from '@material-ui/core/Box';
+import { createStyles, makeStyles } from '@material-ui/core';
 
 export default {
   title: 'Cart',
 };
 
 export const EditableCartProduct = () => {
+  const classes = useStyles();
+
   const urlImage = text(
     'Image url',
     'https://www.laboratoriochile.cl/wp-content//uploads/2015/11/Clonazepam_05MG_30C_BE_HD.jpg',
@@ -53,6 +56,7 @@ export const EditableCartProduct = () => {
 
   return (
     <CartProduct
+      classes={{ title1: classes.title1 }}
       urlImage={urlImage}
       title1={title1}
       title2={title2}
@@ -87,3 +91,11 @@ export const EditableCartProduct = () => {
     ></CartProduct>
   );
 };
+
+const useStyles = makeStyles(() =>
+  createStyles({
+    title1: {
+      fontWeight: 500,
+    },
+  }),
+);
