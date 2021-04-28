@@ -4,8 +4,8 @@
  * File Created: Tuesday, 4th August 2020 5:47:50 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Monday, 26th April 2021 5:59:38 pm
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Wednesday, 28th April 2021 5:08:16 pm
+ * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -23,6 +23,8 @@ import {
 import InsertDriveFileOutlinedIcon from '@material-ui/icons/InsertDriveFileOutlined';
 import { Skeleton } from '@material-ui/lab';
 import { text, number } from '@storybook/addon-knobs';
+import { createStyles, makeStyles } from '@material-ui/core';
+import { yellow } from '@material-ui/core/colors';
 
 export default {
   title: 'Card',
@@ -400,7 +402,7 @@ export const ProductDetailsCard = () => {
         subtitle={text2}
         description={text3}
         price={15813}
-        //tagText={'Receta simple'}
+        // tagText={'Receta simple'}
         tagIcon={<InsertDriveFileOutlinedIcon />}
         onClickImage={() =>
           console.log('You clicked the product details image!')
@@ -411,6 +413,73 @@ export const ProductDetailsCard = () => {
   );
 };
 
+export const ProductDetailsCardExtraTags = () => {
+  const classes = useStyles();
+  const image = text(
+    'ImageUrl',
+    'https://compra.ligaepilepsia.cl/wp-content/uploads/2020/01/00234-300x300.jpg',
+  );
+  const text1 = text('Primer texto', 'Sertac');
+  const text2 = text('Segundo texto', 'Sertralina • 100mg');
+  const text3 = text('Tercero texto', '30 comprimidos • Andrómaco');
+  const tags = [
+    {
+      text: 'Receta Cheque',
+      icon: <InsertDriveFileOutlinedIcon />,
+      class: { style: classes.prescriptionTag },
+    },
+    {
+      text: 'Bioequivalentes',
+      icon: <InsertDriveFileOutlinedIcon />,
+      class: { style: classes.bioequivalentTag },
+    },
+    {
+      text: 'Another',
+      icon: <InsertDriveFileOutlinedIcon />,
+      class: { style: classes.bioequivalentTag },
+    },
+  ];
+
+  return (
+    <>
+      <ProductDetails
+        imageUrl={image}
+        title={text1}
+        subtitle={text2}
+        description={text3}
+        price={15813}
+        tagText={'Receta simple'}
+        tagIcon={<InsertDriveFileOutlinedIcon />}
+        extraTags={tags}
+        onClickImage={() =>
+          console.log('You clicked the product details image!')
+        }
+        pricePerUnit="$527 /comprimido"
+        classes={{ chip: classes.chip, tagsDiv: classes.tagsDiv }}
+      />
+    </>
+  );
+};
+
 Base.story = {
   name: 'Base element',
 };
+
+const useStyles = makeStyles(() =>
+  createStyles({
+    bioequivalentTag: {
+      backgroundColor: '#ffe512',
+      color: 'red',
+      height: 21,
+    },
+    prescriptionTag: {
+      height: 21,
+    },
+    chip: {
+      height: 21,
+    },
+    tagsDiv: {
+      marginTop: 0,
+    },
+  }),
+);

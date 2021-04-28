@@ -4,8 +4,8 @@
  * File Created: Friday, 11th September 2020 10:18:53 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Tuesday, 9th February 2021 4:09:44 pm
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Wednesday, 28th April 2021 5:38:28 pm
+ * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -25,6 +25,21 @@ import {
 import { CurrencyFormatter } from '../formatters';
 import clsx from 'clsx';
 
+type TagClassStyle = {
+  style: string;
+};
+
+type Tag = {
+  icon?: React.ReactElement;
+  text: string;
+  class?: TagClassStyle;
+};
+
+type ClassesProps = {
+  chip?: string;
+  tagsDiv?: string;
+};
+
 type ProductDetailsProps = {
   imageUrl?: string;
   title: string;
@@ -35,6 +50,8 @@ type ProductDetailsProps = {
   pricePerUnit?: string;
   onClickImage?: () => void;
   price: number;
+  extraTags?: Tag[];
+  classes?: ClassesProps;
 };
 
 const useStyles = makeStyles({
@@ -57,14 +74,20 @@ const useStyles = makeStyles({
     cursor: 'pointer',
   },
   tag: {
-    marginTop: '-14px',
     maxWidth: '100%',
+    marginBottom: 3,
+    marginRight: 5,
   },
   disabledTag: {
     backgroundColor: '#FFFFFF',
   },
   price: {
     marginTop: '8px',
+  },
+  tagsDiv: {
+    marginTop: -14,
+    justifyContent: 'center',
+    alignItems: 'baseline',
   },
 });
 
@@ -87,6 +110,8 @@ export function ProductDetails(props: ProductDetailsProps) {
     description,
     onClickImage,
     pricePerUnit,
+    extraTags,
+    classes: propClasses,
   } = props;
 
   const currFormat = new CurrencyFormatter();
@@ -101,15 +126,31 @@ export function ProductDetails(props: ProductDetailsProps) {
         component="img"
         onClick={onClickImage}
       />
-      {tagText && (
-        <Chip
-          color="primary"
-          size="small"
-          icon={tagIcon}
-          label={tagText}
-          className={classes.tag}
-        />
-      )}
+
+      <div className={clsx(classes.tagsDiv, propClasses?.tagsDiv)}>
+        {tagText && (
+          <Chip
+            color="primary"
+            size="small"
+            icon={tagIcon}
+            label={tagText}
+            className={clsx(classes.tag, propClasses?.chip)}
+          />
+        )}
+
+        {extraTags?.map((tag: Tag, i: number) => {
+          return (
+            <Chip
+              key={`extraTag-${i}`}
+              color="primary"
+              size="small"
+              icon={tag.icon}
+              label={tag.text}
+              className={clsx(classes.tag, tag.class?.style)}
+            />
+          );
+        })}
+      </div>
 
       <CardContent className={classes.content}>
         <Typography
