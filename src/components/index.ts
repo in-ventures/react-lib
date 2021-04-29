@@ -4,7 +4,7 @@
  * File Created: Friday, 31st July 2020 3:20:09 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Friday, 25th September 2020 4:10:23 pm
+ * Last Modified: Thursday, 29th April 2021 10:23:22 am
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -22,3 +22,4 @@ export * from './ProductList';
 export * from './ProductListHeader';
 export * from './Modal';
 export * from './Calendar';
+export * from './Slider';
