@@ -4,8 +4,8 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 29th April 2021 12:12:53 pm
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Thursday, 29th April 2021 3:54:57 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -126,7 +126,6 @@ export function ProductCard(props: ProductPropTypes) {
     badgeTextColor: badgeTextColor ? badgeTextColor : '#FFFFFF',
   });
 
-  console.log(leftBadge ? 'WUUUUUU' : ':( sad noises');
   return (
     <>
       <Card className={classes.root}>
