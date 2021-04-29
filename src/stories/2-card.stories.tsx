@@ -4,8 +4,8 @@
  * File Created: Tuesday, 4th August 2020 5:47:50 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Wednesday, 28th April 2021 5:08:16 pm
- * Modified By: Luis Aparicio (luis@inventures.cl)
+ * Last Modified: Thursday, 29th April 2021 12:19:57 pm
+ * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -21,10 +21,11 @@ import {
   ProductDetails,
 } from '../components';
 import InsertDriveFileOutlinedIcon from '@material-ui/icons/InsertDriveFileOutlined';
+import LocalPharmacyRoundedIcon from '@material-ui/icons/LocalPharmacyRounded';
+import WarningRoundedIcon from '@material-ui/icons/WarningRounded';
 import { Skeleton } from '@material-ui/lab';
 import { text, number } from '@storybook/addon-knobs';
-import { createStyles, makeStyles } from '@material-ui/core';
-import { yellow } from '@material-ui/core/colors';
+import { createStyles, makeStyles, Typography } from '@material-ui/core';
 
 export default {
   title: 'Card',
@@ -173,6 +174,63 @@ export const ProductCarouselNoWrap = () => {
   );
 };
 
+const usePharmaBadgeStyles = makeStyles({
+  pharmaBadge: {
+    backgroundColor: '#2196f3',
+    borderRadius: '20px',
+    height: '20px',
+    width: '60px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    color: '#FFFFFF',
+    padding: '2px',
+  },
+  icon: {
+    height: '16px',
+    width: '16px',
+  },
+  unavailable: {
+    backgroundColor: 'red',
+    borderRadius: '20px',
+    height: '20px',
+    width: '20px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: '#FFFFFF',
+    padding: '2px',
+  },
+  warning: {
+    backgroundColor: '#ff9800',
+    borderRadius: '20px',
+    height: '20px',
+    width: '20px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: '#FFFFFF',
+    padding: '2px',
+  },
+});
+function PharmaBadge() {
+  const classes = usePharmaBadgeStyles();
+  return (
+    <div className={classes.pharmaBadge}>
+      <LocalPharmacyRoundedIcon className={classes.icon} />
+      <Typography>Liga</Typography>
+    </div>
+  );
+}
+function UnavailableBadge({ warn }: { warn?: boolean }) {
+  const classes = usePharmaBadgeStyles();
+  return (
+    <div className={warn ? classes.warning : classes.unavailable}>
+      <WarningRoundedIcon className={classes.icon} />
+    </div>
+  );
+}
+
 export const ProductCarousel = () => {
   return (
     <>
@@ -182,7 +240,6 @@ export const ProductCarousel = () => {
           window.alert('Want to know more about the carousel products?')
         }
       />
-
       <ProductList
         loading={false}
         wrap
@@ -190,7 +247,7 @@ export const ProductCarousel = () => {
           {
             imageUrl:
               'https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000',
-            title: 'Glafornillafornillafornillafornillafornillafornil',
+            title: 'Glafornil',
             subtitle: 'Metformina Clorhidrato Clorhidrato',
             price: 15990,
             tagText: 'Receta retenida',
@@ -198,6 +255,7 @@ export const ProductCarousel = () => {
             badgeContent: 5,
             badgeColor: 'red',
             badgeTextColor: '#FFFFFF',
+            leftBadge: <PharmaBadge />,
             onClickCard: () => console.log('You clicked B1!'),
           },
           {
@@ -211,6 +269,7 @@ export const ProductCarousel = () => {
             badgeContent: 5,
             badgeColor: 'red',
             badgeTextColor: '#FFFFFF',
+            leftBadge: <UnavailableBadge />,
             onClickCard: () => console.log('You clicked B2!'),
           },
           {
@@ -221,6 +280,7 @@ export const ProductCarousel = () => {
             price: 15990,
             tagText: 'Receta retenida',
             tagIcon: <InsertDriveFileOutlinedIcon />,
+            leftBadge: <UnavailableBadge warn />,
             onClickCard: () => console.log('You clicked B3!'),
           },
 

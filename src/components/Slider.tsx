@@ -4,7 +4,7 @@
  * File Created: Wednesday, 28th April 2021 7:00:44 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 29th April 2021 11:27:07 am
+ * Last Modified: Thursday, 29th April 2021 12:26:57 pm
  * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2021 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -20,6 +20,7 @@ import GridListTile from '@material-ui/core/GridListTile';
 type SliderProps = {
   items: React.ReactNode[];
   cellHeight?: number;
+  cols?: number;
 };
 
 const useStyles = makeStyles(() =>
@@ -48,7 +49,7 @@ export function Slider(props: SliderProps) {
    * @returns React Component
    *
    */
-  const { items, cellHeight } = props;
+  const { items, cellHeight, cols } = props;
   const classes = useStyles();
 
   if (!items) return null;
@@ -56,7 +57,7 @@ export function Slider(props: SliderProps) {
     <div className={classes.root}>
       <GridList
         className={classes.gridList}
-        cols={1.5}
+        cols={cols ?? 1.5}
         cellHeight={cellHeight}
         classes={{ root: classes.customTiles }}
         spacing={8}

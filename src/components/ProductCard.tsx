@@ -4,8 +4,8 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 26th November 2020 9:51:07 am
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Thursday, 29th April 2021 12:12:53 pm
+ * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -38,6 +38,7 @@ export type ProductPropTypes = {
   badgeContent?: number;
   badgeColor?: string;
   badgeTextColor?: string;
+  leftBadge?: React.ReactElement;
   price: number;
   onClickCard: () => void;
 };
@@ -85,6 +86,12 @@ const useStyles = makeStyles({
     color: (props: BadgeStyleProps) => props.badgeTextColor,
     padding: '0px 4px',
   },
+  leftBadge: {
+    position: 'absolute',
+    left: 5,
+    top: 5,
+    zIndex: 999,
+  },
 });
 
 export function ProductCard(props: ProductPropTypes) {
@@ -107,6 +114,7 @@ export function ProductCard(props: ProductPropTypes) {
     details,
     badgeContent,
     badgeColor,
+    leftBadge,
     badgeTextColor,
     onClickCard,
   } = props;
@@ -118,10 +126,12 @@ export function ProductCard(props: ProductPropTypes) {
     badgeTextColor: badgeTextColor ? badgeTextColor : '#FFFFFF',
   });
 
+  console.log(leftBadge ? 'WUUUUUU' : ':( sad noises');
   return (
     <>
       <Card className={classes.root}>
         <CardActionArea onClick={onClickCard}>
+          {leftBadge && <div className={classes.leftBadge}>{leftBadge}</div>}
           {badgeContent ? (
             <Badge
               badgeContent={badgeContent}
