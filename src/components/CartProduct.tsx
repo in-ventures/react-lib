@@ -119,8 +119,6 @@ export default function CartProduct({
 }: CartProductProps) {
   const classes = useStyles();
 
-  const toast = useToast();
-
   const handleDefaultClick = useCallback(
     (e) => {
       e.stopPropagation();
@@ -130,8 +128,8 @@ export default function CartProduct({
   );
 
   const currFormat = new CurrencyFormatter();
-  const currUnitPrice = currFormat.format(unitPrice);
-  const currTotalPrice = currFormat.format(totalPrice);
+  const currUnitPrice = unitPrice ? currFormat.format(unitPrice) : null;
+  const currTotalPrice = totalPrice ? currFormat.format(totalPrice) : null;
 
   return (
     <Card square elevation={0}>
@@ -181,7 +179,7 @@ export default function CartProduct({
                   color="text.primary"
                   alignItems="flex-start"
                 >
-                  Valor unitario: {currUnitPrice}
+                  {currUnitPrice && `Valor unitario: ${currUnitPrice}`}
                 </Box>
               </Typography>
 
@@ -191,7 +189,7 @@ export default function CartProduct({
                   alignItems="flex-start"
                   color="inherit"
                 >
-                  Total: {currTotalPrice}
+                  {currTotalPrice && `Total: ${currTotalPrice}`}
                 </Box>
               </Typography>
             </CardContent>
