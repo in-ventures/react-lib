@@ -4,8 +4,8 @@
  * File Created: Friday, 11th September 2020 10:18:24 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 29th April 2021 12:24:42 pm
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Saturday, 1st May 2021 12:53:42 am
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -110,13 +110,12 @@ type GridBreakpoints = {
     | undefined;
 };
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     root: {
       display: 'flex',
       flexWrap: 'wrap',
       justifyContent: 'space-around',
-      backgroundColor: theme.palette.background.paper,
     },
     gridList: {
       flexWrap: 'nowrap',
