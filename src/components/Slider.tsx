@@ -4,8 +4,8 @@
  * File Created: Wednesday, 28th April 2021 7:00:44 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 29th April 2021 12:26:57 pm
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Saturday, 1st May 2021 12:49:05 am
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2021 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -19,7 +19,7 @@ import GridListTile from '@material-ui/core/GridListTile';
 
 type SliderProps = {
   items: React.ReactNode[];
-  cellHeight?: number;
+  cellHeight?: number | 'auto' | undefined;
   cols?: number;
 };
 
