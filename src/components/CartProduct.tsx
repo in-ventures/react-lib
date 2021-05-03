@@ -76,6 +76,7 @@ type PropClasses = {
   title4?: string;
   currUnitPrice?: string;
   currTotalPrice?: string;
+  quantity?: string;
 };
 
 //Type
@@ -89,7 +90,9 @@ type CartProductProps = {
   quantity?: number;
   unitPrice: number;
   totalPrice: number;
-  disabled?: boolean;
+  disableEdit?: boolean;
+  notEditable?: boolean;
+  disableCardClick?: boolean;
   ExtraTag?: React.ReactNode;
   onDefaultClick?: () => void;
   onAddClick?: () => void;
@@ -110,6 +113,8 @@ export default function CartProduct({
   totalPrice,
   ExtraTag = null,
   disabled,
+  notEditable,
+  disableCardClick,
   onDefaultClick = () => {},
   onAddClick = () => {},
   onSubClick = () => {},
@@ -133,7 +138,7 @@ export default function CartProduct({
 
   return (
     <Card square elevation={0}>
-      <CardActionArea onClick={onDetailsClick}>
+      <CardActionArea disabled={disableCardClick} onClick={onDetailsClick}>
         <div className={classes.root}>
           <CardMedia className={classes.cover} image={urlImage} title="" />
 
@@ -183,6 +188,16 @@ export default function CartProduct({
                 </Box>
               </Typography>
 
+              <Typography component="div" variant="body2">
+                <Box
+                  className={clsx(propClasses?.quantity)}
+                  color="text.primary"
+                  alignItems="flex-start"
+                >
+                  {notEditable && `Cantidad: ${quantity}`}
+                </Box>
+              </Typography>
+
               <Typography component="div" variant="body1" color="primary">
                 <Box
                   className={clsx(propClasses?.currTotalPrice)}
@@ -196,60 +211,61 @@ export default function CartProduct({
           </div>
         </div>
       </CardActionArea>
+      {!notEditable && (
+        <CardActions className={classes.actions}>
+          <Box>{ExtraTag}</Box>
 
-      <CardActions className={classes.actions}>
-        <Box>{ExtraTag}</Box>
-
-        <Box className={classes.rightbuttons}>
-          <IconButton
-            aria-label="sub"
-            onClick={onSubClick}
-            disabled={disabled}
-            className={classes.subbutton}
-          >
-            <Icon
-              className={disabled ? '' : classes.activeIcon}
-              color={disabled ? 'disabled' : 'inherit'}
-              fontSize="small"
+          <Box className={classes.rightbuttons}>
+            <IconButton
+              aria-label="sub"
+              onClick={onSubClick}
+              disabled={disabled}
+              className={classes.subbutton}
             >
-              remove
-            </Icon>
-          </IconButton>
+              <Icon
+                className={disabled ? '' : classes.activeIcon}
+                color={disabled ? 'disabled' : 'inherit'}
+                fontSize="small"
+              >
+                remove
+              </Icon>
+            </IconButton>
 
-          <Typography component="div" variant="subtitle1">
-            <Box color="text.primary">{quantity}</Box>
-          </Typography>
+            <Typography component="div" variant="subtitle1">
+              <Box color="text.primary">{quantity}</Box>
+            </Typography>
 
-          <IconButton
-            aria-label="add"
-            onClick={onAddClick}
-            disabled={disabled}
-            className={classes.addbutton}
-          >
-            <Icon
-              className={disabled ? '' : classes.activeIcon}
-              color={disabled ? 'disabled' : 'inherit'}
-              fontSize="small"
+            <IconButton
+              aria-label="add"
+              onClick={onAddClick}
+              disabled={disabled}
+              className={classes.addbutton}
             >
-              add
-            </Icon>
-          </IconButton>
+              <Icon
+                className={disabled ? '' : classes.activeIcon}
+                color={disabled ? 'disabled' : 'inherit'}
+                fontSize="small"
+              >
+                add
+              </Icon>
+            </IconButton>
 
-          <IconButton
-            className={classes.trashicon}
-            aria-label="delete"
-            onClick={onTrashClick}
-            disabled={disabled}
-            size="small"
-          >
-            <DeleteIcon
-              fontSize="small"
-              className={disabled ? '' : classes.activeIcon}
-              color={disabled ? 'disabled' : 'inherit'}
-            />
-          </IconButton>
-        </Box>
-      </CardActions>
+            <IconButton
+              className={classes.trashicon}
+              aria-label="delete"
+              onClick={onTrashClick}
+              disabled={disabled}
+              size="small"
+            >
+              <DeleteIcon
+                fontSize="small"
+                className={disabled ? '' : classes.activeIcon}
+                color={disabled ? 'disabled' : 'inherit'}
+              />
+            </IconButton>
+          </Box>
+        </CardActions>
+      )}
     </Card>
   );
 }
