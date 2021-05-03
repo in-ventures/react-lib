@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Monday, 3rd May 2021 1:27:43 pm
+ * Last Modified: Monday, 3rd May 2021 1:34:35 pm
  * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -148,7 +148,7 @@ export function ProductCard(props: ProductPropTypes) {
       <Card className={clsx(classes.root, propClasses?.root)}>
         <CardActionArea
           onClick={onClickCard}
-          className={propClasses?.cardActionArea}
+          className={clsx(propClasses?.cardActionArea)}
         >
           {leftBadge && (
             <div className={clsx(classes.leftBadge, propClasses?.leftBadgeDiv)}>
@@ -203,7 +203,7 @@ export function ProductCard(props: ProductPropTypes) {
             </Typography>
             {subtitle && (
               <Typography
-                className={propClasses?.subtitle}
+                className={clsx(propClasses?.subtitle)}
                 variant="body2"
                 color="textSecondary"
                 noWrap
@@ -213,7 +213,7 @@ export function ProductCard(props: ProductPropTypes) {
             )}
             {description && (
               <Typography
-                className={propClasses?.description}
+                className={clsx(propClasses?.description)}
                 variant="body2"
                 color="textPrimary"
                 noWrap
@@ -223,7 +223,7 @@ export function ProductCard(props: ProductPropTypes) {
             )}
             {details && (
               <Typography
-                className={propClasses?.details}
+                className={clsx(propClasses?.details)}
                 variant="body2"
                 color="textSecondary"
                 noWrap
