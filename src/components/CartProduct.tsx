@@ -90,7 +90,7 @@ type CartProductProps = {
   quantity?: number;
   unitPrice: number;
   totalPrice: number;
-  disableEdit?: boolean;
+  disabled?: boolean;
   notEditable?: boolean;
   disableCardClick?: boolean;
   ExtraTag?: React.ReactNode;
