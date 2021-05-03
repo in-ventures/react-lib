@@ -4,8 +4,8 @@
  * File Created: Tuesday, 4th August 2020 5:47:50 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Thursday, 29th April 2021 12:19:57 pm
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Monday, 3rd May 2021 1:28:39 pm
+ * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -232,6 +232,7 @@ function UnavailableBadge({ warn }: { warn?: boolean }) {
 }
 
 export const ProductCarousel = () => {
+  const classes = useStyles();
   return (
     <>
       <ProductListHeader
@@ -250,13 +251,19 @@ export const ProductCarousel = () => {
             title: 'Glafornil',
             subtitle: 'Metformina Clorhidrato Clorhidrato',
             price: 15990,
-            tagText: 'Receta retenida',
-            tagIcon: <InsertDriveFileOutlinedIcon />,
+            // tagText: 'Receta retenida',
+            // tagIcon: <InsertDriveFileOutlinedIcon />,
             badgeContent: 5,
             badgeColor: 'red',
             badgeTextColor: '#FFFFFF',
             leftBadge: <PharmaBadge />,
             onClickCard: () => console.log('You clicked B1!'),
+            classes: {
+              badge: classes.badge,
+              tag: classes.tag,
+              disabledTag: classes.disabledTag,
+              subtitle: classes.subtitle,
+            },
           },
           {
             imageUrl:
@@ -540,6 +547,18 @@ const useStyles = makeStyles(() =>
     },
     tagsDiv: {
       marginTop: 0,
+    },
+    badge: {
+      backgroundColor: 'green',
+    },
+    tag: {
+      backgroundColor: 'pink',
+    },
+    disabledTag: {
+      backgroundColor: 'yellow',
+    },
+    subtitle: {
+      color: 'red',
     },
   }),
 );

@@ -4,8 +4,8 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 29th April 2021 3:54:57 pm
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Monday, 3rd May 2021 1:34:35 pm
+ * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -27,6 +27,22 @@ import {
 import { CurrencyFormatter } from '../formatters';
 import clsx from 'clsx';
 
+type ClassesPropType = {
+  badge?: string;
+  leftBadgeDiv?: string;
+  title?: string;
+  media?: string;
+  tag?: string;
+  disabledTag?: string;
+  price?: string;
+  cardActionArea?: string;
+  content?: string;
+  root?: string;
+  subtitle?: string;
+  description?: string;
+  details?: string;
+};
+
 export type ProductPropTypes = {
   imageUrl?: string;
   title: string;
@@ -41,6 +57,7 @@ export type ProductPropTypes = {
   leftBadge?: React.ReactElement;
   price: number;
   onClickCard: () => void;
+  classes?: ClassesPropType;
 };
 
 type BadgeStyleProps = {
@@ -90,7 +107,6 @@ const useStyles = makeStyles({
     position: 'absolute',
     left: 5,
     top: 5,
-    zIndex: 999,
   },
 });
 
@@ -117,6 +133,7 @@ export function ProductCard(props: ProductPropTypes) {
     leftBadge,
     badgeTextColor,
     onClickCard,
+    classes: propClasses,
   } = props;
 
   const currFormat = new CurrencyFormatter();
@@ -128,26 +145,33 @@ export function ProductCard(props: ProductPropTypes) {
 
   return (
     <>
-      <Card className={classes.root}>
-        <CardActionArea onClick={onClickCard}>
-          {leftBadge && <div className={classes.leftBadge}>{leftBadge}</div>}
+      <Card className={clsx(classes.root, propClasses?.root)}>
+        <CardActionArea
+          onClick={onClickCard}
+          className={clsx(propClasses?.cardActionArea)}
+        >
+          {leftBadge && (
+            <div className={clsx(classes.leftBadge, propClasses?.leftBadgeDiv)}>
+              {leftBadge}
+            </div>
+          )}
           {badgeContent ? (
             <Badge
               badgeContent={badgeContent}
               max={9}
               classes={{
-                badge: classes.badge,
+                badge: clsx(classes.badge, propClasses?.badge),
               }}
             >
               <CardMedia
-                className={classes.media}
+                className={clsx(classes.media, propClasses?.media)}
                 image={imageUrl}
                 component="img"
               />
             </Badge>
           ) : (
             <CardMedia
-              className={classes.media}
+              className={clsx(classes.media, propClasses?.media)}
               image={imageUrl}
               component="img"
             />
@@ -158,37 +182,59 @@ export function ProductCard(props: ProductPropTypes) {
             size="small"
             icon={tagIcon}
             label={tagText}
-            className={clsx(classes.tag, !tagText && classes.disabledTag)}
+            className={clsx(
+              classes.tag,
+              propClasses?.tag,
+              !tagText && clsx(classes.disabledTag, propClasses?.disabledTag),
+            )}
           />
 
-          <CardContent className={classes.content} onClick={onClickCard}>
+          <CardContent
+            className={clsx(classes.content, propClasses?.content)}
+            onClick={onClickCard}
+          >
             <Typography
               variant="subtitle1"
               color="textPrimary"
-              className={classes.title}
+              className={clsx(classes.title, propClasses?.title)}
               noWrap
             >
               {title}
             </Typography>
             {subtitle && (
-              <Typography variant="body2" color="textSecondary" noWrap>
+              <Typography
+                className={clsx(propClasses?.subtitle)}
+                variant="body2"
+                color="textSecondary"
+                noWrap
+              >
                 {subtitle}
               </Typography>
             )}
             {description && (
-              <Typography variant="body2" color="textPrimary" noWrap>
+              <Typography
+                className={clsx(propClasses?.description)}
+                variant="body2"
+                color="textPrimary"
+                noWrap
+              >
                 {description}
               </Typography>
             )}
             {details && (
-              <Typography variant="body2" color="textSecondary" noWrap>
+              <Typography
+                className={clsx(propClasses?.details)}
+                variant="body2"
+                color="textSecondary"
+                noWrap
+              >
                 {details}
               </Typography>
             )}
             <Typography
               variant="h6"
               color="primary"
-              className={classes.price}
+              className={clsx(classes.price, propClasses?.price)}
               noWrap
             >
               {currencyPrice}
