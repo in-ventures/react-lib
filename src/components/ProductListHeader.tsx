@@ -4,7 +4,7 @@
  * File Created: Friday, 11th September 2020 10:18:40 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Monday, 3rd May 2021 11:48:28 pm
+ * Last Modified: Tuesday, 4th May 2021 9:09:45 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -74,12 +74,11 @@ export function ProductListHeader(props: ProductListHeader) {
           {CarouselActionComponent
             ? CarouselActionComponent
             : onClickCarousel && (
-                <Button color="primary">
+                <Button color="primary" onClick={onClickCarousel}>
                   VER TODOS
                   <IconButton
                     color="inherit"
                     aria-label="ver más resultados"
-                    onClick={onClickCarousel}
                     className={clsx(classes.viewMore, propsClasses?.icon)}
                   >
                     <ChevronRightRoundedIcon fontSize="large" />
