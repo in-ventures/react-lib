@@ -4,7 +4,7 @@
  * File Created: Friday, 11th September 2020 10:18:24 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Saturday, 1st May 2021 12:53:42 am
+ * Last Modified: Tuesday, 4th May 2021 10:00:50 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -19,6 +19,7 @@ import { ProductCardSkeleton } from './ProductCardSkeleton';
 import { Theme, createStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
+import clsx from 'clsx';
 
 type ProductList = {
   products: ProductPropTypes[];
@@ -123,6 +124,13 @@ const useStyles = makeStyles(() =>
     customTiles: {
       height: '100%',
     },
+    noScrollBar: {
+      '&::-webkit-scrollbar': {
+        display: 'none',
+      },
+      '-ms-overflow-style': 'none' /* IE and Edge */,
+      'scrollbar-width': 'none' /* Firefox */,
+    },
   }),
 );
 
@@ -152,7 +160,7 @@ export function ProductList(props: ProductList) {
           className={classes.gridList}
           cols={cols ?? 2.3}
           cellHeight={270}
-          classes={{ root: classes.customTiles }}
+          classes={{ root: clsx(classes.customTiles, classes.noScrollBar) }}
           spacing={8}
         >
           {products.map((cardInfo: ProductPropTypes, index: number) => (
