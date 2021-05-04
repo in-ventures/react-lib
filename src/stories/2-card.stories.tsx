@@ -4,8 +4,8 @@
  * File Created: Tuesday, 4th August 2020 5:47:50 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Monday, 3rd May 2021 1:28:39 pm
- * Modified By: Luis Aparicio (luis@inventures.cl)
+ * Last Modified: Monday, 3rd May 2021 11:09:53 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -71,8 +71,14 @@ export const ProductCarouselNoWrap = () => {
     <>
       <ProductListHeader
         title={'Más vendidos'}
-        onClickCarousel={() =>
-          window.alert('Want to know more about the carousel products?')
+        CarouselActionComponent={
+          <div
+            onClick={() =>
+              window.alert('Want to know more about the carousel products?')
+            }
+          >
+            Click me!
+          </div>
         }
       />
 

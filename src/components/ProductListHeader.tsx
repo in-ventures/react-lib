@@ -4,8 +4,8 @@
  * File Created: Friday, 11th September 2020 10:18:40 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Friday, 11th September 2020 11:26:25 am
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Monday, 3rd May 2021 11:07:32 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -17,10 +17,18 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ChevronRightRoundedIcon from '@material-ui/icons/ChevronRightRounded';
 import { IconButton, Typography, Box } from '@material-ui/core';
+import clsx from 'clsx';
 
 type ProductListHeader = {
   title?: string;
   onClickCarousel?: () => void;
+  CarouselActionComponent?: React.ReactElement;
+  classes?: {
+    root?: string;
+    title?: string;
+    titleBox?: string;
+    icon?: string;
+  };
 };
 
 const useStyles = makeStyles({
@@ -44,27 +52,38 @@ export function ProductListHeader(props: ProductListHeader) {
    * @returns React Component
    *
    */
-  const { title, onClickCarousel } = props;
+  const {
+    title,
+    onClickCarousel,
+    classes: propsClasses,
+    CarouselActionComponent,
+  } = props;
   const classes = useStyles();
 
   return (
-    <Box>
+    <Box className={clsx(propsClasses?.root)}>
       {title && (
-        <Box className={classes.carouselHeader}>
-          <Typography variant="h6" color="textPrimary">
+        <Box className={clsx(classes.carouselHeader, propsClasses?.titleBox)}>
+          <Typography
+            className={clsx(propsClasses?.title)}
+            variant="h6"
+            color="textPrimary"
+          >
             {title}
           </Typography>
-
-          {onClickCarousel && (
-            <IconButton
-              color="primary"
-              aria-label="ver más resultados"
-              onClick={onClickCarousel}
-              className={classes.viewMore}
-            >
-              <ChevronRightRoundedIcon fontSize="large" />
-            </IconButton>
-          )}
+          {CarouselActionComponent
+            ? CarouselActionComponent
+            : onClickCarousel && (
+                <IconButton
+                  color="primary"
+                  aria-label="ver más resultados"
+                  onClick={onClickCarousel}
+                  className={clsx(classes.viewMore, propsClasses?.icon)}
+                >
+                  <ChevronRightRoundedIcon fontSize="large" />
+                </IconButton>
+              )}
+          {}
         </Box>
       )}
     </Box>
