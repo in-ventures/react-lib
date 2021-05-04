@@ -4,7 +4,7 @@
  * File Created: Friday, 11th September 2020 10:18:40 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Monday, 3rd May 2021 11:07:32 pm
+ * Last Modified: Monday, 3rd May 2021 11:48:28 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -16,7 +16,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ChevronRightRoundedIcon from '@material-ui/icons/ChevronRightRounded';
-import { IconButton, Typography, Box } from '@material-ui/core';
+import { IconButton, Typography, Box, Button } from '@material-ui/core';
 import clsx from 'clsx';
 
 type ProductListHeader = {
@@ -36,7 +36,7 @@ const useStyles = makeStyles({
     paddingBottom: '8px',
     display: 'flex',
     justifyContent: 'space-between',
-    alignItems: 'flex-end',
+    alignItems: 'center',
   },
   viewMore: {
     padding: '0px',
@@ -74,14 +74,17 @@ export function ProductListHeader(props: ProductListHeader) {
           {CarouselActionComponent
             ? CarouselActionComponent
             : onClickCarousel && (
-                <IconButton
-                  color="primary"
-                  aria-label="ver más resultados"
-                  onClick={onClickCarousel}
-                  className={clsx(classes.viewMore, propsClasses?.icon)}
-                >
-                  <ChevronRightRoundedIcon fontSize="large" />
-                </IconButton>
+                <Button color="primary">
+                  VER TODOS
+                  <IconButton
+                    color="inherit"
+                    aria-label="ver más resultados"
+                    onClick={onClickCarousel}
+                    className={clsx(classes.viewMore, propsClasses?.icon)}
+                  >
+                    <ChevronRightRoundedIcon fontSize="large" />
+                  </IconButton>
+                </Button>
               )}
           {}
         </Box>
