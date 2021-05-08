@@ -4,8 +4,8 @@
  * File Created: Friday, 11th September 2020 10:18:24 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Tuesday, 4th May 2021 10:00:50 am
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Friday, 7th May 2021 2:45:44 pm
+ * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -16,10 +16,17 @@ import React from 'react';
 import { Grid, makeStyles } from '@material-ui/core';
 import { ProductPropTypes, ProductCard } from './ProductCard';
 import { ProductCardSkeleton } from './ProductCardSkeleton';
-import { Theme, createStyles } from '@material-ui/core/styles';
+import { createStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import clsx from 'clsx';
+
+type ClassesPropType = {
+  gridList?: string;
+  gridListTitle?: string;
+  grid?: string;
+  gridContainer?: string;
+};
 
 type ProductList = {
   products: ProductPropTypes[];
@@ -27,6 +34,7 @@ type ProductList = {
   loading?: boolean;
   wrap?: boolean;
   cols?: number;
+  classes?: ClassesPropType;
 };
 type GridBreakpoints = {
   xs:
@@ -120,6 +128,7 @@ const useStyles = makeStyles(() =>
     },
     gridList: {
       flexWrap: 'nowrap',
+      width: '100%',
     },
     customTiles: {
       height: '100%',
@@ -150,6 +159,7 @@ export function ProductList(props: ProductList) {
     loading,
     wrap,
     cols,
+    classes: propClasses,
   } = props;
   const classes = useStyles();
 
@@ -160,13 +170,21 @@ export function ProductList(props: ProductList) {
           className={classes.gridList}
           cols={cols ?? 2.3}
           cellHeight={270}
-          classes={{ root: clsx(classes.customTiles, classes.noScrollBar) }}
+          classes={{
+            root: clsx(
+              classes.customTiles,
+              classes.noScrollBar,
+              propClasses?.gridList,
+            ),
+          }}
           spacing={8}
         >
           {products.map((cardInfo: ProductPropTypes, index: number) => (
             <GridListTile
               key={cardInfo.title + index.toString()}
-              classes={{ root: classes.customTiles }}
+              classes={{
+                root: clsx(classes.customTiles, propClasses?.gridListTitle),
+              }}
             >
               <ProductCard {...cardInfo} />
             </GridListTile>
@@ -177,9 +195,18 @@ export function ProductList(props: ProductList) {
   }
 
   return (
-    <Grid container spacing={1}>
+    <Grid className={clsx(propClasses?.gridContainer)} container spacing={1}>
       {products.map((cardInfo: ProductPropTypes, index: number) => (
-        <Grid key={index} item xs={xs} sm={sm} md={md} lg={lg} xl={xl}>
+        <Grid
+          className={clsx(propClasses?.grid)}
+          key={index}
+          item
+          xs={xs}
+          sm={sm}
+          md={md}
+          lg={lg}
+          xl={xl}
+        >
           {loading ? <ProductCardSkeleton /> : <ProductCard {...cardInfo} />}
         </Grid>
       ))}
