@@ -4,8 +4,8 @@
  * File Created: Tuesday, 4th August 2020 5:47:50 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Monday, 3rd May 2021 11:09:53 pm
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Tuesday, 11th May 2021 6:28:20 pm
+ * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -25,7 +25,7 @@ import LocalPharmacyRoundedIcon from '@material-ui/icons/LocalPharmacyRounded';
 import WarningRoundedIcon from '@material-ui/icons/WarningRounded';
 import { Skeleton } from '@material-ui/lab';
 import { text, number } from '@storybook/addon-knobs';
-import { createStyles, makeStyles, Typography } from '@material-ui/core';
+import { createStyles, makeStyles, Typography, Chip } from '@material-ui/core';
 
 export default {
   title: 'Card',
@@ -475,8 +475,15 @@ export const ProductDetailsCard = () => {
         subtitle={text2}
         description={text3}
         price={15813}
-        // tagText={'Receta simple'}
-        tagIcon={<InsertDriveFileOutlinedIcon />}
+        tags={[
+          <Chip
+            color="primary"
+            key="1"
+            size="small"
+            icon={<InsertDriveFileOutlinedIcon />}
+            label={'Receta simple'}
+          />,
+        ]}
         onClickImage={() =>
           console.log('You clicked the product details image!')
         }
@@ -496,21 +503,30 @@ export const ProductDetailsCardExtraTags = () => {
   const text2 = text('Segundo texto', 'Sertralina • 100mg');
   const text3 = text('Tercero texto', '30 comprimidos • Andrómaco');
   const tags = [
-    {
-      text: 'Receta Cheque',
-      icon: <InsertDriveFileOutlinedIcon />,
-      class: { style: classes.prescriptionTag },
-    },
-    {
-      text: 'Bioequivalentes',
-      icon: <InsertDriveFileOutlinedIcon />,
-      class: { style: classes.bioequivalentTag },
-    },
-    {
-      text: 'Another',
-      icon: <InsertDriveFileOutlinedIcon />,
-      class: { style: classes.bioequivalentTag },
-    },
+    <Chip
+      color="primary"
+      key="1"
+      size="small"
+      icon={<InsertDriveFileOutlinedIcon />}
+      className={classes.prescriptionTag}
+      label={'Receta Cheque'}
+    />,
+    <Chip
+      color="primary"
+      key="1"
+      size="small"
+      icon={<InsertDriveFileOutlinedIcon />}
+      className={classes.bioequivalentTag}
+      label={'Bioequivalentes'}
+    />,
+    <Chip
+      color="primary"
+      key="1"
+      size="small"
+      icon={<InsertDriveFileOutlinedIcon />}
+      className={classes.bioequivalentTag}
+      label={'Another'}
+    />,
   ];
 
   return (
@@ -521,14 +537,12 @@ export const ProductDetailsCardExtraTags = () => {
         subtitle={text2}
         description={text3}
         price={15813}
-        tagText={'Receta simple'}
-        tagIcon={<InsertDriveFileOutlinedIcon />}
-        extraTags={tags}
+        tags={tags}
         onClickImage={() =>
           console.log('You clicked the product details image!')
         }
         pricePerUnit="$527 /comprimido"
-        classes={{ chip: classes.chip, tagsDiv: classes.tagsDiv }}
+        classes={{ chip: classes.chip }}
       />
     </>
   );
@@ -544,15 +558,14 @@ const useStyles = makeStyles(() =>
       backgroundColor: '#ffe512',
       color: 'red',
       height: 21,
+      margin: '2px',
     },
     prescriptionTag: {
+      margin: '2px',
       height: 21,
     },
     chip: {
       height: 21,
-    },
-    tagsDiv: {
-      marginTop: 0,
     },
     badge: {
       backgroundColor: 'green',

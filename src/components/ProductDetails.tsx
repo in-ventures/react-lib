@@ -4,8 +4,8 @@
  * File Created: Friday, 11th September 2020 10:18:53 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Wednesday, 28th April 2021 5:38:28 pm
- * Modified By: Luis Aparicio (luis@inventures.cl)
+ * Last Modified: Tuesday, 11th May 2021 6:28:43 pm
+ * Modified By: Esperanza Horn (esperanza@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -15,25 +15,9 @@
 
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {
-  CardMedia,
-  CardContent,
-  Typography,
-  Chip,
-  Box,
-} from '@material-ui/core';
+import { CardMedia, CardContent, Typography, Box } from '@material-ui/core';
 import { CurrencyFormatter } from '../formatters';
 import clsx from 'clsx';
-
-type TagClassStyle = {
-  style: string;
-};
-
-type Tag = {
-  icon?: React.ReactElement;
-  text: string;
-  class?: TagClassStyle;
-};
 
 type ClassesProps = {
   chip?: string;
@@ -44,13 +28,11 @@ type ProductDetailsProps = {
   imageUrl?: string;
   title: string;
   subtitle?: string;
-  tagText?: string;
-  tagIcon?: React.ReactElement;
   description?: string;
   pricePerUnit?: string;
   onClickImage?: () => void;
   price: number;
-  extraTags?: Tag[];
+  tags?: React.ReactElement[];
   classes?: ClassesProps;
 };
 
@@ -86,6 +68,8 @@ const useStyles = makeStyles({
   },
   tagsDiv: {
     marginTop: -14,
+    display: 'flex',
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'baseline',
   },
@@ -104,13 +88,11 @@ export function ProductDetails(props: ProductDetailsProps) {
     imageUrl,
     title,
     subtitle,
-    tagText,
-    tagIcon,
     price,
     description,
     onClickImage,
     pricePerUnit,
-    extraTags,
+    tags,
     classes: propClasses,
   } = props;
 
@@ -128,27 +110,8 @@ export function ProductDetails(props: ProductDetailsProps) {
       />
 
       <div className={clsx(classes.tagsDiv, propClasses?.tagsDiv)}>
-        {tagText && (
-          <Chip
-            color="primary"
-            size="small"
-            icon={tagIcon}
-            label={tagText}
-            className={clsx(classes.tag, propClasses?.chip)}
-          />
-        )}
-
-        {extraTags?.map((tag: Tag, i: number) => {
-          return (
-            <Chip
-              key={`extraTag-${i}`}
-              color="primary"
-              size="small"
-              icon={tag.icon}
-              label={tag.text}
-              className={clsx(classes.tag, tag.class?.style)}
-            />
-          );
+        {tags?.map((tag, index: number) => {
+          return <div key={`tag-${index}`}>{tag}</div>;
         })}
       </div>
 
