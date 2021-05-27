@@ -4,8 +4,8 @@
  * File Created: Friday, 11th September 2020 10:18:53 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Tuesday, 11th May 2021 6:28:43 pm
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Thursday, 27th May 2021 6:28:14 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -109,11 +109,13 @@ export function ProductDetails(props: ProductDetailsProps) {
         onClick={onClickImage}
       />
 
-      <div className={clsx(classes.tagsDiv, propClasses?.tagsDiv)}>
-        {tags?.map((tag, index: number) => {
-          return <div key={`tag-${index}`}>{tag}</div>;
-        })}
-      </div>
+      {tags && tags.length > 0 && (
+        <div className={clsx(classes.tagsDiv, propClasses?.tagsDiv)}>
+          {tags.map((tag, index: number) => {
+            return <div key={`tag-${index}`}>{tag}</div>;
+          })}
+        </div>
+      )}
 
       <CardContent className={classes.content}>
         <Typography
