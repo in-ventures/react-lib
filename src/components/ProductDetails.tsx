@@ -4,7 +4,7 @@
  * File Created: Friday, 11th September 2020 10:18:53 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 27th May 2021 6:28:14 pm
+ * Last Modified: Thursday, 27th May 2021 10:06:08 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -13,7 +13,7 @@
  * Inventures - www.inventures.cl
  */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { CardMedia, CardContent, Typography, Box } from '@material-ui/core';
 import { CurrencyFormatter } from '../formatters';
@@ -67,11 +67,16 @@ const useStyles = makeStyles({
     marginTop: '8px',
   },
   tagsDiv: {
-    marginTop: -14,
+    position: 'absolute',
+    bottom: 7,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'baseline',
+    width: '100%',
+  },
+  imageContainer: {
+    position: 'relative',
   },
 });
 
@@ -102,20 +107,19 @@ export function ProductDetails(props: ProductDetailsProps) {
 
   return (
     <Box className={classes.root}>
-      <CardMedia
-        className={classes.media}
-        image={imageUrl}
-        component="img"
-        onClick={onClickImage}
-      />
-
-      {tags && tags.length > 0 && (
+      <div className={classes.imageContainer}>
+        <CardMedia
+          className={classes.media}
+          image={imageUrl}
+          component="img"
+          onClick={onClickImage}
+        />
         <div className={clsx(classes.tagsDiv, propClasses?.tagsDiv)}>
-          {tags.map((tag, index: number) => {
-            return <div key={`tag-${index}`}>{tag}</div>;
+          {tags?.map((tag, index: number) => {
+            return <Fragment key={`tag-${index}`}>{tag}</Fragment>;
           })}
         </div>
-      )}
+      </div>
 
       <CardContent className={classes.content}>
         <Typography
