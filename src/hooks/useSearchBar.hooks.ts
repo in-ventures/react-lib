@@ -4,7 +4,7 @@
  * File Created: Tuesday, 1st September 2020 9:46:25 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Monday, 21st December 2020 10:14:21 am
+ * Last Modified: Friday, 28th May 2021 11:59:55 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -17,7 +17,7 @@ import 'regenerator-runtime/runtime.js';
 import { useState, useCallback, useRef, useEffect } from 'react';
 import Fuse from 'fuse.js';
 import { useDeepCallback } from './useDeepCallback';
-import { useDebouncedCallback } from './useDebouncedCallback';
+import { useThrottledCallback } from './useThrottledCallback';
 
 type useSearchBarOptions = {
   isCaseSensitive?: boolean;
@@ -60,7 +60,7 @@ export const useSearchBar = <T = Record<string, unknown>>(
   );
 
   //Setting debounce for searching elements
-  const stopTyping = useDebouncedCallback(
+  const stopTyping = useThrottledCallback(
     (newValue: string) => {
       search(newValue);
     },
