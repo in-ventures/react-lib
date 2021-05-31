@@ -4,8 +4,8 @@
  * File Created: Tuesday, 4th August 2020 5:47:50 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 11th May 2021 6:28:20 pm
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Monday, 31st May 2021 4:12:00 pm
+ * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -465,7 +465,7 @@ export const ProductDetailsCard = () => {
   );
   const text1 = text('Primer texto', 'Sertac');
   const text2 = text('Segundo texto', 'Sertralina • 100mg');
-  const text3 = text('Tercero texto', '30 comprimidos • Andrómaco');
+  const text3 = text('Tercero texto', '30 comprimidos');
 
   return (
     <>
@@ -473,7 +473,26 @@ export const ProductDetailsCard = () => {
         imageUrl={image}
         title={text1}
         subtitle={text2}
-        description={text3}
+        descriptions={[
+          text3 ? (
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              noWrap
+              key={'quantityUnitFormat'}
+            >
+              {text3}
+            </Typography>
+          ) : null,
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            noWrap
+            key={'laboratory'}
+          >
+            Andrómaco
+          </Typography>,
+        ]}
         price={15813}
         tags={[
           <Chip
@@ -535,7 +554,18 @@ export const ProductDetailsCardExtraTags = () => {
         imageUrl={image}
         title={text1}
         subtitle={text2}
-        description={text3}
+        descriptions={[
+          text3 ? (
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              noWrap
+              key={'quantityUnitFormat'}
+            >
+              {text3}
+            </Typography>
+          ) : null,
+        ]}
         price={15813}
         tags={tags}
         onClickImage={() =>
