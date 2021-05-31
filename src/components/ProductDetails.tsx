@@ -4,8 +4,8 @@
  * File Created: Friday, 11th September 2020 10:18:53 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 27th May 2021 10:06:08 pm
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Monday, 31st May 2021 4:09:12 pm
+ * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -28,7 +28,7 @@ type ProductDetailsProps = {
   imageUrl?: string;
   title: string;
   subtitle?: string;
-  description?: string;
+  descriptions?: (React.ReactElement | null)[];
   pricePerUnit?: string;
   onClickImage?: () => void;
   price: number;
@@ -94,7 +94,7 @@ export function ProductDetails(props: ProductDetailsProps) {
     title,
     subtitle,
     price,
-    description,
+    descriptions,
     onClickImage,
     pricePerUnit,
     tags,
@@ -135,11 +135,11 @@ export function ProductDetails(props: ProductDetailsProps) {
             {subtitle}
           </Typography>
         )}
-        {description && (
-          <Typography variant="body2" color="textSecondary" noWrap>
-            {description}
-          </Typography>
-        )}
+        {descriptions?.map((description, index: number) => {
+          return (
+            <Fragment key={`description-${index}`}>{description}</Fragment>
+          );
+        })}
         <Typography
           variant="h6"
           color="primary"
