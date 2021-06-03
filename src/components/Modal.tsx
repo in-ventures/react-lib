@@ -4,8 +4,8 @@
  * File Created: Wednesday, 23rd September 2020 4:10:47 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 3rd June 2021 2:25:10 pm
- * Modified By: Luis Aparicio (luis@inventures.cl)
+ * Last Modified: Thursday, 3rd June 2021 6:16:45 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -36,11 +36,11 @@ type ModalProps = {
   disableEscapeKeyDown?: boolean;
   onBackdropClick?: () => void;
   classes?: {
-    dialogPaper: string;
-    title: string;
-    content: string;
-    actionsContainer: string;
-    actionButton: string;
+    dialogPaper?: string;
+    title?: string;
+    content?: string;
+    actionsContainer?: string;
+    actionButton?: string;
   };
 };
 
