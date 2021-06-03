@@ -4,8 +4,8 @@
  * File Created: Wednesday, 23rd September 2020 4:10:47 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 3rd June 2021 12:15:16 pm
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Thursday, 3rd June 2021 2:25:10 pm
+ * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -35,7 +35,7 @@ type ModalProps = {
   disableBackdropClick?: boolean;
   disableEscapeKeyDown?: boolean;
   onBackdropClick?: () => void;
-  classes: {
+  classes?: {
     dialogPaper: string;
     title: string;
     content: string;
@@ -92,7 +92,7 @@ export function AlertModal(props: ModalProps) {
         disableEscapeKeyDown={disableEscapeKeyDown}
         onBackdropClick={onBackdropClick}
       >
-        <DialogTitle className={clsx(propClasses.title)}>{title}</DialogTitle>
+        <DialogTitle className={clsx(propClasses?.title)}>{title}</DialogTitle>
         <DialogContent>
           <DialogContentText
             className={clsx(classes.contentText, propClasses?.content)}
@@ -100,14 +100,14 @@ export function AlertModal(props: ModalProps) {
             {content}
           </DialogContentText>
         </DialogContent>
-        <DialogActions className={clsx(propClasses.actionsContainer)}>
+        <DialogActions className={clsx(propClasses?.actionsContainer)}>
           {actions?.map((action: ActionType, index: number) => (
             <Button
               key={index}
               onClick={action.onActionClick}
               color="primary"
               variant={action.variant}
-              className={clsx(propClasses.actionButton)}
+              className={clsx(propClasses?.actionButton)}
             >
               {action.text}
             </Button>
