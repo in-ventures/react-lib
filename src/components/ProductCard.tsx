@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Monday, 3rd May 2021 1:34:35 pm
+ * Last Modified: Friday, 4th June 2021 10:33:45 am
  * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -23,6 +23,7 @@ import {
   Typography,
   Chip,
   Badge,
+  Container,
 } from '@material-ui/core';
 import { CurrencyFormatter } from '../formatters';
 import clsx from 'clsx';
@@ -78,7 +79,7 @@ const useStyles = makeStyles({
     padding: '0px',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    height: '118px',
+    height: '92px',
     display: 'flex',
   },
   media: {
@@ -107,6 +108,13 @@ const useStyles = makeStyles({
     position: 'absolute',
     left: 5,
     top: 5,
+  },
+  PriceContent: {
+    padding: 0,
+    minHeight: 24,
+  },
+  chunk: {
+    height: 19,
   },
 });
 
@@ -201,7 +209,7 @@ export function ProductCard(props: ProductPropTypes) {
             >
               {title}
             </Typography>
-            {subtitle && (
+            {subtitle ? (
               <Typography
                 className={clsx(propClasses?.subtitle)}
                 variant="body2"
@@ -210,8 +218,10 @@ export function ProductCard(props: ProductPropTypes) {
               >
                 {subtitle}
               </Typography>
+            ) : (
+              <Container classes={{ root: classes.chunk }}> </Container>
             )}
-            {description && (
+            {description ? (
               <Typography
                 className={clsx(propClasses?.description)}
                 variant="body2"
@@ -220,8 +230,10 @@ export function ProductCard(props: ProductPropTypes) {
               >
                 {description}
               </Typography>
+            ) : (
+              <Container classes={{ root: classes.chunk }}> </Container>
             )}
-            {details && (
+            {details ? (
               <Typography
                 className={clsx(propClasses?.details)}
                 variant="body2"
@@ -230,7 +242,11 @@ export function ProductCard(props: ProductPropTypes) {
               >
                 {details}
               </Typography>
+            ) : (
+              <Container classes={{ root: classes.chunk }}> </Container>
             )}
+          </CardContent>
+          <CardContent classes={{ root: classes.PriceContent }}>
             <Typography
               variant="h6"
               color="primary"
