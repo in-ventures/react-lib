@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 3rd June 2021 6:24:37 pm
+ * Last Modified: Friday, 4th June 2021 10:33:45 am
  * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -113,7 +113,7 @@ const useStyles = makeStyles({
     padding: 0,
     minHeight: 24,
   },
-  chunk: { 
+  chunk: {
     height: 19,
   },
 });
@@ -218,7 +218,9 @@ export function ProductCard(props: ProductPropTypes) {
               >
                 {subtitle}
               </Typography>
-            ): <Container classes={{ root: classes.chunk}}> </Container>}
+            ) : (
+              <Container classes={{ root: classes.chunk }}> </Container>
+            )}
             {description ? (
               <Typography
                 className={clsx(propClasses?.description)}
@@ -228,7 +230,9 @@ export function ProductCard(props: ProductPropTypes) {
               >
                 {description}
               </Typography>
-            ):  <Container classes={{ root: classes.chunk}}> </Container>}
+            ) : (
+              <Container classes={{ root: classes.chunk }}> </Container>
+            )}
             {details ? (
               <Typography
                 className={clsx(propClasses?.details)}
@@ -238,17 +242,19 @@ export function ProductCard(props: ProductPropTypes) {
               >
                 {details}
               </Typography>
-            ): <Container classes={{ root: classes.chunk}}> </Container>}
+            ) : (
+              <Container classes={{ root: classes.chunk }}> </Container>
+            )}
           </CardContent>
-          <CardContent classes={{ root: classes.PriceContent}}>
+          <CardContent classes={{ root: classes.PriceContent }}>
             <Typography
-                variant="h6"
-                color="primary"
-                className={clsx(classes.price, propClasses?.price)}
-                noWrap
-              >
-                {currencyPrice}
-              </Typography>
+              variant="h6"
+              color="primary"
+              className={clsx(classes.price, propClasses?.price)}
+              noWrap
+            >
+              {currencyPrice}
+            </Typography>
           </CardContent>
         </CardActionArea>
       </Card>
