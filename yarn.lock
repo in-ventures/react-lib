@@ -3461,10 +3461,10 @@
     react-docgen-typescript "^1.20.5"
     update-notifier "^5.0.1"
 
-"@zeplin/cli-connect-storybook-plugin@^0.5.0":
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/@zeplin/cli-connect-storybook-plugin/-/cli-connect-storybook-plugin-0.5.2.tgz#31e1dd90cbea62fd8edee062b2a2273cd743b8e4"
-  integrity sha512-+Z4ynpmfqFS7firjlrUexd0Ar2vM/6ePlA2Mv58XKnfVPBDpQEIAsvFrxrnpy8YzF/kmzr73xWhnVF/Df7ThUg==
+"@zeplin/cli-connect-storybook-plugin@^0.5.3":
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/@zeplin/cli-connect-storybook-plugin/-/cli-connect-storybook-plugin-0.5.3.tgz#03c0ad12690a9faa540521fd11c4cc7d70c43374"
+  integrity sha512-NTIMjkj5JL78rnrOC7EpmEmm3uNbaJqRwE3WPrHzwFnjVtcqQL3XGY1r2hegGO/zxe9+I481jyz/NrNe+3FgNQ==
   dependencies:
     "@storybook/csf" "0.0.1"
     cross-spawn "^7.0.3"
