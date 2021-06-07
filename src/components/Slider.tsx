@@ -4,7 +4,7 @@
  * File Created: Wednesday, 28th April 2021 7:00:44 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Saturday, 1st May 2021 12:49:05 am
+ * Last Modified: Monday, 7th June 2021 10:21:09 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2021 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -16,11 +16,18 @@
 import React from 'react';
 import { GridList, makeStyles, createStyles } from '@material-ui/core';
 import GridListTile from '@material-ui/core/GridListTile';
+import clsx from 'clsx';
 
 type SliderProps = {
   items: React.ReactNode[];
   cellHeight?: number | 'auto' | undefined;
   cols?: number;
+  classes?: {
+    root?: string;
+    gridList?: string;
+    gridListRoot?: string;
+    gridListTile?: string;
+  };
 };
 
 const useStyles = makeStyles(() =>
@@ -49,21 +56,28 @@ export function Slider(props: SliderProps) {
    * @returns React Component
    *
    */
-  const { items, cellHeight, cols } = props;
+  const { items, cellHeight, cols, classes: propsClasses } = props;
   const classes = useStyles();
 
   if (!items) return null;
   return (
-    <div className={classes.root}>
+    <div className={clsx(classes.root, propsClasses?.root)}>
       <GridList
-        className={classes.gridList}
+        className={clsx(classes.gridList, propsClasses?.gridList)}
         cols={cols ?? 1.5}
         cellHeight={cellHeight}
-        classes={{ root: classes.customTiles }}
+        classes={{
+          root: clsx(classes.customTiles, propsClasses?.gridListRoot),
+        }}
         spacing={8}
       >
         {items.map((item, index: number) => (
-          <GridListTile key={index} classes={{ root: classes.customTiles }}>
+          <GridListTile
+            key={index}
+            classes={{
+              root: clsx(classes.customTiles, propsClasses?.gridListTile),
+            }}
+          >
             {item}
           </GridListTile>
         ))}
