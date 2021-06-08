@@ -4,8 +4,8 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Friday, 4th June 2021 10:33:45 am
- * Modified By: Luis Aparicio (luis@inventures.cl)
+ * Last Modified: Tuesday, 8th June 2021 2:55:08 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -45,6 +45,7 @@ type ClassesPropType = {
 };
 
 export type ProductPropTypes = {
+  uuid?: string;
   imageUrl?: string;
   title: string;
   subtitle?: string;
@@ -57,7 +58,7 @@ export type ProductPropTypes = {
   badgeTextColor?: string;
   leftBadge?: React.ReactElement;
   price: number;
-  onClickCard: () => void;
+  onClickCard?: () => void;
   classes?: ClassesPropType;
 };
 

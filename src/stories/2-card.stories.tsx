@@ -4,8 +4,8 @@
  * File Created: Tuesday, 4th August 2020 5:47:50 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Friday, 4th June 2021 10:33:54 am
- * Modified By: Luis Aparicio (luis@inventures.cl)
+ * Last Modified: Tuesday, 8th June 2021 2:55:35 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -347,6 +347,127 @@ export const ProductCarousel = () => {
             badgeColor: 'blue',
             badgeTextColor: 'white',
             onClickCard: () => console.log('You clicked B3!'),
+          },
+        ]}
+        gridBreakpoints={{ xs: 6, sm: 4, md: 3, lg: 2, xl: 1 }}
+      />
+    </>
+  );
+};
+export const ProductCarouselRenderItem = () => {
+  const classes = useStyles();
+  return (
+    <>
+      <ProductListHeader
+        title={'Testing render item'}
+        onClickCarousel={() =>
+          window.alert('Want to know more about the carousel products?')
+        }
+      />
+      <ProductList
+        loading={false}
+        wrap
+        renderItem={(children, childrenProps) => {
+          return (
+            <div
+              style={{ background: 'red' }}
+              onClick={() => console.log('TEST', childrenProps)}
+            >
+              {children}
+            </div>
+          );
+        }}
+        products={[
+          {
+            imageUrl:
+              'https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000',
+            title: 'Glafornil',
+            subtitle: 'Metformina Clorhidrato Clorhidrato',
+            price: 15990,
+            // tagText: 'Receta retenida',
+            // tagIcon: <InsertDriveFileOutlinedIcon />,
+            badgeContent: 5,
+            badgeColor: 'red',
+            badgeTextColor: '#FFFFFF',
+            leftBadge: <PharmaBadge />,
+
+            classes: {
+              badge: classes.badge,
+              tag: classes.tag,
+              disabledTag: classes.disabledTag,
+              subtitle: classes.subtitle,
+            },
+          },
+          {
+            imageUrl:
+              'https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000',
+            title: 'Glafornil',
+            subtitle: 'Metformina Clorhidrato Clorhidrato',
+            details: '30 comprimidos recubiertos',
+            description: '500 mg',
+            price: 15990,
+            badgeContent: 5,
+            badgeColor: 'red',
+            badgeTextColor: '#FFFFFF',
+            leftBadge: <UnavailableBadge />,
+          },
+          {
+            imageUrl:
+              'https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000',
+            title: 'Glafornil',
+            description: '500 mg',
+            price: 15990,
+            tagText: 'Receta retenida',
+            tagIcon: <InsertDriveFileOutlinedIcon />,
+            leftBadge: <UnavailableBadge warn />,
+          },
+
+          {
+            imageUrl:
+              'https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000',
+            title: 'Glafornil',
+            subtitle: 'Metformina Clorhidrato Clorhidrato',
+            details: '30 comprimidos recubiertos',
+            description: '500 mg',
+            price: 15990,
+            badgeContent: 5,
+            badgeColor: 'red',
+            badgeTextColor: '#FFFFFF',
+          },
+          {
+            imageUrl:
+              'https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000',
+            title: 'Glafornil',
+            subtitle:
+              'Metformina Clorhidrato Clorhidrato Clorhidrato Clorhidrato Clorhidrato',
+            details: '30 comprimidos recubiertos',
+            price: 15990,
+            tagText: 'Receta retenida',
+            tagIcon: <InsertDriveFileOutlinedIcon />,
+          },
+
+          {
+            imageUrl:
+              'https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000',
+            title: 'Glafornil',
+            subtitle: 'Metformina Clorhidrato Clorhidrato',
+            details: '30 comprimidos recubiertos',
+            description: '500 mg',
+            price: 15990,
+          },
+          {
+            imageUrl:
+              'https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000',
+            title: 'Glafornil',
+            subtitle: 'Metformina Clorhidrato Clorhidrato',
+            details: '30 comprimidos recubiertos',
+            description: '500 mg',
+            price: 15990,
+            tagText: 'Receta retenida',
+            tagIcon: <InsertDriveFileOutlinedIcon />,
+            badgeContent: 10,
+            badgeColor: 'blue',
+            badgeTextColor: 'white',
           },
         ]}
         gridBreakpoints={{ xs: 6, sm: 4, md: 3, lg: 2, xl: 1 }}

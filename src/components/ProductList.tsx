@@ -4,15 +4,15 @@
  * File Created: Friday, 11th September 2020 10:18:24 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Friday, 7th May 2021 2:45:44 pm
- * Modified By: Luis Aparicio (luis@inventures.cl)
+ * Last Modified: Tuesday, 8th June 2021 2:56:20 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
  * -----
  * Inventures - www.inventures.cl
  */
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Grid, makeStyles } from '@material-ui/core';
 import { ProductPropTypes, ProductCard } from './ProductCard';
 import { ProductCardSkeleton } from './ProductCardSkeleton';
@@ -28,14 +28,18 @@ type ClassesPropType = {
   gridContainer?: string;
 };
 
-type ProductList = {
+interface ProductListProps {
   products: ProductPropTypes[];
   gridBreakpoints: GridBreakpoints;
   loading?: boolean;
   wrap?: boolean;
   cols?: number;
   classes?: ClassesPropType;
-};
+  renderItem?: (
+    children: ReactNode,
+    childrenProps: ProductPropTypes,
+  ) => ReactNode;
+}
 type GridBreakpoints = {
   xs:
     | boolean
@@ -143,13 +147,13 @@ const useStyles = makeStyles(() =>
   }),
 );
 
-export function ProductList(props: ProductList) {
+export function ProductList(props: ProductListProps) {
   /**
    * Returns the a product card list component, which uses ProductCard component
    * and Material UI Grid to place a customizable amount of product cards.
    * Header for Product List is available on ProductListHeader component.
    *
-   * @param props - defined by ProductList.
+   * @param props - defined by ProductListProps.
    * @returns React Component
    *
    */
@@ -160,6 +164,7 @@ export function ProductList(props: ProductList) {
     wrap,
     cols,
     classes: propClasses,
+    renderItem = (children) => children,
   } = props;
   const classes = useStyles();
 
@@ -186,7 +191,7 @@ export function ProductList(props: ProductList) {
                 root: clsx(classes.customTiles, propClasses?.gridListTitle),
               }}
             >
-              <ProductCard {...cardInfo} />
+              {renderItem(<ProductCard {...cardInfo} />, cardInfo)}
             </GridListTile>
           ))}
         </GridList>
@@ -207,7 +212,11 @@ export function ProductList(props: ProductList) {
           lg={lg}
           xl={xl}
         >
-          {loading ? <ProductCardSkeleton /> : <ProductCard {...cardInfo} />}
+          {loading ? (
+            <ProductCardSkeleton />
+          ) : (
+            renderItem(<ProductCard {...cardInfo} />, cardInfo)
+          )}
         </Grid>
       ))}
     </Grid>
