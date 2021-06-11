@@ -4,7 +4,7 @@
  * File Created: Friday, 11th September 2020 10:18:24 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Tuesday, 8th June 2021 2:56:20 pm
+ * Last Modified: Friday, 11th June 2021 10:53:17 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -37,7 +37,7 @@ interface ProductListProps {
   classes?: ClassesPropType;
   renderItem?: (
     children: ReactNode,
-    childrenProps: ProductPropTypes,
+    childrenProps: Partial<ProductPropTypes>,
   ) => ReactNode;
 }
 type GridBreakpoints = {

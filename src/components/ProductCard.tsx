@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Tuesday, 8th June 2021 2:55:08 pm
+ * Last Modified: Wednesday, 9th June 2021 3:48:26 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -45,6 +45,7 @@ type ClassesPropType = {
 };
 
 export type ProductPropTypes = {
+  slug?: string;
   uuid?: string;
   imageUrl?: string;
   title: string;
