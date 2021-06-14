@@ -102,7 +102,7 @@
     "@types/lodash": "^4.14.168",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.15.2",
-    "@zeplin/cli": "^1.1.5",
+    "@zeplin/cli": "^1.1.12",
     "@zeplin/cli-connect-react-plugin": "^1.1.1",
     "@zeplin/cli-connect-storybook-plugin": "^0.5.3",
     "auto-changelog": "^2.2.1",
