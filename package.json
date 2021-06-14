@@ -104,7 +104,7 @@
     "@typescript-eslint/parser": "^4.15.2",
     "@zeplin/cli": "^1.1.5",
     "@zeplin/cli-connect-react-plugin": "^1.1.1",
-    "@zeplin/cli-connect-storybook-plugin": "^0.5.3",
+    "@zeplin/cli-connect-storybook-plugin": "^0.5.4",
     "auto-changelog": "^2.2.1",
     "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
     "babel-plugin-typescript-to-proptypes": "^1.4.2",
@@ -119,7 +119,7 @@
     "install-peers-cli": "^2.2.0",
     "prettier": "^2.2.1",
     "react-test-renderer": "17.0.2",
-    "storybook-addon-paddings": "^4.0.0",
+    "storybook-addon-paddings": "^4.2.0",
     "ts-loader": "^8.0.10"
   },
   "bit": {
