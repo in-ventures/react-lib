@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { TextFieldProps } from '@material-ui/core';
+import { Avatar, Chip, TextFieldProps } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -66,6 +66,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   activeIcon: {
     color: theme.palette.text.primary,
   },
+  badges: {
+    marginLeft: 'auto',
+  },
 }));
 
 //Type
@@ -77,6 +80,7 @@ type PropClasses = {
   currUnitPrice?: string;
   currTotalPrice?: string;
   quantity?: string;
+  badges?: string;
 };
 
 //Type
@@ -93,6 +97,7 @@ type CartProductProps = {
   disabled?: boolean;
   notEditable?: boolean;
   disableCardClick?: boolean;
+  badges?: React.ReactElement[];
   ExtraTag?: React.ReactNode;
   onDefaultClick?: () => void;
   onAddClick?: () => void;
@@ -112,6 +117,7 @@ export default function CartProduct({
   unitPrice,
   totalPrice,
   ExtraTag = null,
+  badges,
   disabled,
   notEditable,
   disableCardClick,
@@ -209,6 +215,14 @@ export default function CartProduct({
               </Typography>
             </CardContent>
           </div>
+          {badges && (
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className={clsx(classes.badges, propClasses?.badges)}
+            >
+              {badges.map((badge) => badge)}
+            </div>
+          )}
         </div>
       </CardActionArea>
       {!notEditable && (

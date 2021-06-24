@@ -4,8 +4,8 @@
  * File Created: Thursday, 9th July 2020 12:56:32 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Monday, 9th November 2020 9:45:22 am
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Thursday, 24th June 2021 2:53:41 pm
+ * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -14,7 +14,6 @@
  */
 import { addParameters } from '@storybook/client-api';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-import { withPaddings } from 'storybook-addon-paddings';
 import { muiThemeDecorator } from '../src/config/storybook/muiTheme'
 export const parameters = {
   viewport: {
@@ -43,4 +42,4 @@ export const parameters = {
     { name: 'Large', value: '64px' },
   ],
 };
-export const decorators = [muiThemeDecorator, withPaddings];
+export const decorators = [muiThemeDecorator];
