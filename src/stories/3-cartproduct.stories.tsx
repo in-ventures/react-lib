@@ -5,7 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import Box from '@material-ui/core/Box';
-import { createStyles, makeStyles } from '@material-ui/core';
+import { Avatar, Chip, createStyles, makeStyles } from '@material-ui/core';
+import LocalShippingOutlinedIcon from '@material-ui/icons/LocalShippingOutlined';
 
 export default {
   title: 'Cart',
@@ -54,6 +55,18 @@ export const EditableCartProduct = () => {
     }
   }, [quantity, unitPrice]);
 
+  const badges = [
+    <Chip
+      key="first-badge"
+      avatar={<LocalShippingOutlinedIcon />}
+      label="Clickable"
+      onClick={() => {
+        alert('Has precionado el badge');
+      }}
+      size="small"
+    />,
+  ];
+
   return (
     <CartProduct
       classes={{ title1: classes.title1 }}
@@ -65,6 +78,7 @@ export const EditableCartProduct = () => {
       quantity={quantity}
       unitPrice={unitPrice}
       totalPrice={totalPrice}
+      badges={badges}
       ExtraTag={
         <Button
           variant="contained"
@@ -86,6 +100,7 @@ export const EditableCartProduct = () => {
         alert('Ha presionado enviar a la papelera');
       }}
       onDetailsClick={() => {
+        console.log('CLICK DETAILS');
         alert('Ha presionado enviar ver detalles');
       }}
     ></CartProduct>
