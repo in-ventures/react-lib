@@ -67,7 +67,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: theme.palette.text.primary,
   },
   badges: {
-    marginLeft: 'auto',
+    position: 'absolute',
+    right: 0,
   },
 }));
 
