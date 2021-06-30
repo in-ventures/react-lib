@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Wednesday, 9th June 2021 3:48:26 pm
+ * Last Modified: Wednesday, 30th June 2021 12:18:13 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -25,7 +25,6 @@ import {
   Badge,
   Container,
 } from '@material-ui/core';
-import { CurrencyFormatter } from '../formatters';
 import clsx from 'clsx';
 
 type ClassesPropType = {
@@ -58,7 +57,7 @@ export type ProductPropTypes = {
   badgeColor?: string;
   badgeTextColor?: string;
   leftBadge?: React.ReactElement;
-  price: number;
+  price: string;
   onClickCard?: () => void;
   classes?: ClassesPropType;
 };
@@ -146,8 +145,6 @@ export function ProductCard(props: ProductPropTypes) {
     classes: propClasses,
   } = props;
 
-  const currFormat = new CurrencyFormatter();
-  const currencyPrice = currFormat.format(price);
   const classes = useStyles({
     badgeColor: badgeColor ? badgeColor : '#000000',
     badgeTextColor: badgeTextColor ? badgeTextColor : '#FFFFFF',
@@ -255,7 +252,7 @@ export function ProductCard(props: ProductPropTypes) {
               className={clsx(classes.price, propClasses?.price)}
               noWrap
             >
-              {currencyPrice}
+              {price}
             </Typography>
           </CardContent>
         </CardActionArea>
