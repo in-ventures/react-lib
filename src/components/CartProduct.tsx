@@ -93,8 +93,8 @@ type CartProductProps = {
   title3?: string;
   title4?: string;
   quantity?: number;
-  unitPrice: number;
-  totalPrice: number;
+  unitPrice: string;
+  totalPrice: string;
   disabled?: boolean;
   notEditable?: boolean;
   disableCardClick?: boolean;
@@ -138,10 +138,6 @@ export default function CartProduct({
     },
     [onDefaultClick],
   );
-
-  const currFormat = new CurrencyFormatter();
-  const currUnitPrice = unitPrice ? currFormat.format(unitPrice) : null;
-  const currTotalPrice = totalPrice ? currFormat.format(totalPrice) : null;
 
   return (
     <Card square elevation={0}>
@@ -191,7 +187,7 @@ export default function CartProduct({
                   color="text.primary"
                   alignItems="flex-start"
                 >
-                  {currUnitPrice && `Valor unitario: ${currUnitPrice}`}
+                  {unitPrice && `Valor unitario: ${unitPrice}`}
                 </Box>
               </Typography>
 
@@ -211,7 +207,7 @@ export default function CartProduct({
                   alignItems="flex-start"
                   color="inherit"
                 >
-                  {currTotalPrice && `Total: ${currTotalPrice}`}
+                  {totalPrice && `Total: ${totalPrice}`}
                 </Box>
               </Typography>
             </CardContent>
