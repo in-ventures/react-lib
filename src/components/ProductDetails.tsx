@@ -4,8 +4,8 @@
  * File Created: Friday, 11th September 2020 10:18:53 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 3rd June 2021 2:15:22 pm
- * Modified By: Luis Aparicio (luis@inventures.cl)
+ * Last Modified: Wednesday, 30th June 2021 11:45:14 am
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -16,7 +16,6 @@
 import React, { Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { CardMedia, CardContent, Typography, Box } from '@material-ui/core';
-import { CurrencyFormatter } from '../formatters';
 import clsx from 'clsx';
 
 type ClassesProps = {
@@ -31,7 +30,7 @@ type ProductDetailsProps = {
   descriptions?: (React.ReactElement | null)[];
   pricePerUnit?: string;
   onClickImage?: () => void;
-  price: number;
+  price: string;
   tags?: React.ReactElement[];
   classes?: ClassesProps;
 };
@@ -102,8 +101,6 @@ export function ProductDetails(props: ProductDetailsProps) {
     classes: propClasses,
   } = props;
 
-  const currFormat = new CurrencyFormatter();
-  const currencyPrice = currFormat.format(price);
   const classes = useStyles();
 
   return (
@@ -147,7 +144,7 @@ export function ProductDetails(props: ProductDetailsProps) {
           className={classes.price}
           noWrap
         >
-          {currencyPrice}
+          {price}
         </Typography>
         {pricePerUnit && (
           <Typography variant="body2" color="textSecondary" noWrap>
