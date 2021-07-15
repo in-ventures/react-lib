@@ -23,6 +23,9 @@ const useStyles = makeStyles({
     display: 'flex',
     padding: 0,
   },
+  cardActionFull: {
+    height: '100%',
+  },
   loadingHeight: {
     height: 'calc(100% - 56px)',
   },
@@ -47,6 +50,9 @@ const useStyles = makeStyles({
   preview: {
     objectFit: 'contain',
   },
+  test: {
+    background: 'red',
+  },
 });
 
 export type LoadFileError = 'DOCUMENT_SIZE' | 'UNSUPPORTED_FILE';
@@ -69,6 +75,10 @@ type ImageLoaderProps = {
   handleCustomClick?: () => void;
   loading?: boolean;
   onStatusChange?: (newStatus: string) => void;
+  bottomAction?: boolean;
+  classes?: {
+    card?: string;
+  };
 } & TextFieldProps;
 
 function ImageLoaderComponent(
@@ -85,6 +95,8 @@ function ImageLoaderComponent(
     PreviewFallback,
     loading,
     onStatusChange,
+    bottomAction = false,
+    classes: propClasses = {},
   }: ImageLoaderProps,
   ref: any,
 ) {
@@ -156,12 +168,21 @@ function ImageLoaderComponent(
 
   return (
     <div className={clsx(classes.container, classes.totallyFilled)}>
-      <Card className={clsx(classes.container, classes.totallyFilled)}>
+      <Card
+        classes={{
+          root: clsx(
+            classes.container,
+            classes.totallyFilled,
+            propClasses.card,
+          ),
+        }}
+      >
         <CardActionArea
           className={clsx(
             classes.cardactionarea,
-            loadingStatus && classes.loadingHeight,
-            !loadingStatus && classes.notloadingHeight,
+            bottomAction && loadingStatus && classes.loadingHeight,
+            bottomAction && !loadingStatus && classes.notloadingHeight,
+            !bottomAction && classes.cardActionFull,
           )}
           onClick={handleCustomClick ? handleCustomClick : onClick}
         >
@@ -205,7 +226,6 @@ function ImageLoaderComponent(
         {loadingStatus && (
           <LinearProgress variant="determinate" value={progress} />
         )}
-        <Divider />
         <input
           ref={inputRef}
           id="icon-button-file"
@@ -215,27 +235,33 @@ function ImageLoaderComponent(
           onChange={loadFile}
           disabled={loading}
         />
-        <CardActions className={classes.actions}>
-          {!loading && (status === 'LOADED' || (status === 'WAITING' && file)) && (
-            <IconButton
-              color="primary"
-              aria-label="Eliminar elemento"
-              component="span"
-              onClick={deleteFile}
-            >
-              <DeleteIcon />
-            </IconButton>
-          )}
-          <IconButton
-            color="primary"
-            aria-label="Subir elemento"
-            component="span"
-            disabled={loading}
-            onClick={handleCustomClick ? handleCustomClick : onClick}
-          >
-            <PhotoCamera />
-          </IconButton>
-        </CardActions>
+        {bottomAction && (
+          <>
+            <Divider />
+            <CardActions className={classes.actions}>
+              {!loading &&
+                (status === 'LOADED' || (status === 'WAITING' && file)) && (
+                  <IconButton
+                    color="primary"
+                    aria-label="Eliminar elemento"
+                    component="span"
+                    onClick={deleteFile}
+                  >
+                    <DeleteIcon />
+                  </IconButton>
+                )}
+              <IconButton
+                color="primary"
+                aria-label="Subir elemento"
+                component="span"
+                disabled={loading}
+                onClick={handleCustomClick ? handleCustomClick : onClick}
+              >
+                <PhotoCamera />
+              </IconButton>
+            </CardActions>
+          </>
+        )}
       </Card>
     </div>
   );
