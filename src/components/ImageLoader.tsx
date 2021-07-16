@@ -167,7 +167,13 @@ function ImageLoaderComponent(
   const loadingStatus = loading || status === 'COMPRESSING';
 
   return (
-    <div className={clsx(classes.container, classes.totallyFilled)}>
+    <div
+      className={clsx(
+        classes.container,
+        classes.totallyFilled,
+        propClasses.root,
+      )}
+    >
       <Card
         classes={{
           root: clsx(
