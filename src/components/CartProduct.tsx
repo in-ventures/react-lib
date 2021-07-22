@@ -222,61 +222,63 @@ export default function CartProduct({
           )}
         </div>
       </CardActionArea>
-      {!notEditable && (
-        <CardActions className={classes.actions}>
-          <Box>{ExtraTag}</Box>
+      <CardActions className={classes.actions}>
+        <Box>{ExtraTag}</Box>
 
-          <Box className={classes.rightbuttons}>
-            <IconButton
-              aria-label="sub"
-              onClick={onSubClick}
-              disabled={disabled}
-              className={classes.subbutton}
-            >
-              <Icon
-                className={disabled ? '' : classes.activeIcon}
-                color={disabled ? 'disabled' : 'inherit'}
-                fontSize="small"
+        <Box className={classes.rightbuttons}>
+          {!notEditable && (
+            <>
+              <IconButton
+                aria-label="sub"
+                onClick={onSubClick}
+                disabled={disabled}
+                className={classes.subbutton}
               >
-                remove
-              </Icon>
-            </IconButton>
+                <Icon
+                  className={disabled ? '' : classes.activeIcon}
+                  color={disabled ? 'disabled' : 'inherit'}
+                  fontSize="small"
+                >
+                  remove
+                </Icon>
+              </IconButton>
 
-            <Typography component="div" variant="subtitle1">
-              <Box color="text.primary">{quantity}</Box>
-            </Typography>
+              <Typography component="div" variant="subtitle1">
+                <Box color="text.primary">{quantity}</Box>
+              </Typography>
 
-            <IconButton
-              aria-label="add"
-              onClick={onAddClick}
-              disabled={disabled}
-              className={classes.addbutton}
-            >
-              <Icon
-                className={disabled ? '' : classes.activeIcon}
-                color={disabled ? 'disabled' : 'inherit'}
-                fontSize="small"
+              <IconButton
+                aria-label="add"
+                onClick={onAddClick}
+                disabled={disabled}
+                className={classes.addbutton}
               >
-                add
-              </Icon>
-            </IconButton>
+                <Icon
+                  className={disabled ? '' : classes.activeIcon}
+                  color={disabled ? 'disabled' : 'inherit'}
+                  fontSize="small"
+                >
+                  add
+                </Icon>
+              </IconButton>
 
-            <IconButton
-              className={classes.trashicon}
-              aria-label="delete"
-              onClick={onTrashClick}
-              disabled={disabled}
-              size="small"
-            >
-              <DeleteIcon
-                fontSize="small"
-                className={disabled ? '' : classes.activeIcon}
-                color={disabled ? 'disabled' : 'inherit'}
-              />
-            </IconButton>
-          </Box>
-        </CardActions>
-      )}
+              <IconButton
+                className={classes.trashicon}
+                aria-label="delete"
+                onClick={onTrashClick}
+                disabled={disabled}
+                size="small"
+              >
+                <DeleteIcon
+                  fontSize="small"
+                  className={disabled ? '' : classes.activeIcon}
+                  color={disabled ? 'disabled' : 'inherit'}
+                />
+              </IconButton>
+            </>
+          )}
+        </Box>
+      </CardActions>
     </Card>
   );
 }
