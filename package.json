@@ -85,7 +85,7 @@
     "@babel/cli": "^7.14.3",
     "@babel/plugin-proposal-export-default-from": "^7.12.13",
     "@babel/plugin-transform-typescript": "^7.14.6",
-    "@material-ui/system": "^4.11.3",
+    "@material-ui/system": "^4.12.1",
     "@storybook/addon-a11y": "^6.2.5",
     "@storybook/addon-actions": "^6.2.5",
     "@storybook/addon-backgrounds": "^6.2.5",
