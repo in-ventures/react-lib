@@ -105,7 +105,7 @@
     "@zeplin/cli": "^1.1.12",
     "@zeplin/cli-connect-react-plugin": "^1.1.1",
     "@zeplin/cli-connect-storybook-plugin": "^0.5.4",
-    "auto-changelog": "^2.2.1",
+    "auto-changelog": "^2.3.0",
     "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
     "babel-plugin-typescript-to-proptypes": "^1.4.2",
     "concurrently": "^6.0.1",
