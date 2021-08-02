@@ -4,7 +4,7 @@
  * File Created: Monday, 20th July 2020 2:46:10 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Friday, 14th August 2020 2:12:51 pm
+ * Last Modified: Monday, 2nd August 2021 1:59:02 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -18,7 +18,7 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint',
+    'prettier',
     'plugin:prettier/recommended',
     'plugin:react-hooks/recommended',
   ],
