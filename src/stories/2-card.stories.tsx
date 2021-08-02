@@ -4,7 +4,7 @@
  * File Created: Tuesday, 4th August 2020 5:47:50 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 8th June 2021 2:55:35 pm
+ * Last Modified: Monday, 2nd August 2021 1:14:11 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -36,7 +36,7 @@ export const Base = () => (
     subtitle="subtitle"
     imageUrl="https://www.laboratoriochile.cl/wp-content//uploads/2015/11/Clonazepam_05MG_30C_BE_HD.jpg"
     description="Clonazepam · 2 mg · 30 comprimidos"
-    price={5025}
+    price={'$5.025'}
     onClickCard={() => console.log('You clicked the card!!')}
   />
 );
@@ -58,7 +58,7 @@ export const EditableCard = () => {
       subtitle={subtitle}
       details={details}
       description={description}
-      price={price}
+      price={String(price)}
       tagText={tagText}
       tagIcon={<InsertDriveFileOutlinedIcon />}
       onClickCard={() => console.log('You clicked B1!')}
@@ -90,7 +90,7 @@ export const ProductCarouselNoWrap = () => {
               'https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000',
             title: 'Glafornillafornillafornillafornillafornillafornil',
             subtitle: 'Metformina Clorhidrato Clorhidrato',
-            price: 15990,
+            price: '15990',
             tagText: 'Receta retenida',
             tagIcon: <InsertDriveFileOutlinedIcon />,
             badgeContent: 5,
@@ -105,7 +105,7 @@ export const ProductCarouselNoWrap = () => {
             subtitle: 'Metformina Clorhidrato Clorhidrato',
             details: '30 comprimidos recubiertos',
             description: '500 mg',
-            price: 15990,
+            price: '15990',
             badgeContent: 5,
             badgeColor: 'red',
             badgeTextColor: '#FFFFFF',
@@ -116,7 +116,7 @@ export const ProductCarouselNoWrap = () => {
               'https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000',
             title: 'Glafornil',
             description: '500 mg',
-            price: 15990,
+            price: '15990',
             tagText: 'Receta retenida',
             tagIcon: <InsertDriveFileOutlinedIcon />,
             onClickCard: () => console.log('You clicked B3!'),
@@ -129,7 +129,7 @@ export const ProductCarouselNoWrap = () => {
             subtitle: 'Metformina Clorhidrato Clorhidrato',
             details: '30 comprimidos recubiertos',
             description: '500 mg',
-            price: 15990,
+            price: '15990',
             badgeContent: 5,
             badgeColor: 'red',
             badgeTextColor: '#FFFFFF',
@@ -142,7 +142,7 @@ export const ProductCarouselNoWrap = () => {
             subtitle: 'Metformina Clorhidrato Clorhidrato',
             details: '30 comprimidos recubiertos',
             description: '500 mg',
-            price: 15990,
+            price: '15990',
             tagText: 'Receta retenida',
             tagIcon: <InsertDriveFileOutlinedIcon />,
             onClickCard: () => console.log('You clicked B3!'),
@@ -155,7 +155,7 @@ export const ProductCarouselNoWrap = () => {
             subtitle: 'Metformina Clorhidrato Clorhidrato',
             details: '30 comprimidos recubiertos',
             description: '500 mg',
-            price: 15990,
+            price: '15990',
             onClickCard: () => console.log('You clicked B2!'),
           },
           {
@@ -165,7 +165,7 @@ export const ProductCarouselNoWrap = () => {
             subtitle: 'Metformina Clorhidrato Clorhidrato',
             details: '30 comprimidos recubiertos',
             description: '500 mg',
-            price: 15990,
+            price: '15990',
             tagText: 'Receta retenida',
             tagIcon: <InsertDriveFileOutlinedIcon />,
             badgeContent: 10,
@@ -256,7 +256,7 @@ export const ProductCarousel = () => {
               'https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000',
             title: 'Glafornil',
             subtitle: 'Metformina Clorhidrato Clorhidrato',
-            price: 15990,
+            price: '15990',
             // tagText: 'Receta retenida',
             // tagIcon: <InsertDriveFileOutlinedIcon />,
             badgeContent: 5,
@@ -278,7 +278,7 @@ export const ProductCarousel = () => {
             subtitle: 'Metformina Clorhidrato Clorhidrato',
             details: '30 comprimidos recubiertos',
             description: '500 mg',
-            price: 15990,
+            price: '15990',
             badgeContent: 5,
             badgeColor: 'red',
             badgeTextColor: '#FFFFFF',
@@ -290,7 +290,7 @@ export const ProductCarousel = () => {
               'https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000',
             title: 'Glafornil',
             description: '500 mg',
-            price: 15990,
+            price: '15990',
             tagText: 'Receta retenida',
             tagIcon: <InsertDriveFileOutlinedIcon />,
             leftBadge: <UnavailableBadge warn />,
@@ -304,7 +304,7 @@ export const ProductCarousel = () => {
             subtitle: 'Metformina Clorhidrato Clorhidrato',
             details: '30 comprimidos recubiertos',
             description: '500 mg',
-            price: 15990,
+            price: '15990',
             badgeContent: 5,
             badgeColor: 'red',
             badgeTextColor: '#FFFFFF',
@@ -317,7 +317,7 @@ export const ProductCarousel = () => {
             subtitle:
               'Metformina Clorhidrato Clorhidrato Clorhidrato Clorhidrato Clorhidrato',
             details: '30 comprimidos recubiertos',
-            price: 15990,
+            price: '15990',
             tagText: 'Receta retenida',
             tagIcon: <InsertDriveFileOutlinedIcon />,
             onClickCard: () => console.log('You clicked B3!'),
@@ -330,7 +330,7 @@ export const ProductCarousel = () => {
             subtitle: 'Metformina Clorhidrato Clorhidrato',
             details: '30 comprimidos recubiertos',
             description: '500 mg',
-            price: 15990,
+            price: '15990',
             onClickCard: () => console.log('You clicked B2!'),
           },
           {
@@ -340,7 +340,7 @@ export const ProductCarousel = () => {
             subtitle: 'Metformina Clorhidrato Clorhidrato',
             details: '30 comprimidos recubiertos',
             description: '500 mg',
-            price: 15990,
+            price: '15990',
             tagText: 'Receta retenida',
             tagIcon: <InsertDriveFileOutlinedIcon />,
             badgeContent: 10,
@@ -383,7 +383,7 @@ export const ProductCarouselRenderItem = () => {
               'https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000',
             title: 'Glafornil',
             subtitle: 'Metformina Clorhidrato Clorhidrato',
-            price: 15990,
+            price: '15990',
             // tagText: 'Receta retenida',
             // tagIcon: <InsertDriveFileOutlinedIcon />,
             badgeContent: 5,
@@ -405,7 +405,7 @@ export const ProductCarouselRenderItem = () => {
             subtitle: 'Metformina Clorhidrato Clorhidrato',
             details: '30 comprimidos recubiertos',
             description: '500 mg',
-            price: 15990,
+            price: '15990',
             badgeContent: 5,
             badgeColor: 'red',
             badgeTextColor: '#FFFFFF',
@@ -416,7 +416,7 @@ export const ProductCarouselRenderItem = () => {
               'https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000',
             title: 'Glafornil',
             description: '500 mg',
-            price: 15990,
+            price: '15990',
             tagText: 'Receta retenida',
             tagIcon: <InsertDriveFileOutlinedIcon />,
             leftBadge: <UnavailableBadge warn />,
@@ -429,7 +429,7 @@ export const ProductCarouselRenderItem = () => {
             subtitle: 'Metformina Clorhidrato Clorhidrato',
             details: '30 comprimidos recubiertos',
             description: '500 mg',
-            price: 15990,
+            price: '15990',
             badgeContent: 5,
             badgeColor: 'red',
             badgeTextColor: '#FFFFFF',
@@ -441,7 +441,7 @@ export const ProductCarouselRenderItem = () => {
             subtitle:
               'Metformina Clorhidrato Clorhidrato Clorhidrato Clorhidrato Clorhidrato',
             details: '30 comprimidos recubiertos',
-            price: 15990,
+            price: '15990',
             tagText: 'Receta retenida',
             tagIcon: <InsertDriveFileOutlinedIcon />,
           },
@@ -453,7 +453,7 @@ export const ProductCarouselRenderItem = () => {
             subtitle: 'Metformina Clorhidrato Clorhidrato',
             details: '30 comprimidos recubiertos',
             description: '500 mg',
-            price: 15990,
+            price: '15990',
           },
           {
             imageUrl:
@@ -462,7 +462,7 @@ export const ProductCarouselRenderItem = () => {
             subtitle: 'Metformina Clorhidrato Clorhidrato',
             details: '30 comprimidos recubiertos',
             description: '500 mg',
-            price: 15990,
+            price: '15990',
             tagText: 'Receta retenida',
             tagIcon: <InsertDriveFileOutlinedIcon />,
             badgeContent: 10,
@@ -489,7 +489,7 @@ export const ProductCarouselSkeleton = () => {
               'https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000',
             title: 'Glafornillafornillafornillafornillafornillafornil',
             subtitle: 'Metformina Clorhidrato Clorhidrato',
-            price: 15990,
+            price: '15990',
             tagText: 'Receta retenida',
             tagIcon: <InsertDriveFileOutlinedIcon />,
             badgeContent: 5,
@@ -504,7 +504,7 @@ export const ProductCarouselSkeleton = () => {
             subtitle: 'Metformina Clorhidrato Clorhidrato',
             details: '30 comprimidos recubiertos',
             description: '500 mg',
-            price: 15990,
+            price: '15990',
             badgeContent: 5,
             badgeColor: 'red',
             badgeTextColor: '#FFFFFF',
@@ -515,7 +515,7 @@ export const ProductCarouselSkeleton = () => {
               'https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000',
             title: 'Glafornil',
             description: '500 mg',
-            price: 15990,
+            price: '15990',
             tagText: 'Receta retenida',
             tagIcon: <InsertDriveFileOutlinedIcon />,
             onClickCard: () => console.log('You clicked B3!'),
@@ -528,7 +528,7 @@ export const ProductCarouselSkeleton = () => {
             subtitle: 'Metformina Clorhidrato Clorhidrato',
             details: '30 comprimidos recubiertos',
             description: '500 mg',
-            price: 15990,
+            price: '15990',
             badgeContent: 5,
             badgeColor: 'red',
             badgeTextColor: '#FFFFFF',
@@ -541,7 +541,7 @@ export const ProductCarouselSkeleton = () => {
             subtitle: 'Metformina Clorhidrato Clorhidrato',
             details: '30 comprimidos recubiertos',
             description: '500 mg',
-            price: 15990,
+            price: '15990',
             tagText: 'Receta retenida',
             tagIcon: <InsertDriveFileOutlinedIcon />,
             onClickCard: () => console.log('You clicked B3!'),
@@ -554,7 +554,7 @@ export const ProductCarouselSkeleton = () => {
             subtitle: 'Metformina Clorhidrato Clorhidrato',
             details: '30 comprimidos recubiertos',
             description: '500 mg',
-            price: 15990,
+            price: '15990',
             onClickCard: () => console.log('You clicked B2!'),
           },
           {
@@ -564,7 +564,7 @@ export const ProductCarouselSkeleton = () => {
             subtitle: 'Metformina Clorhidrato Clorhidrato',
             details: '30 comprimidos recubiertos',
             description: '500 mg',
-            price: 15990,
+            price: '15990',
             tagText: 'Receta retenida',
             tagIcon: <InsertDriveFileOutlinedIcon />,
             badgeContent: 10,
@@ -614,7 +614,7 @@ export const ProductDetailsCard = () => {
             Andrómaco
           </Typography>,
         ]}
-        price={15813}
+        price={'15813'}
         tags={[
           <Chip
             color="primary"
@@ -687,7 +687,7 @@ export const ProductDetailsCardExtraTags = () => {
             </Typography>
           ) : null,
         ]}
-        price={15813}
+        price={'15813'}
         tags={tags}
         onClickImage={() =>
           console.log('You clicked the product details image!')

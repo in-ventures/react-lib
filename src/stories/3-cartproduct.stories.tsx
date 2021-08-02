@@ -76,8 +76,8 @@ export const EditableCartProduct = () => {
       title3={title3}
       title4={title4}
       quantity={quantity}
-      unitPrice={unitPrice}
-      totalPrice={totalPrice}
+      unitPrice={String(unitPrice)}
+      totalPrice={String(totalPrice)}
       badges={badges}
       ExtraTag={
         <Button
@@ -159,8 +159,8 @@ export const NotEditableCartProduct = () => {
       title3={title3}
       title4={title4}
       quantity={quantity}
-      unitPrice={unitPrice}
-      totalPrice={totalPrice}
+      unitPrice={String(unitPrice)}
+      totalPrice={String(totalPrice)}
       notEditable={true}
       disableCardClick={true}
       ExtraTag={
