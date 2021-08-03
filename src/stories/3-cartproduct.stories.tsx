@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import Box from '@material-ui/core/Box';
-import { Avatar, Chip, createStyles, makeStyles } from '@material-ui/core';
+import { Chip, createStyles, makeStyles } from '@material-ui/core';
 import LocalShippingOutlinedIcon from '@material-ui/icons/LocalShippingOutlined';
 
 export default {

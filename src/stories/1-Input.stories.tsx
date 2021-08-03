@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Wednesday, 28th October 2020 12:03:21 am
+ * Last Modified: Tuesday, 3rd August 2021 3:37:37 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -173,28 +173,27 @@ export const InputForEmail = () => {
   );
 };
 
+const possibleCountries: CountryType[] = [
+  {
+    id: 1,
+    countryName: 'Chile',
+    countryDigitLength: 9,
+    countryPrefix: 56,
+  },
+  {
+    id: 2,
+    countryName: 'Peru',
+    countryDigitLength: 9,
+    countryPrefix: 51,
+  },
+  {
+    id: 3,
+    countryName: 'USA',
+    countryDigitLength: 11,
+    countryPrefix: 1,
+  },
+];
 export const InputForPhone = () => {
-  const possibleCountries: CountryType[] = [
-    {
-      id: 1,
-      countryName: 'Chile',
-      countryDigitLength: 9,
-      countryPrefix: 56,
-    },
-    {
-      id: 2,
-      countryName: 'Peru',
-      countryDigitLength: 9,
-      countryPrefix: 51,
-    },
-    {
-      id: 3,
-      countryName: 'USA',
-      countryDigitLength: 11,
-      countryPrefix: 1,
-    },
-  ];
-
   const classes = useStyles();
 
   //const { possibleCountries } = props;
@@ -225,7 +224,7 @@ export const InputForPhone = () => {
       ) as CountryType;
       setCountry(newCountry);
     },
-    [setCountry, possibleCountries],
+    [setCountry],
   );
 
   const handleWrite = useCallback(
@@ -277,7 +276,7 @@ export const InputWithMask = () => {
   const [length, setLength] = useInput('', {
     formatter: new MaskFormatter('****'),
   });
-  const [birthdate, setBirthdate, birthStatus] = useInput('', {
+  const [birthdate, setBirthdate] = useInput('', {
     formatter: new MaskFormatter('99/99/9999'),
     validators: [new DateValidator('formato incorrecto para fecha')],
   });

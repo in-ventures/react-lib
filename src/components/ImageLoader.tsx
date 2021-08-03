@@ -87,7 +87,7 @@ function ImageLoaderComponent(
     maxFileSize = 14,
     Placeholder = null,
     onError = () => {},
-    compressImage = async (file: File) => {},
+    compressImage = async () => {},
     file,
     setFile = () => {},
     progress,
@@ -98,6 +98,7 @@ function ImageLoaderComponent(
     bottomAction = false,
     classes: propClasses = {},
   }: ImageLoaderProps,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ref: any,
 ) {
   const classes = useStyles();

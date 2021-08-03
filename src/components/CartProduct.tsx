@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { Avatar, Chip, TextFieldProps } from '@material-ui/core';
+import { TextFieldProps } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -12,9 +12,6 @@ import Link from '@material-ui/core/Link';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Icon from '@material-ui/core/Icon';
-
-import { useToast } from '../hooks/toast.hook';
-import { CurrencyFormatter } from '../formatters';
 import clsx from 'clsx';
 
 const useStyles = makeStyles((theme: Theme) => ({
