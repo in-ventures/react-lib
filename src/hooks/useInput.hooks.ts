@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 11:51:01 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Monday, 21st December 2020 10:14:26 am
+ * Last Modified: Tuesday, 3rd August 2021 3:36:18 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -95,9 +95,8 @@ export const useInput = (
     ),
     [options.debounceTime, setTyping, validate],
   );
-  const [asyncValidatorLoading, setAsyncValidatorLoading] = useState<boolean>(
-    false,
-  );
+  const [asyncValidatorLoading, setAsyncValidatorLoading] =
+    useState<boolean>(false);
   const handleSetValue = useDeepCallback(
     async (data: string) => {
       const newValue =

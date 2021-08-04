@@ -4,7 +4,7 @@
  * File Created: Wednesday, 7th October 2020 11:59:01 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Monday, 19th October 2020 5:45:31 pm
+ * Last Modified: Tuesday, 3rd August 2021 3:44:19 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -17,6 +17,7 @@ import { useEffect, useRef } from 'react';
 import debounce from 'lodash/debounce';
 
 export function useDebouncedCallback(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   callback: (...args: any[]) => any,
   debounceTime: number,
 ) {
