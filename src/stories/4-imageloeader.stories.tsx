@@ -201,7 +201,7 @@ export const Landscape = () => {
 
     try {
       //Compression
-      const compressedFile = await imageCompression(file, options);
+      await imageCompression(file, options);
     } catch (error) {}
   };
   const loading = boolean('Loading', false);
@@ -260,7 +260,7 @@ export const Portrait = () => {
 
     try {
       //Compression
-      const compressedFile = await imageCompression(file, options);
+      await imageCompression(file, options);
     } catch (error) {}
   };
 
@@ -316,7 +316,7 @@ export const DefaultImageUploaded = () => {
 
     try {
       //Compression
-      const compressedFile = await imageCompression(file, options);
+      await imageCompression(file, options);
     } catch (error) {}
   };
   const inputRef = React.createRef<HTMLInputElement | undefined>();
@@ -382,7 +382,7 @@ export const UploaderWithModal = () => {
 
     try {
       //Compression
-      const compressedFile = await imageCompression(file, options);
+      await imageCompression(file, options);
     } catch (error) {}
   };
 
