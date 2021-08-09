@@ -97,7 +97,7 @@
     "@storybook/addons": "^6.2.5",
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.2.5",
-    "@testing-library/react-hooks": "^3.7.0",
+    "@testing-library/react-hooks": "^7.0.1",
     "@types/is": "^0.0.21",
     "@types/lodash": "^4.14.172",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
