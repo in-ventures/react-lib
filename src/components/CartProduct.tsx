@@ -91,7 +91,7 @@ type CartProductProps = {
   title4?: string;
   quantity?: number;
   unitPrice: string;
-  totalPrice: string;
+  totalPrice?: string;
   disabled?: boolean;
   notEditable?: boolean;
   disableCardClick?: boolean;
