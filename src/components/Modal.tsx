@@ -4,7 +4,7 @@
  * File Created: Wednesday, 23rd September 2020 4:10:47 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Wednesday, 18th August 2021 4:19:23 pm
+ * Last Modified: Wednesday, 18th August 2021 5:48:37 pm
  * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -103,7 +103,7 @@ export function AlertModal(props: ModalProps) {
               {content}
             </DialogContentText>
           )}
-          {children && children}
+          {children}
         </DialogContent>
         <DialogActions className={clsx(propClasses?.actionsContainer)}>
           {actions?.map((action: ActionType, index: number) => (
