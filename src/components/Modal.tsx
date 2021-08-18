@@ -4,7 +4,7 @@
  * File Created: Wednesday, 23rd September 2020 4:10:47 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Monday, 16th August 2021 12:52:03 pm
+ * Last Modified: Wednesday, 18th August 2021 4:19:23 pm
  * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -28,7 +28,8 @@ import clsx from 'clsx';
 type ModalProps = {
   open: boolean;
   title: string;
-  content: string | React.ReactElement;
+  content?: string;
+  children?: React.ReactElement;
   setOpen: (open: boolean) => void;
   onClose?: () => void;
   actions?: ActionType[];
@@ -65,6 +66,7 @@ export function AlertModal(props: ModalProps) {
     title,
     open,
     content,
+    children,
     actions,
     setOpen,
     onClose,
@@ -94,17 +96,14 @@ export function AlertModal(props: ModalProps) {
       >
         <DialogTitle className={clsx(propClasses?.title)}>{title}</DialogTitle>
         <DialogContent>
-          {content && typeof content == 'string' ? (
+          {content && (
             <DialogContentText
               className={clsx(classes.contentText, propClasses?.content)}
             >
               {content}
             </DialogContentText>
-          ) : (
-            <div className={clsx(classes.contentText, propClasses?.content)}>
-              {content}
-            </div>
           )}
+          {children && children}
         </DialogContent>
         <DialogActions className={clsx(propClasses?.actionsContainer)}>
           {actions?.map((action: ActionType, index: number) => (
