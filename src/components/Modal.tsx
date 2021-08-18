@@ -4,8 +4,8 @@
  * File Created: Wednesday, 23rd September 2020 4:10:47 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 3rd June 2021 6:16:45 pm
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Wednesday, 18th August 2021 5:48:37 pm
+ * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -28,7 +28,8 @@ import clsx from 'clsx';
 type ModalProps = {
   open: boolean;
   title: string;
-  content: string;
+  content?: string;
+  children?: React.ReactElement;
   setOpen: (open: boolean) => void;
   onClose?: () => void;
   actions?: ActionType[];
@@ -65,6 +66,7 @@ export function AlertModal(props: ModalProps) {
     title,
     open,
     content,
+    children,
     actions,
     setOpen,
     onClose,
@@ -94,11 +96,14 @@ export function AlertModal(props: ModalProps) {
       >
         <DialogTitle className={clsx(propClasses?.title)}>{title}</DialogTitle>
         <DialogContent>
-          <DialogContentText
-            className={clsx(classes.contentText, propClasses?.content)}
-          >
-            {content}
-          </DialogContentText>
+          {content && (
+            <DialogContentText
+              className={clsx(classes.contentText, propClasses?.content)}
+            >
+              {content}
+            </DialogContentText>
+          )}
+          {children}
         </DialogContent>
         <DialogActions className={clsx(propClasses?.actionsContainer)}>
           {actions?.map((action: ActionType, index: number) => (
