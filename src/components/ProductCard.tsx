@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Monday, 6th September 2021 12:39:19 pm
+ * Last Modified: Monday, 6th September 2021 12:44:51 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -161,7 +161,7 @@ export function ProductCard(props: ProductPropTypes) {
       <Card className={clsx(classes.root, propClasses?.root)}>
         <CardActionArea
           onClick={onClickCard}
-          className={clsx(classes.actionRoot, propClasses?.cardActionArea)}
+          className={clsx(propClasses?.cardActionArea)}
         >
           <Badge
             badgeContent={badgeContent}
