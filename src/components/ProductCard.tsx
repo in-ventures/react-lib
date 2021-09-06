@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Monday, 6th September 2021 12:44:51 pm
+ * Last Modified: Monday, 6th September 2021 2:17:14 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -99,7 +99,7 @@ const useStyles = makeStyles({
     zIndex: 999,
   },
   disabledTag: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'transparent',
   },
   price: {
     marginTop: '8px',
