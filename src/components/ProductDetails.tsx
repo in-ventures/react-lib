@@ -4,7 +4,7 @@
  * File Created: Friday, 11th September 2020 10:18:53 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Wednesday, 30th June 2021 11:45:14 am
+ * Last Modified: Wednesday, 22nd September 2021 11:46:36 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -25,6 +25,7 @@ type ClassesProps = {
 
 type ProductDetailsProps = {
   imageUrl?: string;
+  fallbackUrl?: string;
   title: string;
   subtitle?: string;
   descriptions?: (React.ReactElement | null)[];
@@ -99,18 +100,24 @@ export function ProductDetails(props: ProductDetailsProps) {
     pricePerUnit,
     tags,
     classes: propClasses,
+    fallbackUrl,
   } = props;
 
   const classes = useStyles();
-
+  const handleImageError = (e: React.ChangeEvent<HTMLImageElement>) => {
+    if (!fallbackUrl) return;
+    e.target.onerror = null;
+    e.target.src = fallbackUrl;
+  };
   return (
     <Box className={classes.root}>
       <div className={classes.imageContainer}>
         <CardMedia
           className={classes.media}
-          image={imageUrl}
+          image={imageUrl || fallbackUrl}
           component="img"
           onClick={onClickImage}
+          onError={handleImageError}
         />
         <div className={clsx(classes.tagsDiv, propClasses?.tagsDiv)}>
           {tags?.map((tag, index: number) => {

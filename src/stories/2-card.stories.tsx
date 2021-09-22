@@ -4,7 +4,7 @@
  * File Created: Tuesday, 4th August 2020 5:47:50 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Monday, 2nd August 2021 1:14:11 pm
+ * Last Modified: Wednesday, 22nd September 2021 11:39:27 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -399,8 +399,8 @@ export const ProductCarouselRenderItem = () => {
             },
           },
           {
-            imageUrl:
-              'https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000',
+            imageUrl: 'https://google.com/khe.jpeg',
+            fallbackUrl: 'https://mekiapp.com/assets/images/default.svg',
             title: 'Glafornil',
             subtitle: 'Metformina Clorhidrato Clorhidrato',
             details: '30 comprimidos recubiertos',
@@ -412,8 +412,7 @@ export const ProductCarouselRenderItem = () => {
             leftBadge: <UnavailableBadge />,
           },
           {
-            imageUrl:
-              'https://www.cruzverde.cl/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw0ebcdb64/images/large/296432-okrafit-120-capsulas.jpg?sw=1000&sh=1000',
+            fallbackUrl: 'https://mekiapp.com/assets/images/default.svg',
             title: 'Glafornil',
             description: '500 mg',
             price: '15990',

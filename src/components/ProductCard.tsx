@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Tuesday, 7th September 2021 1:53:57 pm
+ * Last Modified: Wednesday, 22nd September 2021 11:41:37 am
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -48,6 +48,7 @@ export type ProductPropTypes = {
   slug?: string;
   uuid?: string;
   imageUrl?: string;
+  fallbackUrl?: string;
   title: string;
   subtitle?: string;
   tagText?: string;
@@ -137,6 +138,7 @@ export function ProductCard(props: ProductPropTypes) {
    */
   const {
     imageUrl,
+    fallbackUrl,
     title,
     subtitle,
     tagText,
@@ -156,6 +158,11 @@ export function ProductCard(props: ProductPropTypes) {
     badgeColor: badgeColor ? badgeColor : '#000000',
     badgeTextColor: badgeTextColor ? badgeTextColor : '#FFFFFF',
   });
+  const handleImageError = (e: React.ChangeEvent<HTMLImageElement>) => {
+    if (!fallbackUrl) return;
+    e.target.onerror = null;
+    e.target.src = fallbackUrl;
+  };
 
   return (
     <>
@@ -182,14 +189,16 @@ export function ProductCard(props: ProductPropTypes) {
             {badgeContent ? (
               <CardMedia
                 className={clsx(classes.media, propClasses?.media)}
-                image={imageUrl}
+                image={imageUrl || fallbackUrl}
                 component="img"
+                onError={handleImageError}
               />
             ) : (
               <CardMedia
                 className={clsx(classes.media, propClasses?.media)}
-                image={imageUrl}
+                image={imageUrl || fallbackUrl}
                 component="img"
+                onError={handleImageError}
               />
             )}
 
