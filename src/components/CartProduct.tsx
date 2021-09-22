@@ -85,6 +85,7 @@ type PropClasses = {
 type CartProductProps = {
   classes?: PropClasses;
   urlImage?: string;
+  fallbackUrl?: string;
   title1?: string;
   title2?: string;
   title3?: string;
@@ -107,6 +108,7 @@ type CartProductProps = {
 //Component
 export default function CartProduct({
   urlImage,
+  fallbackUrl,
   title1,
   title2,
   title3,
@@ -135,12 +137,22 @@ export default function CartProduct({
     },
     [onDefaultClick],
   );
+  const handleImageError = (e: React.ChangeEvent<HTMLImageElement>) => {
+    if (!fallbackUrl) return;
+    e.target.onerror = null;
+    e.target.src = fallbackUrl;
+  };
 
   return (
     <Card square elevation={0}>
       <CardActionArea disabled={disableCardClick} onClick={onDetailsClick}>
         <div className={classes.root}>
-          <CardMedia className={classes.cover} image={urlImage} title="" />
+          <CardMedia
+            className={classes.cover}
+            image={urlImage || fallbackUrl}
+            title=""
+            onError={handleImageError}
+          />
 
           <div className={classes.details}>
             <CardContent className={classes.content}>
