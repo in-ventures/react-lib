@@ -4,7 +4,7 @@
  * File Created: Tuesday, 5th October 2021 6:27:22 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 5th October 2021 6:54:46 pm
+ * Last Modified: Tuesday, 5th October 2021 7:19:50 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2021 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -33,13 +33,8 @@ export function LazyCardMedia({
   const placeholderRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!visible && placeholderRef.current) {
-      console.log('[LazyCardMedia] start observer');
       const observer = new IntersectionObserver(([{ intersectionRatio }]) => {
         if (intersectionRatio > 0) {
-          console.log('[LazyCardMedia] intersection', {
-            intersectionRatio,
-            observer,
-          });
           setVisible(true);
         }
       });
