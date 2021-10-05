@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Wednesday, 22nd September 2021 11:41:37 am
+ * Last Modified: Tuesday, 5th October 2021 7:02:57 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -26,6 +26,7 @@ import {
   Container,
 } from '@material-ui/core';
 import clsx from 'clsx';
+import { LazyCardMedia } from './LazyCardMedia';
 
 type ClassesPropType = {
   badge?: string;
@@ -186,21 +187,14 @@ export function ProductCard(props: ProductPropTypes) {
                 {leftBadge}
               </div>
             )}
-            {badgeContent ? (
-              <CardMedia
-                className={clsx(classes.media, propClasses?.media)}
-                image={imageUrl || fallbackUrl}
-                component="img"
-                onError={handleImageError}
-              />
-            ) : (
-              <CardMedia
-                className={clsx(classes.media, propClasses?.media)}
-                image={imageUrl || fallbackUrl}
-                component="img"
-                onError={handleImageError}
-              />
-            )}
+            <LazyCardMedia
+              className={clsx(classes.media, propClasses?.media)}
+              image={imageUrl || fallbackUrl || ''}
+              component="img"
+              onError={handleImageError}
+              alt={title}
+              height={92}
+            />
 
             <Chip
               color="primary"
