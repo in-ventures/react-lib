@@ -4,7 +4,7 @@
  * File Created: Wednesday, 8th July 2020 11:51:01 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 3rd August 2021 3:36:18 pm
+ * Last Modified: Wednesday, 6th October 2021 12:29:12 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -16,8 +16,8 @@
 import 'regenerator-runtime/runtime.js';
 import { useState, useCallback, useMemo, useEffect, useRef } from 'react';
 import debounce from 'lodash/debounce';
-import { Validator } from '../validators';
-import { Formatter } from '../formatters';
+import { Validator } from '../validators/Validator';
+import { Formatter } from '../formatters/Formatter';
 import { useDeepCallback } from './useDeepCallback';
 
 interface AsyncValidator<T = string> {
