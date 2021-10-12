@@ -288,7 +288,7 @@ export const Portrait = () => {
 
 export const DefaultImageUploaded = () => {
   const [file, setFile] = useState(
-    'https://meki-dev.s3.us-east-2.amazonaws.com/prescriptions/169/2021-10-08T23%3A48%3A24.754Z-3bc555ba-310b-4d42-b721-40d04209594a.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXMV2VEHXX7N6YFU4%2F20211008%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20211008T234826Z&X-Amz-Expires=1800&X-Amz-Signature=b3d6ff58be905fcb5c3d0b68d7baa6c60e1c58c9c0dc57e5007b9e8bccf47ded&X-Amz-SignedHeaders=host',
+    'https://meki-public.s3.us-east-2.amazonaws.com/images/00017008-1309-4c4c-8568-8f8afbaebf09.jpeg',
   );
   const [progress, setProgress] = useState(0);
 
@@ -297,7 +297,7 @@ export const DefaultImageUploaded = () => {
   const maxFileSize = number('Max size', 1);
   const defaultImage = text(
     'Default image',
-    'https://meki-dev.s3.us-east-2.amazonaws.com/prescriptions/169/2021-10-08T23%3A48%3A24.754Z-3bc555ba-310b-4d42-b721-40d04209594a.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXMV2VEHXX7N6YFU4%2F20211008%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20211008T234826Z&X-Amz-Expires=1800&X-Amz-Signature=b3d6ff58be905fcb5c3d0b68d7baa6c60e1c58c9c0dc57e5007b9e8bccf47ded&X-Amz-SignedHeaders=host ',
+    'https://previews.123rf.com/images/creativepriyanka/creativepriyanka1906/creativepriyanka190600379/124982633-prescription-icon.jpg',
   );
 
   const defaultTitle = text('Default title', 'Adjunta tu receta aquí');
