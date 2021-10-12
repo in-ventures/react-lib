@@ -4,8 +4,8 @@
  * File Created: Friday, 25th September 2020 3:17:09 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 15th October 2020 6:11:36 pm
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Friday, 8th October 2021 4:16:49 pm
+ * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -15,7 +15,7 @@
 
 import { text, date } from '@storybook/addon-knobs';
 import React, { useState } from 'react';
-import { Calendar } from '../components';
+import { Calendar } from '../components/Calendar';
 
 export default {
   title: 'Calendar',

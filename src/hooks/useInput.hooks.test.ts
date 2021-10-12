@@ -4,8 +4,8 @@
  * File Created: Tuesday, 25th August 2020 4:50:02 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Tuesday, 1st September 2020 2:41:17 pm
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Tuesday, 12th October 2021 11:14:09 am
+ * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -15,14 +15,14 @@
 
 import { useInput } from './useInput.hooks';
 import { renderHook, act } from '@testing-library/react-hooks';
-import {
-  RutFormatValidator,
-  RutValidator,
-  EmailValidator,
-  NumericValidator,
-  LengthValidator,
-} from '../validators';
-import { AccentRemoverFormatter, RutFormatter } from '../formatters';
+import { LengthValidator } from '../validators/LengthValidator';
+import { NumericValidator } from '../validators/NumericValidator';
+import { EmailValidator } from '../validators/EmailValidator';
+import { RutValidator } from '../validators/RutValidator';
+import { RutFormatValidator } from '../validators/RutFormatValidator';
+
+import { AccentRemoverFormatter } from '../formatters/AccentRemover';
+import { RutFormatter } from '../formatters/RutFormatter';
 
 describe('Should validate correct RUT last digit', () => {
   test('Correct last character of a Chilean RUT', async () => {

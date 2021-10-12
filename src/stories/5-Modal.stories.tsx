@@ -4,8 +4,8 @@
  * File Created: Wednesday, 23rd September 2020 4:11:55 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Tuesday, 9th February 2021 11:11:09 am
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Friday, 8th October 2021 4:16:39 pm
+ * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -14,7 +14,7 @@
  */
 
 import React, { useState, useCallback } from 'react';
-import { AlertModal } from '../components';
+import { AlertModal } from '../components/Modal';
 import Button from '@material-ui/core/Button';
 import { text } from '@storybook/addon-knobs';
 

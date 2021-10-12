@@ -4,8 +4,8 @@
  * File Created: Wednesday, 28th April 2021 6:59:27 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 29th April 2021 11:15:00 am
- * Modified By: Esperanza Horn (esperanza@inventures.cl)
+ * Last Modified: Friday, 8th October 2021 4:17:38 pm
+ * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -16,7 +16,7 @@
 import React from 'react';
 import { number } from '@storybook/addon-knobs';
 import { makeStyles, createStyles } from '@material-ui/core';
-import { Slider } from '../components';
+import { Slider } from '../components/Slider';
 
 export default {
   title: 'Slider',
