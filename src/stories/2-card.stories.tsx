@@ -4,8 +4,8 @@
  * File Created: Tuesday, 4th August 2020 5:47:50 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Wednesday, 22nd September 2021 11:39:27 am
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Friday, 8th October 2021 4:15:59 pm
+ * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -14,12 +14,10 @@
  */
 
 import React from 'react';
-import {
-  ProductCard,
-  ProductList,
-  ProductListHeader,
-  ProductDetails,
-} from '../components';
+import { ProductDetails } from '../components/ProductDetails';
+import { ProductCard } from '../components/ProductCard';
+import { ProductList } from '../components/ProductList';
+import { ProductListHeader } from '../components/ProductListHeader';
 import InsertDriveFileOutlinedIcon from '@material-ui/icons/InsertDriveFileOutlined';
 import LocalPharmacyRoundedIcon from '@material-ui/icons/LocalPharmacyRounded';
 import WarningRoundedIcon from '@material-ui/icons/WarningRounded';

@@ -4,8 +4,8 @@
  * File Created: Wednesday, 8th July 2020 1:55:18 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 3rd August 2021 3:37:37 pm
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Friday, 8th October 2021 4:14:37 pm
+ * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -16,16 +16,16 @@ import React, { useCallback, useState, ChangeEvent } from 'react';
 import { number, text } from '@storybook/addon-knobs';
 import { Input } from '../components/input';
 import { InputStatus, useInput } from '../hooks/useInput.hooks';
-import {
-  Validator,
-  RequiredValidator,
-  RutFormatValidator,
-  EmailValidator,
-  RutValidator,
-  LengthValidator,
-  DateValidator,
-} from '../validators';
-import { AccentRemoverFormatter, RutFormatter } from '../formatters';
+import { DateValidator } from '../validators/DateValidator';
+import { Validator } from '../validators/Validator';
+import { RequiredValidator } from '../validators/RequiredValidator';
+import { RutFormatValidator } from '../validators/RutFormatValidator';
+import { EmailValidator } from '../validators/EmailValidator';
+import { RutValidator } from '../validators/RutValidator';
+import { LengthValidator } from '../validators/LengthValidator';
+
+import { AccentRemoverFormatter } from '../formatters/AccentRemover';
+import { RutFormatter } from '../formatters/RutFormatter';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';

@@ -4,8 +4,8 @@
  * File Created: Thursday, 17th December 2020 10:51:22 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 3rd August 2021 3:36:41 pm
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Friday, 8th October 2021 4:17:28 pm
+ * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -15,7 +15,7 @@
 
 import { number } from '@storybook/addon-knobs';
 import React, { useMemo, useState } from 'react';
-import { useDebouncedCallback } from '../hooks';
+import { useDebouncedCallback } from '../hooks/useDebouncedCallback';
 import data from './data.json';
 import Fuse from 'fuse.js';
 import Table from '@material-ui/core/Table';
