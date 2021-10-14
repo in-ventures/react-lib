@@ -4,7 +4,7 @@
  * File Created: Friday, 11th September 2020 10:18:24 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Friday, 11th June 2021 10:53:17 am
+ * Last Modified: Thursday, 14th October 2021 3:37:11 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -12,6 +12,7 @@
  * -----
  * Inventures - www.inventures.cl
  */
+import 'regenerator-runtime/runtime.js';
 import React, { ReactNode } from 'react';
 import { Grid, makeStyles } from '@material-ui/core';
 import { ProductPropTypes, ProductCard } from './ProductCard';

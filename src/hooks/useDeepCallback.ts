@@ -4,7 +4,7 @@
  * File Created: Wednesday, 7th October 2020 11:15:35 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 3rd August 2021 3:43:56 pm
+ * Last Modified: Thursday, 14th October 2021 3:37:45 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -12,7 +12,7 @@
  * -----
  * Inventures - www.inventures.cl
  */
-
+import 'regenerator-runtime/runtime.js';
 import { DependencyList, useCallback } from 'react';
 import { useDeepDependencies } from './useDeepDependencies';
 

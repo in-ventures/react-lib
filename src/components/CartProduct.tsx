@@ -1,3 +1,5 @@
+import 'regenerator-runtime/runtime.js';
+
 import React, { useCallback } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { TextFieldProps } from '@material-ui/core';

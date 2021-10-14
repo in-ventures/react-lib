@@ -4,7 +4,7 @@
  * File Created: Wednesday, 7th October 2020 11:59:01 am
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 3rd August 2021 3:39:37 pm
+ * Last Modified: Thursday, 14th October 2021 3:37:56 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -12,7 +12,7 @@
  * -----
  * Inventures - www.inventures.cl
  */
-
+import 'regenerator-runtime/runtime.js';
 import { useEffect, useRef } from 'react';
 import throttle from 'lodash/throttle';
 

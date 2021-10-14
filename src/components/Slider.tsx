@@ -4,7 +4,7 @@
  * File Created: Wednesday, 28th April 2021 7:00:44 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Monday, 7th June 2021 10:21:09 am
+ * Last Modified: Thursday, 14th October 2021 3:37:22 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2021 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -13,6 +13,7 @@
  * Inventures - www.inventures.cl
  */
 
+import 'regenerator-runtime/runtime.js';
 import React from 'react';
 import { GridList, makeStyles, createStyles } from '@material-ui/core';
 import GridListTile from '@material-ui/core/GridListTile';

@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime.js';
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {

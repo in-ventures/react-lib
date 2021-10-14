@@ -4,15 +4,15 @@
  * File Created: Friday, 25th September 2020 3:06:54 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 10th November 2020 3:02:58 pm
- * Modified By: Vicente Melin (vicente@inventures.cl)
+ * Last Modified: Thursday, 14th October 2021 3:36:34 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
  * -----
  * Inventures - www.inventures.cl
  */
-
+import 'regenerator-runtime/runtime.js';
 import 'date-fns';
 import esLocale from 'date-fns/locale/es';
 import React from 'react';

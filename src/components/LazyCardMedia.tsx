@@ -4,7 +4,7 @@
  * File Created: Tuesday, 5th October 2021 6:27:22 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Thursday, 14th October 2021 3:33:39 pm
+ * Last Modified: Thursday, 14th October 2021 3:36:52 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2021 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -12,6 +12,7 @@
  * -----
  * Inventures - www.inventures.cl
  */
+import 'regenerator-runtime/runtime.js';
 
 import React, { useState, useEffect, useRef, ElementType } from 'react';
 import { CardMedia, CardMediaProps } from '@material-ui/core';

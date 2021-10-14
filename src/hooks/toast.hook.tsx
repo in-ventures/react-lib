@@ -1,3 +1,5 @@
+import 'regenerator-runtime/runtime.js';
+
 import React, {
   useCallback,
   useRef,

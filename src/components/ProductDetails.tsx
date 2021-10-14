@@ -4,7 +4,7 @@
  * File Created: Friday, 11th September 2020 10:18:53 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Wednesday, 22nd September 2021 11:46:36 am
+ * Last Modified: Thursday, 14th October 2021 3:37:07 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -13,6 +13,7 @@
  * Inventures - www.inventures.cl
  */
 
+import 'regenerator-runtime/runtime.js';
 import React, { Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { CardMedia, CardContent, Typography, Box } from '@material-ui/core';

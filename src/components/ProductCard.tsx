@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Tuesday, 5th October 2021 7:02:57 pm
+ * Last Modified: Thursday, 14th October 2021 3:37:02 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -13,6 +13,7 @@
  * Inventures - www.inventures.cl
  */
 
+import 'regenerator-runtime/runtime.js';
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {

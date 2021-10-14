@@ -4,8 +4,8 @@
  * File Created: Wednesday, 23rd September 2020 4:10:47 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Wednesday, 18th August 2021 5:48:37 pm
- * Modified By: Luis Aparicio (luis@inventures.cl)
+ * Last Modified: Thursday, 14th October 2021 3:36:59 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -13,6 +13,7 @@
  * Inventures - www.inventures.cl
  */
 
+import 'regenerator-runtime/runtime.js';
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
