@@ -201,7 +201,7 @@ function ImageLoaderComponent(
           )}
           onClick={handleCustomClick ? handleCustomClick : onClick}
         >
-          {!file && status === 'WAITING' ? (
+          {!file && (status === 'WAITING' || status === 'ERROR') ? (
             Placeholder
           ) : (
             <>
