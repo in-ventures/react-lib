@@ -4,7 +4,7 @@
  * File Created: Wednesday, 28th April 2021 7:00:44 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 14th October 2021 3:37:22 pm
+ * Last Modified: Friday, 29th October 2021 2:10:30 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2021 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -23,6 +23,7 @@ type SliderProps = {
   items: React.ReactNode[];
   cellHeight?: number | 'auto' | undefined;
   cols?: number;
+  spacing?: number;
   classes?: {
     root?: string;
     gridList?: string;
@@ -57,7 +58,7 @@ export function Slider(props: SliderProps) {
    * @returns React Component
    *
    */
-  const { items, cellHeight, cols, classes: propsClasses } = props;
+  const { items, cellHeight, cols, classes: propsClasses, spacing = 8 } = props;
   const classes = useStyles();
 
   if (!items) return null;
@@ -70,7 +71,7 @@ export function Slider(props: SliderProps) {
         classes={{
           root: clsx(classes.customTiles, propsClasses?.gridListRoot),
         }}
-        spacing={8}
+        spacing={spacing}
       >
         {items.map((item, index: number) => (
           <GridListTile

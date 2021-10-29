@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 14th October 2021 3:37:02 pm
+ * Last Modified: Friday, 29th October 2021 3:52:17 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -18,8 +18,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Card,
-  CardActionArea,
-  CardMedia,
   CardContent,
   Typography,
   Chip,
@@ -167,110 +165,103 @@ export function ProductCard(props: ProductPropTypes) {
   };
 
   return (
-    <>
+    <div className={clsx(propClasses?.cardActionArea)} onClick={onClickCard}>
       <Card className={clsx(classes.root, propClasses?.root)}>
-        <CardActionArea
-          onClick={onClickCard}
-          className={clsx(propClasses?.cardActionArea)}
+        <Badge
+          badgeContent={badgeContent}
+          max={9}
+          classes={{
+            badge: clsx(classes.badge, propClasses?.badge),
+            root: clsx(classes.badgeContainer, propClasses?.badgeContainer),
+          }}
         >
-          <Badge
-            badgeContent={badgeContent}
-            max={9}
-            classes={{
-              badge: clsx(classes.badge, propClasses?.badge),
-              root: clsx(classes.badgeContainer, propClasses?.badgeContainer),
-            }}
-          >
-            {leftBadge && (
-              <div
-                className={clsx(classes.leftBadge, propClasses?.leftBadgeDiv)}
-              >
-                {leftBadge}
-              </div>
+          {leftBadge && (
+            <div className={clsx(classes.leftBadge, propClasses?.leftBadgeDiv)}>
+              {leftBadge}
+            </div>
+          )}
+          <LazyCardMedia
+            className={clsx(classes.media, propClasses?.media)}
+            image={imageUrl || fallbackUrl || ''}
+            component="img"
+            onError={handleImageError}
+            alt={title}
+            height={92}
+          />
+
+          <Chip
+            color="primary"
+            size="small"
+            icon={tagIcon}
+            label={tagText}
+            className={clsx(
+              classes.tag,
+              propClasses?.tag,
+              !tagText && clsx(classes.disabledTag, propClasses?.disabledTag),
             )}
-            <LazyCardMedia
-              className={clsx(classes.media, propClasses?.media)}
-              image={imageUrl || fallbackUrl || ''}
-              component="img"
-              onError={handleImageError}
-              alt={title}
-              height={92}
-            />
+          />
 
-            <Chip
-              color="primary"
-              size="small"
-              icon={tagIcon}
-              label={tagText}
-              className={clsx(
-                classes.tag,
-                propClasses?.tag,
-                !tagText && clsx(classes.disabledTag, propClasses?.disabledTag),
-              )}
-            />
-
-            <CardContent
-              className={clsx(classes.content, propClasses?.content)}
-              onClick={onClickCard}
+          <CardContent
+            className={clsx(classes.content, propClasses?.content)}
+            onClick={onClickCard}
+          >
+            <Typography
+              variant="subtitle1"
+              color="textPrimary"
+              className={clsx(classes.title, propClasses?.title)}
+              noWrap
             >
+              {title}
+            </Typography>
+            {subtitle ? (
               <Typography
-                variant="subtitle1"
+                className={clsx(propClasses?.subtitle)}
+                variant="body2"
+                color="textSecondary"
+                noWrap
+              >
+                {subtitle}
+              </Typography>
+            ) : (
+              <Container classes={{ root: classes.chunk }}> </Container>
+            )}
+            {description ? (
+              <Typography
+                className={clsx(propClasses?.description)}
+                variant="body2"
                 color="textPrimary"
-                className={clsx(classes.title, propClasses?.title)}
                 noWrap
               >
-                {title}
+                {description}
               </Typography>
-              {subtitle ? (
-                <Typography
-                  className={clsx(propClasses?.subtitle)}
-                  variant="body2"
-                  color="textSecondary"
-                  noWrap
-                >
-                  {subtitle}
-                </Typography>
-              ) : (
-                <Container classes={{ root: classes.chunk }}> </Container>
-              )}
-              {description ? (
-                <Typography
-                  className={clsx(propClasses?.description)}
-                  variant="body2"
-                  color="textPrimary"
-                  noWrap
-                >
-                  {description}
-                </Typography>
-              ) : (
-                <Container classes={{ root: classes.chunk }}> </Container>
-              )}
-              {details ? (
-                <Typography
-                  className={clsx(propClasses?.details)}
-                  variant="body2"
-                  color="textSecondary"
-                  noWrap
-                >
-                  {details}
-                </Typography>
-              ) : (
-                <Container classes={{ root: classes.chunk }}> </Container>
-              )}
-            </CardContent>
-            <CardContent classes={{ root: classes.PriceContent }}>
+            ) : (
+              <Container classes={{ root: classes.chunk }}> </Container>
+            )}
+            {details ? (
               <Typography
-                variant="h6"
-                color="primary"
-                className={clsx(classes.price, propClasses?.price)}
+                className={clsx(propClasses?.details)}
+                variant="body2"
+                color="textSecondary"
                 noWrap
               >
-                {price}
+                {details}
               </Typography>
-            </CardContent>
-          </Badge>
-        </CardActionArea>
+            ) : (
+              <Container classes={{ root: classes.chunk }}> </Container>
+            )}
+          </CardContent>
+          <CardContent classes={{ root: classes.PriceContent }}>
+            <Typography
+              variant="h6"
+              color="primary"
+              className={clsx(classes.price, propClasses?.price)}
+              noWrap
+            >
+              {price}
+            </Typography>
+          </CardContent>
+        </Badge>
       </Card>
-    </>
+    </div>
   );
 }
