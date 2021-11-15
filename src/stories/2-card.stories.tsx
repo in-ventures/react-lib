@@ -4,7 +4,7 @@
  * File Created: Tuesday, 4th August 2020 5:47:50 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Friday, 8th October 2021 4:15:59 pm
+ * Last Modified: Monday, 15th November 2021 12:20:45 pm
  * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -23,7 +23,13 @@ import LocalPharmacyRoundedIcon from '@material-ui/icons/LocalPharmacyRounded';
 import WarningRoundedIcon from '@material-ui/icons/WarningRounded';
 import { Skeleton } from '@material-ui/lab';
 import { text, number } from '@storybook/addon-knobs';
-import { createStyles, makeStyles, Typography, Chip } from '@material-ui/core';
+import {
+  createStyles,
+  makeStyles,
+  Typography,
+  Chip,
+  Box,
+} from '@material-ui/core';
 
 export default {
   title: 'Card',
@@ -577,6 +583,7 @@ export const ProductCarouselSkeleton = () => {
 };
 
 export const ProductDetailsCard = () => {
+  const classes = useStyles();
   const image = text(
     'ImageUrl',
     'https://compra.ligaepilepsia.cl/wp-content/uploads/2020/01/00234-300x300.jpg',
@@ -625,6 +632,11 @@ export const ProductDetailsCard = () => {
           console.log('You clicked the product details image!')
         }
         pricePerUnit="$527 /comprimido"
+        deliveryTypeChip={
+          <Box className={classes.deliveryBox}>
+            <Chip color="secondary" size="small" label={'Hoy'}></Chip>
+          </Box>
+        }
       />
     </>
   );
@@ -702,6 +714,10 @@ Base.story = {
 
 const useStyles = makeStyles(() =>
   createStyles({
+    deliveryBox: {
+      position: 'absolute',
+      float: 'left',
+    },
     bioequivalentTag: {
       backgroundColor: '#ffe512',
       color: 'red',

@@ -4,8 +4,8 @@
  * File Created: Friday, 11th September 2020 10:18:53 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 14th October 2021 3:37:07 pm
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Monday, 15th November 2021 12:20:36 pm
+ * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -35,6 +35,7 @@ type ProductDetailsProps = {
   price: string;
   tags?: React.ReactElement[];
   classes?: ClassesProps;
+  deliveryTypeChip?: React.ReactElement;
 };
 
 const useStyles = makeStyles({
@@ -102,6 +103,7 @@ export function ProductDetails(props: ProductDetailsProps) {
     tags,
     classes: propClasses,
     fallbackUrl,
+    deliveryTypeChip,
   } = props;
 
   const classes = useStyles();
@@ -113,6 +115,7 @@ export function ProductDetails(props: ProductDetailsProps) {
   return (
     <Box className={classes.root}>
       <div className={classes.imageContainer}>
+        {deliveryTypeChip}
         <CardMedia
           className={classes.media}
           image={imageUrl || fallbackUrl}
