@@ -4,7 +4,7 @@
  * File Created: Friday, 11th September 2020 10:18:24 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 14th October 2021 3:37:11 pm
+ * Last Modified: Thursday, 9th December 2021 1:46:33 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -27,6 +27,7 @@ type ClassesPropType = {
   gridListTitle?: string;
   grid?: string;
   gridContainer?: string;
+  tile?: string;
 };
 
 interface ProductListProps {
@@ -145,6 +146,9 @@ const useStyles = makeStyles(() =>
       '-ms-overflow-style': 'none' /* IE and Edge */,
       'scrollbar-width': 'none' /* Firefox */,
     },
+    tile: {
+      padding: 4,
+    },
   }),
 );
 
@@ -183,13 +187,13 @@ export function ProductList(props: ProductListProps) {
               propClasses?.gridList,
             ),
           }}
-          spacing={8}
         >
           {products.map((cardInfo: ProductPropTypes, index: number) => (
             <GridListTile
               key={cardInfo.title + index.toString()}
               classes={{
                 root: clsx(classes.customTiles, propClasses?.gridListTitle),
+                tile: clsx(classes.tile, propClasses?.tile),
               }}
             >
               {renderItem(<ProductCard {...cardInfo} />, cardInfo)}
