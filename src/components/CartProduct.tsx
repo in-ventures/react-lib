@@ -69,6 +69,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: 'absolute',
     right: 0,
   },
+  focusHighlight: {
+    opacity: 0,
+    background: 'transparent',
+  },
 }));
 
 //Type
@@ -81,6 +85,7 @@ type PropClasses = {
   currTotalPrice?: string;
   quantity?: string;
   badges?: string;
+  focusHighlight?: string;
 };
 
 //Type
@@ -105,6 +110,7 @@ type CartProductProps = {
   onSubClick?: () => void;
   onTrashClick?: () => void;
   onDetailsClick?: () => void;
+  showHighlight?: boolean;
 } & TextFieldProps;
 
 //Component
@@ -128,6 +134,7 @@ export default function CartProduct({
   onSubClick = () => {},
   onTrashClick = () => {},
   onDetailsClick = () => {},
+  showHighlight,
   classes: propClasses,
 }: CartProductProps) {
   const classes = useStyles();
@@ -147,7 +154,18 @@ export default function CartProduct({
 
   return (
     <Card square elevation={0}>
-      <CardActionArea disabled={disableCardClick} onClick={onDetailsClick}>
+      <CardActionArea
+        disabled={disableCardClick}
+        onClick={onDetailsClick}
+        disableTouchRipple
+        disableRipple
+        classes={{
+          focusHighlight: clsx(
+            !showHighlight && classes.focusHighlight,
+            propClasses?.focusHighlight,
+          ),
+        }}
+      >
         <div className={classes.root}>
           <CardMedia
             className={classes.cover}
