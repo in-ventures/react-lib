@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 9th December 2021 1:37:11 pm
+ * Last Modified: Monday, 13th December 2021 4:40:18 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -75,6 +75,10 @@ const useStyles = makeStyles({
     padding: '8px',
     borderRadius: 12,
     boxShadow: '0px 0px 6px 1px #dedede',
+    transition: 'box-shadow 0.5s',
+    '&:hover': {
+      boxShadow: '0px 0px 6px 2px #cfcfcf',
+    },
   },
   badgeContainer: {
     display: 'flex',
