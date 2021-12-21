@@ -4,8 +4,8 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 14th October 2021 3:37:05 pm
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Tuesday, 21st December 2021 1:24:00 pm
+ * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -42,6 +42,10 @@ const useStyles = makeStyles({
   badge: {
     borderRadius: '13px',
   },
+  badgeHeader: {
+    borderRadius: '10px',
+    marginBottom: 5,
+  },
   marginBottom: {
     marginBottom: 6,
   },
@@ -63,8 +67,8 @@ export function ProductCardSkeleton() {
         <CardContent className={classes.content}>
           <Skeleton
             variant="rect"
-            height={78}
-            width={'80%'}
+            height={90}
+            width={'90%'}
             className={classes.center}
           />
 
@@ -72,12 +76,16 @@ export function ProductCardSkeleton() {
             <Skeleton
               variant="text"
               className={`${classes.badge} ${classes.center}`}
-              width={'70%'}
+              width={'80%'}
             />
           </Typography>
 
-          <Typography variant="h5">
-            <Skeleton variant="text" width={'50%'} className={classes.center} />
+          <Typography variant="body2">
+            <Skeleton
+              variant="text"
+              width={'75%'}
+              className={clsx(classes.center, classes.marginBottom)}
+            />
           </Typography>
 
           <Typography variant="body2">
@@ -85,6 +93,10 @@ export function ProductCardSkeleton() {
               variant="text"
               className={clsx(classes.center, classes.marginBottom)}
             />
+          </Typography>
+
+          <Typography variant="h5">
+            <Skeleton variant="text" width={'60%'} className={classes.center} />
           </Typography>
         </CardContent>
       </Card>
