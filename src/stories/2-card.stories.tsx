@@ -4,7 +4,7 @@
  * File Created: Tuesday, 4th August 2020 5:47:50 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Friday, 8th October 2021 4:15:59 pm
+ * Last Modified: Tuesday, 21st December 2021 12:41:17 pm
  * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -24,6 +24,7 @@ import WarningRoundedIcon from '@material-ui/icons/WarningRounded';
 import { Skeleton } from '@material-ui/lab';
 import { text, number } from '@storybook/addon-knobs';
 import { createStyles, makeStyles, Typography, Chip } from '@material-ui/core';
+import { ProductCardSkeleton } from '../components/ProductCardSkeleton';
 
 export default {
   title: 'Card',
@@ -38,6 +39,8 @@ export const Base = () => (
     onClickCard={() => console.log('You clicked the card!!')}
   />
 );
+
+export const BaseSkeleton = () => <ProductCardSkeleton />;
 
 export const EditableCard = () => {
   const imageUrl =
