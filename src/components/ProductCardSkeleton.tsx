@@ -4,7 +4,7 @@
  * File Created: Monday, 31st August 2020 3:33:49 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Tuesday, 21st December 2021 1:24:00 pm
+ * Last Modified: Wednesday, 22nd December 2021 12:11:44 pm
  * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -23,8 +23,14 @@ import clsx from 'clsx';
 const useStyles = makeStyles({
   root: {
     textAlign: 'center',
-    padding: '4px',
+    padding: '8px',
     height: 242,
+    borderRadius: 12,
+    boxShadow: '0px 0px 6px 1px #dedede',
+    transition: 'box-shadow 0.5s',
+    '&:hover': {
+      boxShadow: '0px 0px 6px 2px #cfcfcf',
+    },
   },
   center: {
     marginLeft: 'auto',
