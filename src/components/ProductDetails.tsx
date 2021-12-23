@@ -4,8 +4,8 @@
  * File Created: Friday, 11th September 2020 10:18:53 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 14th October 2021 3:37:07 pm
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Thursday, 23rd December 2021 10:44:28 am
+ * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -25,6 +25,7 @@ type ClassesProps = {
 };
 
 type ProductDetailsProps = {
+  uuid?: string;
   imageUrl?: string;
   fallbackUrl?: string;
   title: string;
@@ -92,6 +93,7 @@ export function ProductDetails(props: ProductDetailsProps) {
    *
    */
   const {
+    uuid,
     imageUrl,
     title,
     subtitle,
@@ -119,6 +121,7 @@ export function ProductDetails(props: ProductDetailsProps) {
           component="img"
           onClick={onClickImage}
           onError={handleImageError}
+          id={uuid ? `${uuid}-detail-img` : ''}
         />
         <div className={clsx(classes.tagsDiv, propClasses?.tagsDiv)}>
           {tags?.map((tag, index: number) => {
