@@ -4,7 +4,7 @@
  * File Created: Friday, 11th September 2020 10:18:24 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Friday, 14th January 2022 2:25:58 pm
+ * Last Modified: Friday, 14th January 2022 2:47:23 pm
  * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -150,7 +150,7 @@ const useStyles = makeStyles(() =>
       flexWrap: 'nowrap',
       width: '100%',
       scrollBehavior: 'smooth',
-      '& li:nth-last-child': {
+      '& :last-child': {
         marginRight: 2,
       },
     },
@@ -240,10 +240,6 @@ export function ProductList(props: ProductListProps) {
     };
     scrollElement();
   }, []);
-
-  useEffect(() => {
-    console.log({ leftNavegation, rightNavegation });
-  }, [leftNavegation, rightNavegation]);
 
   if (!wrap) {
     return (
