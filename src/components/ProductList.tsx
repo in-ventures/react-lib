@@ -4,7 +4,7 @@
  * File Created: Friday, 11th September 2020 10:18:24 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Friday, 14th January 2022 3:24:17 pm
+ * Last Modified: Friday, 14th January 2022 3:27:07 pm
  * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -13,13 +13,7 @@
  * Inventures - www.inventures.cl
  */
 import 'regenerator-runtime/runtime.js';
-import React, {
-  ReactNode,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-} from 'react';
+import React, { ReactNode, useCallback, useMemo, useRef } from 'react';
 import { Grid, IconButton, makeStyles } from '@material-ui/core';
 import { ProductPropTypes, ProductCard } from './ProductCard';
 import { ProductCardSkeleton } from './ProductCardSkeleton';
@@ -50,7 +44,7 @@ interface ProductListProps {
     children: ReactNode,
     childrenProps: Partial<ProductPropTypes>,
   ) => ReactNode;
-  navegationSpeed?: number;
+  navigationSpeed?: number;
 }
 type GridBreakpoints = {
   xs:
@@ -210,7 +204,7 @@ export function ProductList(props: ProductListProps) {
     cols,
     classes: propClasses,
     renderItem = (children) => children,
-    navegationSpeed = 3,
+    navigationSpeed = 3,
   } = props;
   const classes = useStyles();
   const refFirst = useRef<HTMLLIElement | null>(null);
@@ -236,16 +230,16 @@ export function ProductList(props: ProductListProps) {
         if (!sliderRef.current) return;
         if (direction === NavegationDirection.Right) {
           sliderRef.current.scrollLeft +=
-            sliderRef.current.clientWidth / navegationSpeed;
+            sliderRef.current.clientWidth / navigationSpeed;
         }
         if (direction === NavegationDirection.Left) {
           sliderRef.current.scrollLeft -=
-            sliderRef.current.clientWidth / navegationSpeed;
+            sliderRef.current.clientWidth / navigationSpeed;
         }
       };
       scrollElement();
     },
-    [navegationSpeed],
+    [navigationSpeed],
   );
 
   if (!wrap) {
