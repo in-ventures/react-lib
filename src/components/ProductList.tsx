@@ -4,8 +4,8 @@
  * File Created: Friday, 11th September 2020 10:18:24 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Thursday, 9th December 2021 1:46:33 pm
- * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
+ * Last Modified: Friday, 14th January 2022 3:30:21 pm
+ * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -13,14 +13,17 @@
  * Inventures - www.inventures.cl
  */
 import 'regenerator-runtime/runtime.js';
-import React, { ReactNode } from 'react';
-import { Grid, makeStyles } from '@material-ui/core';
+import React, { ReactNode, useCallback, useMemo, useRef } from 'react';
+import { Grid, IconButton, makeStyles } from '@material-ui/core';
 import { ProductPropTypes, ProductCard } from './ProductCard';
 import { ProductCardSkeleton } from './ProductCardSkeleton';
 import { createStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import clsx from 'clsx';
+import { useIntersectionObserver } from '../hooks/useIntersection';
+import ArrowBackIosRoundedIcon from '@material-ui/icons/ArrowBackIosRounded';
+import ArrowForwardIosRoundedIcon from '@material-ui/icons/ArrowForwardIosRounded';
 
 type ClassesPropType = {
   gridList?: string;
@@ -41,6 +44,7 @@ interface ProductListProps {
     children: ReactNode,
     childrenProps: Partial<ProductPropTypes>,
   ) => ReactNode;
+  navigationSpeed?: number;
 }
 type GridBreakpoints = {
   xs:
@@ -125,6 +129,11 @@ type GridBreakpoints = {
     | undefined;
 };
 
+enum NavigationDirection {
+  Left = 'left',
+  Right = 'right',
+}
+
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
@@ -135,6 +144,10 @@ const useStyles = makeStyles(() =>
     gridList: {
       flexWrap: 'nowrap',
       width: '100%',
+      scrollBehavior: 'smooth',
+      '& :last-child': {
+        marginRight: 2,
+      },
     },
     customTiles: {
       height: '100%',
@@ -148,6 +161,27 @@ const useStyles = makeStyles(() =>
     },
     tile: {
       padding: 4,
+    },
+    navigationRight: {
+      height: 'inherit !important',
+      width: 'fit-content !important',
+      padding: '12px !important',
+      position: 'absolute',
+      right: 0,
+      zIndex: 1,
+      alignSelf: 'center',
+    },
+    navigationLeft: {
+      height: 'inherit !important',
+      width: 'fit-content !important',
+      padding: '12px !important',
+      position: 'absolute',
+      left: 0,
+      zIndex: 1,
+      alignSelf: 'center',
+    },
+    hidden: {
+      display: 'none',
     },
   }),
 );
@@ -170,12 +204,58 @@ export function ProductList(props: ProductListProps) {
     cols,
     classes: propClasses,
     renderItem = (children) => children,
+    navigationSpeed = 3,
   } = props;
   const classes = useStyles();
+  const refFirst = useRef<HTMLLIElement | null>(null);
+  const refLast = useRef<HTMLLIElement | null>(null);
+  const sliderRef = useRef<HTMLUListElement | null>(null);
+
+  const leftNavigation = useIntersectionObserver(refFirst, { threshold: 1 });
+  const rightNavigation = useIntersectionObserver(refLast, { threshold: 1 });
+
+  const leftNavigationisVisible = useMemo(() => {
+    if (!leftNavigation) return;
+    return !!leftNavigation.isIntersecting;
+  }, [leftNavigation]);
+
+  const rightNavigationisVisible = useMemo(() => {
+    if (!rightNavigation) return;
+    return !!rightNavigation.isIntersecting;
+  }, [rightNavigation]);
+
+  const handleArrowClick = useCallback(
+    (direction: NavigationDirection) => {
+      const scrollElement = () => {
+        if (!sliderRef.current) return;
+        if (direction === NavigationDirection.Right) {
+          sliderRef.current.scrollLeft +=
+            sliderRef.current.clientWidth / navigationSpeed;
+        }
+        if (direction === NavigationDirection.Left) {
+          sliderRef.current.scrollLeft -=
+            sliderRef.current.clientWidth / navigationSpeed;
+        }
+      };
+      scrollElement();
+    },
+    [navigationSpeed],
+  );
 
   if (!wrap) {
     return (
       <div className={classes.root}>
+        <IconButton
+          onClick={() => handleArrowClick(NavigationDirection.Left)}
+          color="primary"
+          aria-label="move left"
+          className={clsx(
+            classes.navigationLeft,
+            leftNavigationisVisible && classes.hidden,
+          )}
+        >
+          <ArrowBackIosRoundedIcon />
+        </IconButton>
         <GridList
           className={classes.gridList}
           cols={cols ?? 2.3}
@@ -187,6 +267,7 @@ export function ProductList(props: ProductListProps) {
               propClasses?.gridList,
             ),
           }}
+          ref={sliderRef}
         >
           {products.map((cardInfo: ProductPropTypes, index: number) => (
             <GridListTile
@@ -195,11 +276,29 @@ export function ProductList(props: ProductListProps) {
                 root: clsx(classes.customTiles, propClasses?.gridListTitle),
                 tile: clsx(classes.tile, propClasses?.tile),
               }}
+              ref={
+                index == 0
+                  ? refFirst
+                  : index == products.length - 1
+                  ? refLast
+                  : null
+              }
             >
               {renderItem(<ProductCard {...cardInfo} />, cardInfo)}
             </GridListTile>
           ))}
         </GridList>
+        <IconButton
+          onClick={() => handleArrowClick(NavigationDirection.Right)}
+          color="primary"
+          aria-label="move right"
+          className={clsx(
+            classes.navigationRight,
+            rightNavigationisVisible && classes.hidden,
+          )}
+        >
+          <ArrowForwardIosRoundedIcon />
+        </IconButton>
       </div>
     );
   }
