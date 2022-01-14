@@ -4,7 +4,7 @@
  * File Created: Friday, 11th September 2020 10:18:24 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Friday, 14th January 2022 3:27:07 pm
+ * Last Modified: Friday, 14th January 2022 3:30:21 pm
  * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -129,7 +129,7 @@ type GridBreakpoints = {
     | undefined;
 };
 
-enum NavegationDirection {
+enum NavigationDirection {
   Left = 'left',
   Right = 'right',
 }
@@ -162,7 +162,7 @@ const useStyles = makeStyles(() =>
     tile: {
       padding: 4,
     },
-    navegationRight: {
+    navigationRight: {
       height: 'inherit !important',
       width: 'fit-content !important',
       padding: '12px !important',
@@ -171,7 +171,7 @@ const useStyles = makeStyles(() =>
       zIndex: 1,
       alignSelf: 'center',
     },
-    navegationLeft: {
+    navigationLeft: {
       height: 'inherit !important',
       width: 'fit-content !important',
       padding: '12px !important',
@@ -211,28 +211,28 @@ export function ProductList(props: ProductListProps) {
   const refLast = useRef<HTMLLIElement | null>(null);
   const sliderRef = useRef<HTMLUListElement | null>(null);
 
-  const leftNavegation = useIntersectionObserver(refFirst, { threshold: 1 });
-  const rightNavegation = useIntersectionObserver(refLast, { threshold: 1 });
+  const leftNavigation = useIntersectionObserver(refFirst, { threshold: 1 });
+  const rightNavigation = useIntersectionObserver(refLast, { threshold: 1 });
 
-  const leftNavegationisVisible = useMemo(() => {
-    if (!leftNavegation) return;
-    return !!leftNavegation.isIntersecting;
-  }, [leftNavegation]);
+  const leftNavigationisVisible = useMemo(() => {
+    if (!leftNavigation) return;
+    return !!leftNavigation.isIntersecting;
+  }, [leftNavigation]);
 
-  const rightNavegationisVisible = useMemo(() => {
-    if (!rightNavegation) return;
-    return !!rightNavegation.isIntersecting;
-  }, [rightNavegation]);
+  const rightNavigationisVisible = useMemo(() => {
+    if (!rightNavigation) return;
+    return !!rightNavigation.isIntersecting;
+  }, [rightNavigation]);
 
   const handleArrowClick = useCallback(
-    (direction: NavegationDirection) => {
+    (direction: NavigationDirection) => {
       const scrollElement = () => {
         if (!sliderRef.current) return;
-        if (direction === NavegationDirection.Right) {
+        if (direction === NavigationDirection.Right) {
           sliderRef.current.scrollLeft +=
             sliderRef.current.clientWidth / navigationSpeed;
         }
-        if (direction === NavegationDirection.Left) {
+        if (direction === NavigationDirection.Left) {
           sliderRef.current.scrollLeft -=
             sliderRef.current.clientWidth / navigationSpeed;
         }
@@ -246,12 +246,12 @@ export function ProductList(props: ProductListProps) {
     return (
       <div className={classes.root}>
         <IconButton
-          onClick={() => handleArrowClick(NavegationDirection.Left)}
+          onClick={() => handleArrowClick(NavigationDirection.Left)}
           color="primary"
           aria-label="move left"
           className={clsx(
-            classes.navegationLeft,
-            leftNavegationisVisible && classes.hidden,
+            classes.navigationLeft,
+            leftNavigationisVisible && classes.hidden,
           )}
         >
           <ArrowBackIosRoundedIcon />
@@ -289,12 +289,12 @@ export function ProductList(props: ProductListProps) {
           ))}
         </GridList>
         <IconButton
-          onClick={() => handleArrowClick(NavegationDirection.Right)}
+          onClick={() => handleArrowClick(NavigationDirection.Right)}
           color="primary"
           aria-label="move right"
           className={clsx(
-            classes.navegationRight,
-            rightNavegationisVisible && classes.hidden,
+            classes.navigationRight,
+            rightNavigationisVisible && classes.hidden,
           )}
         >
           <ArrowForwardIosRoundedIcon />
