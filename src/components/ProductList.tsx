@@ -4,7 +4,7 @@
  * File Created: Friday, 11th September 2020 10:18:24 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Friday, 14th January 2022 2:47:23 pm
+ * Last Modified: Friday, 14th January 2022 3:24:17 pm
  * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -50,6 +50,7 @@ interface ProductListProps {
     children: ReactNode,
     childrenProps: Partial<ProductPropTypes>,
   ) => ReactNode;
+  navegationSpeed?: number;
 }
 type GridBreakpoints = {
   xs:
@@ -209,6 +210,7 @@ export function ProductList(props: ProductListProps) {
     cols,
     classes: propClasses,
     renderItem = (children) => children,
+    navegationSpeed = 3,
   } = props;
   const classes = useStyles();
   const refFirst = useRef<HTMLLIElement | null>(null);
@@ -228,18 +230,23 @@ export function ProductList(props: ProductListProps) {
     return !!rightNavegation.isIntersecting;
   }, [rightNavegation]);
 
-  const handleArrowClick = useCallback((direction: NavegationDirection) => {
-    const scrollElement = () => {
-      if (!sliderRef.current) return;
-      if (direction === NavegationDirection.Right) {
-        sliderRef.current.scrollLeft += sliderRef.current.clientWidth / 3;
-      }
-      if (direction === NavegationDirection.Left) {
-        sliderRef.current.scrollLeft -= sliderRef.current.clientWidth / 3;
-      }
-    };
-    scrollElement();
-  }, []);
+  const handleArrowClick = useCallback(
+    (direction: NavegationDirection) => {
+      const scrollElement = () => {
+        if (!sliderRef.current) return;
+        if (direction === NavegationDirection.Right) {
+          sliderRef.current.scrollLeft +=
+            sliderRef.current.clientWidth / navegationSpeed;
+        }
+        if (direction === NavegationDirection.Left) {
+          sliderRef.current.scrollLeft -=
+            sliderRef.current.clientWidth / navegationSpeed;
+        }
+      };
+      scrollElement();
+    },
+    [navegationSpeed],
+  );
 
   if (!wrap) {
     return (
