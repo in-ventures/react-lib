@@ -4,8 +4,8 @@
  * File Created: Tuesday, 4th August 2020 5:47:50 pm
  * Author: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
- * Last Modified: Tuesday, 21st December 2021 12:41:17 pm
- * Modified By: Luis Aparicio (luis@inventures.cl)
+ * Last Modified: Monday, 17th January 2022 4:10:22 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2019 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -85,6 +85,7 @@ export const ProductCarouselNoWrap = () => {
 
       <ProductList
         loading={false}
+        showNavigationButtons
         products={[
           {
             imageUrl:

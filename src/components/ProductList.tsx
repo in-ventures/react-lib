@@ -4,8 +4,8 @@
  * File Created: Friday, 11th September 2020 10:18:24 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Monday, 17th January 2022 10:11:30 am
- * Modified By: Luis Aparicio (luis@inventures.cl)
+ * Last Modified: Monday, 17th January 2022 4:38:01 pm
+ * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
  * Terms and conditions defined in license.txt
@@ -45,6 +45,7 @@ interface ProductListProps {
     childrenProps: Partial<ProductPropTypes>,
   ) => ReactNode;
   navigationSpeed?: number;
+  showNavigationButtons?: boolean;
 }
 type GridBreakpoints = {
   xs:
@@ -134,7 +135,7 @@ enum NavigationDirection {
   Right = 'right',
 }
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
       display: 'flex',
@@ -163,22 +164,36 @@ const useStyles = makeStyles(() =>
     tile: {
       padding: 4,
     },
+    navigationButton: {
+      height: '100%',
+      cursor: 'pointer',
+      display: 'flex',
+      alignItems: 'center',
+      zIndex: 1000,
+      background: 'transparent',
+      transition: 'background 0.5s',
+      borderRadius: 5,
+      '&:hover': {
+        background: 'rgba(0,0,0,0.05)',
+      },
+    },
+    navigationButtonCircle: {
+      background: theme.palette.primary.main,
+      borderRadius: '50%',
+      color: 'white',
+      padding: 3,
+      fontSize: 15,
+    },
     navigationRight: {
-      height: 'inherit !important',
-      width: 'fit-content !important',
       padding: '12px !important',
       position: 'absolute',
       right: 0,
-      zIndex: 1,
       alignSelf: 'center',
     },
     navigationLeft: {
-      height: 'inherit !important',
-      width: 'fit-content !important',
       padding: '12px !important',
       position: 'absolute',
       left: 0,
-      zIndex: 1,
       alignSelf: 'center',
     },
     hidden: {
@@ -206,6 +221,7 @@ export function ProductList(props: ProductListProps) {
     classes: propClasses,
     renderItem = (children) => children,
     navigationSpeed = 3,
+    showNavigationButtons,
   } = props;
   const classes = useStyles();
   const refFirst = useRef<HTMLLIElement | null>(null);
@@ -246,17 +262,18 @@ export function ProductList(props: ProductListProps) {
   if (!wrap) {
     return (
       <div className={classes.root}>
-        <IconButton
+        <div
           onClick={() => handleArrowClick(NavigationDirection.Left)}
-          color="primary"
           aria-label="move left"
           className={clsx(
+            classes.navigationButton,
             classes.navigationLeft,
             leftNavigationisVisible && classes.hidden,
+            !showNavigationButtons && classes.hidden,
           )}
         >
-          <ArrowBackIosRoundedIcon />
-        </IconButton>
+          <ArrowBackIosRoundedIcon className={classes.navigationButtonCircle} />
+        </div>
         <GridList
           className={classes.gridList}
           cols={cols ?? 2.3}
@@ -289,17 +306,20 @@ export function ProductList(props: ProductListProps) {
             </GridListTile>
           ))}
         </GridList>
-        <IconButton
+        <div
           onClick={() => handleArrowClick(NavigationDirection.Right)}
-          color="primary"
           aria-label="move right"
           className={clsx(
+            classes.navigationButton,
             classes.navigationRight,
             rightNavigationisVisible && classes.hidden,
+            !showNavigationButtons && classes.hidden,
           )}
         >
-          <ArrowForwardIosRoundedIcon />
-        </IconButton>
+          <ArrowForwardIosRoundedIcon
+            className={classes.navigationButtonCircle}
+          />
+        </div>
       </div>
     );
   }
