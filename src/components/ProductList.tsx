@@ -4,7 +4,7 @@
  * File Created: Friday, 11th September 2020 10:18:24 am
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Monday, 17th January 2022 4:46:16 pm
+ * Last Modified: Monday, 17th January 2022 4:50:54 pm
  * Modified By: Gabriel Ulloa (gabriel@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -173,7 +173,6 @@ const useStyles = makeStyles((theme) =>
       background: 'transparent',
       transition: 'background 0.5s',
       borderRadius: 5,
-      boxShadow: '0px 0px 6px 1px #dedede',
       '&:hover': {
         background: 'rgba(0,0,0,0.05)',
       },
@@ -184,6 +183,7 @@ const useStyles = makeStyles((theme) =>
       color: 'white',
       padding: 3,
       fontSize: 15,
+      boxShadow: '0px 0px 6px 1px #dedede',
     },
     navigationRight: {
       padding: '12px !important',
