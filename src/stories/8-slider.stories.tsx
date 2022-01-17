@@ -4,7 +4,7 @@
  * File Created: Wednesday, 28th April 2021 6:59:27 pm
  * Author: Esperanza Horn (esperanza@inventures.cl)
  * -----
- * Last Modified: Friday, 8th October 2021 4:17:38 pm
+ * Last Modified: Monday, 17th January 2022 10:33:27 am
  * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2020 - 2020 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -33,7 +33,7 @@ const useBannerStyles = makeStyles(() =>
       width: '100%',
     },
     item: {
-      backgroundColor: '#0177BD',
+      backgroundColor: 'red',
       height: '100%',
       borderRadius: '8px',
       display: 'flex',

@@ -4,7 +4,7 @@
  * File Created: Friday, 14th January 2022 11:15:06 am
  * Author: Luis Aparicio (luis@inventures.cl)
  * -----
- * Last Modified: Friday, 14th January 2022 1:01:28 pm
+ * Last Modified: Monday, 17th January 2022 10:10:53 am
  * Modified By: Luis Aparicio (luis@inventures.cl)
  * -----
  * Copyright 2019 - 2022 Incrementa Ventures SpA. ALL RIGHTS RESERVED
@@ -24,7 +24,7 @@ export function useIntersectionObserver(
   {
     threshold = 0,
     root = null,
-    rootMargin = '0%',
+    rootMargin = '4000px 0px 4000px 0px',
     freezeOnceVisible = false,
   }: IntersectionObserverProps,
 ): IntersectionObserverEntry | undefined {
